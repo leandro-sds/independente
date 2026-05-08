@@ -11,42 +11,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Atualização automática via GitHub
- * Verifica releases no repositório e notifica o painel do WordPress
+ * Verifica releases e notifica o painel do WordPress
  */
 function independent_theme_check_update( $transient ) {
   if ( empty( $transient->checked ) ) {
     return $transient;
   }
 
-  $theme_slug    = 'independent-theme';
-  $github_user   = 'leandro-sds';
-  $github_repo   = 'independent-theme';
-  $current       = wp_get_theme( $theme_slug );
-  $current_ver   = $current->get( 'Version' );
+  $theme_slug  = 'independent-theme';
+  $github_user = 'leandro-sds';
+  $github_repo = 'independent-theme';
+  $current     = wp_get_theme( $theme_slug );
+  $current_ver = $current->get( 'Version' );
 
-  // Consulta a API do GitHub
   $api_url  = "https://api.github.com/repos/{$github_user}/{$github_repo}/releases/latest";
   $response = wp_remote_get( $api_url, [
     'timeout'    => 10,
     'user-agent' => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ),
   ] );
 
-  if ( is_wp_error( $response ) ) {
-    return $transient;
-  }
+  if ( is_wp_error( $response ) ) return $transient;
 
   $data = json_decode( wp_remote_retrieve_body( $response ) );
 
-  if ( empty( $data->tag_name ) ) {
-    return $transient;
-  }
+  if ( empty( $data->tag_name ) ) return $transient;
 
-  // Remove o 'v' inicial se existir (ex.: v2.7.0 → 2.7.0)
   $latest_ver = ltrim( $data->tag_name, 'v' );
 
   if ( version_compare( $current_ver, $latest_ver, '<' ) ) {
     $zip_url = "https://github.com/{$github_user}/{$github_repo}/releases/download/{$data->tag_name}/independent-theme-{$latest_ver}.zip";
-
     $transient->response[ $theme_slug ] = [
       'theme'       => $theme_slug,
       'new_version' => $latest_ver,
@@ -65,28 +58,18 @@ add_filter( 'pre_set_site_transient_update_themes', 'independent_theme_check_upd
  * Exibe informações da versão mais recente na tela de detalhes do tema
  */
 function independent_theme_update_details( $false, $action, $args ) {
-  if ( $action !== 'theme_information' ) {
-    return $false;
-  }
-  if ( ! isset( $args->slug ) || $args->slug !== 'independent-theme' ) {
-    return $false;
-  }
+  if ( $action !== 'theme_information' ) return $false;
+  if ( ! isset( $args->slug ) || $args->slug !== 'independent-theme' ) return $false;
 
-  $api_url  = 'https://api.github.com/repos/leandro-sds/independent-theme/releases/latest';
-  $response = wp_remote_get( $api_url, [
+  $response = wp_remote_get( 'https://api.github.com/repos/leandro-sds/independent-theme/releases/latest', [
     'timeout'    => 10,
     'user-agent' => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ),
   ] );
 
-  if ( is_wp_error( $response ) ) {
-    return $false;
-  }
+  if ( is_wp_error( $response ) ) return $false;
 
   $data = json_decode( wp_remote_retrieve_body( $response ) );
-
-  if ( empty( $data->tag_name ) ) {
-    return $false;
-  }
+  if ( empty( $data->tag_name ) ) return $false;
 
   $latest_ver = ltrim( $data->tag_name, 'v' );
 
@@ -106,6 +89,17 @@ function independent_theme_update_details( $false, $action, $args ) {
   ];
 }
 add_filter( 'themes_api', 'independent_theme_update_details', 10, 3 );
+
+
+/**
+ * Define a largura máxima do conteúdo incorporado (embeds, iframes, vídeos).
+ * Não afeta o layout — apenas informa ao WordPress o espaço disponível.
+ */
+if ( ! isset( $content_width ) ) {
+  $content_width = 860;
+}
+
+
 
 
 
@@ -686,7 +680,7 @@ function independent_theme_late_style() {
     img.custom-logo,
     .custom-logo {
       width: calc(var(--logo-max-width) * var(--logo-scale)) !important;
-      height: auto !important;
+      height: calc(var(--logo-max-height) * var(--logo-scale)) !important;
       max-width: min(calc(var(--logo-max-width) * var(--logo-scale)), 90vw) !important;
       max-height: min(calc(var(--logo-max-height) * var(--logo-scale)), 35vh) !important;
       object-fit: contain !important;

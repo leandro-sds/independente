@@ -1,14 +1,16 @@
 /*
 Theme Name: Independent Theme
+Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
-Description: Tema moderno, responsivo e acessível com estilos visuais personalizáveis.
-Version: 2.8.0
-Requires at least: 6.5
+Author URI: https://github.com/leandro-sds
+Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 8 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista. Totalmente compatível com leitores de tela e navegação por teclado.
+Version: 2.9.0
+Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: independent-theme
-Tags: blog, news, one-column, two-columns, custom-logo, custom-menu, featured-images, accessibility-ready, responsive-layout
+Tags: blog, two-columns, custom-logo, custom-menu, custom-colors, featured-images, accessibility-ready, responsive-layout, rtl-language-support, translation-ready, footer-widgets
 */
 
 /* Fontes via Google Fonts — Inter (sans) + Montserrat (display) */
@@ -248,7 +250,7 @@ article, .widget, .footer-widget {
 img.custom-logo,
 .ls-logo {
   width: calc(var(--logo-max-width) * var(--logo-scale)) !important;
-  height: auto !important;
+  height: calc(var(--logo-max-height) * var(--logo-scale)) !important;
   max-width: min(calc(var(--logo-max-width) * var(--logo-scale)), 90vw) !important;
   max-height: min(calc(var(--logo-max-height) * var(--logo-scale)), 35vh) !important;
   object-fit: contain;
