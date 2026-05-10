@@ -89,3 +89,28 @@
     </nav>
   </div>
 </header>
+
+<?php
+$hero_enabled = get_theme_mod( 'independent_hero_enabled', 0 );
+if ( $hero_enabled ) :
+  $hero_title      = get_theme_mod( 'independent_hero_title', '' );
+  $hero_subtitle   = get_theme_mod( 'independent_hero_subtitle', '' );
+  $hero_btn_text   = get_theme_mod( 'independent_hero_button_text', '' );
+  $hero_btn_url    = get_theme_mod( 'independent_hero_button_url', '' );
+?>
+<section class="hero-section" aria-label="<?php esc_attr_e( 'Seção de destaque', 'independent-theme' ); ?>">
+  <div class="hero-inner">
+    <?php if ( $hero_title ) : ?>
+      <h2 class="hero-title"><?php echo esc_html( $hero_title ); ?></h2>
+    <?php endif; ?>
+    <?php if ( $hero_subtitle ) : ?>
+      <p class="hero-subtitle"><?php echo esc_html( $hero_subtitle ); ?></p>
+    <?php endif; ?>
+    <?php if ( $hero_btn_text && $hero_btn_url ) : ?>
+      <a href="<?php echo esc_url( $hero_btn_url ); ?>" class="hero-button">
+        <?php echo esc_html( $hero_btn_text ); ?>
+      </a>
+    <?php endif; ?>
+  </div>
+</section>
+<?php endif; ?>

@@ -4,7 +4,7 @@ Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
 Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 8 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 2.9.0
+Version: 3.0.0
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -4890,4 +4890,347 @@ body.style-vintagecafe main {
     rgba(201,146,42,0.04) 28px
   ) !important;
   background-size: 100% 28px !important;
+}
+
+/* ==========================================================
+   Comentários — Independent Theme
+   Usa variáveis CSS de cada estilo — herda identidade visual
+   ========================================================== */
+
+/* ── Área geral ── */
+.comments-area {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--border-color);
+}
+
+.comments-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+/* ── Lista de comentários ── */
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.comment-list .children {
+  list-style: none;
+  padding-left: 2rem;
+  margin-top: 1rem;
+  border-left: 2px solid var(--border-color);
+}
+
+/* ── Comentário individual ── */
+.comment-item {
+  margin-bottom: 1.5rem;
+}
+
+.comment-body {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.4rem 1.6rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.comment-body:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+
+/* ── Cabeçalho do comentário ── */
+.comment-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.comment-author-avatar img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-color);
+  object-fit: cover;
+}
+
+.comment-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.comment-author-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--primary-color);
+}
+
+.comment-author-name a {
+  color: var(--primary-color) !important;
+  text-decoration: none;
+}
+
+.comment-author-name a:hover {
+  color: var(--accent-color) !important;
+}
+
+.comment-date {
+  font-size: 0.80rem;
+  color: var(--muted-text);
+}
+
+/* ── Conteúdo do comentário ── */
+.comment-content {
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+}
+
+.comment-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Aguardando moderação ── */
+.comment-awaiting-moderation {
+  font-size: 0.85rem;
+  color: var(--accent-color);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(0,0,0,0.04);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Responder ── */
+.comment-reply a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-color) !important;
+  text-decoration: none;
+  border: 1px solid var(--accent-color);
+  border-radius: var(--radius-sm);
+  padding: 3px 10px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.comment-reply a:hover {
+  background: var(--accent-color) !important;
+  color: var(--on-accent) !important;
+}
+
+/* ── Navegação de comentários ── */
+.comment-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 0.90rem;
+}
+
+.comment-navigation a {
+  color: var(--accent-color) !important;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ── Sem comentários ── */
+.no-comments {
+  font-style: italic;
+  color: var(--muted-text);
+  margin-bottom: 1.5rem;
+}
+
+/* ── Formulário de comentários ── */
+.comment-respond {
+  margin-top: 2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+}
+
+#reply-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+#reply-title small a {
+  font-size: 0.80rem;
+  font-weight: 400;
+  color: var(--muted-text) !important;
+  margin-left: 0.5rem;
+}
+
+.comment-field {
+  margin-bottom: 1.2rem;
+}
+
+.comment-field label {
+  display: block;
+  font-size: 0.90rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.4rem;
+}
+
+.comment-field-note {
+  font-size: 0.78rem;
+  color: var(--muted-text);
+  margin-top: 0.3rem;
+}
+
+.comment-field input[type="text"],
+.comment-field input[type="email"],
+.comment-field input[type="url"],
+.comment-field textarea {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.comment-field input:focus,
+.comment-field textarea:focus {
+  outline: var(--focus-ring);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+}
+
+.comment-field textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+#submit {
+  background: var(--accent-color);
+  color: var(--on-accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 1.6rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+#submit:hover {
+  filter: brightness(0.88);
+  transform: translateY(-1px);
+}
+
+#submit:focus {
+  outline: var(--focus-ring);
+}
+
+/* ── Responsivo ── */
+@media (max-width: 600px) {
+  .comment-list .children {
+    padding-left: 1rem;
+  }
+  .comment-body {
+    padding: 1rem;
+  }
+  .comment-respond {
+    padding: 1.2rem;
+  }
+}
+
+/* ==========================================================
+   Hero Section — Seção de Destaque
+   Usa variáveis CSS — herda identidade de cada estilo
+   ========================================================== */
+
+.hero-section {
+  background: var(--primary-color);
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+  border-bottom: 3px solid var(--accent-color);
+}
+
+.hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--header-title-color);
+  margin-bottom: 0.75rem;
+  line-height: 1.20;
+  letter-spacing: -0.01em;
+  animation: fadeInDown 0.6s ease both;
+}
+
+.hero-subtitle {
+  font-family: var(--font-main);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--header-muted);
+  margin-bottom: 1.8rem;
+  line-height: 1.60;
+  animation: fadeInUp 0.6s ease 0.15s both;
+}
+
+.hero-button {
+  display: inline-block;
+  background: var(--accent-color);
+  color: var(--on-accent);
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: filter 0.22s ease, transform 0.22s ease,
+              box-shadow 0.22s ease;
+  animation: fadeInUp 0.6s ease 0.30s both;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.hero-button:hover {
+  filter: brightness(0.88);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.20);
+}
+
+.hero-button:focus {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title,
+  .hero-subtitle,
+  .hero-button {
+    animation: none !important;
+  }
+  .hero-button:hover {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 2.5rem 1rem;
+  }
 }

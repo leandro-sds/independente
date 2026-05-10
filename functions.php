@@ -134,6 +134,56 @@ function independent_theme_setup() {
 }
 add_action( 'after_setup_theme', 'independent_theme_setup' );
 
+
+/**
+ * Callback de comentário individual
+ * Estrutura acessível e semântica
+ */
+function independent_theme_comment( $comment, $args, $depth ) {
+  $tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
+  ?>
+  <<?php echo esc_attr( $tag ); ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( [ 'comment-item' ], $comment ); ?>>
+
+    <article class="comment-body">
+
+      <header class="comment-meta">
+        <div class="comment-author-avatar">
+          <?php echo get_avatar( $comment, $args['avatar_size'] ); ?>
+        </div>
+        <div class="comment-author-info">
+          <span class="comment-author-name"><?php comment_author_link( $comment ); ?></span>
+          <time class="comment-date" datetime="<?php comment_time( 'c' ); ?>">
+            <?php echo esc_html( get_comment_date( '', $comment ) ); ?>
+          </time>
+        </div>
+      </header>
+
+      <?php if ( '0' === $comment->comment_approved ) : ?>
+        <p class="comment-awaiting-moderation">
+          <?php esc_html_e( 'Seu comentário está aguardando moderação.', 'independent-theme' ); ?>
+        </p>
+      <?php endif; ?>
+
+      <div class="comment-content">
+        <?php comment_text(); ?>
+      </div>
+
+      <footer class="comment-footer">
+        <?php
+        comment_reply_link( array_merge( $args, [
+          'add_below' => 'comment',
+          'depth'     => $depth,
+          'max_depth' => $args['max_depth'],
+          'before'    => '<span class="comment-reply">',
+          'after'     => '</span>',
+        ] ) );
+        ?>
+      </footer>
+
+    </article>
+  <?php
+}
+
 // Registro de áreas de widgets
 function independent_theme_widgets_init() {
   register_sidebar( [
@@ -381,6 +431,70 @@ function independent_theme_customize_register( $wp_customize ) {
     'description' => __( 'Nome do canal com ou sem @. Ex.: @radiomaioramor', 'independent-theme' ),
     'section'     => 'independent_social_section',
     'type'        => 'text',
+  ] );
+
+  // Hero Section
+  $wp_customize->add_section( 'independent_hero_section', [
+    'title'    => __( 'Seção de Destaque (Hero)', 'independent-theme' ),
+    'priority' => 35,
+  ] );
+
+  $wp_customize->add_setting( 'independent_hero_enabled', [
+    'default'           => 0,
+    'sanitize_callback' => 'absint',
+    'transport'         => 'refresh',
+  ] );
+  $wp_customize->add_control( 'independent_hero_enabled', [
+    'label'   => __( 'Ativar seção de destaque', 'independent-theme' ),
+    'section' => 'independent_hero_section',
+    'type'    => 'checkbox',
+  ] );
+
+  $wp_customize->add_setting( 'independent_hero_title', [
+    'default'           => '',
+    'sanitize_callback' => 'sanitize_text_field',
+    'transport'         => 'refresh',
+  ] );
+  $wp_customize->add_control( 'independent_hero_title', [
+    'label'       => __( 'Título', 'independent-theme' ),
+    'description' => __( 'Título principal da seção de destaque.', 'independent-theme' ),
+    'section'     => 'independent_hero_section',
+    'type'        => 'text',
+  ] );
+
+  $wp_customize->add_setting( 'independent_hero_subtitle', [
+    'default'           => '',
+    'sanitize_callback' => 'sanitize_text_field',
+    'transport'         => 'refresh',
+  ] );
+  $wp_customize->add_control( 'independent_hero_subtitle', [
+    'label'       => __( 'Subtítulo', 'independent-theme' ),
+    'description' => __( 'Texto secundário abaixo do título.', 'independent-theme' ),
+    'section'     => 'independent_hero_section',
+    'type'        => 'text',
+  ] );
+
+  $wp_customize->add_setting( 'independent_hero_button_text', [
+    'default'           => '',
+    'sanitize_callback' => 'sanitize_text_field',
+    'transport'         => 'refresh',
+  ] );
+  $wp_customize->add_control( 'independent_hero_button_text', [
+    'label'       => __( 'Texto do botão', 'independent-theme' ),
+    'description' => __( 'Deixe em branco para não exibir o botão.', 'independent-theme' ),
+    'section'     => 'independent_hero_section',
+    'type'        => 'text',
+  ] );
+
+  $wp_customize->add_setting( 'independent_hero_button_url', [
+    'default'           => '',
+    'sanitize_callback' => 'esc_url_raw',
+    'transport'         => 'refresh',
+  ] );
+  $wp_customize->add_control( 'independent_hero_button_url', [
+    'label'       => __( 'URL do botão', 'independent-theme' ),
+    'section'     => 'independent_hero_section',
+    'type'        => 'url',
   ] );
 
   // Estilo visual
