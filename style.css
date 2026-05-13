@@ -4,7 +4,7 @@ Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
 Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 9 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista, incluindo o estilo Colorado. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 3.1.0
+Version: 3.2.0
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1711,6 +1711,26 @@ body.style-marinelli .social-title { color: #ffffff; }
 body.style-marinelli footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
 body.style-marinelli footer a:hover { color: #ffffff; }
 
+/* Títulos e textos dos widgets dentro do rodapé — forçar branco sobre azul escuro */
+body.style-marinelli footer h1,
+body.style-marinelli footer h2,
+body.style-marinelli footer h3,
+body.style-marinelli footer h4,
+body.style-marinelli footer p,
+body.style-marinelli footer li,
+body.style-marinelli footer span,
+body.style-marinelli footer .widget-title,
+body.style-marinelli footer .widget h2,
+body.style-marinelli footer .widget h3 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-bottom-color: rgba(255,255,255,0.20) !important;
+}
+
+body.style-marinelli footer .widget::before {
+  background: linear-gradient(90deg, rgba(249,126,5,0.60), rgba(249,126,5,0.25), transparent) !important;
+}
+
 /* ── Área de conteúdo principal ── */
 body.style-marinelli main {
   background-color: #ffffff;
@@ -2415,6 +2435,29 @@ body.style-moderno .social-links a:hover {
   transform: scale(1.15);
 }
 
+/* Títulos e textos dos widgets dentro do rodapé — forçar ciano sobre roxo escuro */
+body.style-moderno footer h1,
+body.style-moderno footer h2,
+body.style-moderno footer h3,
+body.style-moderno footer h4,
+body.style-moderno footer p,
+body.style-moderno footer li,
+body.style-moderno footer span,
+body.style-moderno footer .widget-title,
+body.style-moderno footer .widget h2,
+body.style-moderno footer .widget h3 {
+  color: #00f5d4 !important;
+  -webkit-text-fill-color: #00f5d4 !important;
+  background: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  border-bottom-color: rgba(0,245,212,0.25) !important;
+}
+
+body.style-moderno footer .widget::before {
+  background: linear-gradient(90deg, rgba(0,245,212,0.50), rgba(199,125,255,0.25), transparent) !important;
+}
+
 /* ── Menu toggle ── */
 body.style-moderno .menu-toggle {
   background: rgba(0,245,212,0.08) !important;
@@ -2806,6 +2849,26 @@ body.style-campoepaixao footer a:hover { color: #ffffff; }
 body.style-campoepaixao .social-title { color: #ffffff; }
 body.style-campoepaixao .social-links a { color: rgba(255,255,255,0.80); }
 
+/* Títulos e textos dos widgets dentro do rodapé — forçar branco sobre verde escuro */
+body.style-campoepaixao footer h1,
+body.style-campoepaixao footer h2,
+body.style-campoepaixao footer h3,
+body.style-campoepaixao footer h4,
+body.style-campoepaixao footer p,
+body.style-campoepaixao footer li,
+body.style-campoepaixao footer span,
+body.style-campoepaixao footer .widget-title,
+body.style-campoepaixao footer .widget h2,
+body.style-campoepaixao footer .widget h3 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-bottom-color: rgba(255,255,255,0.25) !important;
+}
+
+body.style-campoepaixao footer .widget::before {
+  background: linear-gradient(90deg, rgba(255,255,255,0.35), rgba(255,255,255,0.12), transparent) !important;
+}
+
 body.style-campoepaixao h1,
 body.style-campoepaixao h2,
 body.style-campoepaixao h3,
@@ -2887,6 +2950,26 @@ body.style-neonpop footer a { color: rgba(0,207,255,0.80); }
 body.style-neonpop footer a:hover { color: #00cfff; }
 body.style-neonpop .social-title { color: #ff2d78; }
 body.style-neonpop .social-links a { color: rgba(0,207,255,0.80); }
+
+/* Títulos e textos dos widgets dentro do rodapé — forçar ciano sobre fundo escuro */
+body.style-neonpop footer h1,
+body.style-neonpop footer h2,
+body.style-neonpop footer h3,
+body.style-neonpop footer h4,
+body.style-neonpop footer p,
+body.style-neonpop footer li,
+body.style-neonpop footer span,
+body.style-neonpop footer .widget-title,
+body.style-neonpop footer .widget h2,
+body.style-neonpop footer .widget h3 {
+  color: #00cfff !important;
+  -webkit-text-fill-color: #00cfff !important;
+  border-bottom-color: rgba(255,45,120,0.40) !important;
+}
+
+body.style-neonpop footer .widget::before {
+  background: linear-gradient(90deg, rgba(255,45,120,0.60), rgba(0,207,255,0.30), transparent) !important;
+}
 
 body.style-neonpop h1,
 body.style-neonpop h2,
@@ -5255,11 +5338,6 @@ body.style-vintagecafe main {
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-@keyframes coloradoShieldPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(232,41,28,0); }
-  50%       { box-shadow: 0 0 0 4px rgba(232,41,28,0.20); }
-}
-
 /* ── Separação de áreas — vermelho e branco ── */
 body.style-colorado main {
   background-color: #ffffff;
@@ -5584,6 +5662,26 @@ body.style-colorado footer a { color: rgba(255,255,255,0.85); text-decoration: n
 body.style-colorado footer a:hover { color: #ffffff; }
 body.style-colorado .social-title { color: #ffffff; }
 body.style-colorado .social-links a { color: rgba(255,255,255,0.85); }
+
+/* Títulos e textos dos widgets dentro do rodapé — forçar branco sobre vermelho escuro */
+body.style-colorado footer h1,
+body.style-colorado footer h2,
+body.style-colorado footer h3,
+body.style-colorado footer h4,
+body.style-colorado footer p,
+body.style-colorado footer li,
+body.style-colorado footer span,
+body.style-colorado footer .widget-title,
+body.style-colorado footer .widget h2,
+body.style-colorado footer .widget h3 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-bottom-color: rgba(255,255,255,0.25) !important;
+}
+
+body.style-colorado footer .widget::before {
+  background: linear-gradient(90deg, rgba(255,255,255,0.40), rgba(255,255,255,0.15), transparent) !important;
+}
 
 /* ── 14. Paginação ── */
 body.style-colorado .pagination .page-numbers {
