@@ -4,7 +4,7 @@ Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
 Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 9 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista, incluindo o estilo Colorado. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 3.2.0
+Version: 3.4.0
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -13,8 +13,8 @@ Text Domain: independent-theme
 Tags: blog, two-columns, custom-logo, custom-menu, custom-colors, featured-images, accessibility-ready, responsive-layout, rtl-language-support, translation-ready, footer-widgets
 */
 
-/* Fontes via Google Fonts — Inter (sans) + Montserrat (display) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap');
+/* Fontes via Google Fonts — Inter + Montserrat + Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Poppins:wght@400;600;700;800&display=swap');
 
 :root {
   --primary-color: #273046;
@@ -67,7 +67,6 @@ body {
   background-color: var(--bg-light);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   transition: background-color var(--transition-slow), color var(--transition-slow);
 }
 
@@ -1552,7 +1551,8 @@ body.style-marinelli aside {
 
 /* Sidebar: títulos de widget com borda inferior azul — estilo Marinelli */
 body.style-marinelli .widget h3,
-body.style-marinelli .widget h2 {
+body.style-marinelli .widget h2,
+body.style-marinelli .widget h4 {
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -1711,17 +1711,20 @@ body.style-marinelli .social-title { color: #ffffff; }
 body.style-marinelli footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
 body.style-marinelli footer a:hover { color: #ffffff; }
 
-/* Títulos e textos dos widgets dentro do rodapé — forçar branco sobre azul escuro */
-body.style-marinelli footer h1,
-body.style-marinelli footer h2,
-body.style-marinelli footer h3,
-body.style-marinelli footer h4,
-body.style-marinelli footer p,
-body.style-marinelli footer li,
-body.style-marinelli footer span,
-body.style-marinelli footer .widget-title,
+/* Todos os elementos dentro do rodapé — seletor universal para cobrir qualquer estrutura de widget */
+body.style-marinelli footer *:not(a):not(svg):not(path) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.style-marinelli footer .widget h1,
 body.style-marinelli footer .widget h2,
-body.style-marinelli footer .widget h3 {
+body.style-marinelli footer .widget h3,
+body.style-marinelli footer .widget h4,
+body.style-marinelli footer .footer-widget h1,
+body.style-marinelli footer .footer-widget h2,
+body.style-marinelli footer .footer-widget h3,
+body.style-marinelli footer .footer-widget h4 {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   border-bottom-color: rgba(255,255,255,0.20) !important;
@@ -1729,6 +1732,13 @@ body.style-marinelli footer .widget h3 {
 
 body.style-marinelli footer .widget::before {
   background: linear-gradient(90deg, rgba(249,126,5,0.60), rgba(249,126,5,0.25), transparent) !important;
+}
+
+body.style-marinelli footer .footer-widget,
+body.style-marinelli footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(255,255,255,0.15) !important;
+  box-shadow: none !important;
 }
 
 /* ── Área de conteúdo principal ── */
@@ -1752,7 +1762,8 @@ body.style-marinelli .widget {
 
 /* Títulos de widget: estilo Marinelli original */
 body.style-marinelli .widget h3,
-body.style-marinelli .widget h2 {
+body.style-marinelli .widget h2,
+body.style-marinelli .widget h4 {
   font-size: 1em;
   font-weight: bold;
   text-transform: uppercase;
@@ -2322,7 +2333,8 @@ body.style-moderno .entry-title a:hover {
 
 /* ── Títulos de widget com gradiente ── */
 body.style-moderno .widget h3,
-body.style-moderno .widget h2 {
+body.style-moderno .widget h2,
+body.style-moderno .widget h4 {
   background: linear-gradient(90deg, #00f5d4, #c77dff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -2435,27 +2447,34 @@ body.style-moderno .social-links a:hover {
   transform: scale(1.15);
 }
 
-/* Títulos e textos dos widgets dentro do rodapé — forçar ciano sobre roxo escuro */
-body.style-moderno footer h1,
-body.style-moderno footer h2,
-body.style-moderno footer h3,
-body.style-moderno footer h4,
-body.style-moderno footer p,
-body.style-moderno footer li,
-body.style-moderno footer span,
-body.style-moderno footer .widget-title,
-body.style-moderno footer .widget h2,
-body.style-moderno footer .widget h3 {
+/* Todos os elementos dentro do rodapé — seletor universal para cobrir qualquer estrutura de widget */
+body.style-moderno footer *:not(a):not(svg):not(path) {
   color: #00f5d4 !important;
   -webkit-text-fill-color: #00f5d4 !important;
   background: none !important;
   background-clip: unset !important;
   -webkit-background-clip: unset !important;
+}
+
+body.style-moderno footer h1,
+body.style-moderno footer h2,
+body.style-moderno footer h3,
+body.style-moderno footer h4,
+body.style-moderno footer .widget-title,
+body.style-moderno footer .widget h2,
+body.style-moderno footer .widget h3 {
   border-bottom-color: rgba(0,245,212,0.25) !important;
 }
 
 body.style-moderno footer .widget::before {
   background: linear-gradient(90deg, rgba(0,245,212,0.50), rgba(199,125,255,0.25), transparent) !important;
+}
+
+body.style-moderno footer .footer-widget,
+body.style-moderno footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(0,245,212,0.20) !important;
+  box-shadow: none !important;
 }
 
 /* ── Menu toggle ── */
@@ -2849,17 +2868,20 @@ body.style-campoepaixao footer a:hover { color: #ffffff; }
 body.style-campoepaixao .social-title { color: #ffffff; }
 body.style-campoepaixao .social-links a { color: rgba(255,255,255,0.80); }
 
-/* Títulos e textos dos widgets dentro do rodapé — forçar branco sobre verde escuro */
-body.style-campoepaixao footer h1,
-body.style-campoepaixao footer h2,
-body.style-campoepaixao footer h3,
-body.style-campoepaixao footer h4,
-body.style-campoepaixao footer p,
-body.style-campoepaixao footer li,
-body.style-campoepaixao footer span,
-body.style-campoepaixao footer .widget-title,
+/* Todos os elementos dentro do rodapé — seletor universal para cobrir qualquer estrutura de widget */
+body.style-campoepaixao footer *:not(a):not(svg):not(path) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.style-campoepaixao footer .widget h1,
 body.style-campoepaixao footer .widget h2,
-body.style-campoepaixao footer .widget h3 {
+body.style-campoepaixao footer .widget h3,
+body.style-campoepaixao footer .widget h4,
+body.style-campoepaixao footer .footer-widget h1,
+body.style-campoepaixao footer .footer-widget h2,
+body.style-campoepaixao footer .footer-widget h3,
+body.style-campoepaixao footer .footer-widget h4 {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   border-bottom-color: rgba(255,255,255,0.25) !important;
@@ -2867,6 +2889,13 @@ body.style-campoepaixao footer .widget h3 {
 
 body.style-campoepaixao footer .widget::before {
   background: linear-gradient(90deg, rgba(255,255,255,0.35), rgba(255,255,255,0.12), transparent) !important;
+}
+
+body.style-campoepaixao footer .footer-widget,
+body.style-campoepaixao footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(255,255,255,0.15) !important;
+  box-shadow: none !important;
 }
 
 body.style-campoepaixao h1,
@@ -2904,7 +2933,8 @@ body.style-campoepaixao .page-content blockquote {
 }
 
 body.style-campoepaixao .widget h3,
-body.style-campoepaixao .widget h2 {
+body.style-campoepaixao .widget h2,
+body.style-campoepaixao .widget h4 {
   color: #0d3318;
   border-bottom-color: rgba(204,0,0,0.30);
 }
@@ -2951,17 +2981,20 @@ body.style-neonpop footer a:hover { color: #00cfff; }
 body.style-neonpop .social-title { color: #ff2d78; }
 body.style-neonpop .social-links a { color: rgba(0,207,255,0.80); }
 
-/* Títulos e textos dos widgets dentro do rodapé — forçar ciano sobre fundo escuro */
-body.style-neonpop footer h1,
-body.style-neonpop footer h2,
-body.style-neonpop footer h3,
-body.style-neonpop footer h4,
-body.style-neonpop footer p,
-body.style-neonpop footer li,
-body.style-neonpop footer span,
-body.style-neonpop footer .widget-title,
+/* Todos os elementos dentro do rodapé — seletor universal para cobrir qualquer estrutura de widget */
+body.style-neonpop footer *:not(a):not(svg):not(path) {
+  color: #00cfff !important;
+  -webkit-text-fill-color: #00cfff !important;
+}
+
+body.style-neonpop footer .widget h1,
 body.style-neonpop footer .widget h2,
-body.style-neonpop footer .widget h3 {
+body.style-neonpop footer .widget h3,
+body.style-neonpop footer .widget h4,
+body.style-neonpop footer .footer-widget h1,
+body.style-neonpop footer .footer-widget h2,
+body.style-neonpop footer .footer-widget h3,
+body.style-neonpop footer .footer-widget h4 {
   color: #00cfff !important;
   -webkit-text-fill-color: #00cfff !important;
   border-bottom-color: rgba(255,45,120,0.40) !important;
@@ -2969,6 +3002,13 @@ body.style-neonpop footer .widget h3 {
 
 body.style-neonpop footer .widget::before {
   background: linear-gradient(90deg, rgba(255,45,120,0.60), rgba(0,207,255,0.30), transparent) !important;
+}
+
+body.style-neonpop footer .footer-widget,
+body.style-neonpop footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(255,45,120,0.20) !important;
+  box-shadow: none !important;
 }
 
 body.style-neonpop h1,
@@ -3006,7 +3046,8 @@ body.style-neonpop .page-content blockquote {
 }
 
 body.style-neonpop .widget h3,
-body.style-neonpop .widget h2 {
+body.style-neonpop .widget h2,
+body.style-neonpop .widget h4 {
   color: #ff2d78;
   border-bottom-color: rgba(255,45,120,0.30);
 }
@@ -3031,9 +3072,6 @@ body.style-campoepaixao{ --muted-text: #4a6a52; }
    Céu e Fé — Renovação completa v2
    Moderno, respirado, acessível e espiritual
    ========================================================== */
-
-/* ── Fontes modernas via Google Fonts ── */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
 /* ── Body e fundo ── */
 body.style-ceuafe {
@@ -3618,7 +3656,8 @@ body.style-marinelli .widget::before {
 }
 
 body.style-marinelli .widget h3,
-body.style-marinelli .widget h2 {
+body.style-marinelli .widget h2,
+body.style-marinelli .widget h4 {
   border-bottom: 2px solid #f97e05 !important;
   padding-bottom: 8px !important;
 }
@@ -3774,7 +3813,8 @@ body.style-campoepaixao .widget::before {
 }
 
 body.style-campoepaixao .widget h3,
-body.style-campoepaixao .widget h2 {
+body.style-campoepaixao .widget h2,
+body.style-campoepaixao .widget h4 {
   border-bottom: 2px solid #cc0000 !important;
   padding-bottom: 8px !important;
   color: #0d3318 !important;
@@ -4442,7 +4482,8 @@ body.style-moderno .widget::before {
 }
 
 body.style-moderno .widget h3,
-body.style-moderno .widget h2 {
+body.style-moderno .widget h2,
+body.style-moderno .widget h4 {
   border-bottom: 1px solid rgba(0,245,212,0.30) !important;
   padding-bottom: 8px !important;
 }
@@ -4694,7 +4735,8 @@ body.style-neonpop .widget::before {
 }
 
 body.style-neonpop .widget h3,
-body.style-neonpop .widget h2 {
+body.style-neonpop .widget h2,
+body.style-neonpop .widget h4 {
   border-bottom: 1px solid rgba(255,45,120,0.35) !important;
   padding-bottom: 8px !important;
 }
@@ -5538,7 +5580,8 @@ body.style-colorado .widget::before {
 }
 
 body.style-colorado .widget h3,
-body.style-colorado .widget h2 {
+body.style-colorado .widget h2,
+body.style-colorado .widget h4 {
   border-bottom: 2px solid #E8291C !important;
   padding-bottom: 8px !important;
   color: #9c1510 !important;
@@ -5664,23 +5707,45 @@ body.style-colorado .social-title { color: #ffffff; }
 body.style-colorado .social-links a { color: rgba(255,255,255,0.85); }
 
 /* Títulos e textos dos widgets dentro do rodapé — forçar branco sobre vermelho escuro */
-body.style-colorado footer h1,
-body.style-colorado footer h2,
-body.style-colorado footer h3,
-body.style-colorado footer h4,
-body.style-colorado footer p,
-body.style-colorado footer li,
-body.style-colorado footer span,
-body.style-colorado footer .widget-title,
+/* Todos os elementos dentro do rodapé — seletor universal para cobrir qualquer estrutura de widget */
+body.style-colorado footer *:not(a):not(svg):not(path) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Sobrescreve a regra .widget h2/h3 que força vermelho escuro em todos os widgets */
+body.style-colorado footer .widget h1,
 body.style-colorado footer .widget h2,
-body.style-colorado footer .widget h3 {
+body.style-colorado footer .widget h3,
+body.style-colorado footer .widget h4,
+body.style-colorado footer .widget .widget-title,
+body.style-colorado footer .footer-widget h1,
+body.style-colorado footer .footer-widget h2,
+body.style-colorado footer .footer-widget h3,
+body.style-colorado footer .footer-widget h4 {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   border-bottom-color: rgba(255,255,255,0.25) !important;
 }
 
+body.style-colorado footer h1,
+body.style-colorado footer h2,
+body.style-colorado footer h3,
+body.style-colorado footer h4,
+body.style-colorado footer .widget-title {
+  border-bottom-color: rgba(255,255,255,0.25) !important;
+}
+
 body.style-colorado footer .widget::before {
   background: linear-gradient(90deg, rgba(255,255,255,0.40), rgba(255,255,255,0.15), transparent) !important;
+}
+
+/* Remove o fundo branco do card que o tema aplica globalmente ao .footer-widget */
+body.style-colorado footer .footer-widget,
+body.style-colorado footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(255,255,255,0.15) !important;
+  box-shadow: none !important;
 }
 
 /* ── 14. Paginação ── */
@@ -5725,3 +5790,534 @@ body.style-colorado .sidebar .widget {
     animation: none !important;
   }
 }
+
+/* ==========================================================
+   CORRECTIONS v3.4.0 — Completing missing elements per style
+   so every style has identical features, just different colors
+   ========================================================== */
+
+/* ──────────────────────────────────────────────────────────
+   style-default — missing: site-name/description, menu-toggle,
+   current-menu-item, search-field, post-content p,
+   pagination, footer, site-info, social-links, social-title
+   ────────────────────────────────────────────────────────── */
+
+body.style-default .site-title .site-name a {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+body.style-default .site-title .site-description {
+  color: rgba(255,255,255,0.78);
+  font-size: 0.88rem;
+}
+
+body.style-default .primary-nav .menu li.current-menu-item > a,
+body.style-default .primary-nav .menu li.current_page_item > a {
+  color: #F6AD55 !important;
+  background: rgba(246,173,85,0.12) !important;
+  border-bottom: 2px solid #F6AD55 !important;
+  border-radius: 6px 6px 0 0 !important;
+  font-weight: 700 !important;
+}
+
+body.style-default .menu-toggle {
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.35);
+}
+
+body.style-default .menu-toggle:hover {
+  background: rgba(246,173,85,0.15) !important;
+  border-color: #F6AD55;
+}
+
+body.style-default .header-search-form .search-field {
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.28);
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+}
+
+body.style-default .header-search-form .search-field::placeholder {
+  color: rgba(255,255,255,0.55);
+}
+
+body.style-default .post-content p,
+body.style-default .page-content p,
+body.style-default .post-content li,
+body.style-default .page-content li {
+  color: #1e2532;
+  line-height: 1.75;
+}
+
+body.style-default .pagination .page-numbers {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(39,48,70,0.25);
+  color: #273046;
+}
+
+body.style-default .pagination .current,
+body.style-default .pagination .page-numbers:hover {
+  background: linear-gradient(to bottom, #273046, #1a2235);
+  border-color: #1a2235;
+  color: #F6AD55;
+}
+
+body.style-default footer {
+  background: linear-gradient(180deg, #273046 0%, #1a2235 100%);
+  border-top: 2px solid rgba(246,173,85,0.30);
+}
+
+body.style-default .site-info,
+body.style-default .site-info p {
+  color: rgba(246,173,85,0.80);
+  border-top-color: rgba(246,173,85,0.20);
+}
+
+body.style-default footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
+body.style-default footer a:hover { color: #F6AD55; }
+
+body.style-default .social-title { color: #F6AD55; }
+
+body.style-default .social-links a {
+  color: rgba(255,255,255,0.80);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+body.style-default .social-links a:hover {
+  color: #F6AD55;
+  transform: scale(1.15);
+}
+
+body.style-default footer *:not(a):not(svg):not(path) {
+  color: #F6AD55 !important;
+  -webkit-text-fill-color: #F6AD55 !important;
+}
+
+body.style-default footer .widget h1,
+body.style-default footer .widget h2,
+body.style-default footer .widget h3,
+body.style-default footer .widget h4,
+body.style-default footer .widget-title {
+  color: #F6AD55 !important;
+  -webkit-text-fill-color: #F6AD55 !important;
+  border-bottom-color: rgba(246,173,85,0.30) !important;
+}
+
+body.style-default footer .footer-widget,
+body.style-default footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(246,173,85,0.18) !important;
+  box-shadow: none !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   style-ceuafe — missing: site-header::after, menu a::before,
+   menu a:hover::before, menu-toggle, menu-toggle:hover
+   ────────────────────────────────────────────────────────── */
+
+body.style-ceuafe .site-header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #e07b39, #f0a060, #e07b39);
+  animation: headerReveal 1.2s ease forwards;
+  margin-top: 2px;
+}
+
+body.style-ceuafe .primary-nav .menu a {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+body.style-ceuafe .primary-nav .menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: rgba(255,255,255,0.12);
+  transition: height 0.22s ease;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+body.style-ceuafe .primary-nav .menu a:hover::before {
+  height: 100%;
+}
+
+body.style-ceuafe .menu-toggle {
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.35);
+}
+
+body.style-ceuafe .menu-toggle:hover {
+  background: rgba(224,123,57,0.20) !important;
+  border-color: #e07b39;
+}
+
+/* ──────────────────────────────────────────────────────────
+   style-neonpop — missing: site-description, current-menu-item,
+   menu-toggle, search-field, post-content p, pagination,
+   social-links a:hover
+   ────────────────────────────────────────────────────────── */
+
+body.style-neonpop .site-title .site-description {
+  color: rgba(0,207,255,0.80);
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+}
+
+body.style-neonpop .primary-nav .menu li.current-menu-item > a,
+body.style-neonpop .primary-nav .menu li.current_page_item > a {
+  color: #FF2D78 !important;
+  background: rgba(255,45,120,0.15) !important;
+  border-bottom: 2px solid #FF2D78 !important;
+  border-radius: 6px 6px 0 0 !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 10px rgba(255,45,120,0.50) !important;
+}
+
+body.style-neonpop .menu-toggle {
+  color: #ffffff;
+  border-color: rgba(255,45,120,0.40);
+}
+
+body.style-neonpop .menu-toggle:hover {
+  background: rgba(255,45,120,0.18) !important;
+  border-color: #FF2D78;
+}
+
+body.style-neonpop .header-search-form .search-field {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,45,120,0.35);
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+}
+
+body.style-neonpop .header-search-form .search-field::placeholder {
+  color: rgba(0,207,255,0.55);
+}
+
+body.style-neonpop .post-content p,
+body.style-neonpop .page-content p,
+body.style-neonpop .post-content li,
+body.style-neonpop .page-content li {
+  color: rgba(220,220,255,0.90);
+  line-height: 1.75;
+}
+
+body.style-neonpop .pagination .page-numbers {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,45,120,0.30);
+  color: #FF2D78;
+}
+
+body.style-neonpop .pagination .current,
+body.style-neonpop .pagination .page-numbers:hover {
+  background: linear-gradient(135deg, #FF2D78, #cc1a55);
+  border-color: #cc1a55;
+  color: #ffffff;
+}
+
+body.style-neonpop .social-links a:hover {
+  color: #FF2D78;
+  transform: scale(1.15);
+}
+
+/* ──────────────────────────────────────────────────────────
+   style-vintagecafe — missing: site-name, site-description,
+   current-menu-item, menu-toggle, search-field,
+   pagination, social-links a:hover
+   ────────────────────────────────────────────────────────── */
+
+body.style-vintagecafe .site-title .site-name a {
+  color: #FFF3DC;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  text-decoration: none !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.40);
+}
+
+body.style-vintagecafe .site-title .site-description {
+  color: rgba(255,243,220,0.75);
+  font-family: Georgia, serif;
+  font-size: 0.88rem;
+}
+
+body.style-vintagecafe .primary-nav .menu li.current-menu-item > a,
+body.style-vintagecafe .primary-nav .menu li.current_page_item > a {
+  color: #f0c060 !important;
+  background: rgba(201,146,42,0.15) !important;
+  border-bottom: 2px solid #c9922a !important;
+  border-radius: 4px 4px 0 0 !important;
+  font-weight: 700 !important;
+}
+
+body.style-vintagecafe .menu-toggle {
+  color: #FFF3DC;
+  border-color: rgba(201,146,42,0.45);
+}
+
+body.style-vintagecafe .menu-toggle:hover {
+  background: rgba(201,146,42,0.18) !important;
+  border-color: #c9922a;
+}
+
+body.style-vintagecafe .header-search-form .search-field {
+  background: rgba(255,243,220,0.12);
+  border: 1px solid rgba(201,146,42,0.40);
+  color: #FFF3DC;
+  border-radius: var(--radius-sm);
+  font-family: Georgia, serif;
+}
+
+body.style-vintagecafe .header-search-form .search-field::placeholder {
+  color: rgba(255,243,220,0.50);
+}
+
+body.style-vintagecafe .pagination .page-numbers {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(201,146,42,0.35);
+  color: #8B4513;
+  font-family: Georgia, serif;
+}
+
+body.style-vintagecafe .pagination .current,
+body.style-vintagecafe .pagination .page-numbers:hover {
+  background: linear-gradient(to bottom, #c9922a, #a87020);
+  border-color: #a87020;
+  color: #ffffff;
+}
+
+body.style-vintagecafe .social-links a:hover {
+  color: #f0c060;
+  transform: scale(1.15);
+}
+
+/* ──────────────────────────────────────────────────────────
+   style-campoepaixao — missing: site-name, site-description,
+   current-menu-item, menu-toggle, search-field, pagination,
+   social-links a:hover
+   ────────────────────────────────────────────────────────── */
+
+body.style-campoepaixao .site-title .site-name a {
+  color: #ffffff;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  text-decoration: none !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.30);
+}
+
+body.style-campoepaixao .site-title .site-description {
+  color: rgba(255,255,255,0.80);
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+}
+
+body.style-campoepaixao .primary-nav .menu li.current-menu-item > a,
+body.style-campoepaixao .primary-nav .menu li.current_page_item > a {
+  color: #ffffff !important;
+  background: rgba(204,0,0,0.20) !important;
+  border-bottom: 2px solid #E53E3E !important;
+  border-radius: 4px 4px 0 0 !important;
+  font-weight: 700 !important;
+}
+
+body.style-campoepaixao .menu-toggle {
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.35);
+}
+
+body.style-campoepaixao .menu-toggle:hover {
+  background: rgba(229,62,62,0.20) !important;
+  border-color: #E53E3E;
+}
+
+body.style-campoepaixao .header-search-form .search-field {
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.28);
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+}
+
+body.style-campoepaixao .header-search-form .search-field::placeholder {
+  color: rgba(255,255,255,0.55);
+}
+
+body.style-campoepaixao .pagination .page-numbers {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(229,62,62,0.30);
+  color: #0d5c28;
+}
+
+body.style-campoepaixao .pagination .current,
+body.style-campoepaixao .pagination .page-numbers:hover {
+  background: linear-gradient(to bottom, #E53E3E, #aa0000);
+  border-color: #aa0000;
+  color: #ffffff;
+}
+
+body.style-campoepaixao .social-links a:hover {
+  color: #E53E3E;
+  transform: scale(1.15);
+}
+
+/* ──────────────────────────────────────────────────────────
+   style-marinelli — missing: post-content p, social-links a,
+   social-links a:hover
+   ────────────────────────────────────────────────────────── */
+
+body.style-marinelli .post-content p,
+body.style-marinelli .page-content p,
+body.style-marinelli .post-content li,
+body.style-marinelli .page-content li {
+  color: #1a2535;
+  line-height: 1.75;
+}
+
+body.style-marinelli .social-links a {
+  color: rgba(255,255,255,0.85);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+body.style-marinelli .social-links a:hover {
+  color: #F97316;
+  transform: scale(1.15);
+}
+
+/* ──────────────────────────────────────────────────────────
+   style-tintaepapel — missing: site-name, site-description,
+   current-menu-item, menu-toggle, search-field, post-content p,
+   pagination, footer, site-info, social-links, social-title
+   ────────────────────────────────────────────────────────── */
+
+body.style-tintaepapel .site-title .site-name a {
+  color: #FFF8F0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  text-decoration: none !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+}
+
+body.style-tintaepapel .site-title .site-description {
+  color: rgba(255,248,240,0.72);
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.88rem;
+}
+
+body.style-tintaepapel .primary-nav .menu li.current-menu-item > a,
+body.style-tintaepapel .primary-nav .menu li.current_page_item > a {
+  color: #f0c060 !important;
+  background: rgba(139,94,26,0.18) !important;
+  border-bottom: 2px solid #8B5E1A !important;
+  border-radius: 4px 4px 0 0 !important;
+  font-weight: 700 !important;
+}
+
+body.style-tintaepapel .menu-toggle {
+  color: #FFF8F0;
+  border-color: rgba(139,94,26,0.45);
+}
+
+body.style-tintaepapel .menu-toggle:hover {
+  background: rgba(139,94,26,0.20) !important;
+  border-color: #8B5E1A;
+}
+
+body.style-tintaepapel .header-search-form .search-field {
+  background: rgba(255,248,240,0.10);
+  border: 1px solid rgba(139,94,26,0.40);
+  color: #FFF8F0;
+  border-radius: var(--radius-sm);
+  font-family: Georgia, serif;
+}
+
+body.style-tintaepapel .header-search-form .search-field::placeholder {
+  color: rgba(255,248,240,0.50);
+}
+
+body.style-tintaepapel .post-content p,
+body.style-tintaepapel .page-content p,
+body.style-tintaepapel .post-content li,
+body.style-tintaepapel .page-content li {
+  color: #2c1a0a;
+  line-height: 1.80;
+  font-family: Georgia, serif;
+}
+
+body.style-tintaepapel .pagination .page-numbers {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(139,94,26,0.35);
+  color: #7a3e10;
+  font-family: Georgia, serif;
+}
+
+body.style-tintaepapel .pagination .current,
+body.style-tintaepapel .pagination .page-numbers:hover {
+  background: linear-gradient(to bottom, #8B5E1A, #6b3a0f);
+  border-color: #6b3a0f;
+  color: #FFF8F0;
+}
+
+body.style-tintaepapel footer {
+  background: linear-gradient(180deg, #2C3E50 0%, #1a2530 100%);
+  border-top: 2px solid rgba(139,94,26,0.35);
+}
+
+body.style-tintaepapel .site-info,
+body.style-tintaepapel .site-info p {
+  color: rgba(255,248,240,0.72);
+  border-top-color: rgba(139,94,26,0.20);
+}
+
+body.style-tintaepapel footer a { color: rgba(255,248,240,0.85); text-decoration: none; }
+body.style-tintaepapel footer a:hover { color: #c49a3c; }
+
+body.style-tintaepapel .social-title { color: #c49a3c; }
+
+body.style-tintaepapel .social-links a {
+  color: rgba(255,248,240,0.80);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+body.style-tintaepapel .social-links a:hover {
+  color: #c49a3c;
+  transform: scale(1.15);
+}
+
+body.style-tintaepapel footer *:not(a):not(svg):not(path) {
+  color: #c49a3c !important;
+  -webkit-text-fill-color: #c49a3c !important;
+}
+
+body.style-tintaepapel footer .widget h1,
+body.style-tintaepapel footer .widget h2,
+body.style-tintaepapel footer .widget h3,
+body.style-tintaepapel footer .widget h4,
+body.style-tintaepapel footer .widget-title {
+  color: #c49a3c !important;
+  -webkit-text-fill-color: #c49a3c !important;
+  border-bottom-color: rgba(196,154,60,0.30) !important;
+}
+
+body.style-tintaepapel footer .footer-widget,
+body.style-tintaepapel footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(139,94,26,0.20) !important;
+  box-shadow: none !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   style-colorado — missing: social-links a:hover
+   ────────────────────────────────────────────────────────── */
+
+body.style-colorado .social-links a:hover {
+  color: #E8291C;
+  transform: scale(1.15);
+}
+
