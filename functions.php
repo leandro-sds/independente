@@ -521,6 +521,7 @@ function independent_theme_customize_register( $wp_customize ) {
       'tintaepapel'  => __( '✍️ Site para Escritor – Tinta & Papel', 'independent-theme' ),
       'marinelli'    => __( '🏛️ Institucional – Marinelli Drupal', 'independent-theme' ),
       'moderno'      => __( '⚡ Moderno – Vibrante & Contemporâneo', 'independent-theme' ),
+      'colorado'     => __( '🔴 Colorado – Vermelho e Branco', 'independent-theme' ),
     ],
   ] );
 }
@@ -731,6 +732,32 @@ $styles = [
       '--radius-lg'          => '24px',
     ],
 
+    /*
+     * 🔴 Colorado – Vermelho e Branco
+     * Vermelho vibrante (#E8291C) + branco puro — estilo Colorado
+     * Header vermelho intenso, conteúdo limpo em branco, energia de estádio.
+     */
+    'colorado' => [
+      '--primary-color'      => '#b01c12',   // vermelho escuro — header e rodapé
+      '--bg-light'           => '#fff5f5',   // vermelho levíssimo — fundo da página
+      '--card-bg'            => '#ffffff',   // branco puro — conteúdo
+      '--accent-color'       => '#E8291C',   // vermelho vibrante do escudo — botões
+      '--on-accent'          => '#ffffff',
+      '--link-color'         => '#b01c12',   // vermelho escuro — links
+      '--text-color'         => '#1a0000',   // quase preto levemente vermelho — texto
+      '--muted-text'         => '#7a3530',   // vermelho acinzentado
+      '--border-color'       => 'rgba(232,41,28,0.18)',
+      '--header-title-color' => '#ffffff',
+      '--header-muted'       => 'rgba(255,255,255,0.82)',
+      '--header-border'      => 'rgba(255,255,255,0.20)',
+      '--focus-ring'         => '3px solid #E8291C',
+      '--font-main'          => "'Inter', system-ui, sans-serif",
+      '--font-title'         => "'Montserrat', 'Inter', system-ui, sans-serif",
+      '--radius-sm'          => '6px',
+      '--radius-md'          => '10px',
+      '--radius-lg'          => '14px',
+    ],
+
   ];
 
   $css_vars = [
@@ -935,18 +962,4 @@ function independent_render_category_children() {
  * Aviso no painel admin: orienta o usuário sobre classes CSS em itens de menu.
  * Aparece apenas na tela de Menus (nav-menus.php).
  */
-function independent_theme_admin_menu_notice() {
-  $screen = get_current_screen();
-  if ( ! $screen || $screen->id !== 'nav-menus' ) {
-    return;
-  }
-  ?>
-  <div class="notice notice-info is-dismissible">
-    <p>
-      <strong><?php esc_html_e( 'Independent Theme — Dica de Menu:', 'independent-theme' ); ?></strong>
-      <?php esc_html_e( 'Se algum item de menu estiver com borda de destaque (estilo "pílula"), clique nele aqui na tela de Menus, expanda as opções avançadas e apague qualquer valor no campo "Classes CSS (opcional)". O tema já cuida do destaque do item ativo automaticamente.', 'independent-theme' ); ?>
-    </p>
-  </div>
-  <?php
-}
-add_action( 'admin_notices', 'independent_theme_admin_menu_notice' );
+

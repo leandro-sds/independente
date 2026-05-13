@@ -3,8 +3,8 @@ Theme Name: Independent Theme
 Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
-Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 8 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 3.0.0
+Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 9 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista, incluindo o estilo Colorado. Totalmente compatível com leitores de tela e navegação por teclado.
+Version: 3.1.0
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -1458,6 +1458,7 @@ body.style-neonpop     { --muted-text: #a8b4c4; }
 body.style-vintagecafe { --muted-text: rgba(255,243,220,0.80); }
 body.style-campoepaixao{ --muted-text: rgba(249,250,251,0.82); }
 body.style-moderno     { --muted-text: rgba(200,185,255,0.92); }
+body.style-colorado    { --muted-text: #7a3530; }
 
 /* ==========================================================
    AJUSTES FINAIS DE ESTILO — v2.3
@@ -5232,5 +5233,397 @@ body.style-vintagecafe main {
 @media (max-width: 600px) {
   .hero-section {
     padding: 2.5rem 1rem;
+  }
+}
+
+
+/* ==========================================================
+   🔴 COLORADO — Vermelho & Branco
+   Paixão colorada · Força de estádio · Vermelho e branco
+   ========================================================== */
+
+/* ── Keyframes exclusivos do estilo Colorado ── */
+
+@keyframes coloradoLine {
+  from { width: 0; opacity: 0.5; }
+  to   { width: 100%; opacity: 1; }
+}
+
+@keyframes coloradoImpact {
+  0%   { opacity: 0; transform: translateY(18px) scale(0.96); }
+  55%  { transform: translateY(-3px) scale(1.015); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes coloradoShieldPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232,41,28,0); }
+  50%       { box-shadow: 0 0 0 4px rgba(232,41,28,0.20); }
+}
+
+/* ── Separação de áreas — vermelho e branco ── */
+body.style-colorado main {
+  background-color: #ffffff;
+  border-right: 1px solid rgba(232,41,28,0.14);
+}
+body.style-colorado aside {
+  background-color: #fff0f0;
+  border-left: none;
+}
+body.style-colorado .widget {
+  background-color: #ffffff;
+  border: 1px solid rgba(232,41,28,0.14);
+}
+body.style-colorado article,
+body.style-colorado aside {
+  box-shadow: none;
+}
+
+/* ── Logo: sem bordas ── */
+body.style-colorado .logo img,
+body.style-colorado img.custom-logo,
+body.style-colorado .custom-logo-link,
+body.style-colorado .custom-logo-link img,
+body.style-colorado a.custom-logo-link,
+body.style-colorado .site-header figure,
+body.style-colorado .site-header .logo {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ── Body e fundo ── */
+body.style-colorado {
+  background-color: #fff5f5;
+}
+
+/* ── 1. Header vermelho intenso com profundidade de escudo ── */
+body.style-colorado .site-header {
+  background: linear-gradient(
+    180deg,
+    #c8221a 0%,
+    #9c1510 100%
+  ) !important;
+  border-bottom: 3px solid #7a0e09 !important;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.38) !important;
+}
+
+/* ── 2. Faixa branca que se expande — a diagonal do escudo ── */
+body.style-colorado .site-header::after {
+  content: '';
+  display: block;
+  height: 4px;
+  width: 0;
+  background: linear-gradient(90deg, #ffffff, rgba(255,255,255,0.60));
+  animation: coloradoLine 0.65s ease forwards;
+  margin-top: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-colorado .site-header::after {
+    animation: none !important;
+    width: 100% !important;
+  }
+}
+
+/* ── 3. Título do site e descrição no header ── */
+body.style-colorado .site-title .site-name a {
+  color: #ffffff;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+body.style-colorado .site-title .site-description {
+  color: rgba(255,255,255,0.85);
+}
+
+/* ── 4. Menu hover com fundo vermelho mais escuro subindo ── */
+body.style-colorado .primary-nav .menu a {
+  position: relative !important;
+  overflow: hidden !important;
+  transition: color 0.22s ease !important;
+  color: #ffffff !important;
+}
+
+body.style-colorado .primary-nav .menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: rgba(255,255,255,0.18);
+  transition: height 0.22s ease;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+body.style-colorado .primary-nav .menu a:hover::before {
+  height: 100%;
+}
+
+body.style-colorado .primary-nav .menu a:hover {
+  color: #ffffff !important;
+}
+
+body.style-colorado .primary-nav .menu li.current-menu-item > a,
+body.style-colorado .primary-nav .menu li.current_page_item > a {
+  color: #ffffff !important;
+  background: rgba(255,255,255,0.22) !important;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-colorado .primary-nav .menu a::before {
+    display: none !important;
+  }
+}
+
+/* ── 5. Títulos com entrada de impacto — bola no ângulo ── */
+body.style-colorado h1,
+body.style-colorado h2,
+body.style-colorado h3,
+body.style-colorado .entry-title {
+  color: #9c1510;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+}
+
+body.style-colorado .entry-title,
+body.style-colorado .post-content h2,
+body.style-colorado .page-content h2 {
+  animation: coloradoImpact 0.50s ease both !important;
+}
+
+body.style-colorado .post-content h3,
+body.style-colorado .page-content h3 {
+  animation: coloradoImpact 0.50s ease 0.10s both !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-colorado .entry-title,
+  body.style-colorado .post-content h2,
+  body.style-colorado .post-content h3,
+  body.style-colorado .page-content h2,
+  body.style-colorado .page-content h3 {
+    animation: none !important;
+  }
+}
+
+/* ── 6. Blockquote com borda vermelha e fundo levemente rosado ── */
+body.style-colorado .post-content blockquote,
+body.style-colorado .page-content blockquote {
+  border-left: 5px solid #E8291C !important;
+  background: linear-gradient(
+    135deg,
+    rgba(232,41,28,0.05) 0%,
+    rgba(255,255,255,0.80) 100%
+  ) !important;
+  border-radius: 0 10px 10px 0 !important;
+  padding: 1.4rem 1.8rem !important;
+  font-style: italic !important;
+  font-size: 1.05rem !important;
+  line-height: 1.75 !important;
+  color: #1a0000 !important;
+  position: relative !important;
+  box-shadow: 0 2px 12px rgba(232,41,28,0.08) !important;
+}
+
+body.style-colorado .post-content blockquote::before,
+body.style-colorado .page-content blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  font-size: 3.5rem;
+  color: rgba(232,41,28,0.20);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ── 7. Widgets com faixa vermelha gradiente no topo ── */
+body.style-colorado .widget {
+  position: relative;
+  overflow: hidden;
+}
+
+body.style-colorado .widget::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #E8291C, #c8221a, transparent);
+  pointer-events: none;
+}
+
+body.style-colorado .widget h3,
+body.style-colorado .widget h2 {
+  border-bottom: 2px solid #E8291C !important;
+  padding-bottom: 8px !important;
+  color: #9c1510 !important;
+  -webkit-text-fill-color: #9c1510 !important;
+}
+
+/* ── 8. Links com sublinhado vermelho animado ── */
+body.style-colorado a {
+  color: #b01c12;
+  text-decoration: none;
+}
+
+body.style-colorado a:hover {
+  color: #E8291C;
+}
+
+body.style-colorado .post-content a,
+body.style-colorado .page-content a {
+  color: #b01c12 !important;
+  text-decoration: none !important;
+  background-image: linear-gradient(#E8291C, #E8291C) !important;
+  background-size: 0% 2px !important;
+  background-repeat: no-repeat !important;
+  background-position: left bottom !important;
+  transition: background-size 0.28s ease, color 0.20s ease !important;
+  padding-bottom: 1px !important;
+}
+
+body.style-colorado .post-content a:hover,
+body.style-colorado .page-content a:hover {
+  color: #E8291C !important;
+  background-size: 100% 2px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-colorado .post-content a,
+  body.style-colorado .page-content a {
+    text-decoration: underline !important;
+    background-image: none !important;
+  }
+}
+
+/* ── 9. Texto corrido ── */
+body.style-colorado .post-content p,
+body.style-colorado .page-content p,
+body.style-colorado .post-content li,
+body.style-colorado .page-content li {
+  color: #1a0000;
+  line-height: 1.75;
+}
+
+/* ── 10. Botão de busca vermelho ── */
+body.style-colorado .header-search-form .search-submit {
+  background-color: #7a0e09;
+  color: #ffffff;
+  border: none;
+}
+
+body.style-colorado .header-search-form .search-submit:hover,
+body.style-colorado .header-search-form .search-submit:focus-visible {
+  background: #5c0806 !important;
+  box-shadow: 0 4px 16px rgba(232,41,28,0.40) !important;
+  transform: translateY(-1px) !important;
+}
+
+body.style-colorado .header-search-form .search-field {
+  background: rgba(255,255,255,0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: var(--radius-sm);
+}
+
+body.style-colorado .header-search-form .search-field::placeholder {
+  color: rgba(255,255,255,0.65);
+}
+
+body.style-colorado .header-search-form .search-field:focus {
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.70);
+  outline: none;
+}
+
+/* ── 11. Botão read-more ── */
+body.style-colorado .read-more:hover {
+  background: #9c1510 !important;
+  box-shadow: 0 4px 16px rgba(232,41,28,0.38) !important;
+  transform: translateY(-2px) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-colorado .header-search-form .search-submit:hover,
+  body.style-colorado .read-more:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* ── 12. Menu hambúrguer ── */
+body.style-colorado .menu-toggle {
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.35);
+}
+
+body.style-colorado .menu-toggle:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* ── 13. Rodapé vermelho escuro ── */
+body.style-colorado footer {
+  background: linear-gradient(180deg, #9c1510 0%, #7a0e09 100%);
+  border-top: 3px solid #E8291C;
+}
+
+body.style-colorado .site-info,
+body.style-colorado .site-info p {
+  color: rgba(255,255,255,0.78);
+  border-top-color: rgba(255,255,255,0.18);
+}
+
+body.style-colorado footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
+body.style-colorado footer a:hover { color: #ffffff; }
+body.style-colorado .social-title { color: #ffffff; }
+body.style-colorado .social-links a { color: rgba(255,255,255,0.85); }
+
+/* ── 14. Paginação ── */
+body.style-colorado .pagination .page-numbers {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(232,41,28,0.30);
+  color: #b01c12;
+}
+
+body.style-colorado .pagination .current,
+body.style-colorado .pagination .page-numbers:hover {
+  background: linear-gradient(to bottom, #E8291C, #9c1510);
+  border-color: #9c1510;
+  color: #ffffff;
+}
+
+/* ── 15. Artigos com fundo alternado suave ── */
+body.style-colorado article:nth-child(even) {
+  background-color: #fff8f8;
+}
+
+body.style-colorado article:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+body.style-colorado article {
+  border-bottom-color: rgba(232,41,28,0.12);
+}
+
+/* ── 16. Animação de pulso no widget — como coração de torcedor ── */
+@keyframes coloradoWidgetPulse {
+  0%, 100% { border-top-color: #E8291C; }
+  50%       { border-top-color: #ff5547; }
+}
+
+body.style-colorado .sidebar .widget {
+  animation: coloradoWidgetPulse 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-colorado .sidebar .widget {
+    animation: none !important;
   }
 }

@@ -146,6 +146,24 @@ artistas, músicos, criadores de conteúdo, apps e produtos digitais.
 
 ---
 
+## 🔴 Colorado — Vermelho e Branco
+
+**Ideal para:** sites de clubes de futebol, torcidas organizadas, portais esportivos, academias com identidade vermelho e branco.
+
+- Header vermelho intenso com gradiente — profundidade de escudo de clube tradicional
+- Faixa branca que se expande ao carregar — faixa diagonal branca característica do estilo
+- Menu hover com fundo branco translúcido subindo — torcida se levantando nas arquibancadas
+- Títulos com entrada de impacto — sobem e se encaixam como bola no ângulo
+- Blockquote com borda vermelha espessa, gradiente rosado e aspas decorativas
+- Widgets com faixa vermelha no topo e pulso suave — coração da torcida batendo
+- Links vermelho escuro com sublinhado animado em 0.28s — velocidade de contra-ataque
+- Fundo da sidebar em rosa levíssimo — diferenciação suave entre conteúdo e lateral
+- Rodapé vermelho escuro com borda vermelha vibrante — identidade do clube
+- Fonte Montserrat bold — força, identidade e competição
+- Visual vermelho e branco com identidade esportiva forte
+
+---
+
 ## Como trocar o estilo
 
 1. Acesse o painel do WordPress
@@ -182,6 +200,9 @@ artistas, músicos, criadores de conteúdo, apps e produtos digitais.
 | Rádio jovem / Podcast / DJ | 🎧 Neon Pop |
 | Música retrô / Jazz / Café | 📻 Vintage Café |
 | Futebol / Esportes / Academia | ⚽ Campo e Paixão |
+| Clube com identidade vermelho e branco | 🔴 Colorado |
 | Blog / Literatura / Escritor | ✍️ Tinta & Papel |
 | Startup / Tecnologia / Games | ⚡ Moderno |
 | Qualquer tipo de site | ⬜ Padrão |
+
+---
