@@ -379,6 +379,42 @@ function independent_theme_customize_register( $wp_customize ) {
     ],
   ] );
 
+  // Crédito do desenvolvedor
+  $wp_customize->add_setting( 'independent_developer_show', [
+    'default'           => true,
+    'sanitize_callback' => 'rest_sanitize_boolean',
+  ] );
+
+  $wp_customize->add_control( 'independent_developer_show', [
+    'label'   => __( 'Exibir crédito do desenvolvedor', 'independent-theme' ),
+    'section' => 'independent_footer_section',
+    'type'    => 'checkbox',
+  ] );
+
+  $wp_customize->add_setting( 'independent_developer_name', [
+    'default'           => 'Independent Theme',
+    'sanitize_callback' => 'sanitize_text_field',
+  ] );
+
+  $wp_customize->add_control( 'independent_developer_name', [
+    'label'       => __( 'Nome do desenvolvedor', 'independent-theme' ),
+    'description' => __( 'Ex.: João Silva, Agência XYZ. Deixe em branco para ocultar o nome.', 'independent-theme' ),
+    'section'     => 'independent_footer_section',
+    'type'        => 'text',
+  ] );
+
+  $wp_customize->add_setting( 'independent_developer_url', [
+    'default'           => 'https://github.com/leandro-sds/independent-theme',
+    'sanitize_callback' => 'esc_url_raw',
+  ] );
+
+  $wp_customize->add_control( 'independent_developer_url', [
+    'label'       => __( 'URL do desenvolvedor', 'independent-theme' ),
+    'description' => __( 'Deixe em branco para exibir o nome sem link.', 'independent-theme' ),
+    'section'     => 'independent_footer_section',
+    'type'        => 'url',
+  ] );
+
   // Redes sociais
   $wp_customize->add_section( 'independent_social_section', [
     'title'    => __( 'Redes Sociais', 'independent-theme' ),

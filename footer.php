@@ -80,6 +80,21 @@
     </div>
     <?php endif; ?>
 
+    <?php
+      $dev_show = get_theme_mod( 'independent_developer_show', true );
+      $dev_name = sanitize_text_field( get_theme_mod( 'independent_developer_name', 'Independent Theme' ) );
+      $dev_url  = esc_url( get_theme_mod( 'independent_developer_url', 'https://github.com/leandro-sds/independent-theme' ) );
+
+      if ( $dev_show && $dev_name ) :
+        $dev_link = $dev_url
+          ? '<a href="' . $dev_url . '" target="_blank" rel="noopener noreferrer">' . esc_html( $dev_name ) . '</a>'
+          : esc_html( $dev_name );
+    ?>
+    <div class="site-info site-info--developer">
+      <p><?php echo wp_kses( sprintf( __( 'Desenvolvido por %s', 'independent-theme' ), $dev_link ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ] ] ); ?></p>
+    </div>
+    <?php endif; ?>
+
     <div class="site-info">
       <?php
         $founding_year = get_theme_mod( 'independent_founding_year', '' );
