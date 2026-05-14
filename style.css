@@ -4,7 +4,7 @@ Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
 Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 9 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista, incluindo o estilo Colorado. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 3.5.0
+Version: 3.8.0
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -69,7 +69,6 @@ body {
   -webkit-font-smoothing: antialiased;
   transition: background-color var(--transition-slow), color var(--transition-slow);
 }
-
 
 
 /* Acessibilidade */
@@ -242,7 +241,6 @@ article, .widget, .footer-widget {
 .header-search-form .search-submit:focus-visible{
   filter: brightness(1.08);
 }
-
 
 
 .logo img,
@@ -631,11 +629,6 @@ nav ul li.current-menu-ancestor > a {
 .site-title .site-name a:hover, .site-title .site-name a:focus { text-decoration: underline; }
 
 
-
-
-
-
-
 /* ==========================================================
    Animações — Independent Theme
    Elegantes, sutis, sem exagero.
@@ -957,16 +950,23 @@ article:hover {
     max-width: 100%;
     min-width: 0;
   }
-  /* Menu recolhido por padrão no mobile — expande ao clicar em "Menu" */
+  /* Menu recolhido por padrão no mobile — expande com transição suave */
   .primary-nav .menu{
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 4px;
     width: 100%;
     margin-top: 8px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
   }
   .primary-nav .menu.active{
-    display: flex;
+    max-height: 600px;
+    opacity: 1;
+    pointer-events: auto;
   }
   .primary-nav .menu a{
     padding: 12px 14px;
@@ -1313,7 +1313,6 @@ a.btn-primary:hover {
 }
 
 
-
 /* Botão secundário — "Acessibilidade" */
 .btn-secondary,
 a.btn-secondary,
@@ -1340,7 +1339,6 @@ a.btn-secondary:hover {
   background: var(--accent-color);
   color: var(--on-accent);
 }
-
 
 
 /* Respiro entre seções de conteúdo */
@@ -1452,8 +1450,6 @@ input[type="submit"]:hover {
    ========================================================== */
 
 /* Contraste de texto muted em estilos dark */
-body.style-ceuafe      { --muted-text: #4a5a6a; }
-body.style-neonpop     { --muted-text: #a8b4c4; }
 body.style-vintagecafe { --muted-text: rgba(255,243,220,0.80); }
 body.style-campoepaixao{ --muted-text: rgba(249,250,251,0.82); }
 body.style-moderno     { --muted-text: rgba(200,185,255,0.92); }
@@ -1522,7 +1518,6 @@ body.style-neonpop aside {
     padding: var(--space-sm);
   }
 }
-
 
 
 /* Footer: container com padding lateral para o texto não encostar na borda */
@@ -2043,18 +2038,6 @@ body.style-campoepaixao .widget {
 }
 
 /* ── Céu e Fé: distinção suave com borda dourada ── */
-body.style-ceuafe main {
-  background-color: #ffffff;
-  border-right: 1px solid rgba(201,168,76,0.20);
-}
-body.style-ceuafe aside {
-  background-color: #ddeaf8;
-  border-left: none;
-}
-body.style-ceuafe .widget {
-  background-color: #ffffff;
-  border: 1px solid rgba(26,58,92,0.12);
-}
 
 /* ── Tinta & Papel: borda marrom entre áreas ── */
 body.style-tintaepapel main {
@@ -2663,102 +2646,28 @@ body.style-moderno .widget [class*="now"] {
    ========================================================== */
 
 /* Header e rodapé mantêm azul escuro — identidade preservada */
-body.style-ceuafe .site-header {
-  background-color: #1a3a5c;
-}
 
-body.style-ceuafe footer {
-  background-color: #1a3a5c;
-  border-top: 2px solid rgba(201,168,76,0.30);
-}
-
-body.style-ceuafe .site-info,
-body.style-ceuafe .site-info p {
-  color: rgba(232,201,106,0.80);
-  border-top-color: rgba(201,168,76,0.20);
-}
-
-body.style-ceuafe footer a { color: rgba(232,201,106,0.85); }
-body.style-ceuafe footer a:hover { color: #E8C96A; }
-body.style-ceuafe .social-title { color: #E8C96A; }
-body.style-ceuafe .social-links a { color: rgba(232,201,106,0.80); }
-body.style-ceuafe .social-links a:hover { color: #E8C96A; }
 
 /* Fundo da página azul bem claro */
-body.style-ceuafe {
-  background-color: #eef4fb;
-}
 
 /* Títulos em azul escuro — legíveis no fundo claro */
-body.style-ceuafe .entry-title,
-body.style-ceuafe h1,
-body.style-ceuafe h2,
-body.style-ceuafe h3 {
-  color: #1a3a5c;
-}
 
 /* Links em azul médio — contraste WCAG AA no fundo branco */
-body.style-ceuafe a {
-  color: #1a5a9a;
-}
 
-body.style-ceuafe a:hover {
-  color: #1a3a5c;
-}
 
 /* Blockquote com moldura azul claro e fundo levemente azulado */
-body.style-ceuafe .post-content blockquote,
-body.style-ceuafe .page-content blockquote {
-  border-left: 4px solid #C9A84C;
-  background: #ddeaf8;
-  color: #1a2535;
-  border-radius: 0 8px 8px 0;
-}
 
 /* Títulos de widget em azul escuro */
-body.style-ceuafe .widget h3,
-body.style-ceuafe .widget h2 {
-  color: #1a3a5c;
-  border-bottom-color: rgba(201,168,76,0.35);
-}
 
 /* Site content com fundo claro */
-body.style-ceuafe .site-content {
-  background-color: #eef4fb;
-}
 
 /* Textos do conteúdo em cor escura — máxima legibilidade */
-body.style-ceuafe .post-content p,
-body.style-ceuafe .page-content p,
-body.style-ceuafe .post-content li,
-body.style-ceuafe .page-content li {
-  color: #1a2535;
-}
 
 /* Botão buscar em dourado */
-body.style-ceuafe .header-search-form .search-submit {
-  background-color: #C9A84C;
-  color: #ffffff;
-  border: none;
-}
 
-body.style-ceuafe .header-search-form .search-submit:hover {
-  background-color: #b8963e;
-  filter: none;
-}
 
 /* Paginação */
-body.style-ceuafe .pagination .page-numbers {
-  border-color: rgba(26,58,92,0.20);
-  color: #1a5a9a;
-}
 
-body.style-ceuafe .pagination .current,
-body.style-ceuafe .pagination .page-numbers:hover {
-  background-color: #1a3a5c;
-  color: #ffffff;
-  border-color: #1a3a5c;
-}
 
 /* ==========================================================
    Vintage Café — Versão Clara
@@ -3074,229 +2983,45 @@ body.style-campoepaixao{ --muted-text: #4a6a52; }
    ========================================================== */
 
 /* ── Body e fundo ── */
-body.style-ceuafe {
-  background-color: #eaf2fb;
-  font-family: 'Inter', 'Roboto', system-ui, sans-serif;
-  font-size: 1rem;
-  line-height: 1.80;
-}
 
 /* ── Header com degradê azul profundo para azul médio ── */
-body.style-ceuafe .site-header {
-  background: linear-gradient(135deg, #0d2b4a 0%, #1a4a7a 100%);
-  padding: 10px 0 8px;
-  border-bottom: none;
-  box-shadow: 0 2px 20px rgba(13,43,74,0.25);
-}
 
 /* Nome do site em branco limpo com Poppins */
-body.style-ceuafe .site-title .site-name a {
-  color: #ffffff !important;
-  font-family: 'Poppins', 'Montserrat', sans-serif !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.01em !important;
-  text-decoration: none !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
 
-body.style-ceuafe .site-title .site-description {
-  color: rgba(255,255,255,0.78) !important;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.88rem;
-  letter-spacing: 0.02em;
-}
 
 /* ── Menu moderno com mais respiro ── */
-body.style-ceuafe .primary-nav .menu a {
-  color: rgba(255,255,255,0.90) !important;
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 0.95rem !important;
-  letter-spacing: 0.02em !important;
-  padding: 6px 14px !important;
-  border-radius: 6px !important;
-  transition: background 0.20s ease, color 0.20s ease !important;
-}
 
-body.style-ceuafe .primary-nav .menu a:hover {
-  background: rgba(255,255,255,0.12) !important;
-  color: #ffffff !important;
-}
 
 /* Item ativo — linha fina embaixo, sem fundo pesado */
-body.style-ceuafe .primary-nav .menu li.current-menu-item > a,
-body.style-ceuafe .primary-nav .menu li.current_page_item > a {
-  color: #ffffff !important;
-  background: rgba(255,255,255,0.10) !important;
-  border-bottom: 2px solid #e07b39 !important;
-  border-radius: 6px 6px 0 0 !important;
-  font-weight: 600 !important;
-}
 
 /* ── Campo de busca integrado ── */
-body.style-ceuafe .header-search-form .search-field {
-  background: rgba(255,255,255,0.12) !important;
-  border: 1px solid rgba(255,255,255,0.25) !important;
-  color: #ffffff !important;
-  border-radius: 8px 0 0 8px !important;
-  font-family: 'Inter', sans-serif !important;
-}
 
-body.style-ceuafe .header-search-form .search-field::placeholder {
-  color: rgba(255,255,255,0.55) !important;
-}
-
-body.style-ceuafe .header-search-form .search-field:focus {
-  background: rgba(255,255,255,0.20) !important;
-  border-color: rgba(224,123,57,0.60) !important;
-  outline: none !important;
-}
-
-body.style-ceuafe .header-search-form .search-submit {
-  background: #e07b39 !important;
-  color: #ffffff !important;
-  border: none !important;
-  border-radius: 0 8px 8px 0 !important;
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.02em !important;
-  transition: background 0.20s ease, transform 0.20s ease !important;
-}
-
-body.style-ceuafe .header-search-form .search-submit:hover {
-  background: #c96828 !important;
-  transform: none !important;
-  filter: none !important;
-}
 
 /* ── Área de conteúdo ── */
-body.style-ceuafe main {
-  background-color: #ffffff !important;
-  border-right: 1px solid rgba(13,43,74,0.08) !important;
-}
 
-body.style-ceuafe aside {
-  background-color: #deeaf8 !important;
-  border-left: none !important;
-}
 
 /* ── Cards da sidebar modernos ── */
-body.style-ceuafe .widget {
-  background-color: #ffffff !important;
-  border: 1px solid rgba(13,43,74,0.10) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 2px 12px rgba(13,43,74,0.08) !important;
-  padding: 1.5rem !important;
-}
 
 /* Títulos dos widgets — Poppins, coral */
-body.style-ceuafe .widget h3,
-body.style-ceuafe .widget h2 {
-  font-family: 'Poppins', 'Inter', sans-serif !important;
-  font-weight: 700 !important;
-  font-size: 0.80rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  color: #0d2b4a !important;
-  border-bottom: 2px solid #e07b39 !important;
-  padding-bottom: 8px !important;
-  margin-bottom: 1rem !important;
-  -webkit-text-fill-color: #0d2b4a !important;
-  background: none !important;
-}
 
 /* Versículo com tipografia maior e referência menor */
-body.style-ceuafe .widget blockquote,
-body.style-ceuafe .widget p {
-  font-size: 1rem !important;
-  line-height: 1.70 !important;
-  color: #1a2535 !important;
-}
 
 /* ── Títulos de conteúdo — Poppins, azul profundo ── */
-body.style-ceuafe h1,
-body.style-ceuafe h2,
-body.style-ceuafe h3,
-body.style-ceuafe h4,
-body.style-ceuafe .entry-title {
-  font-family: 'Poppins', 'Montserrat', sans-serif !important;
-  font-weight: 700 !important;
-  color: #0d2b4a !important;
-  letter-spacing: -0.01em !important;
-  line-height: 1.25 !important;
-  -webkit-text-fill-color: #0d2b4a !important;
-  background: none !important;
-}
 
 /* ── Texto corrido — Inter, espaçamento generoso ── */
-body.style-ceuafe .post-content p,
-body.style-ceuafe .page-content p,
-body.style-ceuafe .post-content li,
-body.style-ceuafe .page-content li {
-  font-family: 'Inter', 'Roboto', sans-serif !important;
-  font-size: 1rem !important;
-  line-height: 1.85 !important;
-  color: #1a2535 !important;
-}
 
 /* ── Links ── */
-body.style-ceuafe a {
-  color: #1a6aaa !important;
-  text-decoration: none !important;
-  transition: color 0.18s ease !important;
-}
 
-body.style-ceuafe a:hover {
-  color: #0d2b4a !important;
-  text-decoration: underline !important;
-}
 
 /* ── Blockquote — versículo em destaque ── */
-body.style-ceuafe .post-content blockquote,
-body.style-ceuafe .page-content blockquote {
-  border-left: 3px solid #e07b39 !important;
-  background: #f0f6fd !important;
-  color: #1a2535 !important;
-  border-radius: 0 10px 10px 0 !important;
-  font-style: italic !important;
-  font-size: 1.05rem !important;
-}
 
 /* ── Rodapé ── */
-body.style-ceuafe footer {
-  background: linear-gradient(135deg, #0d2b4a, #1a3a5c) !important;
-  border-top: 2px solid rgba(224,123,57,0.30) !important;
-}
 
-body.style-ceuafe .site-info,
-body.style-ceuafe .site-info p {
-  color: rgba(255,255,255,0.70) !important;
-  border-top-color: rgba(255,255,255,0.10) !important;
-}
-
-body.style-ceuafe footer a { color: rgba(255,255,255,0.80) !important; }
-body.style-ceuafe footer a:hover { color: #ffffff !important; }
-body.style-ceuafe .social-title { color: #ffffff !important; }
-body.style-ceuafe .social-links a { color: rgba(255,255,255,0.80) !important; }
-body.style-ceuafe .social-links a:hover { color: #e07b39 !important; }
 
 /* ── Paginação ── */
-body.style-ceuafe .pagination .page-numbers {
-  border-color: rgba(13,43,74,0.18) !important;
-  color: #1a6aaa !important;
-  border-radius: 8px !important;
-}
 
-body.style-ceuafe .pagination .current,
-body.style-ceuafe .pagination .page-numbers:hover {
-  background-color: #0d2b4a !important;
-  color: #ffffff !important;
-  border-color: #0d2b4a !important;
-}
 
 /* ── Muted text atualizado ── */
-body.style-ceuafe { --muted-text: #4a5e72; }
-
 /* ==========================================================
    Céu e Fé — Refinamentos Visuais v2
    Animações suaves e elegantes — sem carnaval 🎨
@@ -3309,25 +3034,6 @@ body.style-ceuafe { --muted-text: #4a5e72; }
   100% { background-position: 0% 50%; }
 }
 
-body.style-ceuafe .site-header {
-  background: linear-gradient(
-    135deg,
-    #0d2b4a 0%,
-    #1a4a7a 35%,
-    #0d3860 65%,
-    #0d2b4a 100%
-  ) !important;
-  background-size: 300% 300% !important;
-  animation: ceuafeAurora 12s ease infinite !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body.style-ceuafe .site-header {
-    animation: none !important;
-    background: linear-gradient(135deg, #0d2b4a 0%, #1a4a7a 100%) !important;
-    background-size: 100% 100% !important;
-  }
-}
 
 /* ── 2. Títulos com brilho coral suave ao entrar ── */
 @keyframes ceuafeTitleGlow {
@@ -3336,26 +3042,6 @@ body.style-ceuafe .site-header {
   100% { text-shadow: none; opacity: 1; transform: translateY(0); }
 }
 
-body.style-ceuafe .entry-title,
-body.style-ceuafe .post-content h2,
-body.style-ceuafe .page-content h2 {
-  animation: ceuafeTitleGlow 0.8s ease both;
-}
-
-body.style-ceuafe .post-content h3,
-body.style-ceuafe .page-content h3 {
-  animation: ceuafeTitleGlow 0.8s ease 0.1s both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body.style-ceuafe .entry-title,
-  body.style-ceuafe .post-content h2,
-  body.style-ceuafe .post-content h3,
-  body.style-ceuafe .page-content h2,
-  body.style-ceuafe .page-content h3 {
-    animation: none !important;
-  }
-}
 
 /* ── 3. Widgets com pulso coral suave no topo ── */
 @keyframes ceuafeWidgetPulse {
@@ -3363,72 +3049,10 @@ body.style-ceuafe .page-content h3 {
   50%       { opacity: 1.0; }
 }
 
-body.style-ceuafe .widget {
-  position: relative;
-  overflow: hidden;
-}
-
-body.style-ceuafe .widget::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 10%;
-  width: 80%;
-  height: 2px;
-  background: linear-gradient(90deg,
-    transparent,
-    #e07b39,
-    transparent
-  );
-  border-radius: 50%;
-  animation: ceuafeWidgetPulse 3s ease-in-out infinite;
-  pointer-events: none;
-}
-
-body.style-ceuafe .widget h3,
-body.style-ceuafe .widget h2 {
-  border-bottom: 2px solid #e07b39 !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body.style-ceuafe .widget::before {
-    animation: none !important;
-    opacity: 0.6;
-  }
-}
 
 /* ── 4. Blockquote com destaque especial para versículos ── */
-body.style-ceuafe .post-content blockquote,
-body.style-ceuafe .page-content blockquote {
-  border-left: 4px solid #e07b39 !important;
-  background: linear-gradient(
-    135deg,
-    rgba(224,123,57,0.06) 0%,
-    rgba(13,43,74,0.06) 100%
-  ) !important;
-  border-radius: 0 12px 12px 0 !important;
-  padding: 1.4rem 1.6rem !important;
-  font-style: italic !important;
-  font-size: 1.06rem !important;
-  line-height: 1.80 !important;
-  color: #1a2535 !important;
-  box-shadow: 0 2px 16px rgba(224,123,57,0.08) !important;
-  position: relative;
-}
 
 /* Aspas decorativas no blockquote */
-body.style-ceuafe .post-content blockquote::before,
-body.style-ceuafe .page-content blockquote::before {
-  content: '"';
-  position: absolute;
-  top: -10px;
-  left: 16px;
-  font-size: 4rem;
-  color: rgba(224,123,57,0.20);
-  font-family: Georgia, serif;
-  line-height: 1;
-  pointer-events: none;
-}
 
 /* ── 5. Botões com hover brilhante e suave ── */
 @keyframes ceuafeButtonGlow {
@@ -3436,57 +3060,9 @@ body.style-ceuafe .page-content blockquote::before {
   100% { box-shadow: 0 4px 20px rgba(224,123,57,0.35); }
 }
 
-body.style-ceuafe .header-search-form .search-submit:hover {
-  background: #c96828 !important;
-  animation: ceuafeButtonGlow 0.3s ease forwards !important;
-  transform: translateY(-1px) !important;
-}
-
-body.style-ceuafe .read-more:hover {
-  background: #c96828 !important;
-  box-shadow: 0 4px 20px rgba(224,123,57,0.35) !important;
-  transform: translateY(-2px) !important;
-}
-
-body.style-ceuafe .pagination .current,
-body.style-ceuafe .pagination .page-numbers:hover {
-  box-shadow: 0 2px 12px rgba(224,123,57,0.25) !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body.style-ceuafe .header-search-form .search-submit:hover,
-  body.style-ceuafe .read-more:hover {
-    animation: none !important;
-    transform: none !important;
-  }
-}
 
 /* ── Links no conteúdo com sublinhado coral animado ── */
-body.style-ceuafe .post-content a,
-body.style-ceuafe .page-content a {
-  color: #1a6aaa !important;
-  text-decoration: none !important;
-  background-image: linear-gradient(#e07b39, #e07b39) !important;
-  background-size: 0% 1px !important;
-  background-repeat: no-repeat !important;
-  background-position: left bottom !important;
-  transition: background-size 0.3s ease, color 0.2s ease !important;
-  padding-bottom: 1px !important;
-}
 
-body.style-ceuafe .post-content a:hover,
-body.style-ceuafe .page-content a:hover {
-  color: #0d2b4a !important;
-  background-size: 100% 1px !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body.style-ceuafe .post-content a,
-  body.style-ceuafe .page-content a {
-    text-decoration: underline !important;
-    background-image: none !important;
-  }
-}
 
 /* ==========================================================
    Marinelli — Refinamentos Visuais v2
@@ -5913,51 +5489,7 @@ body.style-default footer .widget {
 }
 
 /* ──────────────────────────────────────────────────────────
-   style-ceuafe — missing: site-header::after, menu a::before,
-   menu a:hover::before, menu-toggle, menu-toggle:hover
-   ────────────────────────────────────────────────────────── */
 
-body.style-ceuafe .site-header::after {
-  content: '';
-  display: block;
-  height: 2px;
-  width: 0;
-  background: linear-gradient(90deg, #e07b39, #f0a060, #e07b39);
-  animation: headerReveal 1.2s ease forwards;
-  margin-top: 2px;
-}
-
-body.style-ceuafe .primary-nav .menu a {
-  position: relative !important;
-  overflow: hidden !important;
-}
-
-body.style-ceuafe .primary-nav .menu a::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: rgba(255,255,255,0.12);
-  transition: height 0.22s ease;
-  border-radius: 6px;
-  pointer-events: none;
-}
-
-body.style-ceuafe .primary-nav .menu a:hover::before {
-  height: 100%;
-}
-
-body.style-ceuafe .menu-toggle {
-  color: #ffffff;
-  border-color: rgba(255,255,255,0.35);
-}
-
-body.style-ceuafe .menu-toggle:hover {
-  background: rgba(224,123,57,0.20) !important;
-  border-color: #e07b39;
-}
 
 /* ──────────────────────────────────────────────────────────
    style-neonpop — missing: site-description, current-menu-item,
@@ -6319,5 +5851,736 @@ body.style-tintaepapel footer .widget {
 body.style-colorado .social-links a:hover {
   color: #E8291C;
   transform: scale(1.15);
+}
+
+/* ==========================================================
+/* — Corpo — */
+
+/* — Cabeçalho — */
+
+
+/* — Nome e tagline — */
+
+
+/* — Menu de navegação — */
+
+
+/* — Menu mobile toggle — */
+
+
+/* — Busca — */
+
+
+/* — Área de conteúdo — */
+
+
+/* — Títulos — */
+
+/* — Texto corrido — */
+
+/* — Links — */
+
+
+/* — Widgets — */
+
+
+/* — Blockquote — */
+
+
+/* — Botão Leia mais — */
+
+
+/* — Paginação — */
+
+
+/* — Rodapé — */
+
+/* ==========================================================
+   style-ceuafe — Céu e Fé v3.7.0
+   Paleta validada WCAG AA:
+     Azul profundo   #1C3A5F  — header, footer, títulos
+     Azul celeste    #4A90E2  — elementos decorativos, fundos
+     Azul link       #2B6CB0  — links (passa 5.74:1 sobre branco)
+     Dourado suave   #F5C542  — acento, detalhes (só sobre escuro)
+     Verde esperança #276749  — secundário como texto (passa AA)
+     Verde decorativo#3FA46A  — bordas, ícones, elementos visuais
+     Branco          #FFFFFF  — fundo conteúdo, texto sobre escuro
+     Aside           #EBF4FF  — azul celeste muito diluído
+     Texto           #0d1f35  — corpo do texto (16.61:1 sobre branco)
+   ========================================================== */
+
+/* — Variável muted — */
+body.style-ceuafe { --muted-text: #3a5a7a; }
+
+/* — Corpo geral — */
+body.style-ceuafe {
+  background-color: #EBF4FF;
+  font-family: 'Inter', 'Roboto', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.80;
+}
+
+/* — Cabeçalho — */
+body.style-ceuafe .site-header {
+  background: linear-gradient(
+    180deg,
+    #1C3A5F 0%,
+    #254d7a 100%
+  ) !important;
+  border-bottom: 3px solid #142d4a !important;
+  box-shadow: 0 3px 20px rgba(28,58,95,0.35) !important;
+}
+
+/* Linha dourada decorativa abaixo do header */
+body.style-ceuafe .site-header::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg,
+    transparent,
+    #F5C542,
+    rgba(245,197,66,0.70),
+    #F5C542,
+    transparent
+  );
+  animation: ceuafeGoldLine 0.80s ease forwards;
+  margin-top: 0;
+}
+
+@keyframes ceuafeGoldLine {
+  to { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-ceuafe .site-header::after {
+    animation: none !important;
+    width: 100% !important;
+  }
+}
+
+/* — Nome do site — */
+body.style-ceuafe .site-title .site-name a {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-family: 'Poppins', 'Montserrat', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  text-decoration: none !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.20);
+}
+
+/* — Tagline — */
+body.style-ceuafe .site-title .site-description {
+  color: rgba(245,197,66,0.90) !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+}
+
+/* — Menu de navegação — */
+body.style-ceuafe .primary-nav .menu a {
+  color: rgba(255,255,255,0.92) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.02em !important;
+  padding: 6px 14px !important;
+  border-radius: 6px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: background 0.20s ease, color 0.20s ease !important;
+}
+
+body.style-ceuafe .primary-nav .menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: rgba(74,144,226,0.20);
+  transition: height 0.22s ease;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+body.style-ceuafe .primary-nav .menu a:hover::before {
+  height: 100%;
+}
+
+body.style-ceuafe .primary-nav .menu a:hover {
+  background: rgba(255,255,255,0.10) !important;
+  color: #ffffff !important;
+}
+
+/* Item ativo — dourado sutil */
+body.style-ceuafe .primary-nav .menu li.current-menu-item > a,
+body.style-ceuafe .primary-nav .menu li.current_page_item > a {
+  color: #F5C542 !important;
+  background: rgba(245,197,66,0.12) !important;
+  border-bottom: 2px solid #F5C542 !important;
+  border-radius: 6px 6px 0 0 !important;
+  font-weight: 700 !important;
+}
+
+/* — Menu mobile toggle — */
+body.style-ceuafe .menu-toggle {
+  color: #ffffff;
+  border-color: rgba(245,197,66,0.45);
+}
+
+body.style-ceuafe .menu-toggle:hover {
+  background: rgba(245,197,66,0.15) !important;
+  border-color: #F5C542;
+}
+
+/* — Campo de busca — */
+body.style-ceuafe .header-search-form .search-field {
+  background: rgba(255,255,255,0.12) !important;
+  border: 1px solid rgba(245,197,66,0.40) !important;
+  color: #ffffff !important;
+  border-radius: 8px 0 0 8px !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+body.style-ceuafe .header-search-form .search-field::placeholder {
+  color: rgba(255,255,255,0.58) !important;
+}
+
+body.style-ceuafe .header-search-form .search-field:focus {
+  background: rgba(255,255,255,0.20) !important;
+  border-color: rgba(245,197,66,0.75) !important;
+  outline: none !important;
+}
+
+/* Botão buscar — dourado com texto escuro */
+body.style-ceuafe .header-search-form .search-submit {
+  background: #F5C542 !important;
+  color: #0d1f35 !important;
+  border: none !important;
+  border-radius: 0 8px 8px 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  transition: background 0.20s ease !important;
+}
+
+body.style-ceuafe .header-search-form .search-submit:hover {
+  
+  background: #d4a828 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* — Logo — */
+body.style-ceuafe .logo img,
+body.style-ceuafe img.custom-logo,
+body.style-ceuafe .custom-logo-link,
+body.style-ceuafe a.custom-logo-link {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* — Área de conteúdo — */
+body.style-ceuafe .site-content {
+  background-color: #EBF4FF;
+}
+
+body.style-ceuafe main {
+  background-color: #ffffff !important;
+  border-right: 1px solid rgba(28,58,95,0.08) !important;
+}
+
+body.style-ceuafe aside {
+  background-color: #ddeeff !important;
+  border-left: none !important;
+}
+
+/* — Títulos — */
+body.style-ceuafe h1,
+body.style-ceuafe h2,
+body.style-ceuafe h3,
+body.style-ceuafe h4,
+body.style-ceuafe .entry-title {
+  font-family: 'Poppins', 'Montserrat', sans-serif !important;
+  font-weight: 700 !important;
+  color: #1C3A5F !important;
+  -webkit-text-fill-color: #1C3A5F !important;
+  background: none !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+}
+
+/* — Texto corrido — */
+body.style-ceuafe .post-content p,
+body.style-ceuafe .page-content p,
+body.style-ceuafe .post-content li,
+body.style-ceuafe .page-content li {
+  color: #0d1f35 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1rem !important;
+  line-height: 1.85 !important;
+}
+
+/* — Links — */
+body.style-ceuafe a {
+  color: #2B6CB0 !important;
+  text-decoration: none !important;
+  transition: color 0.18s ease !important;
+}
+
+body.style-ceuafe a:hover {
+  color: #1C3A5F !important;
+  text-decoration: underline !important;
+}
+
+body.style-ceuafe .post-content a,
+body.style-ceuafe .page-content a {
+  color: #2B6CB0 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+}
+
+body.style-ceuafe .post-content a:hover,
+body.style-ceuafe .page-content a:hover {
+  color: #1C3A5F !important;
+}
+
+/* — H3 no conteúdo — */
+body.style-ceuafe .post-content h3,
+body.style-ceuafe .page-content h3 {
+  color: #1C3A5F !important;
+  -webkit-text-fill-color: #1C3A5F !important;
+}
+
+/* — Widgets — */
+body.style-ceuafe .widget {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(28,58,95,0.10) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 16px rgba(28,58,95,0.08) !important;
+  padding: 1.5rem !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Linha verde esperança no topo do widget */
+body.style-ceuafe .widget::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent,
+    #3FA46A,
+    transparent
+  );
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* Título do widget — azul profundo, uppercase */
+body.style-ceuafe .widget h3,
+body.style-ceuafe .widget h2 {
+  font-family: 'Poppins', 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.80rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: #1C3A5F !important;
+  -webkit-text-fill-color: #1C3A5F !important;
+  background: none !important;
+  border-bottom: 2px solid #3FA46A !important;
+  padding-bottom: 8px !important;
+  margin-bottom: 1rem !important;
+}
+
+body.style-ceuafe .widget p,
+body.style-ceuafe .widget blockquote {
+  font-size: 1rem !important;
+  line-height: 1.70 !important;
+  color: #0d1f35 !important;
+}
+
+/* — Blockquote — */
+body.style-ceuafe .post-content blockquote,
+body.style-ceuafe .page-content blockquote {
+  border-left: 4px solid #4A90E2 !important;
+  background: linear-gradient(135deg,
+    rgba(74,144,226,0.06) 0%,
+    rgba(28,58,95,0.04) 100%
+  ) !important;
+  color: #0d1f35 !important;
+  border-radius: 0 12px 12px 0 !important;
+  padding: 1.4rem 1.6rem !important;
+  font-style: italic !important;
+  font-size: 1.06rem !important;
+  position: relative !important;
+}
+
+body.style-ceuafe .post-content blockquote::before,
+body.style-ceuafe .page-content blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  font-size: 4rem;
+  color: rgba(74,144,226,0.25);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* — Botão Leia mais — verde esperança sobre escuro */
+body.style-ceuafe .read-more {
+  background: linear-gradient(135deg, #1C3A5F, #254d7a) !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: background 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+body.style-ceuafe .read-more:hover {
+  background: linear-gradient(135deg, #254d7a, #1C3A5F) !important;
+  box-shadow: 0 4px 18px rgba(28,58,95,0.30) !important;
+  transform: none !important;
+  filter: none !important;
+  color: #ffffff !important;
+}
+
+/* — Paginação — */
+body.style-ceuafe .pagination .page-numbers {
+  border: 1px solid rgba(28,58,95,0.20) !important;
+  border-radius: 8px !important;
+  color: #2B6CB0 !important;
+}
+
+body.style-ceuafe .pagination .current,
+body.style-ceuafe .pagination .page-numbers:hover {
+  background: linear-gradient(135deg, #1C3A5F, #254d7a) !important;
+  color: #ffffff !important;
+  border-color: #1C3A5F !important;
+  box-shadow: 0 2px 12px rgba(28,58,95,0.25) !important;
+}
+
+/* — Rodapé — */
+body.style-ceuafe footer {
+  background: linear-gradient(180deg, #1C3A5F 0%, #142d4a 100%) !important;
+  border-top: 3px solid rgba(245,197,66,0.40) !important;
+}
+
+body.style-ceuafe .site-info,
+body.style-ceuafe .site-info p {
+  color: rgba(245,197,66,0.82) !important;
+  border-top-color: rgba(245,197,66,0.20) !important;
+}
+
+body.style-ceuafe footer a {
+  color: rgba(255,255,255,0.82) !important;
+  text-decoration: none;
+}
+
+body.style-ceuafe footer a:hover { color: #F5C542 !important; }
+
+body.style-ceuafe .social-title { color: #F5C542 !important; }
+
+body.style-ceuafe .social-links a {
+  color: rgba(255,255,255,0.82) !important;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+body.style-ceuafe .social-links a:hover {
+  color: #F5C542 !important;
+  transform: scale(1.15);
+}
+
+body.style-ceuafe footer *:not(a):not(svg):not(path) {
+  color: rgba(245,197,66,0.88) !important;
+  -webkit-text-fill-color: rgba(245,197,66,0.88) !important;
+}
+
+body.style-ceuafe footer .widget h1,
+body.style-ceuafe footer .widget h2,
+body.style-ceuafe footer .widget h3,
+body.style-ceuafe footer .widget h4,
+body.style-ceuafe footer .widget-title {
+  color: #F5C542 !important;
+  -webkit-text-fill-color: #F5C542 !important;
+  border-bottom-color: rgba(245,197,66,0.30) !important;
+}
+
+body.style-ceuafe footer .footer-widget,
+body.style-ceuafe footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(245,197,66,0.18) !important;
+  box-shadow: none !important;
+}
+
+/* --- Céu e Fé — correções v3.7.1 --- */
+
+/* Animação celestial para títulos — entrada suave de baixo com leve brilho */
+@keyframes ceuafeRise {
+  0%   { opacity: 0; transform: translateY(12px); }
+  60%  { transform: translateY(-2px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* post-content h2 — cor explícita com especificidade maior para vencer CSS do site */
+body.style-ceuafe .post-content h2,
+body.style-ceuafe .page-content h2 {
+  color: #1C3A5F !important;
+  -webkit-text-fill-color: #1C3A5F !important;
+  background: none !important;
+  animation: ceuafeRise 0.55s ease both !important;
+}
+
+body.style-ceuafe .post-content h3,
+body.style-ceuafe .page-content h3 {
+  color: #1C3A5F !important;
+  -webkit-text-fill-color: #1C3A5F !important;
+  background: none !important;
+  animation: ceuafeRise 0.55s ease 0.10s both !important;
+}
+
+body.style-ceuafe .post-content h4,
+body.style-ceuafe .page-content h4 {
+  color: #1C3A5F !important;
+  -webkit-text-fill-color: #1C3A5F !important;
+  background: none !important;
+}
+
+/* Garante que entry-title também nunca herde cor estranha */
+body.style-ceuafe .entry-title,
+body.style-ceuafe .entry-title a,
+body.style-ceuafe .entry-title a:hover {
+  color: #1C3A5F !important;
+  -webkit-text-fill-color: #1C3A5F !important;
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-ceuafe .post-content h2,
+  body.style-ceuafe .page-content h2,
+  body.style-ceuafe .post-content h3,
+  body.style-ceuafe .page-content h3 {
+    animation: none !important;
+  }
+}
+
+
+/* --- Céu e Fé — tagline v3.7.2 ---
+   Especificidade reforçada para vencer CSS do site */
+body.style-ceuafe .site-header .site-title .site-description,
+body.style-ceuafe .site-header .site-description,
+body.style-ceuafe .site-branding .site-description {
+  color: rgba(245,197,66,0.90) !important;
+  -webkit-text-fill-color: rgba(245,197,66,0.90) !important;
+}
+
+
+/* ==========================================================
+   Especificidade reforçada — site-description (tagline)
+   Garante que a cor do tema vence CSS inline do site
+   em todos os estilos. v3.7.3
+   ========================================================== */
+
+body.style-default .site-header .site-title .site-description,
+body.style-default .site-header .site-description,
+body.style-default .site-branding .site-description {
+  color: rgba(255,255,255,0.78) !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.78) !important;
+}
+
+body.style-neonpop .site-header .site-title .site-description,
+body.style-neonpop .site-header .site-description,
+body.style-neonpop .site-branding .site-description {
+  color: rgba(0,207,255,0.80) !important;
+  -webkit-text-fill-color: rgba(0,207,255,0.80) !important;
+}
+
+body.style-vintagecafe .site-header .site-title .site-description,
+body.style-vintagecafe .site-header .site-description,
+body.style-vintagecafe .site-branding .site-description {
+  color: rgba(255,243,220,0.75) !important;
+  -webkit-text-fill-color: rgba(255,243,220,0.75) !important;
+}
+
+body.style-campoepaixao .site-header .site-title .site-description,
+body.style-campoepaixao .site-header .site-description,
+body.style-campoepaixao .site-branding .site-description {
+  color: rgba(255,255,255,0.80) !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.80) !important;
+}
+
+body.style-moderno .site-header .site-title .site-description,
+body.style-moderno .site-header .site-description,
+body.style-moderno .site-branding .site-description {
+  color: rgba(0,245,212,0.80) !important;
+  -webkit-text-fill-color: rgba(0,245,212,0.80) !important;
+}
+
+body.style-marinelli .site-header .site-title .site-description,
+body.style-marinelli .site-header .site-description,
+body.style-marinelli .site-branding .site-description {
+  color: rgba(255,255,255,0.85) !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.85) !important;
+}
+
+body.style-tintaepapel .site-header .site-title .site-description,
+body.style-tintaepapel .site-header .site-description,
+body.style-tintaepapel .site-branding .site-description {
+  color: rgba(255,248,240,0.72) !important;
+  -webkit-text-fill-color: rgba(255,248,240,0.72) !important;
+}
+
+body.style-colorado .site-header .site-title .site-description,
+body.style-colorado .site-header .site-description,
+body.style-colorado .site-branding .site-description {
+  color: rgba(255,255,255,0.85) !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.85) !important;
+}
+
+/* Também reforça o ceuafe com webkit que estava faltando */
+body.style-ceuafe .site-header .site-title .site-description,
+body.style-ceuafe .site-header .site-description,
+body.style-ceuafe .site-branding .site-description {
+  color: rgba(245,197,66,0.90) !important;
+  -webkit-text-fill-color: rgba(245,197,66,0.90) !important;
+}
+
+
+/* ==========================================================
+   Variável --header-muted por estilo
+   Corrige a cor da tagline (.site-description) que usa
+   var(--header-muted) definida no CSS base. v3.7.4
+   ========================================================== */
+
+body.style-ceuafe      { --header-muted: rgba(245,197,66,0.90); }
+body.style-neonpop     { --header-muted: rgba(0,207,255,0.80); }
+body.style-vintagecafe { --header-muted: rgba(255,243,220,0.75); }
+body.style-tintaepapel { --header-muted: rgba(255,248,240,0.72); }
+
+/* Os demais já funcionam com o padrão branco do :root */
+/* style-default, style-campoepaixao, style-marinelli,  */
+/* style-colorado, style-moderno: rgba(255,255,255,x)   */
+
+
+/* ==========================================================
+   MELHORIAS GLOBAIS v3.8.0
+   Aplicadas a todos os estilos via CSS base
+   ========================================================== */
+
+/* Respeita preferência por menos movimento no menu mobile */
+@media (prefers-reduced-motion: reduce) {
+  .primary-nav .menu {
+    transition: none !important;
+  }
+}
+
+/* Espaçamento entre parágrafos — respiração no conteúdo */
+.post-content p,
+.page-content p {
+  margin-bottom: 1.4em;
+}
+
+.post-content p:last-child,
+.page-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================
+   MELHORIAS POR ESTILO — transitions e box-shadow faltando
+   ========================================================== */
+
+/* — style-default — */
+body.style-default .read-more {
+  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
+}
+
+body.style-default .header-search-form .search-submit {
+  transition: background 0.20s ease !important;
+}
+
+body.style-default .widget {
+  box-shadow: 0 2px 14px rgba(39,48,70,0.08) !important;
+}
+
+/* — style-neonpop — */
+body.style-neonpop .read-more {
+  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
+}
+
+body.style-neonpop .header-search-form .search-submit {
+  transition: background 0.20s ease !important;
+}
+
+body.style-neonpop .widget {
+  box-shadow: 0 2px 14px rgba(255,45,120,0.10) !important;
+}
+
+/* — style-vintagecafe — */
+body.style-vintagecafe .read-more {
+  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
+}
+
+body.style-vintagecafe .header-search-form .search-submit {
+  transition: background 0.20s ease !important;
+}
+
+body.style-vintagecafe .widget {
+  box-shadow: 0 2px 14px rgba(201,146,42,0.10) !important;
+}
+
+/* — style-campoepaixao — */
+body.style-campoepaixao .read-more {
+  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
+}
+
+body.style-campoepaixao .header-search-form .search-submit {
+  transition: background 0.20s ease !important;
+}
+
+body.style-campoepaixao .widget {
+  box-shadow: 0 2px 14px rgba(229,62,62,0.10) !important;
+}
+
+/* — style-moderno — */
+body.style-moderno .header-search-form .search-submit {
+  transition: background 0.20s ease !important;
+}
+
+/* — style-marinelli — */
+body.style-marinelli .read-more {
+  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
+}
+
+body.style-marinelli .header-search-form .search-submit {
+  transition: background 0.20s ease !important;
+}
+
+/* — style-tintaepapel — */
+body.style-tintaepapel .read-more {
+  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
+}
+
+/* — style-colorado — */
+body.style-colorado .read-more {
+  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
+}
+
+body.style-colorado .header-search-form .search-submit {
+  transition: background 0.20s ease !important;
+}
+
+/* — style-ceuafe — */
+body.style-ceuafe .header-search-form .search-submit {
+  transition: background 0.20s ease !important;
 }
 
