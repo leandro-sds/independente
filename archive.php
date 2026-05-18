@@ -13,6 +13,11 @@
     <?php if ( have_posts() ) : ?>
       <?php while ( have_posts() ) : the_post(); ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+          <?php if ( has_post_thumbnail() ) : ?>
+            <a class="post-thumbnail-link" href="<?php echo esc_url( get_permalink() ); ?>" tabindex="-1" aria-hidden="true">
+              <?php the_post_thumbnail( 'medium', [ 'class' => 'post-thumbnail-img', 'loading' => 'lazy' ] ); ?>
+            </a>
+          <?php endif; ?>
           <h2 class="entry-title">
             <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
               <?php the_title(); ?>

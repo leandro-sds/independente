@@ -9,6 +9,11 @@
         </header>
 
         <div class="post-content">
+          <?php if ( has_post_thumbnail() ) : ?>
+            <figure class="post-featured-image">
+              <?php the_post_thumbnail( 'large', [ 'loading' => 'eager' ] ); ?>
+            </figure>
+          <?php endif; ?>
           <?php the_content(); ?>
         </div>
 
