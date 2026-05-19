@@ -4,7 +4,7 @@ Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
 Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 9 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista, incluindo o estilo Colorado. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 4.0.0
+Version: 4.1.0
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -125,7 +125,8 @@ img {
   transition: background-color var(--transition-fast);
 }
 
-footer{
+footer[role="contentinfo"],
+.site-footer {
   background-color: var(--header-bg);
   color: var(--header-fg);
   padding: 32px 0 20px;
@@ -481,18 +482,21 @@ nav ul li.current-menu-ancestor > a {
   padding: 8px 18px;
   border: 2px solid var(--accent-color);
   border-radius: var(--radius-sm);
-  color: var(--accent-color);
+  color: #1a1a1a !important;
+  -webkit-text-fill-color: #1a1a1a !important;
   font-weight: 600;
   font-size: 0.92rem;
-  text-decoration: none;
+  text-decoration: none !important;
+  background: transparent;
   transition: background 0.20s ease, color 0.20s ease;
 }
 
 .read-more:hover,
 .back-link a:hover {
-  background: var(--accent-color);
-  color: var(--on-accent);
-  text-decoration: none;
+  background: var(--accent-color) !important;
+  color: var(--on-accent) !important;
+  -webkit-text-fill-color: var(--on-accent) !important;
+  text-decoration: none !important;
 }
 
 /* Posts relacionados */
@@ -725,7 +729,7 @@ article:nth-child(5) { animation: fadeInUp 0.45s ease 0.42s both; }
 .widget:nth-child(3) { animation: fadeInRight 0.45s ease 0.40s both; }
 
 /* Footer: sobe suavemente */
-footer {
+footer[role="contentinfo"] {
   animation: fadeInUp 0.5s ease 0.1s both;
 }
 
@@ -1718,7 +1722,7 @@ body.style-marinelli .site-title .site-description {
 }
 
 /* ── Rodapé: azul-marinho escuro ── */
-body.style-marinelli footer {
+body.style-marinelli footer[role="contentinfo"] {
   background-color: #17293d;
   border-top: 3px solid #054b81;
   color: #ffffff;
@@ -2423,7 +2427,7 @@ body.style-moderno .pagination .page-numbers:hover {
 }
 
 /* ── Footer ── */
-body.style-moderno footer {
+body.style-moderno footer[role="contentinfo"] {
   background: linear-gradient(135deg, #0f0c29, #0a0818);
   border-top: 1px solid rgba(0,245,212,0.15);
   box-shadow: 0 -4px 30px rgba(0,245,212,0.05);
@@ -2710,7 +2714,7 @@ body.style-vintagecafe .site-header {
   background-color: #2e1a0e;
 }
 
-body.style-vintagecafe footer {
+body.style-vintagecafe footer[role="contentinfo"] {
   background-color: #2e1a0e;
   border-top: 2px solid rgba(212,175,55,0.30);
 }
@@ -2789,7 +2793,7 @@ body.style-campoepaixao .site-header {
   background-color: #0d3318;
 }
 
-body.style-campoepaixao footer {
+body.style-campoepaixao footer[role="contentinfo"] {
   background-color: #0d3318;
   border-top: 2px solid rgba(204,0,0,0.40);
 }
@@ -2902,7 +2906,7 @@ body.style-neonpop .site-title .site-name a {
   text-shadow: 0 0 20px rgba(255,45,120,0.60);
 }
 
-body.style-neonpop footer {
+body.style-neonpop footer[role="contentinfo"] {
   background: linear-gradient(135deg, #0d0d1a, #07070f);
   border-top: 2px solid rgba(255,45,120,0.30);
 }
@@ -4742,19 +4746,23 @@ body.style-vintagecafe main {
 
 /* ── Responder ── */
 .comment-reply a {
+  display: inline-block;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--accent-color) !important;
-  text-decoration: none;
-  border: 1px solid var(--accent-color);
+  color: #1a1a1a !important;
+  -webkit-text-fill-color: #1a1a1a !important;
+  text-decoration: none !important;
+  border: 2px solid var(--accent-color);
   border-radius: var(--radius-sm);
-  padding: 3px 10px;
+  padding: 4px 12px;
+  background: transparent;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 .comment-reply a:hover {
   background: var(--accent-color) !important;
   color: var(--on-accent) !important;
+  -webkit-text-fill-color: var(--on-accent) !important;
 }
 
 /* ── Navegação de comentários ── */
@@ -5294,7 +5302,7 @@ body.style-colorado .menu-toggle:hover {
 }
 
 /* ── 13. Rodapé vermelho escuro ── */
-body.style-colorado footer {
+body.style-colorado footer[role="contentinfo"] {
   background: linear-gradient(180deg, #9c1510 0%, #7a0e09 100%);
   border-top: 3px solid #E8291C;
 }
@@ -5468,7 +5476,7 @@ body.style-default .pagination .page-numbers:hover {
   color: #F6AD55;
 }
 
-body.style-default footer {
+body.style-default footer[role="contentinfo"] {
   background: linear-gradient(180deg, #273046 0%, #1a2235 100%);
   border-top: 2px solid rgba(246,173,85,0.30);
 }
@@ -5824,7 +5832,7 @@ body.style-tintaepapel .pagination .page-numbers:hover {
   color: #FFF8F0;
 }
 
-body.style-tintaepapel footer {
+body.style-tintaepapel footer[role="contentinfo"] {
   background: linear-gradient(180deg, #2C3E50 0%, #1a2530 100%);
   border-top: 2px solid rgba(139,94,26,0.35);
 }
@@ -6296,7 +6304,7 @@ body.style-ceuafe .pagination .page-numbers:hover {
 }
 
 /* — Rodapé — */
-body.style-ceuafe footer {
+body.style-ceuafe footer[role="contentinfo"] {
   background: linear-gradient(180deg, #1C3A5F 0%, #142d4a 100%) !important;
   border-top: 3px solid rgba(245,197,66,0.40) !important;
 }
@@ -6862,4 +6870,21 @@ body.style-campoepaixao .header-search-form .search-submit:hover {
     height: 120px !important;
   }
 }
+
+
+/* ==========================================================
+   Variáveis CSS de acento por estilo
+   Garante que --accent-color e --on-accent sejam corretos
+   em todos os contextos (botão Responder, etc.)
+   ========================================================== */
+
+body.style-default      { --accent-color: #F6AD55; --on-accent: #1a1a1a; }
+body.style-ceuafe       { --accent-color: #F5C542; --on-accent: #0d1f35; }
+body.style-neonpop      { --accent-color: #FF2D78; --on-accent: #ffffff; }
+body.style-vintagecafe  { --accent-color: #c9922a; --on-accent: #ffffff; }
+body.style-campoepaixao { --accent-color: #cc0000; --on-accent: #ffffff; }
+body.style-moderno      { --accent-color: #00f5d4; --on-accent: #0a0818; }
+body.style-marinelli    { --accent-color: #F97316; --on-accent: #ffffff; }
+body.style-tintaepapel  { --accent-color: #8B5E1A; --on-accent: #FFF8F0; }
+body.style-colorado     { --accent-color: #E53E3E; --on-accent: #ffffff; }
 
