@@ -5,23 +5,31 @@
     <?php if ( have_posts() ) : ?>
       <?php while ( have_posts() ) : the_post(); ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-          <?php if ( has_post_thumbnail() ) : ?>
-            <a class="post-thumbnail-link" href="<?php echo esc_url( get_permalink() ); ?>" tabindex="-1" aria-hidden="true">
-              <?php the_post_thumbnail( 'medium', [ 'class' => 'post-thumbnail-img', 'loading' => 'lazy' ] ); ?>
-            </a>
-          <?php endif; ?>
-          <header>
-            <h2 class="entry-title">
-              <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
-                <?php the_title(); ?>
+          <div class="post-list-inner">
+            <?php if ( has_post_thumbnail() ) : ?>
+              <a class="post-thumbnail-link" href="<?php echo esc_url( get_permalink() ); ?>" tabindex="-1" aria-label="<?php esc_attr_e( 'Imagem do post', 'independent-theme' ); ?>">
+                <?php the_post_thumbnail( 'medium', [
+                  'class' => 'post-thumbnail-img',
+                  'loading' => 'lazy',
+                  'alt' => get_the_title(),
+                ] ); ?>
               </a>
-            </h2>
-          </header>
+            <?php endif; ?>
+            <div class="post-list-content">
+              <header>
+                <h2 class="entry-title">
+                  <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+                    <?php the_title(); ?>
+                  </a>
+                </h2>
+              </header>
 
           <div class="excerpt">
             <?php the_excerpt(); ?>
             <a class="read-more" href="<?php echo esc_url( get_permalink() ); ?>"><?php esc_html_e('Leia mais', 'independent-theme'); ?></a>
           </div>
+            </div><!-- .post-list-content -->
+          </div><!-- .post-list-inner -->
         </article>
       <?php endwhile; ?>
 

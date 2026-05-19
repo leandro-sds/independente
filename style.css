@@ -4,7 +4,7 @@ Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
 Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 9 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista, incluindo o estilo Colorado. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 3.9.0
+Version: 4.0.0
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -469,19 +469,30 @@ nav ul li.current-menu-ancestor > a {
 
 /* Botões */
 .read-more,
+.back-link {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .back-link a {
-  display: inline-block;
-  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border: 2px solid var(--accent-color);
+  border-radius: var(--radius-sm);
   color: var(--accent-color);
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 0.92rem;
   text-decoration: none;
-  transition: color var(--transition-fast), text-decoration var(--transition-fast);
+  transition: background 0.20s ease, color 0.20s ease;
 }
 
 .read-more:hover,
 .back-link a:hover {
-  text-decoration: underline;
-  color: var(--rose-color);
+  background: var(--accent-color);
+  color: var(--on-accent);
+  text-decoration: none;
 }
 
 /* Posts relacionados */
@@ -1363,6 +1374,20 @@ a.btn-secondary:hover {
 .widget {
   padding: var(--space-md);
   border-radius: var(--radius-md);
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Garante que itens dentro do widget não transbordem */
+.widget a,
+.widget li,
+.widget p,
+.widget span {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 /* Limite de largura do container principal de texto */
@@ -6660,19 +6685,26 @@ body.style-colorado aside {
 /* Listagem — imagem pequena acima do título */
 .post-thumbnail-link {
   display: block;
-  margin-bottom: 0.75rem;
+  flex-shrink: 0;
   overflow: hidden;
   border-radius: var(--radius-sm);
   line-height: 0;
+  width: 160px;
+  height: 110px;
 }
 
 .post-thumbnail-img {
-  width: 100%;
-  max-height: 200px;
+  width: 160px;
+  height: 110px;
   object-fit: cover;
+  object-position: center;
   display: block;
   border-radius: var(--radius-sm);
   transition: transform 0.30s ease;
+}
+
+.post-thumbnail-link:hover .post-thumbnail-img {
+  transform: scale(1.03);
 }
 
 .post-thumbnail-link:hover .post-thumbnail-img {
@@ -6700,7 +6732,7 @@ body.style-colorado aside {
 /* Mobile — ajuste de altura máxima */
 @media (max-width: 768px) {
   .post-thumbnail-img {
-    max-height: 160px;
+    max-height: 90px;
   }
   .post-featured-image img {
     max-height: 280px;
@@ -6764,5 +6796,70 @@ body.style-campoepaixao .header-search-form .search-submit {
 body.style-campoepaixao .header-search-form .search-submit:hover {
   background-color: #aa0000 !important;
   border-color: #cc0000 !important;
+}
+
+
+/* ==========================================================
+   Widget Comentários Recentes do WordPress — v3.9.0
+   Corrige transbordamento do texto na sidebar
+   ========================================================== */
+
+.widget_recent_comments .recentcomments {
+  display: block !important;
+  overflow: hidden !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  white-space: normal !important;
+  max-width: 100% !important;
+  padding: 4px 0 !important;
+}
+
+.widget_recent_comments .recentcomments a {
+  display: inline !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  max-width: 100% !important;
+}
+
+.widget_recent_comments img.avatar {
+  float: left !important;
+  margin-right: 8px !important;
+  margin-bottom: 4px !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+}
+
+
+/* ==========================================================
+   Layout listagem de posts — imagem à esquerda, texto à direita
+   Estilo portal de notícias — válido para todos os estilos
+   ========================================================== */
+
+.post-list-inner {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.post-list-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Mobile — imagem acima do texto */
+@media (max-width: 600px) {
+  .post-list-inner {
+    flex-direction: column;
+  }
+  .post-thumbnail-link {
+    width: 100% !important;
+    height: 120px !important;
+  }
+  .post-thumbnail-img {
+    width: 100% !important;
+    height: 120px !important;
+  }
 }
 

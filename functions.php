@@ -956,27 +956,17 @@ function independent_render_category_children() {
     'taxonomy'   => 'category',
     'parent'     => $parent_id,
     'hide_empty' => false,
-    'orderby'    => 'name',
+    'orderby'    => 'term_order',
     'order'      => 'ASC',
   ] );
 
-  // Se não houver filhas, tenta mostrar irmãs (categorias do mesmo pai)
-  if ( empty( $children ) && ! empty( $term->parent ) ) {
-    $children = get_categories( [
-      'taxonomy'   => 'category',
-      'parent'     => (int) $term->parent,
-      'hide_empty' => false,
-      'orderby'    => 'name',
-      'order'      => 'ASC',
-    ] );
-  }
-
+  // Se não houver subcategorias filhas, não mostra nada — lista os posts normalmente
   if ( empty( $children ) ) {
     return false;
   }
 
-  echo '<section class="child-pages child-categories" aria-label="' . esc_attr__( 'Categorias relacionadas', 'independent-theme' ) . '">';
-  echo '<h2 class="child-pages-title">' . esc_html__( 'Categorias', 'independent-theme' ) . '</h2>';
+  echo '<section class="child-pages child-categories" aria-label="' . esc_attr__( 'Seções', 'independent-theme' ) . '">';
+  echo '<h2 class="child-pages-title">' . esc_html__( 'Seções', 'independent-theme' ) . '</h2>';
   echo '<ul class="child-page-list">';
 
   foreach ( $children as $cat ) {
