@@ -4,7 +4,7 @@ Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
 Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 9 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista, incluindo o estilo Colorado. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 4.1.0
+Version: 4.2.0
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -69,7 +69,6 @@ body {
   -webkit-font-smoothing: antialiased;
   transition: background-color var(--transition-slow), color var(--transition-slow);
 }
-
 
 /* Acessibilidade */
 .screen-reader-text, .sr-only {
@@ -148,6 +147,7 @@ footer[role="contentinfo"],
   max-width: 1200px;
   margin: 0;
   padding: 0;
+  align-items: flex-start;
 }
 
 .wrap{
@@ -165,7 +165,7 @@ footer[role="contentinfo"],
   width:100%;
 }
 main {
-  flex: 3;
+  flex: 1 1 0;
   padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-lg);
   background-color: var(--card-bg);
   min-width: 0;
@@ -173,10 +173,11 @@ main {
 }
 
 aside {
-  flex: 1;
+  flex: 0 0 300px;
   padding: var(--space-lg) var(--space-md);
   background-color: var(--bg-light);
   min-width: 240px;
+  max-width: 320px;
   transition: background-color var(--transition-fast);
 }
 
@@ -243,7 +244,6 @@ article, .widget, .footer-widget {
   filter: brightness(1.08);
 }
 
-
 .logo img,
 img.custom-logo,
 .ls-logo {
@@ -301,7 +301,6 @@ img.custom-logo,
   background: rgba(255,255,255,0.14);
 }
 
-
 nav ul {
   list-style: none;
   padding: 0;
@@ -357,7 +356,6 @@ nav ul li.current-menu-ancestor > a {
 }
 
 .social-icons a:hover,
-
 
 /* Subpáginas */
 .child-pages {
@@ -574,7 +572,7 @@ nav ul li.current-menu-ancestor > a {
   }
 
   .menu-toggle {
-    display: block;
+    display: inline-flex;
     margin-bottom: 10px;
   }
 
@@ -639,10 +637,8 @@ nav ul li.current-menu-ancestor > a {
 
 .social-links a:hover,
 
-
 .site-title .site-name a { color: inherit; text-decoration: none; }
 .site-title .site-name a:hover, .site-title .site-name a:focus { text-decoration: underline; }
-
 
 /* ==========================================================
    Animações — Independent Theme
@@ -790,9 +786,7 @@ article:hover {
   }
 }
 
-
 /* Header layout refinado (harmonioso e consistente em todos os estilos) */
-
 
 .branding{
   display:flex;
@@ -922,7 +916,6 @@ article:hover {
   color: rgba(255,255,255,0.92);
   font-family: var(--font-main);
   font-size: 0.95rem;
-  display: inline-flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
@@ -992,7 +985,6 @@ article:hover {
     width: 100%;
   }
 }
-
 
 /* =========================
    Layout do cabeçalho (Personalizador)
@@ -1068,7 +1060,6 @@ body.header-layout-stacked .branding{
     width:100%;
   }
 }
-
 
 /* =========================
    Estilos de conteúdo (post, página, archive, busca)
@@ -1274,7 +1265,6 @@ article:last-of-type {
   margin-top: 1rem;
 }
 
-
 /* =========================
    Melhorias de Design — v2.1
    Tipografia · Botões · Respiro · Acessibilidade
@@ -1297,6 +1287,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .post-content p,
+.post-content li,
+.page-content li,
 .page-content p {
   margin-bottom: 1.4em;
 }
@@ -1330,7 +1322,6 @@ a.btn-primary:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.22);
 }
 
-
 /* Botão secundário — "Acessibilidade" */
 .btn-secondary,
 a.btn-secondary,
@@ -1357,7 +1348,6 @@ a.btn-secondary:hover {
   background: var(--accent-color);
   color: var(--on-accent);
 }
-
 
 /* Respiro entre seções de conteúdo */
 .entry-header {
@@ -1481,9 +1471,8 @@ input[type="submit"]:hover {
    Correções pontuais
    ========================================================== */
 
-/* Contraste de texto muted em estilos dark */
-body.style-vintagecafe { --muted-text: rgba(255,243,220,0.80); }
-body.style-campoepaixao{ --muted-text: rgba(249,250,251,0.82); }
+/* Contraste de texto muted em estilos escuros sem redefinição posterior */
+/* vintagecafe e campoepaixao são redefinidos mais abaixo com valores sólidos */
 body.style-moderno     { --muted-text: rgba(200,185,255,0.92); }
 body.style-colorado    { --muted-text: #7a3530; }
 
@@ -1550,7 +1539,6 @@ body.style-neonpop aside {
     padding: var(--space-sm);
   }
 }
-
 
 /* Footer: container com padding lateral para o texto não encostar na borda */
 footer .container {
@@ -1967,20 +1955,23 @@ body.style-marinelli .pagination .page-numbers:hover {
 
 /* ── Read more como link simples ── */
 body.style-marinelli .read-more {
-  background: none;
-  color: #156aa3;
-  text-decoration: underline;
-  padding: 0;
-  border-radius: 0;
+  background: #F97316 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-decoration: none !important;
+  padding: 8px 16px !important;
+  border-radius: var(--radius-sm) !important;
   box-shadow: none;
-  font-weight: normal;
-  font-size: 0.95rem;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
 }
 
 body.style-marinelli .read-more:hover {
-  color: #163e55;
-  transform: none;
-  filter: none;
+  background: #d4610e !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transform: translateY(-1px) !important;
+  filter: none !important;
 }
 
 /* ── Logo: sem bordas ── */
@@ -2178,6 +2169,7 @@ body.style-moderno .site-header {
 
 /* Nome do site com gradiente de texto */
 body.style-moderno .site-title .site-name a {
+  color: #00f5d4; /* fallback para browsers sem suporte a background-clip: text */
   background: linear-gradient(90deg, #ffffff, #00f5d4, #c77dff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -2403,10 +2395,11 @@ body.style-moderno .read-more {
 }
 
 body.style-moderno .read-more:hover {
+  background: #00c4a8 !important;
+  box-shadow: 0 4px 20px rgba(0,245,212,0.40) !important;
   transform: translateY(-2px) scale(1.03) !important;
-  box-shadow: 0 0 25px rgba(0,245,212,0.50) !important;
-  filter: none !important;
   color: #0a0818 !important;
+  filter: none !important;
 }
 
 /* ── Paginação ── */
@@ -2679,13 +2672,11 @@ body.style-moderno .widget [class*="now"] {
 
 /* Header e rodapé mantêm azul escuro — identidade preservada */
 
-
 /* Fundo da página azul bem claro */
 
 /* Títulos em azul escuro — legíveis no fundo claro */
 
 /* Links em azul médio — contraste WCAG AA no fundo branco */
-
 
 /* Blockquote com moldura azul claro e fundo levemente azulado */
 
@@ -2697,9 +2688,7 @@ body.style-moderno .widget [class*="now"] {
 
 /* Botão buscar em dourado */
 
-
 /* Paginação */
-
 
 /* ==========================================================
    Vintage Café — Versão Clara
@@ -3020,17 +3009,13 @@ body.style-campoepaixao{ --muted-text: #4a6a52; }
 
 /* Nome do site em branco limpo com Poppins */
 
-
 /* ── Menu moderno com mais respiro ── */
-
 
 /* Item ativo — linha fina embaixo, sem fundo pesado */
 
 /* ── Campo de busca integrado ── */
 
-
 /* ── Área de conteúdo ── */
-
 
 /* ── Cards da sidebar modernos ── */
 
@@ -3044,14 +3029,11 @@ body.style-campoepaixao{ --muted-text: #4a6a52; }
 
 /* ── Links ── */
 
-
 /* ── Blockquote — versículo em destaque ── */
 
 /* ── Rodapé ── */
 
-
 /* ── Paginação ── */
-
 
 /* ── Muted text atualizado ── */
 /* ==========================================================
@@ -3066,7 +3048,6 @@ body.style-campoepaixao{ --muted-text: #4a6a52; }
   100% { background-position: 0% 50%; }
 }
 
-
 /* ── 2. Títulos com brilho coral suave ao entrar ── */
 @keyframes ceuafeTitleGlow {
   0%   { text-shadow: none; opacity: 0; transform: translateY(12px); }
@@ -3074,13 +3055,11 @@ body.style-campoepaixao{ --muted-text: #4a6a52; }
   100% { text-shadow: none; opacity: 1; transform: translateY(0); }
 }
 
-
 /* ── 3. Widgets com pulso coral suave no topo ── */
 @keyframes ceuafeWidgetPulse {
   0%, 100% { opacity: 0.4; }
   50%       { opacity: 1.0; }
 }
-
 
 /* ── 4. Blockquote com destaque especial para versículos ── */
 
@@ -3092,9 +3071,7 @@ body.style-campoepaixao{ --muted-text: #4a6a52; }
   100% { box-shadow: 0 4px 20px rgba(224,123,57,0.35); }
 }
 
-
 /* ── Links no conteúdo com sublinhado coral animado ── */
-
 
 /* ==========================================================
    Marinelli — Refinamentos Visuais v2
@@ -3232,18 +3209,9 @@ body.style-marinelli .header-search-form .search-submit:hover {
   transform: translateY(-1px) !important;
 }
 
-body.style-marinelli .read-more:hover {
-  background: #e06a00 !important;
-  box-shadow: 0 3px 12px rgba(249,126,5,0.30) !important;
-  transform: translateY(-2px) !important;
-}
-
 @media (prefers-reduced-motion: reduce) {
   body.style-marinelli .header-search-form .search-submit:hover,
-  body.style-marinelli .read-more:hover {
-    transform: none !important;
-    box-shadow: none !important;
-  }
+  
 }
 
 /* ── Widgets com linha laranja no topo ── */
@@ -3295,7 +3263,7 @@ body.style-campoepaixao .site-header {
 body.style-campoepaixao .site-header::after {
   content: '';
   display: block;
-  height: 3px;
+  height: 2px;
   width: 0;
   background: linear-gradient(90deg, #cc0000, #ff3333);
   animation: campoLine 0.7s ease forwards;
@@ -3444,10 +3412,7 @@ body.style-campoepaixao .read-more:hover {
 
 @media (prefers-reduced-motion: reduce) {
   body.style-campoepaixao .header-search-form .search-submit:hover,
-  body.style-campoepaixao .read-more:hover {
-    transform: none !important;
-    box-shadow: none !important;
-  }
+  
 }
 
 /* ── Links com sublinhado vermelho animado ── */
@@ -3687,10 +3652,7 @@ body.style-tintaepapel .read-more:hover {
 
 @media (prefers-reduced-motion: reduce) {
   body.style-tintaepapel .header-search-form .search-submit:hover,
-  body.style-tintaepapel .read-more:hover {
-    transform: none !important;
-    box-shadow: none !important;
-  }
+  
 }
 
 /* ==========================================================
@@ -3890,10 +3852,7 @@ body.style-default .read-more:hover {
 
 @media (prefers-reduced-motion: reduce) {
   body.style-default .header-search-form .search-submit:hover,
-  body.style-default .read-more:hover {
-    transform: none !important;
-    box-shadow: none !important;
-  }
+  
 }
 
 /* ==========================================================
@@ -4140,18 +4099,10 @@ body.style-moderno .header-search-form .search-submit:hover {
   transform: translateY(-1px) !important;
 }
 
-body.style-moderno .read-more:hover {
-  background: #00c4a8 !important;
-  box-shadow: 0 4px 20px rgba(0,245,212,0.40) !important;
-  transform: translateY(-2px) !important;
-}
 
 @media (prefers-reduced-motion: reduce) {
   body.style-moderno .header-search-form .search-submit:hover,
-  body.style-moderno .read-more:hover {
-    transform: none !important;
-    box-shadow: none !important;
-  }
+  
 }
 
 /* ==========================================================
@@ -4401,10 +4352,7 @@ body.style-neonpop .read-more:hover {
 
 @media (prefers-reduced-motion: reduce) {
   body.style-neonpop .header-search-form .search-submit:hover,
-  body.style-neonpop .read-more:hover {
-    transform: none !important;
-    box-shadow: none !important;
-  }
+  
 }
 
 /* ==========================================================
@@ -4610,10 +4558,7 @@ body.style-vintagecafe .read-more:hover {
 
 @media (prefers-reduced-motion: reduce) {
   body.style-vintagecafe .header-search-form .search-submit:hover,
-  body.style-vintagecafe .read-more:hover {
-    transform: none !important;
-    box-shadow: none !important;
-  }
+  
 }
 
 /* ── Textura sutil de papel vintage no conteúdo ── */
@@ -4973,7 +4918,6 @@ body.style-vintagecafe main {
   }
 }
 
-
 /* ==========================================================
    🔴 COLORADO — Vermelho & Branco
    Paixão colorada · Força de estádio · Vermelho e branco
@@ -5043,7 +4987,7 @@ body.style-colorado .site-header {
 body.style-colorado .site-header::after {
   content: '';
   display: block;
-  height: 4px;
+  height: 2px;
   width: 0;
   background: linear-gradient(90deg, #ffffff, rgba(255,255,255,0.60));
   animation: coloradoLine 0.65s ease forwards;
@@ -5284,10 +5228,8 @@ body.style-colorado .read-more:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.style-colorado .header-search-form .search-submit:hover,
-  body.style-colorado .read-more:hover {
+  body.style-colorado .header-search-form .search-submit:hover {
     transform: none !important;
-    box-shadow: none !important;
   }
 }
 
@@ -5525,7 +5467,6 @@ body.style-default footer .widget {
 }
 
 /* ──────────────────────────────────────────────────────────
-
 
 /* ──────────────────────────────────────────────────────────
    style-neonpop — missing: site-description, current-menu-item,
@@ -5894,21 +5835,15 @@ body.style-colorado .social-links a:hover {
 
 /* — Cabeçalho — */
 
-
 /* — Nome e tagline — */
-
 
 /* — Menu de navegação — */
 
-
 /* — Menu mobile toggle — */
-
 
 /* — Busca — */
 
-
 /* — Área de conteúdo — */
-
 
 /* — Títulos — */
 
@@ -5916,18 +5851,13 @@ body.style-colorado .social-links a:hover {
 
 /* — Links — */
 
-
 /* — Widgets — */
-
 
 /* — Blockquote — */
 
-
 /* — Botão Leia mais — */
 
-
 /* — Paginação — */
-
 
 /* — Rodapé — */
 
@@ -6410,7 +6340,6 @@ body.style-ceuafe .entry-title a:hover {
   }
 }
 
-
 /* --- Céu e Fé — tagline v3.7.2 ---
    Especificidade reforçada para vencer CSS do site */
 body.style-ceuafe .site-header .site-title .site-description,
@@ -6419,7 +6348,6 @@ body.style-ceuafe .site-branding .site-description {
   color: rgba(245,197,66,0.90) !important;
   -webkit-text-fill-color: rgba(245,197,66,0.90) !important;
 }
-
 
 /* ==========================================================
    Especificidade reforçada — site-description (tagline)
@@ -6491,7 +6419,6 @@ body.style-ceuafe .site-branding .site-description {
   -webkit-text-fill-color: rgba(245,197,66,0.90) !important;
 }
 
-
 /* ==========================================================
    Variável --header-muted por estilo
    Corrige a cor da tagline (.site-description) que usa
@@ -6506,7 +6433,6 @@ body.style-tintaepapel { --header-muted: rgba(255,248,240,0.72); }
 /* Os demais já funcionam com o padrão branco do :root */
 /* style-default, style-campoepaixao, style-marinelli,  */
 /* style-colorado, style-moderno: rgba(255,255,255,x)   */
-
 
 /* ==========================================================
    MELHORIAS GLOBAIS v3.8.0
@@ -6625,7 +6551,6 @@ body.style-ceuafe .header-search-form .search-submit {
   transition: background 0.20s ease !important;
 }
 
-
 /* Reforço especificidade — nome do site em dourado v3.8.1 */
 body.style-ceuafe .site-header .site-title .site-name a,
 body.style-ceuafe .site-header .site-name a,
@@ -6634,7 +6559,6 @@ body.style-ceuafe .site-branding .site-name a {
   -webkit-text-fill-color: #F5C542 !important;
   text-shadow: 0 1px 8px rgba(245,197,66,0.25) !important;
 }
-
 
 /* ==========================================================
    Colorado — ajustes de legibilidade e conforto visual v3.8.2
@@ -6647,7 +6571,6 @@ body.style-colorado .post-content li,
 body.style-colorado .page-content li {
   color: #1a0000 !important;
   line-height: 1.85 !important;
-  margin-bottom: 1.4em !important;
 }
 
 /* Widget — fonte levemente maior e mais legível */
@@ -6685,13 +6608,12 @@ body.style-colorado aside {
   box-shadow: -2px 0 12px rgba(232,41,28,0.06) !important;
 }
 
-
 /* ==========================================================
    Imagens destacadas — listagem e post individual v3.8.0
    ========================================================== */
 
-/* Listagem — imagem pequena acima do título */
-.post-thumbnail-link {
+/* Listagem — imagem pequena ao lado do conteúdo */
+.post-thumbnail-wrap {
   display: block;
   flex-shrink: 0;
   overflow: hidden;
@@ -6708,15 +6630,6 @@ body.style-colorado aside {
   object-position: center;
   display: block;
   border-radius: var(--radius-sm);
-  transition: transform 0.30s ease;
-}
-
-.post-thumbnail-link:hover .post-thumbnail-img {
-  transform: scale(1.03);
-}
-
-.post-thumbnail-link:hover .post-thumbnail-img {
-  transform: scale(1.03);
 }
 
 /* Post individual — imagem grande no topo do conteúdo */
@@ -6746,7 +6659,6 @@ body.style-colorado aside {
     max-height: 280px;
   }
 }
-
 
 /* ==========================================================
    Campo e Paixão — ajustes v3.9.0
@@ -6791,7 +6703,6 @@ body.style-campoepaixao .menu-toggle:hover {
   border-color: #cc0000 !important;
 }
 
-
 /* Campo e Paixão — correção contraste botão Buscar v3.9.0
    Fundo vermelho com texto branco: 5.89:1 ✅ WCAG AA */
 body.style-campoepaixao .header-search-form .search-submit {
@@ -6805,7 +6716,6 @@ body.style-campoepaixao .header-search-form .search-submit:hover {
   background-color: #aa0000 !important;
   border-color: #cc0000 !important;
 }
-
 
 /* ==========================================================
    Widget Comentários Recentes do WordPress — v3.9.0
@@ -6839,7 +6749,6 @@ body.style-campoepaixao .header-search-form .search-submit:hover {
   flex-shrink: 0 !important;
 }
 
-
 /* ==========================================================
    Layout listagem de posts — imagem à esquerda, texto à direita
    Estilo portal de notícias — válido para todos os estilos
@@ -6861,7 +6770,7 @@ body.style-campoepaixao .header-search-form .search-submit:hover {
   .post-list-inner {
     flex-direction: column;
   }
-  .post-thumbnail-link {
+  .post-thumbnail-wrap {
     width: 100% !important;
     height: 120px !important;
   }
@@ -6870,7 +6779,6 @@ body.style-campoepaixao .header-search-form .search-submit:hover {
     height: 120px !important;
   }
 }
-
 
 /* ==========================================================
    Variáveis CSS de acento por estilo
@@ -6888,3 +6796,13 @@ body.style-marinelli    { --accent-color: #F97316; --on-accent: #ffffff; }
 body.style-tintaepapel  { --accent-color: #8B5E1A; --on-accent: #FFF8F0; }
 body.style-colorado     { --accent-color: #E53E3E; --on-accent: #ffffff; }
 
+/* ==========================================================
+   Layout: sem sidebar — main ocupa largura total
+   Colocado no final para garantir que vence qualquer estilo
+   ========================================================== */
+
+body.no-sidebar main,
+body.no-sidebar #primary {
+  flex: 1 1 100% !important;
+  max-width: 100% !important;
+}

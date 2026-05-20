@@ -7,13 +7,13 @@
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
           <div class="post-list-inner">
             <?php if ( has_post_thumbnail() ) : ?>
-              <a class="post-thumbnail-link" href="<?php echo esc_url( get_permalink() ); ?>" tabindex="-1" aria-label="<?php esc_attr_e( 'Imagem do post', 'independent-theme' ); ?>">
+              <div class="post-thumbnail-wrap">
                 <?php the_post_thumbnail( 'medium', [
-                  'class' => 'post-thumbnail-img',
+                  'class'   => 'post-thumbnail-img',
                   'loading' => 'lazy',
-                  'alt' => get_the_title(),
+                  'alt'     => esc_attr__( 'Imagem do post', 'independent-theme' ),
                 ] ); ?>
-              </a>
+              </div>
             <?php endif; ?>
             <div class="post-list-content">
               <header>
@@ -23,23 +23,25 @@
                   </a>
                 </h2>
               </header>
-
-          <div class="excerpt">
-            <?php the_excerpt(); ?>
-            <a class="read-more" href="<?php echo esc_url( get_permalink() ); ?>"><?php esc_html_e('Leia mais', 'independent-theme'); ?></a>
-          </div>
+              <div class="excerpt">
+                <?php the_excerpt(); ?>
+              </div>
+              <a class="read-more" href="<?php echo esc_url( get_permalink() ); ?>"
+                aria-label="<?php esc_attr_e( 'Leia mais', 'independent-theme' ); ?>">
+                <?php esc_html_e( 'Leia mais', 'independent-theme' ); ?>
+              </a>
             </div><!-- .post-list-content -->
           </div><!-- .post-list-inner -->
         </article>
       <?php endwhile; ?>
 
-      <nav class="pagination" aria-label="<?php esc_attr_e('Paginação', 'independent-theme'); ?>">
+      <nav class="pagination" aria-label="<?php esc_attr_e( 'Paginação', 'independent-theme' ); ?>">
         <?php
-          the_posts_pagination([
+          the_posts_pagination( [
             'mid_size'  => 2,
-            'prev_text' => __('« Anterior', 'independent-theme'),
-            'next_text' => __('Próximo »', 'independent-theme'),
-          ]);
+            'prev_text' => __( '« Anterior', 'independent-theme' ),
+            'next_text' => __( 'Próximo »', 'independent-theme' ),
+          ] );
         ?>
       </nav>
 
@@ -47,8 +49,8 @@
 
     <?php else : ?>
       <article class="no-posts">
-        <h2><?php esc_html_e('Nenhum conteúdo encontrado', 'independent-theme'); ?></h2>
-        <p><?php esc_html_e('Desculpe, não há posts disponíveis no momento.', 'independent-theme'); ?></p>
+        <h2><?php esc_html_e( 'Nenhum conteúdo encontrado', 'independent-theme' ); ?></h2>
+        <p><?php esc_html_e( 'Desculpe, não há posts disponíveis no momento.', 'independent-theme' ); ?></p>
       </article>
     <?php endif; ?>
   </main>

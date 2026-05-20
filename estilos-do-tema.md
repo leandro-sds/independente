@@ -1,4 +1,4 @@
-# Estilos Visuais — Independent Theme v4.0.0
+# Estilos Visuais — Independent Theme v4.2.0
 
 Cada estilo foi projetado com identidade própria, animações exclusivas e personalidade visual
 única — mantendo o mesmo layout, acessibilidade e funcionalidades em todos eles.
@@ -144,7 +144,7 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 
 ## 🔴 Colorado — Vermelho e Branco
 
-**Ideal para:** sites de clubes de futebol, torcidas, portais esportivos, academias com identidade vermelho e branco.
+**Ideal para:** sites de clubes de futebol, torcidas, portais esportivos, academias com identidade vermelho e branco, associações esportivas.
 
 - Cabeçalho vermelho intenso com gradiente
 - Faixa branca que se expande ao carregar
@@ -155,6 +155,10 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 - Rodapé vermelho escuro com borda vermelha
 - Fonte Montserrat bold — força e identidade
 - Visual vermelho e branco com identidade esportiva forte
+
+> *"O Colorado nasceu para a ACELGO — Associação de Cegos para Esportes e Lazer de Goiás,*
+> *parceira do Vila Nova Futebol de Cegos. Vermelho e branco que representam*
+> *muito mais do que cores: representam superação."* — Leandro Souza
 
 ---
 

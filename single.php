@@ -11,7 +11,10 @@
         <div class="post-content">
           <?php if ( has_post_thumbnail() ) : ?>
             <figure class="post-featured-image">
-              <?php the_post_thumbnail( 'large', [ 'loading' => 'eager' ] ); ?>
+              <?php the_post_thumbnail( 'large', [
+                'loading' => 'eager',
+                'alt'     => get_the_title(),
+              ] ); ?>
             </figure>
           <?php endif; ?>
           <?php the_content(); ?>
@@ -20,7 +23,7 @@
         <?php independent_back_link(); ?>
 
         <section class="post-meta" aria-label="<?php esc_attr_e('Informações do post', 'independent-theme'); ?>">
-          <p><strong><?php esc_html_e('Publicado em:', 'independent-theme'); ?></strong> <?php echo esc_html( get_the_date() ); ?></p>
+          <p><strong><?php esc_html_e('Publicado em:', 'independent-theme'); ?></strong> <time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time></p>
           <p><strong><?php esc_html_e('Autor:', 'independent-theme'); ?></strong> <?php echo esc_html( get_the_author() ); ?></p>
 
           <?php if ( has_category() ) : ?>
@@ -58,7 +61,7 @@
                 <li>
                   <a href="<?php echo esc_url( get_permalink() ); ?>">
                     <?php if ( has_post_thumbnail() ) : ?>
-                      <div class="thumb"><?php the_post_thumbnail('thumbnail'); ?></div>
+                      <div class="thumb"><?php the_post_thumbnail( 'thumbnail', [ 'alt' => '' ] ); ?></div>
                     <?php endif; ?>
                     <span class="title"><?php the_title(); ?></span>
                   </a>

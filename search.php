@@ -19,7 +19,9 @@
           </h2>
           <div class="excerpt">
             <?php the_excerpt(); ?>
-            <a class="read-more" href="<?php echo esc_url( get_permalink() ); ?>"><?php esc_html_e('Leia mais', 'independent-theme'); ?></a>
+            <a class="read-more" href="<?php echo esc_url( get_permalink() ); ?>" aria-label="<?php esc_attr_e( 'Leia mais', 'independent-theme' ); ?>">
+              <?php esc_html_e('Leia mais', 'independent-theme'); ?>
+            </a>
           </div>
         </article>
       <?php endwhile; ?>

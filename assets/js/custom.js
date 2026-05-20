@@ -1,31 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   // -----------------
-  // Moderno: gradiente no h1 via JS
-  // Sobrescreve qualquer style inline do WordPress
+  // Menu toggle: visível e acessível apenas em mobile
+  // Em desktop o menu já está expandido — o botão não deve aparecer
+  // para leitores de tela nem receber foco via Tab.
   // -----------------
-  if (document.body.classList.contains('style-moderno')) {
-    document.querySelectorAll('h1').forEach(function(h1) {
-      h1.style.setProperty('color', '#00f5d4', 'important');
-      h1.style.setProperty('-webkit-text-fill-color', '#00f5d4', 'important');
-      h1.style.setProperty('background', 'none', 'important');
-      h1.style.setProperty('background-clip', 'unset', 'important');
-      h1.style.setProperty('-webkit-background-clip', 'unset', 'important');
-    });
-  }
-
-
   const menuToggle = document.querySelector('.menu-toggle');
   const navMenu = document.getElementById('main-menu');
 
   const searchToggle = document.querySelector('.search-toggle');
   const searchWrap = document.getElementById('header-search');
 
-  // -----------------
-  // Menu toggle: visível e acessível apenas em mobile
-  // Em desktop o menu já está expandido — o botão não deve aparecer
-  // para leitores de tela nem receber foco via Tab.
-  // -----------------
   function updateMenuToggleAccessibility() {
     if (!menuToggle) return;
     const isMobile = window.innerWidth <= 768;
@@ -84,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function () {
       else openMenu();
     };
 
-    // Guarda os labels originais como data attributes
     menuToggle.dataset.labelOpen  = menuToggle.getAttribute('aria-label') || 'Abrir menu de navegação';
     menuToggle.dataset.labelClose = 'Fechar menu de navegação';
 

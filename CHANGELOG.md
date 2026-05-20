@@ -1,80 +1,38 @@
 # Changelog — Independent Theme
 
-## [2.5.0] — 2026-04-22
+## [4.2.0] — 2026-05-20
 
-### Melhorias
+### Acessibilidade
+- Imagens na listagem de posts agora têm `alt="Imagem do post"` — o NVDA anuncia corretamente como **gráfico**
+- Removido `aria-hidden` do link da imagem na listagem — imagem agora está diretamente no fluxo de leitura
+- Adicionado `aria-required="true"` nos campos obrigatórios do formulário de comentários — compatibilidade com versões antigas do NVDA
+- Foco por teclado no menu corrigido — `outline` agora é suprimido apenas para mouse (`:focus:not(:focus-visible)`); navegação por Tab mantém indicador visual de 3px
+- Botão "← Voltar" agora usa `<nav aria-label="Navegação de retorno">` em vez de `<div>`
+- `aria-label` da barra lateral agora passa pelo sistema de tradução do WordPress
 
-- Cabeçalho com tamanho padronizado para todos os estilos — apenas cores e aparência mudam ao trocar o estilo
-- Redução do padding do header (~35%) para que o conteúdo apareça mais cedo na tela
-- Estilo Céu e Fé alinhado ao padrão de altura do header — antes tinha padding próprio maior
-- Screenshot atualizado para representar fielmente a identidade visual do tema
+### Layout
+- `main` reformulado com `flex: 1 1 0` — expande naturalmente para 100% quando não há sidebar
+- `aside` reformulado com `flex: 0 0 300px` — ocupa espaço fixo apenas quando presente no DOM
+- Sidebar não renderiza o elemento `<aside>` quando não há widgets ativos — elimina bloco cinza vazio
+- `align-items: flex-start` adicionado globalmente no `.container` — main e aside sempre se alinham pelo topo
+- `margin-bottom: 1.4em` em listas (`li`) adicionado globalmente — mesmo espaçamento dos parágrafos
 
----
+### Estilos
+- **Campo e Paixão:** linha vermelha abaixo do menu reduzida de 3px para 2px
+- **Colorado:** busca e menu fixados à direita com `flex` global — sem mais quebra de linha
+- **Moderno:** fallback de cor sólida `#00f5d4` no nome do site — texto visível em browsers sem suporte a `background-clip: text`
+- **Todos os estilos:** regras de layout redundantes removidas de estilos específicos — layout agora é verdadeiramente global
 
-## [2.4.0] — 2026-04-17
+### Código
+- 4 keyframes órfãos do Céu e Fé removidos (`ceuafeAurora`, `ceuafeTitleGlow`, `ceuafeWidgetPulse`, `ceuafeButtonGlow`)
+- Bloco `@media (prefers-reduced-motion)` com seletor incompleto no Colorado corrigido
+- Hover duplicado em `.post-thumbnail-link` removido
+- Código morto de `--muted-text` no Vintage Café e Campo e Paixão removido
+- Imagem da listagem movida para fora do link — elemento `<div class="post-thumbnail-wrap">` substitui `<a class="post-thumbnail-link">`
 
-### Adicionado
-- 8º estilo visual: **Moderno** — roxo profundo, ciano elétrico, glassmorphism e animações
-- Estilo **Neon Pop** reformulado para tema escuro com magenta vibrante
-- Estilos **Vintage Café** e **Campo e Paixão** reformulados com paletas claras e legíveis
+### Personalizador
+- Tamanho padrão da logo reduzido de 320×160px para 200×80px — evita logo grande empurrando o menu
+- Exemplos e placeholders dos controles de logo atualizados
 
-### Melhorias
-- Redes sociais: campos agora aceitam apenas nome de usuário — URLs montadas automaticamente pelo tema
-  - WhatsApp: só o número com código do país (ex.: 5544997540049)
-  - Facebook, Instagram: só o nome de usuário (ex.: radiomaioramoroficial)
-  - YouTube: nome do canal com ou sem @ (ex.: @radiomaioramor)
-- Estilo **Céu e Fé** completamente renovado: degradê azul profundo, coral/laranja, Poppins/Inter
-- Migração automática de tema antigo removida — evita herança de valores indesejados
-- Transport dos campos de logo alterado para `refresh` — garante salvamento correto no banco
-
-### Corrigido
-- Escala da logo não obedecia ao Personalizador por causa de valor herdado de tema anterior
-- Campo de escala restaurado com leitura correta do banco de dados
-
----
-
-## [2.3.0] — 2026-04-14
-
-### Adicionado
-- Estilo **Céu e Fé** renovado com identidade mais moderna e espiritual
-- Fontes Poppins e Inter no estilo Céu e Fé
-- Acento coral (#e07b39) substituindo dourado mostarda no Céu e Fé
-
-### Melhorias
-- Cards da sidebar com sombra suave e hierarquia visual melhorada
-- Busca integrada com campo e botão harmoniosos no Céu e Fé
-- Blockquotes com borda coral e fundo azul suave
-
----
-
-## [2.2.0] — 2026-04-10
-
-### Adicionado
-- Animações de entrada: fadeInUp, fadeInDown, fadeInRight para conteúdo, header e sidebar
-- Animação escalonada nos artigos e widgets
-- Sublinhado animado nos itens de menu via `::after`
-- Suporte a `prefers-reduced-motion` — todas as animações são desativadas automaticamente
-
-### Melhorias
-- Estilo Padrão refinado com azul-petróleo e dourado nos destaques
-- Estilo Marinelli fiel ao original Drupal 7 (azul-aço #054b81, laranja #f97e05)
-- Rodapé com área de widgets e ícones SVG das redes sociais
-
----
-
-## [2.1.0] — 2026-04-01
-
-### Lançamento inicial no GitHub
-
-#### Adicionado
-- 7 estilos visuais: Padrão, Neon Pop, Vintage Café, Campo e Paixão, Céu e Fé, Tinta & Papel, Marinelli Drupal
-- Personalizador com controles de logo, layout, redes sociais e ano de fundação
-- Copyright automático com intervalo de anos (ex.: © 2013–2026)
-- Fonte Inter e Montserrat via Google Fonts
-- Acessibilidade WCAG AA completa
-- Skip-link funcional para leitores de tela
-- Menu hambúrguer acessível com aria-labels dinâmicos
-- Botão de menu/busca oculto para leitores de tela em desktop
-- Suporte a sidebar com widgets
-- Aviso no painel para orientar sobre classes CSS em menus
-- Estilo Marinelli: homenagem fiel ao tema clássico do Drupal 7
+### Excerpt
+- Tamanho padrão do resumo aumentado de 15 para 25 palavras — mais contexto para o leitor de tela antes do "Leia mais"

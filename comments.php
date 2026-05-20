@@ -64,11 +64,11 @@ if ( post_password_required() ) {
     'comment_notes_before' => '',
     'comment_notes_after'  => '',
     'fields' => [
-      'author' => '<div class="comment-field"><label for="author">' . esc_html__( 'Nome', 'independent-theme' ) . ' <span aria-hidden="true">*</span></label><input id="author" name="author" type="text" required autocomplete="name" /></div>',
-      'email'  => '<div class="comment-field"><label for="email">' . esc_html__( 'E-mail', 'independent-theme' ) . ' <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" required autocomplete="email" /><p class="comment-field-note">' . esc_html__( 'Seu e-mail não será publicado.', 'independent-theme' ) . '</p></div>',
+      'author' => '<div class="comment-field"><label for="author">' . esc_html__( 'Nome', 'independent-theme' ) . ' <span aria-hidden="true">*</span></label><input id="author" name="author" type="text" required aria-required="true" autocomplete="name" /></div>',
+      'email'  => '<div class="comment-field"><label for="email">' . esc_html__( 'E-mail', 'independent-theme' ) . ' <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" required aria-required="true" autocomplete="email" /><p class="comment-field-note">' . esc_html__( 'Seu e-mail não será publicado.', 'independent-theme' ) . '</p></div>',
       'url'    => '<div class="comment-field"><label for="url">' . esc_html__( 'Site (opcional)', 'independent-theme' ) . '</label><input id="url" name="url" type="url" autocomplete="url" /></div>',
     ],
-    'comment_field' => '<div class="comment-field"><label for="comment">' . esc_html__( 'Comentário', 'independent-theme' ) . ' <span aria-hidden="true">*</span></label><textarea id="comment" name="comment" rows="6" required></textarea></div>',
+    'comment_field' => '<div class="comment-field"><label for="comment">' . esc_html__( 'Comentário', 'independent-theme' ) . ' <span aria-hidden="true">*</span></label><textarea id="comment" name="comment" rows="6" required aria-required="true"></textarea></div>',
   ] );
   ?>
 

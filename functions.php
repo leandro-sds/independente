@@ -264,13 +264,13 @@ function independent_theme_customize_register( $wp_customize ) {
 
   // Largura máxima (px)
   $wp_customize->add_setting( 'independent_logo_width', [
-    'default'           => 320,
+    'default'           => 200,
     'sanitize_callback' => 'absint',
     'transport'         => 'refresh',
   ] );
   $wp_customize->add_control( 'independent_logo_width', [
     'label'       => __( 'Largura máxima da logo (px)', 'independent-theme' ),
-    'description' => __( 'Ex.: 200 = compacta · 320 = padrão · 500 = grande. Intervalo: 40 – 800 px.', 'independent-theme' ),
+    'description' => __( 'Ex.: 120 = compacta · 200 = padrão · 400 = grande. Intervalo: 40 – 800 px.', 'independent-theme' ),
     'section'     => $logo_section,
     'type'        => 'number',
     'priority'    => 10,
@@ -278,19 +278,19 @@ function independent_theme_customize_register( $wp_customize ) {
       'min'         => 40,
       'max'         => 800,
       'step'        => 1,
-      'placeholder' => '320',
+      'placeholder' => '200',
     ],
   ] );
 
   // Altura máxima (px)
   $wp_customize->add_setting( 'independent_logo_height', [
-    'default'           => 160,
+    'default'           => 80,
     'sanitize_callback' => 'absint',
     'transport'         => 'refresh',
   ] );
   $wp_customize->add_control( 'independent_logo_height', [
     'label'       => __( 'Altura máxima da logo (px)', 'independent-theme' ),
-    'description' => __( 'Ex.: 80 = baixa · 160 = padrão · 260 = alta. Intervalo: 20 – 400 px.', 'independent-theme' ),
+    'description' => __( 'Ex.: 50 = baixa · 80 = padrão · 160 = alta. Intervalo: 20 – 400 px.', 'independent-theme' ),
     'section'     => $logo_section,
     'type'        => 'number',
     'priority'    => 11,
@@ -298,7 +298,7 @@ function independent_theme_customize_register( $wp_customize ) {
       'min'         => 20,
       'max'         => 400,
       'step'        => 1,
-      'placeholder' => '160',
+      'placeholder' => '80',
     ],
   ] );
 
@@ -578,9 +578,10 @@ function independent_theme_sanitize_founding_year( $value ) {
 // Aplica estilo visual e tamanho da logo via variáveis CSS
 function independent_theme_custom_style() {
   $style       = get_theme_mod( 'independent_site_style', 'default' );
-  // Padrões maiores por acessibilidade (o usuário pode reduzir no Personalizador)
-  $logo_width  = absint( get_theme_mod( 'independent_logo_width', 320 ) );
-  $logo_height = absint( get_theme_mod( 'independent_logo_height', 160 ) );
+  // Padrão compacto — evita logo grande que empurra o menu para baixo
+  // O usuário pode ajustar livremente no Personalizador
+  $logo_width  = absint( get_theme_mod( 'independent_logo_width', 200 ) );
+  $logo_height = absint( get_theme_mod( 'independent_logo_height', 80 ) );
   $logo_scale  = absint( get_theme_mod( 'independent_logo_scale', 100 ) );
 
   // Limites de segurança para evitar que um valor absurdo quebre o layout
@@ -824,28 +825,24 @@ add_action( 'wp_head', 'independent_theme_custom_style' );
 function independent_theme_late_style() {
   ?>
   <style id="independent-theme-late">
-    /* Menu: sem outline em nenhum browser */
+    /* Menu: remove tap-highlight em mobile (estético, não afeta acessibilidade) */
     .primary-nav .menu a,
     .primary-nav .menu li > a {
       -webkit-tap-highlight-color: transparent;
-      outline: 0 !important;
-      outline-width: 0 !important;
-      outline-offset: 0 !important;
-      outline-color: transparent !important;
-      outline-style: none !important;
     }
-    .primary-nav .menu a:focus,
-    .primary-nav .menu li > a:focus {
+    /* Suprime outline padrão apenas quando NÃO é navegação por teclado */
+    .primary-nav .menu a:focus:not(:focus-visible),
+    .primary-nav .menu li > a:focus:not(:focus-visible) {
       outline: 0 !important;
-      outline-width: 0 !important;
-      outline-offset: 0 !important;
       box-shadow: none !important;
     }
-    /* Apenas teclado (Tab) recebe indicador visual */
+    /* Foco por teclado (Tab): indicador visual obrigatório — WCAG 2.4.7 */
     .primary-nav .menu a:focus-visible,
     .primary-nav .menu li > a:focus-visible {
-      outline: 0 !important;
-      box-shadow: 0 0 0 2px var(--accent-color) !important;
+      outline: 3px solid var(--accent-color) !important;
+      outline-offset: 2px !important;
+      box-shadow: 0 0 0 5px rgba(0,0,0,0.15) !important;
+      border-radius: 4px !important;
     }
     /* Busca: campo e botão mesma altura */
     .header-search-form { align-items: stretch !important; }
@@ -888,6 +885,11 @@ function independent_theme_body_class( $classes ) {
   $layout = get_theme_mod( 'independent_header_layout', 'left' );
   $classes[] = 'header-layout-' . sanitize_html_class( $layout );
 
+  // Quando não há widgets na sidebar, main ocupa 100% da largura
+  if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+    $classes[] = 'no-sidebar';
+  }
+
   return $classes;
 }
 add_filter( 'body_class', 'independent_theme_body_class' );
@@ -898,8 +900,9 @@ add_filter( 'get_custom_logo', function ( $html ) {
 } );
 
 // Personaliza o resumo dos posts
+// 25 palavras: suficiente para dar contexto ao leitor de tela sem sobrecarregar a listagem
 add_filter( 'excerpt_length', function () {
-  return 15;
+  return 25;
 } );
 
 add_filter( 'excerpt_more', function () {
@@ -930,9 +933,9 @@ function independent_back_link() {
   $referer = wp_get_referer();
   $url     = $referer ? $referer : home_url( '/' );
 
-  echo '<div class="back-link">';
+  echo '<nav class="back-link" aria-label="' . esc_attr__( 'Navegação de retorno', 'independent-theme' ) . '">';
   echo '<a href="' . esc_url( $url ) . '">' . esc_html__( '← Voltar', 'independent-theme' ) . '</a>';
-  echo '</div>';
+  echo '</nav>';
 }
 
 /**

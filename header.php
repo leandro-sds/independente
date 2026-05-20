@@ -62,8 +62,6 @@
   type="button"
   aria-controls="main-menu"
   aria-expanded="false"
-  aria-hidden="true"
-  tabindex="-1"
   aria-label="<?php esc_attr_e('Abrir menu de navegação', 'independent-theme'); ?>"
 >
           <span class="menu-toggle-icon" aria-hidden="true">

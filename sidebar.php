@@ -1,7 +1,7 @@
-<aside role="complementary" class="sidebar" aria-label="Barra lateral">
-  <?php if (is_active_sidebar('sidebar-1')) : ?>
-    <div class="sidebar-widgets">
-      <?php dynamic_sidebar('sidebar-1'); ?>
-    </div>
-  <?php endif; ?>
+<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+<aside role="complementary" class="sidebar" aria-label="<?php esc_attr_e( 'Barra lateral', 'independent-theme' ); ?>">
+  <div class="sidebar-widgets">
+    <?php dynamic_sidebar( 'sidebar-1' ); ?>
+  </div>
 </aside>
+<?php endif; ?>
