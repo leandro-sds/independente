@@ -558,6 +558,7 @@ function independent_theme_customize_register( $wp_customize ) {
       'marinelli'    => __( '🏛️ Institucional – Marinelli Drupal', 'independent-theme' ),
       'moderno'      => __( '⚡ Moderno – Vibrante & Contemporâneo', 'independent-theme' ),
       'colorado'     => __( '🔴 Colorado – Vermelho e Branco', 'independent-theme' ),
+      'rock'         => __( '🎸 Rock – Preto, Vermelho e Metal', 'independent-theme' ),
     ],
   ] );
 }
@@ -578,13 +579,13 @@ function independent_theme_sanitize_founding_year( $value ) {
 // Aplica estilo visual e tamanho da logo via variáveis CSS
 function independent_theme_custom_style() {
   $style       = get_theme_mod( 'independent_site_style', 'default' );
-  // Padrão compacto — evita logo grande que empurra o menu para baixo
+  // Tamanho padrão da logo
   // O usuário pode ajustar livremente no Personalizador
   $logo_width  = absint( get_theme_mod( 'independent_logo_width', 200 ) );
   $logo_height = absint( get_theme_mod( 'independent_logo_height', 80 ) );
   $logo_scale  = absint( get_theme_mod( 'independent_logo_scale', 100 ) );
 
-  // Limites de segurança para evitar que um valor absurdo quebre o layout
+  // Limites mínimo e máximo
   $logo_width  = max( 40, min( 800, $logo_width ) );
   $logo_height = max( 20, min( 400, $logo_height ) );
   $logo_scale  = max( 50, min( 300, $logo_scale ) );
@@ -795,6 +796,27 @@ $styles = [
       '--radius-lg'          => '14px',
     ],
 
+    'rock' => [
+      '--primary-color'      => '#0a0a0a',
+      '--bg-light'           => '#111111',
+      '--card-bg'            => '#1a1a1a',
+      '--accent-color'       => '#cc0000',
+      '--on-accent'          => '#ffffff',
+      '--link-color'         => '#cc0000',
+      '--text-color'         => '#e8e4de',
+      '--muted-text'         => '#888880',
+      '--border-color'       => '#2a2a2a',
+      '--header-title-color' => '#ffffff',
+      '--header-muted'       => 'rgba(232,228,222,0.65)',
+      '--header-border'      => 'rgba(204,0,0,0.30)',
+      '--focus-ring'         => '3px solid #cc0000',
+      '--font-main'          => "'Inter', system-ui, sans-serif",
+      '--font-title'         => "'Oswald', 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif",
+      '--radius-sm'          => '4px',
+      '--radius-md'          => '6px',
+      '--radius-lg'          => '8px',
+    ],
+
   ];
 
   $css_vars = [
@@ -900,7 +922,7 @@ add_filter( 'get_custom_logo', function ( $html ) {
 } );
 
 // Personaliza o resumo dos posts
-// 25 palavras: suficiente para dar contexto ao leitor de tela sem sobrecarregar a listagem
+// Resumo dos posts
 add_filter( 'excerpt_length', function () {
   return 25;
 } );

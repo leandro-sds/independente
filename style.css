@@ -4,7 +4,7 @@ Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
 Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 9 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista, incluindo o estilo Colorado. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 4.2.0
+Version: 4.3.0
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -6798,11 +6798,552 @@ body.style-colorado     { --accent-color: #E53E3E; --on-accent: #ffffff; }
 
 /* ==========================================================
    Layout: sem sidebar — main ocupa largura total
-   Colocado no final para garantir que vence qualquer estilo
    ========================================================== */
 
 body.no-sidebar main,
 body.no-sidebar #primary {
   flex: 1 1 100% !important;
   max-width: 100% !important;
+}
+
+/* ==========================================================
+   Rock — Preto, Vermelho e Metal
+   Para bandas, rádios rock, shows, festivais e roqueiros
+   ========================================================== */
+
+/* ── Variáveis do Rock ── */
+body.style-rock {
+  --primary-color:       #0a0a0a;
+  --accent-color:        #cc0000;
+  --on-accent:           #ffffff;
+  --bg-light:            #111111;
+  --card-bg:             #1a1a1a;
+  --link-color:          #cc0000;
+  --text-color:          #e8e4de;
+  --muted-text:          #888880;
+  --border-color:        #2a2a2a;
+  --header-bg:           #0a0a0a;
+  --header-fg:           #e8e4de;
+  --header-muted:        rgba(232,228,222,0.65);
+  --header-border:       rgba(204,0,0,0.30);
+  --header-title-color:  #ffffff;
+  --header-input-bg:     rgba(255,255,255,0.06);
+  --header-input-border: rgba(204,0,0,0.40);
+  --font-title:          'Oswald', 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+  background-color: #111111;
+  color: #e8e4de;
+}
+
+/* ── Header ── */
+body.style-rock .site-header {
+  background: linear-gradient(180deg, #0a0a0a 0%, #141414 100%) !important;
+  border-bottom: 3px solid #cc0000 !important;
+  box-shadow: 0 4px 24px rgba(204,0,0,0.25) !important;
+}
+
+/* Nome do site */
+body.style-rock .site-title .site-name a {
+  color: #ffffff;
+  font-family: 'Oswald', 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 20px rgba(204,0,0,0.50);
+  text-decoration: none !important;
+}
+
+/* Tagline */
+body.style-rock .site-title .site-description,
+body.style-rock .site-header .site-description {
+  color: rgba(232,228,222,0.60);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Linha vermelha rasgando ao carregar ── */
+@keyframes rockLine {
+  0%   { width: 0; opacity: 0.5; }
+  60%  { opacity: 1; }
+  100% { width: 100%; opacity: 1; }
+}
+
+body.style-rock .site-header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #cc0000, #ff3333, #cc0000);
+  animation: rockLine 0.3s ease forwards;
+  margin-top: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-rock .site-header::after {
+    animation: none !important;
+    width: 100% !important;
+  }
+}
+
+/* ── Menu ── */
+body.style-rock .primary-nav {
+  background: #0f0f0f;
+  border-top: 1px solid rgba(204,0,0,0.20);
+  padding-bottom: 8px !important;
+}
+
+body.style-rock .primary-nav .menu a {
+  color: #e8e4de;
+  font-family: 'Oswald', 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.95rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover: chama vermelha subindo */
+body.style-rock .primary-nav .menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: rgba(204,0,0,0.25);
+  transition: height 0.22s ease;
+  z-index: -1;
+}
+
+body.style-rock .primary-nav .menu a:hover::before,
+body.style-rock .primary-nav .menu .current-menu-item > a::before {
+  height: 100%;
+}
+
+body.style-rock .primary-nav .menu a:hover,
+body.style-rock .primary-nav .menu .current-menu-item > a {
+  color: #ffffff;
+}
+
+body.style-rock .primary-nav .menu .current-menu-item > a {
+  border-bottom: 2px solid #cc0000;
+}
+
+/* ── Busca no header ── */
+body.style-rock .header-search-form .search-field {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(204,0,0,0.40) !important;
+  color: #e8e4de !important;
+}
+
+body.style-rock .header-search-form .search-field::placeholder {
+  color: rgba(232,228,222,0.40) !important;
+}
+
+body.style-rock .header-search-form .search-submit {
+  background: #cc0000 !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+
+body.style-rock .header-search-form .search-submit:hover {
+  background: #aa0000 !important;
+  box-shadow: 0 0 12px rgba(204,0,0,0.50) !important;
+}
+
+/* ── Área de conteúdo ── */
+body.style-rock main {
+  background-color: #1a1a1a !important;
+  border-right: 1px solid #2a2a2a;
+}
+
+body.style-rock .site-content {
+  background-color: #111111 !important;
+}
+
+/* ── Títulos — entrada de impacto ── */
+@keyframes rockImpact {
+  0%   { opacity: 0; transform: translateY(-8px) scaleY(1.04); }
+  100% { opacity: 1; transform: translateY(0) scaleY(1); }
+}
+
+body.style-rock h1,
+body.style-rock h2,
+body.style-rock h3,
+body.style-rock .entry-title {
+  color: #ffffff;
+  font-family: 'Oswald', 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  animation: rockImpact 0.25s ease both;
+}
+
+body.style-rock .entry-title a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+body.style-rock .entry-title a:hover {
+  color: #cc0000;
+}
+
+/* ── Subtítulos de conteúdo ── */
+body.style-rock .post-content h2,
+body.style-rock .page-content h2 {
+  color: #cc0000;
+  border-bottom: 1px solid rgba(204,0,0,0.30);
+  padding-bottom: 0.4em;
+}
+
+body.style-rock .post-content h3,
+body.style-rock .page-content h3 {
+  color: #e8e4de;
+}
+
+/* ── Links ── */
+body.style-rock a {
+  color: #cc0000;
+}
+
+body.style-rock a:hover {
+  color: #ff3333;
+}
+
+/* ── Blockquote — aspas de palco ── */
+body.style-rock .post-content blockquote,
+body.style-rock .page-content blockquote {
+  border-left: 4px solid #cc0000 !important;
+  background: rgba(204,0,0,0.06) !important;
+  color: #c8c4be !important;
+  border-radius: 0 6px 6px 0 !important;
+  padding: 1.4rem 1.8rem !important;
+  font-style: italic !important;
+  position: relative !important;
+}
+
+body.style-rock .post-content blockquote::before,
+body.style-rock .page-content blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  font-size: 4rem;
+  color: rgba(204,0,0,0.30);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ── Botão Leia mais ── */
+body.style-rock .read-more {
+  background: #cc0000 !important;
+  color: #ffffff !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  border-radius: 4px !important;
+}
+
+body.style-rock .read-more:hover {
+  background: #aa0000 !important;
+  box-shadow: 0 4px 16px rgba(204,0,0,0.40) !important;
+  transform: translateY(-1px) !important;
+  color: #ffffff !important;
+}
+
+/* ── Botão Voltar ── */
+body.style-rock .back-link a {
+  display: inline-block;
+  background: transparent;
+  color: #cc0000 !important;
+  -webkit-text-fill-color: #cc0000 !important;
+  border: 2px solid #cc0000;
+  border-radius: 4px;
+  padding: 6px 16px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.88rem;
+  text-decoration: none !important;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+body.style-rock .back-link a:hover {
+  background: #cc0000 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* ── Sidebar ── */
+body.style-rock aside {
+  background-color: #161616 !important;
+  border-left: 1px solid #2a2a2a !important;
+}
+
+body.style-rock .widget {
+  background-color: #1e1e1e !important;
+  border: 1px solid #2a2a2a !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.40) !important;
+}
+
+/* Linha vermelha no topo dos widgets */
+body.style-rock .widget::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #cc0000, #660000);
+}
+
+body.style-rock .widget {
+  position: relative;
+  overflow: hidden;
+}
+
+body.style-rock .widget h2,
+body.style-rock .widget h3,
+body.style-rock .widget h4 {
+  color: #cc0000 !important;
+  font-family: 'Oswald', 'Barlow Condensed', sans-serif !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  border-bottom: 1px solid rgba(204,0,0,0.25) !important;
+  padding-bottom: 8px !important;
+}
+
+body.style-rock .widget a {
+  color: #cc0000;
+}
+
+body.style-rock .widget a:hover {
+  color: #ff3333;
+}
+
+body.style-rock .widget p,
+body.style-rock .widget li,
+body.style-rock .widget span {
+  color: #a8a49e !important;
+}
+
+/* ── Comentários ── */
+body.style-rock .comment-list .comment-body {
+  background: #1e1e1e !important;
+  border: 1px solid #2a2a2a !important;
+}
+
+body.style-rock .comment-author .fn {
+  color: #cc0000 !important;
+  -webkit-text-fill-color: #cc0000 !important;
+}
+
+body.style-rock .comment-author-name,
+body.style-rock .comment-author-name a {
+  color: #cc0000 !important;
+  -webkit-text-fill-color: #cc0000 !important;
+}
+
+body.style-rock .comment-metadata a {
+  color: #666660 !important;
+}
+
+body.style-rock .comment-content p {
+  color: #c8c4be !important;
+}
+
+body.style-rock .comment-reply-link,
+body.style-rock .reply a,
+body.style-rock .comment-reply a {
+  background: transparent !important;
+  border: 2px solid #cc0000 !important;
+  color: #cc0000 !important;
+  -webkit-text-fill-color: #cc0000 !important;
+  font-family: 'Oswald', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  padding: 5px 12px !important;
+  border-radius: 3px !important;
+  transition: background 0.2s ease, color 0.2s ease !important;
+}
+
+body.style-rock .comment-reply-link:hover,
+body.style-rock .reply a:hover,
+body.style-rock .comment-reply a:hover {
+  background: #cc0000 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* ── Formulário de comentários ── */
+body.style-rock .comment-form input,
+body.style-rock .comment-form textarea {
+  background: #111111 !important;
+  border: 1px solid #2a2a2a !important;
+  color: #e8e4de !important;
+  border-radius: 4px !important;
+}
+
+body.style-rock .comment-form input:focus,
+body.style-rock .comment-form textarea:focus {
+  border-color: #cc0000 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(204,0,0,0.25) !important;
+}
+
+body.style-rock .comment-form label {
+  color: #a8a49e !important;
+}
+
+body.style-rock #submit,
+body.style-rock .comment-form .submit {
+  background: #cc0000 !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  border-radius: 4px !important;
+  padding: 10px 28px !important;
+}
+
+body.style-rock #submit:hover,
+body.style-rock .comment-form .submit:hover {
+  background: #aa0000 !important;
+  box-shadow: 0 4px 16px rgba(204,0,0,0.40) !important;
+}
+
+/* ── Meta do post (data, autor, categoria) ── */
+body.style-rock .post-meta {
+  background: #161616 !important;
+  border-left: 4px solid #cc0000 !important;
+  color: #888880 !important;
+}
+
+body.style-rock .post-meta a {
+  color: #cc0000 !important;
+}
+
+/* ── Paginação ── */
+body.style-rock .pagination .page-numbers {
+  background: #1e1e1e !important;
+  color: #e8e4de !important;
+  border: 1px solid #2a2a2a !important;
+}
+
+body.style-rock .pagination .page-numbers.current {
+  background: #cc0000 !important;
+  color: #ffffff !important;
+  border-color: #cc0000 !important;
+}
+
+body.style-rock .pagination .page-numbers:hover {
+  background: rgba(204,0,0,0.20) !important;
+  border-color: #cc0000 !important;
+  color: #ffffff !important;
+}
+
+/* ── Rodapé ── */
+body.style-rock footer[role="contentinfo"] {
+  background: #080808 !important;
+  border-top: 2px solid rgba(204,0,0,0.40) !important;
+}
+
+body.style-rock .site-info,
+body.style-rock .site-info p {
+  color: rgba(232,228,222,0.50) !important;
+  border-top-color: rgba(204,0,0,0.15) !important;
+}
+
+body.style-rock footer a {
+  color: #cc0000 !important;
+}
+
+body.style-rock footer a:hover {
+  color: #ff3333 !important;
+}
+
+body.style-rock .social-title {
+  color: #cc0000 !important;
+}
+
+body.style-rock .social-links a {
+  color: #888880 !important;
+}
+
+body.style-rock .social-links a:hover {
+  color: #cc0000 !important;
+}
+
+body.style-rock footer[role="contentinfo"] *:not(a):not(svg):not(path) {
+  color: #888880 !important;
+}
+
+body.style-rock footer .widget h2,
+body.style-rock footer .widget h3,
+body.style-rock footer .widget h4,
+body.style-rock footer .footer-widget h2,
+body.style-rock footer .footer-widget h3,
+body.style-rock footer .footer-widget h4 {
+  color: #cc0000 !important;
+  border-bottom-color: rgba(204,0,0,0.30) !important;
+}
+
+body.style-rock footer .widget::before {
+  background: linear-gradient(90deg, rgba(204,0,0,0.60), rgba(204,0,0,0.10), transparent) !important;
+}
+
+body.style-rock footer .footer-widget,
+body.style-rock footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(204,0,0,0.15) !important;
+}
+
+/* ── Accent color global ── */
+body.style-rock { --accent-color: #cc0000; --on-accent: #ffffff; }
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  body.style-rock .menu-toggle {
+    color: #e8e4de !important;
+    border-color: rgba(204,0,0,0.40) !important;
+  }
+
+  body.style-rock #main-menu {
+    background: #0f0f0f !important;
+    border-top: 1px solid rgba(204,0,0,0.20) !important;
+  }
+
+  body.style-rock #main-menu a {
+    border-bottom-color: rgba(204,0,0,0.10) !important;
+    color: #e8e4de !important;
+  }
+
+  body.style-rock .search-toggle {
+    color: #e8e4de !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-rock h1,
+  body.style-rock h2,
+  body.style-rock h3,
+  body.style-rock .entry-title {
+    animation: none !important;
+  }
+  body.style-rock .primary-nav .menu a::before {
+    display: none !important;
+  }
 }

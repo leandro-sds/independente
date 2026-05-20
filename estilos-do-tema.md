@@ -1,4 +1,4 @@
-# Estilos Visuais — Independent Theme v4.2.0
+# Estilos Visuais — Independent Theme v4.3.0
 
 Cada estilo foi projetado com identidade própria, animações exclusivas e personalidade visual
 única — mantendo o mesmo layout, acessibilidade e funcionalidades em todos eles.
@@ -162,6 +162,27 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 
 ---
 
+## 🎸 Rock — Preto, Vermelho e Metal
+
+**Ideal para:** bandas de rock, rádios rock, festivais, shows, podcasts de música pesada, fãs e roqueiros.
+
+- Cabeçalho preto profundo com gradiente escuro
+- Linha vermelha que rasga ao carregar — rápida e agressiva (0.3s)
+- Menu em caixa alta — Oswald bold, sem frescura
+- Menu hover com chama vermelha subindo
+- Títulos com entrada de impacto — sem suavidade, direto
+- Blockquote com aspas em vermelho sangue e fundo escuro
+- Widgets com borda vermelha no topo e fundo quase preto
+- Botão Leia mais em vermelho sólido, hover com brilho metálico
+- Comentários com nome do autor em vermelho, botão Responder com borda vermelha
+- Formulário de comentários com campos escuros e foco vermelho
+- Paginação escura com números em vermelho e fundo preto no atual
+- Rodapé preto profundo com linha vermelha separando do conteúdo
+- Fonte Oswald nos títulos e menu — força e identidade
+- Visual de palco, show e rádio rock
+
+---
+
 ## Qual estilo escolher?
 
 | Tipo de site | Estilo recomendado |
@@ -172,6 +193,7 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 | Música retrô / Jazz / Café | 📻 Vintage Café |
 | Futebol / Esportes / Jornalismo esportivo | ⚽ Campo e Paixão |
 | Clube com identidade vermelho e branco | 🔴 Colorado |
+| Bandas, rádio rock, festivais, shows | 🎸 Rock |
 | Blog / Literatura / Escritor | ✍️ Tinta & Papel |
 | Startup / Tecnologia / Games | ⚡ Moderno |
 | Qualquer tipo de site | ⬜ Padrão |
