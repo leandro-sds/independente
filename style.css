@@ -4,7 +4,7 @@ Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
 Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 9 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista, incluindo o estilo Colorado. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 4.3.0
+Version: 4.4.0
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -114,6 +114,18 @@ body {
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Foco global: suprime outline azul do browser no clique (mouse)
+   e usa a cor de destaque do estilo na navegação por teclado */
+*:focus:not(:focus-visible) {
+  outline: none !important;
+}
+
+*:focus-visible {
+  outline: var(--focus-ring) !important;
+  outline-offset: 2px !important;
+  border-radius: 3px;
 }
 
 .site-header{
@@ -1551,138 +1563,18 @@ footer .container {
 
 /* ==========================================================
    Estilo Marinelli Drupal
-   Visual institucional clássico fiel ao tema Marinelli
+   Fiel ao tema Marinelli original para Drupal 7
+   Cores: azul #156aa3, laranja #f97e05, escuro #054b81
    ========================================================== */
 
-/* Bordas mais marcadas entre main e aside — separação clara */
-body.style-marinelli main {
-  border-right: 1px solid #c8ccd1;
-}
-
-body.style-marinelli aside {
-  border-left: none;
-  background-color: #e8eaf0;
-}
-
-/* Sidebar: títulos de widget com borda inferior azul — estilo Marinelli */
-body.style-marinelli .widget h3,
-body.style-marinelli .widget h2,
-body.style-marinelli .widget h4 {
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #2a4b8d;
-  padding-bottom: 6px;
-  border-bottom: 2px solid #2a4b8d;
-  margin-bottom: 12px;
-}
-
-/* Links no conteúdo: azul clássico com underline — idêntico ao Marinelli */
-body.style-marinelli .post-content a,
-body.style-marinelli .page-content a {
-  color: #0645ad;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-body.style-marinelli .post-content a:hover,
-body.style-marinelli .page-content a:hover {
-  color: #2a4b8d;
-}
-
-/* Títulos de conteúdo com cor azul-aço */
-body.style-marinelli .entry-title,
-body.style-marinelli h1,
-body.style-marinelli h2,
-body.style-marinelli h3 {
-  color: #2a4b8d;
-}
-
-/* Linha horizontal (hr / separador) mais visível */
-body.style-marinelli hr,
-body.style-marinelli .wp-block-separator {
-  border-color: #c8ccd1;
-  border-width: 1px 0 0;
-}
-
-/* Paginação com estilo Marinelli */
-body.style-marinelli .pagination .page-numbers {
-  border-radius: 2px;
-  border: 1px solid #c8ccd1;
-}
-
-body.style-marinelli .pagination .current,
-body.style-marinelli .pagination .page-numbers:hover {
-  background-color: #2a4b8d;
-  border-color: #2a4b8d;
-  color: #ffffff;
-}
-
-/* Blockquote com borda esquerda azul */
-body.style-marinelli .post-content blockquote,
-body.style-marinelli .page-content blockquote {
-  border-left-color: #2a4b8d;
-  background: #f0f2f7;
-  color: #333333;
-}
-
-/* Item ativo do menu com underline azul */
-body.style-marinelli .primary-nav .menu li.current-menu-item > a,
-body.style-marinelli .primary-nav .menu li.current_page_item > a {
-  color: #ffffff;
-  background: rgba(255,255,255,0.18);
-  border-bottom-color: #ffffff;
-}
-
-/* Marinelli: botão Buscar com fundo azul-aço */
-body.style-marinelli .header-search-form .search-submit {
-  background-color: #2a4b8d;
-  color: #ffffff;
-  border: 1px solid #1e3a6e;
-  font-weight: 600;
-}
-
-body.style-marinelli .header-search-form .search-submit:hover,
-body.style-marinelli .header-search-form .search-submit:focus-visible {
-  background-color: #1e3a6e;
-  filter: none;
-}
-
-/* Marinelli: campo de busca com borda azul sutil */
-body.style-marinelli .header-search-form .search-field {
-  border: 1px solid #c8ccd1;
-  background: rgba(255,255,255,0.12);
-  color: #ffffff;
-}
-
-body.style-marinelli .header-search-form .search-field::placeholder {
-  color: rgba(255,255,255,0.70);
-}
-
-/* Marinelli: botão Menu harmonizado */
-body.style-marinelli .menu-toggle {
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.30);
-  color: #ffffff;
-}
-
-body.style-marinelli .menu-toggle:hover {
-  background: rgba(255,255,255,0.20);
-}
-
-/* ==========================================================
-   Marinelli Drupal — Estilo completo e definitivo
-   Baseado no CSS original do tema Marinelli para Drupal 7
-   ========================================================== */
-
-/* ── Fundo do body: azul-marinho escuro fora do container ── */
+/* ── Body: azul-marinho escuro fora do container ── */
 body.style-marinelli {
   background-color: #17293d;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color: #333333;
 }
 
-/* ── Container de conteúdo: fundo branco com borda azul ── */
+/* ── Container de conteúdo: fundo branco com borda e sombra azul ── */
 body.style-marinelli .site-content {
   background-color: #ffffff;
   border: 8px solid #054b81;
@@ -1690,18 +1582,20 @@ body.style-marinelli .site-content {
   box-shadow: 5px 5px 20px #051b32;
 }
 
-/* ── Header: azul-aço sólido com sombra de texto ── */
+/* ── Header: azul-aço sólido ── */
 body.style-marinelli .site-header {
-  background-color: #054b81;
-  border-bottom: 3px solid #17293d;
+  background-color: #054b81 !important;
+  border-bottom: 3px solid #17293d !important;
+  box-shadow: none !important;
 }
 
+/* Nome e slogan no header */
 body.style-marinelli .site-title .site-name a {
   color: #ffffff;
-  text-decoration: none !important;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-shadow: rgba(10,10,10,0.4) 2px 3px 3px;
+  text-decoration: none !important;
 }
 
 body.style-marinelli .site-title .site-description {
@@ -1709,25 +1603,299 @@ body.style-marinelli .site-title .site-description {
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-/* ── Rodapé: azul-marinho escuro ── */
+/* ── Linha após header ── */
+body.style-marinelli .site-header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, #f97e05, rgba(249,126,5,0.3));
+  width: 100%;
+  animation: none;
+}
+
+/* ── Menu principal: gradiente azul, hover laranja ── */
+body.style-marinelli .primary-nav {
+  background: #156aa3;
+  padding-bottom: 0 !important;
+}
+
+body.style-marinelli .primary-nav .menu a {
+  color: #ffffff !important;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  font-size: 0.92rem !important;
+  text-decoration: none !important;
+  text-shadow: rgba(10,10,10,0.4) 1px 2px 2px;
+  background: linear-gradient(to bottom, #7ab0d4, #156aa3 40%);
+  border-radius: 5px 5px 0 0;
+  padding: 8px 14px !important;
+}
+
+body.style-marinelli .primary-nav .menu a:hover {
+  background: linear-gradient(to bottom, #f4d7ba, #f97e05 40%) !important;
+  color: #ffffff !important;
+}
+
+body.style-marinelli .primary-nav .menu li.current-menu-item > a,
+body.style-marinelli .primary-nav .menu li.current_page_item > a {
+  background: linear-gradient(to bottom, #5f9ac7, #054b81 40%) !important;
+  color: #ffffff !important;
+  border-bottom: none !important;
+}
+
+/* ── Busca no header ── */
+body.style-marinelli .header-search-form .search-field {
+  background-color: #156aa3 !important;
+  border: 4px solid #ffffff !important;
+  color: #ffffff !important;
+  border-radius: 5px !important;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif !important;
+}
+
+body.style-marinelli .header-search-form .search-field::placeholder {
+  color: rgba(255,255,255,0.75) !important;
+}
+
+body.style-marinelli .header-search-form .search-field:focus {
+  background-color: #054b81 !important;
+}
+
+body.style-marinelli .header-search-form .search-submit {
+  background-color: #054b81 !important;
+  border: 4px solid #ffffff !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  border-radius: 5px !important;
+  filter: none !important;
+}
+
+body.style-marinelli .header-search-form .search-submit:hover,
+body.style-marinelli .header-search-form .search-submit:focus-visible {
+  background-color: #f97e05 !important;
+  border-color: #f97e05 !important;
+  filter: none !important;
+}
+
+/* ── Menu toggle (mobile) ── */
+body.style-marinelli .menu-toggle {
+  background: rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.40);
+  color: #ffffff;
+}
+
+body.style-marinelli .menu-toggle:hover {
+  background: rgba(255,255,255,0.22);
+}
+
+/* ── Área principal ── */
+body.style-marinelli main {
+  background-color: #ffffff;
+  border-right: 1px solid #e2e2e2;
+}
+
+/* ── Sidebar ── */
+body.style-marinelli aside {
+  background-color: #f0f2f5;
+  border-left: none;
+}
+
+/* ── Widgets: cabeçalho gradiente azul, estilo Marinelli original ── */
+body.style-marinelli .widget {
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 0 0 5px 5px;
+  margin-bottom: 15px;
+}
+
+body.style-marinelli .widget h3,
+body.style-marinelli .widget h2,
+body.style-marinelli .widget h4 {
+  font-size: 1em !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: linear-gradient(to bottom, #5f9ac7, #054b81 40%) !important;
+  padding: 8px 10px !important;
+  margin: -1.75rem -1.75rem 1rem -1.75rem !important;
+  border-radius: 5px 5px 0 0 !important;
+  border-bottom: none !important;
+  text-shadow: rgba(10,10,10,0.4) 1px 2px 2px !important;
+}
+
+/* ── Tipografia de conteúdo ── */
+body.style-marinelli h1,
+body.style-marinelli h2,
+body.style-marinelli h3,
+body.style-marinelli h4 {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  color: #333333;
+  letter-spacing: -0.03em;
+}
+
+body.style-marinelli .entry-title,
+body.style-marinelli h1.entry-title {
+  color: #054b81;
+  font-weight: bold;
+}
+
+body.style-marinelli h2,
+body.style-marinelli h3 {
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 5px;
+}
+
+/* ── Links ── */
+body.style-marinelli a {
+  color: #156aa3;
+  text-decoration: underline;
+}
+
+body.style-marinelli a:hover {
+  color: #054b81;
+}
+
+body.style-marinelli a:active {
+  color: #f97e05;
+}
+
+body.style-marinelli .site-header a,
+body.style-marinelli .primary-nav a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Blockquote ── */
+body.style-marinelli .post-content blockquote,
+body.style-marinelli .page-content blockquote {
+  border-left: 4px solid #156aa3 !important;
+  background: #f0f4f8 !important;
+  color: #555555 !important;
+  border-radius: 0 5px 5px 0 !important;
+}
+
+/* ── Botão Leia mais: laranja Marinelli ── */
+body.style-marinelli .read-more {
+  background: #f97e05 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+
+body.style-marinelli .read-more:hover {
+  background: #d4680a !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  filter: none !important;
+}
+
+/* ── Botão Responder nos comentários ── */
+body.style-marinelli .comment-reply-link,
+body.style-marinelli .reply a,
+body.style-marinelli .comment-reply a {
+  background: #f97e05 !important;
+  border: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-weight: bold !important;
+  border-radius: 4px !important;
+}
+
+body.style-marinelli .comment-reply-link:hover,
+body.style-marinelli .reply a:hover,
+body.style-marinelli .comment-reply a:hover {
+  background: #d4680a !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* ── Nome do autor nos comentários ── */
+body.style-marinelli .comment-author .fn,
+body.style-marinelli .comment-author-name,
+body.style-marinelli .comment-author-name a {
+  color: #054b81 !important;
+}
+
+/* ── Botão Voltar ── */
+body.style-marinelli .back-link a {
+  color: #156aa3 !important;
+  border: 1px solid #156aa3 !important;
+  border-radius: 4px;
+  padding: 6px 14px;
+  text-decoration: none !important;
+}
+
+body.style-marinelli .back-link a:hover {
+  background: #f97e05 !important;
+  border-color: #f97e05 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* ── Paginação ── */
+body.style-marinelli .pagination .page-numbers {
+  border-radius: 3px;
+  border: 1px solid #c8ccd1;
+  color: #156aa3;
+}
+
+body.style-marinelli .pagination .current,
+body.style-marinelli .pagination .page-numbers:hover {
+  background: linear-gradient(to bottom, #7ab0d4, #156aa3 40%);
+  border-color: #156aa3;
+  color: #ffffff;
+}
+
+/* ── Faixas alternadas nos artigos da listagem ── */
+body.style-marinelli article:nth-child(even) {
+  background-color: #f5f7fa;
+}
+
+body.style-marinelli article:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* ── Separadores entre artigos ── */
+body.style-marinelli article {
+  border-bottom-color: #e2e2e2;
+}
+
+/* ── Linha horizontal ── */
+body.style-marinelli hr,
+body.style-marinelli .wp-block-separator {
+  border-color: #c8ccd1;
+  border-width: 1px 0 0;
+}
+
+/* ── Rodapé ── */
 body.style-marinelli footer[role="contentinfo"] {
   background-color: #17293d;
   border-top: 3px solid #054b81;
-  color: #ffffff;
 }
 
 body.style-marinelli .site-info,
 body.style-marinelli .site-info p {
-  color: rgba(255,255,255,0.80);
-  border-top-color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.80) !important;
+  border-top-color: rgba(255,255,255,0.15) !important;
 }
 
-body.style-marinelli .social-title { color: #ffffff; }
-body.style-marinelli footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
+body.style-marinelli .social-title { color: #ffffff !important; }
+
+body.style-marinelli footer a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+}
+
 body.style-marinelli footer a:hover { color: #ffffff; }
 
-/* Todos os elementos dentro do rodapé — seletor universal para cobrir qualquer estrutura de widget */
-body.style-marinelli footer *:not(a):not(svg):not(path) {
+body.style-marinelli footer[role="contentinfo"] *:not(a):not(svg):not(path) {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
@@ -1756,258 +1924,43 @@ body.style-marinelli footer .widget {
   box-shadow: none !important;
 }
 
-/* ── Área de conteúdo principal ── */
-body.style-marinelli main {
-  background-color: #ffffff;
-  border-right: 1px solid #e2e2e2;
-}
-
-/* ── Sidebar ── */
-body.style-marinelli aside {
-  background-color: #f0f2f5;
-  border-left: none;
-}
-
-body.style-marinelli .widget {
-  background-color: #ffffff;
-  border: 1px solid #e2e2e2;
-  border-radius: 0 0 5px 5px;
-  margin-bottom: 15px;
-}
-
-/* Títulos de widget: estilo Marinelli original */
-body.style-marinelli .widget h3,
-body.style-marinelli .widget h2,
-body.style-marinelli .widget h4 {
-  font-size: 1em;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #ffffff;
-  background: linear-gradient(to bottom, #5f9ac7, #054b81 40%);
-  padding: 6px 10px;
-  margin: -1.75rem -1.75rem 1rem -1.75rem;
-  border-radius: 5px 5px 0 0;
-  border-bottom: none;
-  text-shadow: rgba(10,10,10,0.4) 1px 2px 2px;
-}
-
-/* ── Menu principal: estilo Marinelli original ── */
-body.style-marinelli .primary-nav .menu a {
-  color: #ffffff !important;
-  text-decoration: none !important;
-  background: linear-gradient(to bottom, #7ab0d4, #156aa3 40%);
-  border-radius: 5px 5px 0 0;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.92rem;
-  text-shadow: rgba(10,10,10,0.4) 1px 2px 2px;
-}
-
-body.style-marinelli .primary-nav .menu a:hover {
-  background: linear-gradient(to bottom, #f4d7ba, #f97e05 40%) !important;
-  color: #ffffff !important;
-}
-
-/* Item ativo: azul mais escuro */
-body.style-marinelli .primary-nav .menu li.current-menu-item > a,
-body.style-marinelli .primary-nav .menu li.current_page_item > a {
-  background: linear-gradient(to bottom, #5f9ac7, #054b81 40%) !important;
-  color: #ffffff !important;
-  border-bottom: none !important;
-  font-weight: bold !important;
-}
-
-/* ── Campo de busca: estilo Marinelli original ── */
-body.style-marinelli .header-search-form .search-field {
-  background-color: #156aa3;
-  border: 4px solid #ffffff;
-  color: #ffffff;
-  font-size: 1rem;
-  border-radius: 5px;
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-}
-
-body.style-marinelli .header-search-form .search-field::placeholder {
-  color: rgba(255,255,255,0.75);
-}
-
-body.style-marinelli .header-search-form .search-field:focus {
-  background-color: #054b81;
-  outline: none;
-}
-
-/* ── Botão Buscar: estilo Marinelli original ── */
-body.style-marinelli .header-search-form .search-submit {
-  background-color: #054b81;
-  border: 4px solid #ffffff;
-  color: #ffffff;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 1rem;
-  border-radius: 5px;
-  filter: none;
-}
-
-body.style-marinelli .header-search-form .search-submit:hover,
-body.style-marinelli .header-search-form .search-submit:focus-visible {
-  background-color: #f97e05;
-  border-color: #f97e05;
-  filter: none;
-}
-
-/* ── Botão Menu (mobile) ── */
-body.style-marinelli .menu-toggle {
-  background: rgba(255,255,255,0.12);
-  border: 2px solid rgba(255,255,255,0.40);
-  color: #ffffff;
-}
-
-/* ── Tipografia e links: Marinelli original ── */
-body.style-marinelli {
-  color: #333333;
-}
-
-body.style-marinelli a {
-  color: #156aa3;
-  text-decoration: underline;
-}
-
-body.style-marinelli a:hover {
-  color: #163e55;
-}
-
-body.style-marinelli a:active {
-  color: #f97e05;
-}
-
-/* Links no header/menu: brancos */
-body.style-marinelli .site-header a,
-body.style-marinelli .primary-nav a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-/* ── Títulos de conteúdo ── */
-body.style-marinelli h1,
-body.style-marinelli h2,
-body.style-marinelli h3,
-body.style-marinelli h4 {
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-  font-weight: normal;
-  color: #333333;
-}
-
-body.style-marinelli .entry-title {
-  color: #054b81;
-  font-weight: bold;
-}
-
-/* H2 e H3 com borda inferior cinza — estilo original */
-body.style-marinelli h2,
-body.style-marinelli h3 {
-  border-bottom: 1px solid #e2e2e2;
-  padding-bottom: 5px;
-  text-transform: none;
-  letter-spacing: normal;
-}
-
-/* ── Blockquote ── */
-body.style-marinelli .post-content blockquote,
-body.style-marinelli .page-content blockquote {
-  border-left: 4px solid #156aa3;
-  background: #f0f4f8;
-  color: #555555;
-  border-radius: 0 5px 5px 0;
-}
-
-/* ── Faixas alternadas nas listas de artigos ── */
-body.style-marinelli article:nth-child(even) {
-  background-color: #f5f7fa;
-}
-
-body.style-marinelli article:nth-child(odd) {
-  background-color: #ffffff;
-}
-
-/* ── Separadores ── */
-body.style-marinelli article {
-  border-bottom-color: #e2e2e2;
-}
-
-body.style-marinelli .site-content {
-  border-top: 0;
-}
-
-/* ── Paginação ── */
-body.style-marinelli .pagination .page-numbers {
-  border-radius: 3px;
-  border: 1px solid #c8ccd1;
-  color: #156aa3;
-}
-
-body.style-marinelli .pagination .current,
-body.style-marinelli .pagination .page-numbers:hover {
-  background: linear-gradient(to bottom, #7ab0d4, #156aa3 40%);
-  border-color: #156aa3;
-  color: #ffffff;
-}
-
-/* ── Read more como link simples ── */
-body.style-marinelli .read-more {
-  background: #F97316 !important;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  text-decoration: none !important;
-  padding: 8px 16px !important;
-  border-radius: var(--radius-sm) !important;
-  box-shadow: none;
-  font-weight: 700 !important;
-  font-size: 0.9rem !important;
-}
-
-body.style-marinelli .read-more:hover {
-  background: #d4610e !important;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  transform: translateY(-1px) !important;
-  filter: none !important;
-}
-
 /* ── Logo: sem bordas ── */
 body.style-marinelli .logo img,
 body.style-marinelli img.custom-logo,
 body.style-marinelli .custom-logo-link,
 body.style-marinelli .custom-logo-link:focus,
-body.style-marinelli a.custom-logo-link {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
+body.style-marinelli a.custom-logo-link,
 body.style-marinelli .site-header figure,
 body.style-marinelli .site-header .wp-block-image,
 body.style-marinelli .logo {
   border: none !important;
   outline: none !important;
+  box-shadow: none !important;
 }
 
-/* Skip-link: proteção absoluta em todos os estilos escuros */
-body[class*="style-"] .skip-link {
-  opacity: 0 !important;
-  color: transparent !important;
-  background: transparent !important;
-  border-color: transparent !important;
-  pointer-events: none !important;
+/* ── Animação de entrada do header ── */
+@keyframes marinelliLine {
+  0%   { width: 0; }
+  100% { width: 100%; }
 }
 
-body[class*="style-"] .skip-link:focus,
-body[class*="style-"] .skip-link:focus-visible {
-  opacity: 1 !important;
-  color: var(--on-accent) !important;
-  background: var(--accent-color) !important;
-  border-color: var(--on-accent) !important;
-  pointer-events: auto !important;
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  body.style-marinelli #main-menu {
+    background: #054b81 !important;
+    border-top: 1px solid rgba(255,255,255,0.15) !important;
+  }
+
+  body.style-marinelli #main-menu a {
+    border-bottom-color: rgba(255,255,255,0.10) !important;
+    color: #ffffff !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-marinelli .primary-nav .menu a::before {
+    display: none !important;
+  }
 }
 
 /* ==========================================================
@@ -3200,18 +3153,6 @@ body.style-marinelli .page-content blockquote::before {
   font-family: Georgia, serif;
   line-height: 1;
   pointer-events: none;
-}
-
-/* ── Botões hover mais expressivos ── */
-body.style-marinelli .header-search-form .search-submit:hover {
-  background: #e06a00 !important;
-  box-shadow: 0 3px 12px rgba(249,126,5,0.30) !important;
-  transform: translateY(-1px) !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body.style-marinelli .header-search-form .search-submit:hover,
-  
 }
 
 /* ── Widgets com linha laranja no topo ── */
@@ -4923,7 +4864,7 @@ body.style-vintagecafe main {
    Paixão colorada · Força de estádio · Vermelho e branco
    ========================================================== */
 
-/* ── Keyframes exclusivos do estilo Colorado ── */
+/* ── Keyframes exclusivos do Colorado ── */
 
 @keyframes coloradoLine {
   from { width: 0; opacity: 0.5; }
@@ -4936,19 +4877,33 @@ body.style-vintagecafe main {
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ── Separação de áreas — vermelho e branco ── */
+@keyframes coloradoWidgetPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.85; }
+}
+
+/* ── Body: fundo branco sujo — como a camisa visitante ── */
+body.style-colorado {
+  background-color: #f8f2f2;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
+}
+
+/* ── Separação de áreas ── */
 body.style-colorado main {
   background-color: #ffffff;
   border-right: 1px solid rgba(232,41,28,0.14);
 }
+
 body.style-colorado aside {
-  background-color: #fff0f0;
+  background-color: #fdf5f5;
   border-left: none;
 }
+
 body.style-colorado .widget {
   background-color: #ffffff;
   border: 1px solid rgba(232,41,28,0.14);
 }
+
 body.style-colorado article,
 body.style-colorado aside {
   box-shadow: none;
@@ -4967,31 +4922,30 @@ body.style-colorado .site-header .logo {
   box-shadow: none !important;
 }
 
-/* ── Body e fundo ── */
-body.style-colorado {
-  background-color: #fff5f5;
-}
-
-/* ── 1. Header vermelho intenso com profundidade de escudo ── */
+/* ── 1. Header: textura metálica de escudo ── */
 body.style-colorado .site-header {
   background: linear-gradient(
     180deg,
-    #c8221a 0%,
-    #9c1510 100%
+    #d42820 0%,
+    #b01c12 45%,
+    #8a1209 100%
   ) !important;
-  border-bottom: 3px solid #7a0e09 !important;
-  box-shadow: 0 3px 18px rgba(0,0,0,0.38) !important;
+  border-bottom: 3px solid #6a0e07 !important;
+  box-shadow:
+    0 3px 18px rgba(0,0,0,0.40),
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    inset 0 -1px 0 rgba(0,0,0,0.20) !important;
 }
 
-/* ── 2. Faixa branca que se expande — a diagonal do escudo ── */
+/* ── 2. Linha dourada — cor de troféu ── */
 body.style-colorado .site-header::after {
   content: '';
   display: block;
-  height: 2px;
+  height: 3px;
   width: 0;
-  background: linear-gradient(90deg, #ffffff, rgba(255,255,255,0.60));
+  background: linear-gradient(90deg, #f5c842, #e8a800, rgba(245,200,66,0.30));
   animation: coloradoLine 0.65s ease forwards;
-  margin-top: 2px;
+  margin-top: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5001,24 +4955,39 @@ body.style-colorado .site-header::after {
   }
 }
 
-/* ── 3. Título do site e descrição no header ── */
+/* ── 3. Nome do site: Montserrat bold com sombra ── */
 body.style-colorado .site-title .site-name a {
   color: #ffffff;
   font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
   font-weight: 800;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  letter-spacing: 0.02em;
+  text-shadow:
+    0 1px 4px rgba(0,0,0,0.35),
+    0 0 20px rgba(245,200,66,0.20);
+  text-decoration: none !important;
 }
 
 body.style-colorado .site-title .site-description {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.80);
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
 }
 
-/* ── 4. Menu hover com fundo vermelho mais escuro subindo ── */
+/* ── 4. Menu: fundo vermelho escuro, hover branco subindo ── */
+body.style-colorado .primary-nav {
+  background: rgba(0,0,0,0.18);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-bottom: 8px !important;
+}
+
 body.style-colorado .primary-nav .menu a {
   position: relative !important;
   overflow: hidden !important;
-  transition: color 0.22s ease !important;
   color: #ffffff !important;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.03em !important;
+  transition: color 0.22s ease !important;
 }
 
 body.style-colorado .primary-nav .menu a::before {
@@ -5034,7 +5003,8 @@ body.style-colorado .primary-nav .menu a::before {
   pointer-events: none;
 }
 
-body.style-colorado .primary-nav .menu a:hover::before {
+body.style-colorado .primary-nav .menu a:hover::before,
+body.style-colorado .primary-nav .menu li.current-menu-item > a::before {
   height: 100%;
 }
 
@@ -5049,13 +5019,55 @@ body.style-colorado .primary-nav .menu li.current_page_item > a {
   border-radius: var(--radius-sm);
 }
 
+/* Indicador dourado no item ativo — como o troféu */
+body.style-colorado .primary-nav .menu li.current-menu-item > a::after,
+body.style-colorado .primary-nav .menu li.current_page_item > a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: #f5c842;
+  border-radius: 2px 2px 0 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   body.style-colorado .primary-nav .menu a::before {
     display: none !important;
   }
 }
 
-/* ── 5. Títulos com entrada de impacto — bola no ângulo ── */
+/* ── 5. Busca no header ── */
+body.style-colorado .header-search-form .search-field {
+  border: 1px solid rgba(255,255,255,0.65) !important;
+  background: rgba(255,255,255,0.18) !important;
+  color: #ffffff !important;
+}
+
+body.style-colorado .header-search-form .search-field::placeholder {
+  color: rgba(255,255,255,0.60) !important;
+}
+
+body.style-colorado .header-search-form .search-field:focus {
+  border-color: rgba(255,255,255,0.90) !important;
+  background: rgba(255,255,255,0.25) !important;
+}
+
+body.style-colorado .header-search-form .search-submit {
+  background: #f5c842 !important;
+  color: #6a0e07 !important;
+  border: none !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.20) !important;
+}
+
+body.style-colorado .header-search-form .search-submit:hover {
+  background: #e8a800 !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.28) !important;
+}
+
+/* ── 6. Tipografia: Montserrat bold, vermelho escuro ── */
 body.style-colorado h1,
 body.style-colorado h2,
 body.style-colorado h3,
@@ -5063,6 +5075,7 @@ body.style-colorado .entry-title {
   color: #9c1510;
   font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
   font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 body.style-colorado .entry-title,
@@ -5086,14 +5099,25 @@ body.style-colorado .page-content h3 {
   }
 }
 
-/* ── 6. Blockquote com borda vermelha e fundo levemente rosado ── */
+/* ── 7. Links ── */
+body.style-colorado a {
+  color: #b01c12;
+  text-decoration: none;
+}
+
+body.style-colorado a:hover {
+  color: #8a1209;
+  text-decoration: underline;
+}
+
+/* ── 8. Blockquote: borda vermelha com sombra dramática ── */
 body.style-colorado .post-content blockquote,
 body.style-colorado .page-content blockquote {
   border-left: 5px solid #E8291C !important;
   background: linear-gradient(
     135deg,
-    rgba(232,41,28,0.05) 0%,
-    rgba(255,255,255,0.80) 100%
+    rgba(232,41,28,0.06) 0%,
+    rgba(255,255,255,0.90) 100%
   ) !important;
   border-radius: 0 10px 10px 0 !important;
   padding: 1.4rem 1.8rem !important;
@@ -5102,7 +5126,7 @@ body.style-colorado .page-content blockquote {
   line-height: 1.75 !important;
   color: #1a0000 !important;
   position: relative !important;
-  box-shadow: 0 2px 12px rgba(232,41,28,0.08) !important;
+  box-shadow: 0 2px 16px rgba(232,41,28,0.10) !important;
 }
 
 body.style-colorado .post-content blockquote::before,
@@ -5118,10 +5142,13 @@ body.style-colorado .page-content blockquote::before {
   pointer-events: none;
 }
 
-/* ── 7. Widgets com faixa vermelha gradiente no topo ── */
+/* ── 9. Widgets: faixa dourada no topo + título vermelho ── */
 body.style-colorado .widget {
   position: relative;
   overflow: hidden;
+  box-shadow: 0 2px 12px rgba(232,41,28,0.08) !important;
+  border-radius: var(--radius-md) !important;
+  border: 1px solid rgba(232,41,28,0.12) !important;
 }
 
 body.style-colorado .widget::before {
@@ -5130,1434 +5157,205 @@ body.style-colorado .widget::before {
   top: 0;
   left: 0;
   width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, #E8291C, #c8221a, transparent);
+  height: 4px;
+  background: linear-gradient(90deg, #f5c842, #e8a800, #E8291C);
   pointer-events: none;
 }
 
 body.style-colorado .widget h3,
 body.style-colorado .widget h2,
 body.style-colorado .widget h4 {
-  border-bottom: 2px solid #E8291C !important;
-  padding-bottom: 8px !important;
   color: #9c1510 !important;
   -webkit-text-fill-color: #9c1510 !important;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  font-size: 0.82rem !important;
+  border-bottom: 1px solid rgba(232,41,28,0.20) !important;
+  padding-bottom: 8px !important;
 }
 
-/* ── 8. Links com sublinhado vermelho animado ── */
-body.style-colorado a {
-  color: #b01c12;
-  text-decoration: none;
+/* ── 10. Leia mais: dourado com texto escuro — troféu ── */
+body.style-colorado .read-more {
+  background: #E8291C !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  box-shadow: 0 2px 10px rgba(232,41,28,0.30) !important;
+  border-radius: 6px !important;
 }
 
-body.style-colorado a:hover {
-  color: #E8291C;
-}
-
-body.style-colorado .post-content a,
-body.style-colorado .page-content a {
-  color: #b01c12 !important;
-  text-decoration: none !important;
-  background-image: linear-gradient(#E8291C, #E8291C) !important;
-  background-size: 0% 2px !important;
-  background-repeat: no-repeat !important;
-  background-position: left bottom !important;
-  transition: background-size 0.28s ease, color 0.20s ease !important;
-  padding-bottom: 1px !important;
-}
-
-body.style-colorado .post-content a:hover,
-body.style-colorado .page-content a:hover {
-  color: #E8291C !important;
-  background-size: 100% 2px !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body.style-colorado .post-content a,
-  body.style-colorado .page-content a {
-    text-decoration: underline !important;
-    background-image: none !important;
-  }
-}
-
-/* ── 9. Texto corrido ── */
-body.style-colorado .post-content p,
-body.style-colorado .page-content p,
-body.style-colorado .post-content li,
-body.style-colorado .page-content li {
-  color: #1a0000;
-  line-height: 1.75;
-}
-
-/* ── 10. Botão de busca vermelho ── */
-body.style-colorado .header-search-form .search-submit {
-  background-color: #7a0e09;
-  color: #ffffff;
-  border: none;
-}
-
-body.style-colorado .header-search-form .search-submit:hover,
-body.style-colorado .header-search-form .search-submit:focus-visible {
-  background: #5c0806 !important;
-  box-shadow: 0 4px 16px rgba(232,41,28,0.40) !important;
-  transform: translateY(-1px) !important;
-}
-
-body.style-colorado .header-search-form .search-field {
-  background: rgba(255,255,255,0.15);
-  color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.35);
-  border-radius: var(--radius-sm);
-}
-
-body.style-colorado .header-search-form .search-field::placeholder {
-  color: rgba(255,255,255,0.65);
-}
-
-body.style-colorado .header-search-form .search-field:focus {
-  background: rgba(255,255,255,0.22);
-  border-color: rgba(255,255,255,0.70);
-  outline: none;
-}
-
-/* ── 11. Botão read-more ── */
 body.style-colorado .read-more:hover {
-  background: #9c1510 !important;
-  box-shadow: 0 4px 16px rgba(232,41,28,0.38) !important;
+  background: #c8221a !important;
+  box-shadow: 0 4px 18px rgba(232,41,28,0.40) !important;
   transform: translateY(-2px) !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body.style-colorado .header-search-form .search-submit:hover {
-    transform: none !important;
-  }
-}
-
-/* ── 12. Menu hambúrguer ── */
-body.style-colorado .menu-toggle {
-  color: #ffffff;
-  border-color: rgba(255,255,255,0.35);
-}
-
-body.style-colorado .menu-toggle:hover {
-  background: rgba(255,255,255,0.18);
-}
-
-/* ── 13. Rodapé vermelho escuro ── */
-body.style-colorado footer[role="contentinfo"] {
-  background: linear-gradient(180deg, #9c1510 0%, #7a0e09 100%);
-  border-top: 3px solid #E8291C;
-}
-
-body.style-colorado .site-info,
-body.style-colorado .site-info p {
-  color: rgba(255,255,255,0.78);
-  border-top-color: rgba(255,255,255,0.18);
-}
-
-body.style-colorado footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
-body.style-colorado footer a:hover { color: #ffffff; }
-body.style-colorado .social-title { color: #ffffff; }
-body.style-colorado .social-links a { color: rgba(255,255,255,0.85); }
-
-/* Títulos e textos dos widgets dentro do rodapé — forçar branco sobre vermelho escuro */
-/* Todos os elementos dentro do rodapé — seletor universal para cobrir qualquer estrutura de widget */
-body.style-colorado footer *:not(a):not(svg):not(path) {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
 
-/* Sobrescreve a regra .widget h2/h3 que força vermelho escuro em todos os widgets */
-body.style-colorado footer .widget h1,
-body.style-colorado footer .widget h2,
-body.style-colorado footer .widget h3,
-body.style-colorado footer .widget h4,
-body.style-colorado footer .widget .widget-title,
-body.style-colorado footer .footer-widget h1,
-body.style-colorado footer .footer-widget h2,
-body.style-colorado footer .footer-widget h3,
-body.style-colorado footer .footer-widget h4 {
+/* ── 11. Botão Voltar ── */
+body.style-colorado .back-link a {
+  color: #9c1510 !important;
+  border: 2px solid rgba(232,41,28,0.40) !important;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-weight: 600;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
+  text-decoration: none !important;
+}
+
+body.style-colorado .back-link a:hover {
+  background: #E8291C !important;
+  border-color: #E8291C !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
-  border-bottom-color: rgba(255,255,255,0.25) !important;
 }
 
-body.style-colorado footer h1,
-body.style-colorado footer h2,
-body.style-colorado footer h3,
-body.style-colorado footer h4,
-body.style-colorado footer .widget-title {
-  border-bottom-color: rgba(255,255,255,0.25) !important;
+/* ── 12. Comentários ── */
+body.style-colorado .comment-author .fn,
+body.style-colorado .comment-author-name,
+body.style-colorado .comment-author-name a {
+  color: #9c1510 !important;
 }
 
-body.style-colorado footer .widget::before {
-  background: linear-gradient(90deg, rgba(255,255,255,0.40), rgba(255,255,255,0.15), transparent) !important;
+body.style-colorado .comment-reply-link,
+body.style-colorado .reply a,
+body.style-colorado .comment-reply a {
+  background: transparent !important;
+  border: 2px solid #E8291C !important;
+  color: #E8291C !important;
+  -webkit-text-fill-color: #E8291C !important;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  border-radius: 4px !important;
+  padding: 5px 12px !important;
 }
 
-/* Remove o fundo branco do card que o tema aplica globalmente ao .footer-widget */
-body.style-colorado footer .footer-widget,
-body.style-colorado footer .widget {
-  background-color: transparent !important;
-  border-color: rgba(255,255,255,0.15) !important;
-  box-shadow: none !important;
+body.style-colorado .comment-reply-link:hover,
+body.style-colorado .reply a:hover,
+body.style-colorado .comment-reply a:hover {
+  background: #E8291C !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* ── 13. Meta do post ── */
+body.style-colorado .post-meta {
+  background: #fff5f5 !important;
+  border-left: 4px solid #E8291C !important;
+}
+
+body.style-colorado .post-meta a {
+  color: #9c1510 !important;
 }
 
 /* ── 14. Paginação ── */
 body.style-colorado .pagination .page-numbers {
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(232,41,28,0.30);
-  color: #b01c12;
+  border: 1px solid rgba(232,41,28,0.25) !important;
+  color: #9c1510 !important;
+  border-radius: 4px !important;
 }
 
 body.style-colorado .pagination .current,
 body.style-colorado .pagination .page-numbers:hover {
-  background: linear-gradient(to bottom, #E8291C, #9c1510);
-  border-color: #9c1510;
-  color: #ffffff;
+  background: #E8291C !important;
+  border-color: #E8291C !important;
+  color: #ffffff !important;
 }
 
-/* ── 15. Artigos com fundo alternado suave ── */
-body.style-colorado article:nth-child(even) {
-  background-color: #fff8f8;
+/* ── 15. Rodapé ── */
+body.style-colorado footer[role="contentinfo"] {
+  background: linear-gradient(180deg, #8a1209 0%, #6a0e07 100%) !important;
+  border-top: 3px solid #f5c842 !important;
+  box-shadow: inset 0 1px 0 rgba(255,200,66,0.20) !important;
 }
 
-body.style-colorado article:nth-child(odd) {
-  background-color: #ffffff;
+body.style-colorado .site-info,
+body.style-colorado .site-info p {
+  color: rgba(255,255,255,0.75) !important;
+  border-top-color: rgba(255,255,255,0.15) !important;
 }
 
-body.style-colorado article {
-  border-bottom-color: rgba(232,41,28,0.12);
+body.style-colorado .social-title {
+  color: #f5c842 !important;
 }
 
-/* ── 16. Animação de pulso no widget — como coração de torcedor ── */
-@keyframes coloradoWidgetPulse {
-  0%, 100% { border-top-color: #E8291C; }
-  50%       { border-top-color: #ff5547; }
+body.style-colorado footer a {
+  color: rgba(255,255,255,0.85) !important;
 }
 
-body.style-colorado .sidebar .widget {
-  animation: coloradoWidgetPulse 2.8s ease-in-out infinite;
+body.style-colorado footer a:hover {
+  color: #f5c842 !important;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  body.style-colorado .sidebar .widget {
-    animation: none !important;
-  }
+body.style-colorado footer[role="contentinfo"] *:not(a):not(svg):not(path) {
+  color: rgba(255,255,255,0.85) !important;
 }
 
-/* ==========================================================
-   CORRECTIONS v3.4.0 — Completing missing elements per style
-   so every style has identical features, just different colors
-   ========================================================== */
-
-/* ──────────────────────────────────────────────────────────
-   style-default — missing: site-name/description, menu-toggle,
-   current-menu-item, search-field, post-content p,
-   pagination, footer, site-info, social-links, social-title
-   ────────────────────────────────────────────────────────── */
-
-body.style-default .site-title .site-name a {
-  color: #ffffff;
-  font-weight: 700;
-  text-decoration: none !important;
+body.style-colorado footer .widget h2,
+body.style-colorado footer .widget h3,
+body.style-colorado footer .widget h4,
+body.style-colorado footer .footer-widget h2,
+body.style-colorado footer .footer-widget h3,
+body.style-colorado footer .footer-widget h4 {
+  color: #f5c842 !important;
+  -webkit-text-fill-color: #f5c842 !important;
+  border-bottom-color: rgba(245,200,66,0.30) !important;
 }
 
-body.style-default .site-title .site-description {
-  color: rgba(255,255,255,0.78);
-  font-size: 0.88rem;
+body.style-colorado footer .widget::before {
+  background: linear-gradient(90deg, rgba(245,200,66,0.60), rgba(245,200,66,0.20), transparent) !important;
 }
 
-body.style-default .primary-nav .menu li.current-menu-item > a,
-body.style-default .primary-nav .menu li.current_page_item > a {
-  color: #F6AD55 !important;
-  background: rgba(246,173,85,0.12) !important;
-  border-bottom: 2px solid #F6AD55 !important;
-  border-radius: 6px 6px 0 0 !important;
-  font-weight: 700 !important;
-}
-
-body.style-default .menu-toggle {
-  color: #ffffff;
-  border-color: rgba(255,255,255,0.35);
-}
-
-body.style-default .menu-toggle:hover {
-  background: rgba(246,173,85,0.15) !important;
-  border-color: #F6AD55;
-}
-
-body.style-default .header-search-form .search-field {
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.28);
-  color: #ffffff;
-  border-radius: var(--radius-sm);
-}
-
-body.style-default .header-search-form .search-field::placeholder {
-  color: rgba(255,255,255,0.55);
-}
-
-body.style-default .post-content p,
-body.style-default .page-content p,
-body.style-default .post-content li,
-body.style-default .page-content li {
-  color: #1e2532;
-  line-height: 1.75;
-}
-
-body.style-default .pagination .page-numbers {
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(39,48,70,0.25);
-  color: #273046;
-}
-
-body.style-default .pagination .current,
-body.style-default .pagination .page-numbers:hover {
-  background: linear-gradient(to bottom, #273046, #1a2235);
-  border-color: #1a2235;
-  color: #F6AD55;
-}
-
-body.style-default footer[role="contentinfo"] {
-  background: linear-gradient(180deg, #273046 0%, #1a2235 100%);
-  border-top: 2px solid rgba(246,173,85,0.30);
-}
-
-body.style-default .site-info,
-body.style-default .site-info p {
-  color: rgba(246,173,85,0.80);
-  border-top-color: rgba(246,173,85,0.20);
-}
-
-body.style-default footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
-body.style-default footer a:hover { color: #F6AD55; }
-
-body.style-default .social-title { color: #F6AD55; }
-
-body.style-default .social-links a {
-  color: rgba(255,255,255,0.80);
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-body.style-default .social-links a:hover {
-  color: #F6AD55;
-  transform: scale(1.15);
-}
-
-body.style-default footer *:not(a):not(svg):not(path) {
-  color: #F6AD55 !important;
-  -webkit-text-fill-color: #F6AD55 !important;
-}
-
-body.style-default footer .widget h1,
-body.style-default footer .widget h2,
-body.style-default footer .widget h3,
-body.style-default footer .widget h4,
-body.style-default footer .widget-title {
-  color: #F6AD55 !important;
-  -webkit-text-fill-color: #F6AD55 !important;
-  border-bottom-color: rgba(246,173,85,0.30) !important;
-}
-
-body.style-default footer .footer-widget,
-body.style-default footer .widget {
+body.style-colorado footer .footer-widget,
+body.style-colorado footer .widget {
   background-color: transparent !important;
-  border-color: rgba(246,173,85,0.18) !important;
+  border-color: rgba(255,255,255,0.12) !important;
   box-shadow: none !important;
 }
 
-/* ──────────────────────────────────────────────────────────
-
-/* ──────────────────────────────────────────────────────────
-   style-neonpop — missing: site-description, current-menu-item,
-   menu-toggle, search-field, post-content p, pagination,
-   social-links a:hover
-   ────────────────────────────────────────────────────────── */
-
-body.style-neonpop .site-title .site-description {
-  color: rgba(0,207,255,0.80);
-  font-size: 0.88rem;
-  letter-spacing: 0.04em;
-}
-
-body.style-neonpop .primary-nav .menu li.current-menu-item > a,
-body.style-neonpop .primary-nav .menu li.current_page_item > a {
-  color: #FF2D78 !important;
-  background: rgba(255,45,120,0.15) !important;
-  border-bottom: 2px solid #FF2D78 !important;
-  border-radius: 6px 6px 0 0 !important;
-  font-weight: 700 !important;
-  text-shadow: 0 0 10px rgba(255,45,120,0.50) !important;
-}
-
-body.style-neonpop .menu-toggle {
-  color: #ffffff;
-  border-color: rgba(255,45,120,0.40);
-}
-
-body.style-neonpop .menu-toggle:hover {
-  background: rgba(255,45,120,0.18) !important;
-  border-color: #FF2D78;
-}
-
-body.style-neonpop .header-search-form .search-field {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,45,120,0.35);
-  color: #ffffff;
-  border-radius: var(--radius-sm);
-}
-
-body.style-neonpop .header-search-form .search-field::placeholder {
-  color: rgba(0,207,255,0.55);
-}
-
-body.style-neonpop .post-content p,
-body.style-neonpop .page-content p,
-body.style-neonpop .post-content li,
-body.style-neonpop .page-content li {
-  color: rgba(220,220,255,0.90);
-  line-height: 1.75;
-}
-
-body.style-neonpop .pagination .page-numbers {
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(255,45,120,0.30);
-  color: #FF2D78;
-}
-
-body.style-neonpop .pagination .current,
-body.style-neonpop .pagination .page-numbers:hover {
-  background: linear-gradient(135deg, #FF2D78, #cc1a55);
-  border-color: #cc1a55;
-  color: #ffffff;
-}
-
-body.style-neonpop .social-links a:hover {
-  color: #FF2D78;
-  transform: scale(1.15);
-}
-
-/* ──────────────────────────────────────────────────────────
-   style-vintagecafe — missing: site-name, site-description,
-   current-menu-item, menu-toggle, search-field,
-   pagination, social-links a:hover
-   ────────────────────────────────────────────────────────── */
-
-body.style-vintagecafe .site-title .site-name a {
-  color: #FFF3DC;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-weight: 700;
-  text-decoration: none !important;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.40);
-}
-
-body.style-vintagecafe .site-title .site-description {
-  color: rgba(255,243,220,0.75);
-  font-family: Georgia, serif;
-  font-size: 0.88rem;
-}
-
-body.style-vintagecafe .primary-nav .menu li.current-menu-item > a,
-body.style-vintagecafe .primary-nav .menu li.current_page_item > a {
-  color: #f0c060 !important;
-  background: rgba(201,146,42,0.15) !important;
-  border-bottom: 2px solid #c9922a !important;
-  border-radius: 4px 4px 0 0 !important;
-  font-weight: 700 !important;
-}
-
-body.style-vintagecafe .menu-toggle {
-  color: #FFF3DC;
-  border-color: rgba(201,146,42,0.45);
-}
-
-body.style-vintagecafe .menu-toggle:hover {
-  background: rgba(201,146,42,0.18) !important;
-  border-color: #c9922a;
-}
-
-body.style-vintagecafe .header-search-form .search-field {
-  background: rgba(255,243,220,0.12);
-  border: 1px solid rgba(201,146,42,0.40);
-  color: #FFF3DC;
-  border-radius: var(--radius-sm);
-  font-family: Georgia, serif;
-}
-
-body.style-vintagecafe .header-search-form .search-field::placeholder {
-  color: rgba(255,243,220,0.50);
-}
-
-body.style-vintagecafe .pagination .page-numbers {
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(201,146,42,0.35);
-  color: #8B4513;
-  font-family: Georgia, serif;
-}
-
-body.style-vintagecafe .pagination .current,
-body.style-vintagecafe .pagination .page-numbers:hover {
-  background: linear-gradient(to bottom, #c9922a, #a87020);
-  border-color: #a87020;
-  color: #ffffff;
-}
-
-body.style-vintagecafe .social-links a:hover {
-  color: #f0c060;
-  transform: scale(1.15);
-}
-
-/* ──────────────────────────────────────────────────────────
-   style-campoepaixao — missing: site-name, site-description,
-   current-menu-item, menu-toggle, search-field, pagination,
-   social-links a:hover
-   ────────────────────────────────────────────────────────── */
-
-body.style-campoepaixao .site-title .site-name a {
-  color: #ffffff;
-  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
-  font-weight: 800;
-  text-decoration: none !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.30);
-}
-
-body.style-campoepaixao .site-title .site-description {
-  color: rgba(255,255,255,0.80);
-  font-size: 0.88rem;
-  letter-spacing: 0.02em;
-}
-
-body.style-campoepaixao .primary-nav .menu li.current-menu-item > a,
-body.style-campoepaixao .primary-nav .menu li.current_page_item > a {
-  color: #ffffff !important;
-  background: rgba(204,0,0,0.20) !important;
-  border-bottom: 2px solid #E53E3E !important;
-  border-radius: 4px 4px 0 0 !important;
-  font-weight: 700 !important;
-}
-
-body.style-campoepaixao .menu-toggle {
-  color: #ffffff;
-  border-color: rgba(255,255,255,0.35);
-}
-
-body.style-campoepaixao .menu-toggle:hover {
-  background: rgba(229,62,62,0.20) !important;
-  border-color: #E53E3E;
-}
-
-body.style-campoepaixao .header-search-form .search-field {
-  background: rgba(255,255,255,0.10);
-  border: 1px solid rgba(255,255,255,0.28);
-  color: #ffffff;
-  border-radius: var(--radius-sm);
-}
-
-body.style-campoepaixao .header-search-form .search-field::placeholder {
-  color: rgba(255,255,255,0.55);
-}
-
-body.style-campoepaixao .pagination .page-numbers {
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(229,62,62,0.30);
-  color: #0d5c28;
-}
-
-body.style-campoepaixao .pagination .current,
-body.style-campoepaixao .pagination .page-numbers:hover {
-  background: linear-gradient(to bottom, #E53E3E, #aa0000);
-  border-color: #aa0000;
-  color: #ffffff;
-}
-
-body.style-campoepaixao .social-links a:hover {
-  color: #E53E3E;
-  transform: scale(1.15);
-}
-
-/* ──────────────────────────────────────────────────────────
-   style-marinelli — missing: post-content p, social-links a,
-   social-links a:hover
-   ────────────────────────────────────────────────────────── */
-
-body.style-marinelli .post-content p,
-body.style-marinelli .page-content p,
-body.style-marinelli .post-content li,
-body.style-marinelli .page-content li {
-  color: #1a2535;
-  line-height: 1.75;
-}
-
-body.style-marinelli .social-links a {
-  color: rgba(255,255,255,0.85);
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-body.style-marinelli .social-links a:hover {
-  color: #F97316;
-  transform: scale(1.15);
-}
-
-/* ──────────────────────────────────────────────────────────
-   style-tintaepapel — missing: site-name, site-description,
-   current-menu-item, menu-toggle, search-field, post-content p,
-   pagination, footer, site-info, social-links, social-title
-   ────────────────────────────────────────────────────────── */
-
-body.style-tintaepapel .site-title .site-name a {
-  color: #FFF8F0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-weight: 700;
-  text-decoration: none !important;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.35);
-}
-
-body.style-tintaepapel .site-title .site-description {
-  color: rgba(255,248,240,0.72);
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-size: 0.88rem;
-}
-
-body.style-tintaepapel .primary-nav .menu li.current-menu-item > a,
-body.style-tintaepapel .primary-nav .menu li.current_page_item > a {
-  color: #f0c060 !important;
-  background: rgba(139,94,26,0.18) !important;
-  border-bottom: 2px solid #8B5E1A !important;
-  border-radius: 4px 4px 0 0 !important;
-  font-weight: 700 !important;
-}
-
-body.style-tintaepapel .menu-toggle {
-  color: #FFF8F0;
-  border-color: rgba(139,94,26,0.45);
-}
-
-body.style-tintaepapel .menu-toggle:hover {
-  background: rgba(139,94,26,0.20) !important;
-  border-color: #8B5E1A;
-}
-
-body.style-tintaepapel .header-search-form .search-field {
-  background: rgba(255,248,240,0.10);
-  border: 1px solid rgba(139,94,26,0.40);
-  color: #FFF8F0;
-  border-radius: var(--radius-sm);
-  font-family: Georgia, serif;
-}
-
-body.style-tintaepapel .header-search-form .search-field::placeholder {
-  color: rgba(255,248,240,0.50);
-}
-
-body.style-tintaepapel .post-content p,
-body.style-tintaepapel .page-content p,
-body.style-tintaepapel .post-content li,
-body.style-tintaepapel .page-content li {
-  color: #2c1a0a;
-  line-height: 1.80;
-  font-family: Georgia, serif;
-}
-
-body.style-tintaepapel .pagination .page-numbers {
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(139,94,26,0.35);
-  color: #7a3e10;
-  font-family: Georgia, serif;
-}
-
-body.style-tintaepapel .pagination .current,
-body.style-tintaepapel .pagination .page-numbers:hover {
-  background: linear-gradient(to bottom, #8B5E1A, #6b3a0f);
-  border-color: #6b3a0f;
-  color: #FFF8F0;
-}
-
-body.style-tintaepapel footer[role="contentinfo"] {
-  background: linear-gradient(180deg, #2C3E50 0%, #1a2530 100%);
-  border-top: 2px solid rgba(139,94,26,0.35);
-}
-
-body.style-tintaepapel .site-info,
-body.style-tintaepapel .site-info p {
-  color: rgba(255,248,240,0.72);
-  border-top-color: rgba(139,94,26,0.20);
-}
-
-body.style-tintaepapel footer a { color: rgba(255,248,240,0.85); text-decoration: none; }
-body.style-tintaepapel footer a:hover { color: #c49a3c; }
-
-body.style-tintaepapel .social-title { color: #c49a3c; }
-
-body.style-tintaepapel .social-links a {
-  color: rgba(255,248,240,0.80);
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-body.style-tintaepapel .social-links a:hover {
-  color: #c49a3c;
-  transform: scale(1.15);
-}
-
-body.style-tintaepapel footer *:not(a):not(svg):not(path) {
-  color: #c49a3c !important;
-  -webkit-text-fill-color: #c49a3c !important;
-}
-
-body.style-tintaepapel footer .widget h1,
-body.style-tintaepapel footer .widget h2,
-body.style-tintaepapel footer .widget h3,
-body.style-tintaepapel footer .widget h4,
-body.style-tintaepapel footer .widget-title {
-  color: #c49a3c !important;
-  -webkit-text-fill-color: #c49a3c !important;
-  border-bottom-color: rgba(196,154,60,0.30) !important;
-}
-
-body.style-tintaepapel footer .footer-widget,
-body.style-tintaepapel footer .widget {
-  background-color: transparent !important;
-  border-color: rgba(139,94,26,0.20) !important;
-  box-shadow: none !important;
-}
-
-/* ──────────────────────────────────────────────────────────
-   style-colorado — missing: social-links a:hover
-   ────────────────────────────────────────────────────────── */
-
-body.style-colorado .social-links a:hover {
-  color: #E8291C;
-  transform: scale(1.15);
-}
-
-/* ==========================================================
-/* — Corpo — */
-
-/* — Cabeçalho — */
-
-/* — Nome e tagline — */
-
-/* — Menu de navegação — */
-
-/* — Menu mobile toggle — */
-
-/* — Busca — */
-
-/* — Área de conteúdo — */
-
-/* — Títulos — */
-
-/* — Texto corrido — */
-
-/* — Links — */
-
-/* — Widgets — */
-
-/* — Blockquote — */
-
-/* — Botão Leia mais — */
-
-/* — Paginação — */
-
-/* — Rodapé — */
-
-/* ==========================================================
-   style-ceuafe — Céu e Fé v3.7.0
-   Paleta validada WCAG AA:
-     Azul profundo   #1C3A5F  — header, footer, títulos
-     Azul celeste    #4A90E2  — elementos decorativos, fundos
-     Azul link       #2B6CB0  — links (passa 5.74:1 sobre branco)
-     Dourado suave   #F5C542  — acento, detalhes (só sobre escuro)
-     Verde esperança #276749  — secundário como texto (passa AA)
-     Verde decorativo#3FA46A  — bordas, ícones, elementos visuais
-     Branco          #FFFFFF  — fundo conteúdo, texto sobre escuro
-     Aside           #EBF4FF  — azul celeste muito diluído
-     Texto           #0d1f35  — corpo do texto (16.61:1 sobre branco)
-   ========================================================== */
-
-/* — Variável muted — */
-body.style-ceuafe { --muted-text: #3a5a7a; }
-
-/* — Corpo geral — */
-body.style-ceuafe {
-  background-color: #EBF4FF;
-  font-family: 'Inter', 'Roboto', system-ui, sans-serif;
-  font-size: 1rem;
-  line-height: 1.80;
-}
-
-/* — Cabeçalho — */
-body.style-ceuafe .site-header {
-  background: linear-gradient(
-    180deg,
-    #1C3A5F 0%,
-    #254d7a 100%
-  ) !important;
-  border-bottom: 3px solid #142d4a !important;
-  box-shadow: 0 3px 20px rgba(28,58,95,0.35) !important;
-}
-
-/* Linha dourada decorativa abaixo do header */
-body.style-ceuafe .site-header::after {
-  content: '';
-  display: block;
-  height: 3px;
-  width: 0;
-  background: linear-gradient(90deg,
-    transparent,
-    #F5C542,
-    rgba(245,197,66,0.70),
-    #F5C542,
-    transparent
-  );
-  animation: ceuafeGoldLine 0.80s ease forwards;
-  margin-top: 0;
-}
-
-@keyframes ceuafeGoldLine {
-  to { width: 100%; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body.style-ceuafe .site-header::after {
-    animation: none !important;
-    width: 100% !important;
-  }
-}
-
-/* — Nome do site — dourado para impacto visual imediato */
-body.style-ceuafe .site-title .site-name a {
-  color: #F5C542 !important;
-  -webkit-text-fill-color: #F5C542 !important;
-  font-family: 'Poppins', 'Montserrat', sans-serif !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.01em !important;
-  text-decoration: none !important;
-  text-shadow: 0 1px 8px rgba(245,197,66,0.25);
-}
-
-/* — Tagline — */
-body.style-ceuafe .site-title .site-description {
-  color: rgba(245,197,66,0.90) !important;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.88rem;
-  letter-spacing: 0.03em;
-}
-
-/* — Menu de navegação — */
-body.style-ceuafe .primary-nav .menu a {
-  color: rgba(255,255,255,0.92) !important;
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 0.95rem !important;
-  letter-spacing: 0.02em !important;
-  padding: 6px 14px !important;
-  border-radius: 6px !important;
-  position: relative !important;
-  overflow: hidden !important;
-  transition: background 0.20s ease, color 0.20s ease !important;
-}
-
-body.style-ceuafe .primary-nav .menu a::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: rgba(74,144,226,0.20);
-  transition: height 0.22s ease;
-  border-radius: 6px;
-  pointer-events: none;
-}
-
-body.style-ceuafe .primary-nav .menu a:hover::before {
-  height: 100%;
-}
-
-body.style-ceuafe .primary-nav .menu a:hover {
-  background: rgba(255,255,255,0.10) !important;
-  color: #ffffff !important;
-}
-
-/* Item ativo — dourado sutil */
-body.style-ceuafe .primary-nav .menu li.current-menu-item > a,
-body.style-ceuafe .primary-nav .menu li.current_page_item > a {
-  color: #F5C542 !important;
-  background: rgba(245,197,66,0.12) !important;
-  border-bottom: 2px solid #F5C542 !important;
-  border-radius: 6px 6px 0 0 !important;
-  font-weight: 700 !important;
-}
-
-/* — Menu mobile toggle — */
-body.style-ceuafe .menu-toggle {
-  color: #ffffff;
-  border-color: rgba(245,197,66,0.45);
-}
-
-body.style-ceuafe .menu-toggle:hover {
-  background: rgba(245,197,66,0.15) !important;
-  border-color: #F5C542;
-}
-
-/* — Campo de busca — */
-body.style-ceuafe .header-search-form .search-field {
-  background: rgba(255,255,255,0.12) !important;
-  border: 1px solid rgba(245,197,66,0.40) !important;
-  color: #ffffff !important;
-  border-radius: 8px 0 0 8px !important;
-  font-family: 'Inter', sans-serif !important;
-}
-
-body.style-ceuafe .header-search-form .search-field::placeholder {
-  color: rgba(255,255,255,0.58) !important;
-}
-
-body.style-ceuafe .header-search-form .search-field:focus {
-  background: rgba(255,255,255,0.20) !important;
-  border-color: rgba(245,197,66,0.75) !important;
-  outline: none !important;
-}
-
-/* Botão buscar — dourado com texto escuro */
-body.style-ceuafe .header-search-form .search-submit {
-  background: #F5C542 !important;
-  color: #0d1f35 !important;
-  border: none !important;
-  border-radius: 0 8px 8px 0 !important;
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.02em !important;
-  transition: background 0.20s ease !important;
-}
-
-body.style-ceuafe .header-search-form .search-submit:hover {
-  
-  background: #d4a828 !important;
-  transform: none !important;
-  filter: none !important;
-}
-
-/* — Logo — */
-body.style-ceuafe .logo img,
-body.style-ceuafe img.custom-logo,
-body.style-ceuafe .custom-logo-link,
-body.style-ceuafe a.custom-logo-link {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* — Área de conteúdo — */
-body.style-ceuafe .site-content {
-  background-color: #EBF4FF;
-}
-
-body.style-ceuafe main {
-  background-color: #ffffff !important;
-  border-right: 1px solid rgba(28,58,95,0.08) !important;
-}
-
-body.style-ceuafe aside {
-  background-color: #ddeeff !important;
-  border-left: none !important;
-}
-
-/* — Títulos — */
-body.style-ceuafe h1,
-body.style-ceuafe h2,
-body.style-ceuafe h3,
-body.style-ceuafe h4,
-body.style-ceuafe .entry-title {
-  font-family: 'Poppins', 'Montserrat', sans-serif !important;
-  font-weight: 700 !important;
-  color: #1C3A5F !important;
-  -webkit-text-fill-color: #1C3A5F !important;
-  background: none !important;
-  letter-spacing: -0.01em !important;
-  line-height: 1.25 !important;
-}
-
-/* — Texto corrido — */
-body.style-ceuafe .post-content p,
-body.style-ceuafe .page-content p,
-body.style-ceuafe .post-content li,
-body.style-ceuafe .page-content li {
-  color: #0d1f35 !important;
-  font-family: 'Inter', sans-serif !important;
-  font-size: 1rem !important;
+/* ── 16. Textos de conteúdo ── */
+body.style-colorado .post-content p,
+body.style-colorado .page-content p,
+body.style-colorado .post-content li,
+body.style-colorado .page-content li {
+  color: #1a0000 !important;
   line-height: 1.85 !important;
 }
 
-/* — Links — */
-body.style-ceuafe a {
-  color: #2B6CB0 !important;
-  text-decoration: none !important;
-  transition: color 0.18s ease !important;
-}
-
-body.style-ceuafe a:hover {
-  color: #1C3A5F !important;
-  text-decoration: underline !important;
-}
-
-body.style-ceuafe .post-content a,
-body.style-ceuafe .page-content a {
-  color: #2B6CB0 !important;
-  text-decoration: underline !important;
-  text-underline-offset: 3px !important;
-}
-
-body.style-ceuafe .post-content a:hover,
-body.style-ceuafe .page-content a:hover {
-  color: #1C3A5F !important;
-}
-
-/* — H3 no conteúdo — */
-body.style-ceuafe .post-content h3,
-body.style-ceuafe .page-content h3 {
-  color: #1C3A5F !important;
-  -webkit-text-fill-color: #1C3A5F !important;
-}
-
-/* — Widgets — */
-body.style-ceuafe .widget {
-  background-color: #ffffff !important;
-  border: 1px solid rgba(28,58,95,0.10) !important;
-  border-radius: 12px !important;
-  box-shadow: 0 2px 16px rgba(28,58,95,0.08) !important;
-  padding: 1.5rem !important;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Linha verde esperança no topo do widget */
-body.style-ceuafe .widget::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 10%;
-  width: 80%;
-  height: 3px;
-  background: linear-gradient(90deg,
-    transparent,
-    #3FA46A,
-    transparent
-  );
-  opacity: 0.75;
-  pointer-events: none;
-}
-
-/* Título do widget — azul profundo, uppercase */
-body.style-ceuafe .widget h3,
-body.style-ceuafe .widget h2 {
-  font-family: 'Poppins', 'Inter', sans-serif !important;
-  font-weight: 700 !important;
-  font-size: 0.80rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  color: #1C3A5F !important;
-  -webkit-text-fill-color: #1C3A5F !important;
-  background: none !important;
-  border-bottom: 2px solid #3FA46A !important;
-  padding-bottom: 8px !important;
-  margin-bottom: 1rem !important;
-}
-
-body.style-ceuafe .widget p,
-body.style-ceuafe .widget blockquote {
-  font-size: 1rem !important;
+/* ── 17. Widget: textos ── */
+body.style-colorado .widget p,
+body.style-colorado .widget li,
+body.style-colorado .widget span,
+body.style-colorado .widget a {
+  font-size: 0.95rem !important;
   line-height: 1.70 !important;
-  color: #0d1f35 !important;
 }
 
-/* — Blockquote — */
-body.style-ceuafe .post-content blockquote,
-body.style-ceuafe .page-content blockquote {
-  border-left: 4px solid #4A90E2 !important;
-  background: linear-gradient(135deg,
-    rgba(74,144,226,0.06) 0%,
-    rgba(28,58,95,0.04) 100%
-  ) !important;
-  color: #0d1f35 !important;
-  border-radius: 0 12px 12px 0 !important;
-  padding: 1.4rem 1.6rem !important;
-  font-style: italic !important;
-  font-size: 1.06rem !important;
-  position: relative !important;
+/* ── 18. Aside: sombra sutil ── */
+body.style-colorado aside {
+  box-shadow: -2px 0 12px rgba(232,41,28,0.06) !important;
 }
 
-body.style-ceuafe .post-content blockquote::before,
-body.style-ceuafe .page-content blockquote::before {
-  content: '\201C';
-  position: absolute;
-  top: -10px;
-  left: 16px;
-  font-size: 4rem;
-  color: rgba(74,144,226,0.25);
-  font-family: Georgia, serif;
-  line-height: 1;
-  pointer-events: none;
-}
-
-/* — Botão Leia mais — verde esperança sobre escuro */
-body.style-ceuafe .read-more {
-  background: linear-gradient(135deg, #1C3A5F, #254d7a) !important;
-  color: #ffffff !important;
-  border-radius: 8px !important;
-  font-weight: 600 !important;
-  transition: background 0.22s ease, box-shadow 0.22s ease !important;
-}
-
-body.style-ceuafe .read-more:hover {
-  background: linear-gradient(135deg, #254d7a, #1C3A5F) !important;
-  box-shadow: 0 4px 18px rgba(28,58,95,0.30) !important;
-  transform: none !important;
-  filter: none !important;
-  color: #ffffff !important;
-}
-
-/* — Paginação — */
-body.style-ceuafe .pagination .page-numbers {
-  border: 1px solid rgba(28,58,95,0.20) !important;
-  border-radius: 8px !important;
-  color: #2B6CB0 !important;
-}
-
-body.style-ceuafe .pagination .current,
-body.style-ceuafe .pagination .page-numbers:hover {
-  background: linear-gradient(135deg, #1C3A5F, #254d7a) !important;
-  color: #ffffff !important;
-  border-color: #1C3A5F !important;
-  box-shadow: 0 2px 12px rgba(28,58,95,0.25) !important;
-}
-
-/* — Rodapé — */
-body.style-ceuafe footer[role="contentinfo"] {
-  background: linear-gradient(180deg, #1C3A5F 0%, #142d4a 100%) !important;
-  border-top: 3px solid rgba(245,197,66,0.40) !important;
-}
-
-body.style-ceuafe .site-info,
-body.style-ceuafe .site-info p {
-  color: rgba(245,197,66,0.82) !important;
-  border-top-color: rgba(245,197,66,0.20) !important;
-}
-
-body.style-ceuafe footer a {
-  color: rgba(255,255,255,0.82) !important;
-  text-decoration: none;
-}
-
-body.style-ceuafe footer a:hover { color: #F5C542 !important; }
-
-body.style-ceuafe .social-title { color: #F5C542 !important; }
-
-body.style-ceuafe .social-links a {
-  color: rgba(255,255,255,0.82) !important;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-body.style-ceuafe .social-links a:hover {
-  color: #F5C542 !important;
-  transform: scale(1.15);
-}
-
-body.style-ceuafe footer *:not(a):not(svg):not(path) {
-  color: rgba(245,197,66,0.88) !important;
-  -webkit-text-fill-color: rgba(245,197,66,0.88) !important;
-}
-
-body.style-ceuafe footer .widget h1,
-body.style-ceuafe footer .widget h2,
-body.style-ceuafe footer .widget h3,
-body.style-ceuafe footer .widget h4,
-body.style-ceuafe footer .widget-title {
-  color: #F5C542 !important;
-  -webkit-text-fill-color: #F5C542 !important;
-  border-bottom-color: rgba(245,197,66,0.30) !important;
-}
-
-body.style-ceuafe footer .footer-widget,
-body.style-ceuafe footer .widget {
-  background-color: transparent !important;
-  border-color: rgba(245,197,66,0.18) !important;
-  box-shadow: none !important;
-}
-
-/* --- Céu e Fé — correções v3.7.1 --- */
-
-/* Animação celestial para títulos — entrada suave de baixo com leve brilho */
-@keyframes ceuafeRise {
-  0%   { opacity: 0; transform: translateY(12px); }
-  60%  { transform: translateY(-2px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* post-content h2 — cor explícita com especificidade maior para vencer CSS do site */
-body.style-ceuafe .post-content h2,
-body.style-ceuafe .page-content h2 {
-  color: #1C3A5F !important;
-  -webkit-text-fill-color: #1C3A5F !important;
-  background: none !important;
-  animation: ceuafeRise 0.55s ease both !important;
-}
-
-body.style-ceuafe .post-content h3,
-body.style-ceuafe .page-content h3 {
-  color: #1C3A5F !important;
-  -webkit-text-fill-color: #1C3A5F !important;
-  background: none !important;
-  animation: ceuafeRise 0.55s ease 0.10s both !important;
-}
-
-body.style-ceuafe .post-content h4,
-body.style-ceuafe .page-content h4 {
-  color: #1C3A5F !important;
-  -webkit-text-fill-color: #1C3A5F !important;
-  background: none !important;
-}
-
-/* Garante que entry-title também nunca herde cor estranha */
-body.style-ceuafe .entry-title,
-body.style-ceuafe .entry-title a,
-body.style-ceuafe .entry-title a:hover {
-  color: #1C3A5F !important;
-  -webkit-text-fill-color: #1C3A5F !important;
-  background: none !important;
-  background-image: none !important;
-  -webkit-background-clip: unset !important;
-  background-clip: unset !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body.style-ceuafe .post-content h2,
-  body.style-ceuafe .page-content h2,
-  body.style-ceuafe .post-content h3,
-  body.style-ceuafe .page-content h3 {
-    animation: none !important;
+/* ── 19. Mobile ── */
+@media (max-width: 768px) {
+  body.style-colorado .menu-toggle {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.40) !important;
   }
-}
 
-/* --- Céu e Fé — tagline v3.7.2 ---
-   Especificidade reforçada para vencer CSS do site */
-body.style-ceuafe .site-header .site-title .site-description,
-body.style-ceuafe .site-header .site-description,
-body.style-ceuafe .site-branding .site-description {
-  color: rgba(245,197,66,0.90) !important;
-  -webkit-text-fill-color: rgba(245,197,66,0.90) !important;
-}
-
-/* ==========================================================
-   Especificidade reforçada — site-description (tagline)
-   Garante que a cor do tema vence CSS inline do site
-   em todos os estilos. v3.7.3
-   ========================================================== */
-
-body.style-default .site-header .site-title .site-description,
-body.style-default .site-header .site-description,
-body.style-default .site-branding .site-description {
-  color: rgba(255,255,255,0.78) !important;
-  -webkit-text-fill-color: rgba(255,255,255,0.78) !important;
-}
-
-body.style-neonpop .site-header .site-title .site-description,
-body.style-neonpop .site-header .site-description,
-body.style-neonpop .site-branding .site-description {
-  color: rgba(0,207,255,0.80) !important;
-  -webkit-text-fill-color: rgba(0,207,255,0.80) !important;
-}
-
-body.style-vintagecafe .site-header .site-title .site-description,
-body.style-vintagecafe .site-header .site-description,
-body.style-vintagecafe .site-branding .site-description {
-  color: rgba(255,243,220,0.75) !important;
-  -webkit-text-fill-color: rgba(255,243,220,0.75) !important;
-}
-
-body.style-campoepaixao .site-header .site-title .site-description,
-body.style-campoepaixao .site-header .site-description,
-body.style-campoepaixao .site-branding .site-description {
-  color: rgba(255,255,255,0.80) !important;
-  -webkit-text-fill-color: rgba(255,255,255,0.80) !important;
-}
-
-body.style-moderno .site-header .site-title .site-description,
-body.style-moderno .site-header .site-description,
-body.style-moderno .site-branding .site-description {
-  color: rgba(0,245,212,0.80) !important;
-  -webkit-text-fill-color: rgba(0,245,212,0.80) !important;
-}
-
-body.style-marinelli .site-header .site-title .site-description,
-body.style-marinelli .site-header .site-description,
-body.style-marinelli .site-branding .site-description {
-  color: rgba(255,255,255,0.85) !important;
-  -webkit-text-fill-color: rgba(255,255,255,0.85) !important;
-}
-
-body.style-tintaepapel .site-header .site-title .site-description,
-body.style-tintaepapel .site-header .site-description,
-body.style-tintaepapel .site-branding .site-description {
-  color: rgba(255,248,240,0.72) !important;
-  -webkit-text-fill-color: rgba(255,248,240,0.72) !important;
-}
-
-body.style-colorado .site-header .site-title .site-description,
-body.style-colorado .site-header .site-description,
-body.style-colorado .site-branding .site-description {
-  color: rgba(255,255,255,0.85) !important;
-  -webkit-text-fill-color: rgba(255,255,255,0.85) !important;
-}
-
-/* Também reforça o ceuafe com webkit que estava faltando */
-body.style-ceuafe .site-header .site-title .site-description,
-body.style-ceuafe .site-header .site-description,
-body.style-ceuafe .site-branding .site-description {
-  color: rgba(245,197,66,0.90) !important;
-  -webkit-text-fill-color: rgba(245,197,66,0.90) !important;
-}
-
-/* ==========================================================
-   Variável --header-muted por estilo
-   Corrige a cor da tagline (.site-description) que usa
-   var(--header-muted) definida no CSS base. v3.7.4
-   ========================================================== */
-
-body.style-ceuafe      { --header-muted: rgba(245,197,66,0.90); }
-body.style-neonpop     { --header-muted: rgba(0,207,255,0.80); }
-body.style-vintagecafe { --header-muted: rgba(255,243,220,0.75); }
-body.style-tintaepapel { --header-muted: rgba(255,248,240,0.72); }
-
-/* Os demais já funcionam com o padrão branco do :root */
-/* style-default, style-campoepaixao, style-marinelli,  */
-/* style-colorado, style-moderno: rgba(255,255,255,x)   */
-
-/* ==========================================================
-   MELHORIAS GLOBAIS v3.8.0
-   Aplicadas a todos os estilos via CSS base
-   ========================================================== */
-
-/* Respeita preferência por menos movimento no menu mobile */
-@media (prefers-reduced-motion: reduce) {
-  .primary-nav .menu {
-    transition: none !important;
-    visibility: hidden;
+  body.style-colorado #main-menu {
+    background: #8a1209 !important;
+    border-top: 1px solid rgba(255,255,255,0.15) !important;
   }
-  .primary-nav .menu.active {
-    transition: none !important;
-    visibility: visible;
+
+  body.style-colorado #main-menu a {
+    border-bottom-color: rgba(255,255,255,0.10) !important;
+    color: #ffffff !important;
   }
-}
-
-/* Espaçamento entre parágrafos — respiração no conteúdo */
-.post-content p,
-.page-content p {
-  margin-bottom: 1.4em;
-}
-
-.post-content p:last-child,
-.page-content p:last-child {
-  margin-bottom: 0;
-}
-
-/* ==========================================================
-   MELHORIAS POR ESTILO — transitions e box-shadow faltando
-   ========================================================== */
-
-/* — style-default — */
-body.style-default .read-more {
-  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
-}
-
-body.style-default .header-search-form .search-submit {
-  transition: background 0.20s ease !important;
-}
-
-body.style-default .widget {
-  box-shadow: 0 2px 14px rgba(39,48,70,0.08) !important;
-}
-
-/* — style-neonpop — */
-body.style-neonpop .read-more {
-  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
-}
-
-body.style-neonpop .header-search-form .search-submit {
-  transition: background 0.20s ease !important;
-}
-
-body.style-neonpop .widget {
-  box-shadow: 0 2px 14px rgba(255,45,120,0.10) !important;
-}
-
-/* — style-vintagecafe — */
-body.style-vintagecafe .read-more {
-  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
-}
-
-body.style-vintagecafe .header-search-form .search-submit {
-  transition: background 0.20s ease !important;
-}
-
-body.style-vintagecafe .widget {
-  box-shadow: 0 2px 14px rgba(201,146,42,0.10) !important;
-}
-
-/* — style-campoepaixao — */
-body.style-campoepaixao .read-more {
-  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
-}
-
-body.style-campoepaixao .header-search-form .search-submit {
-  transition: background 0.20s ease !important;
-}
-
-body.style-campoepaixao .widget {
-  box-shadow: 0 2px 14px rgba(229,62,62,0.10) !important;
-}
-
-/* — style-moderno — */
-body.style-moderno .header-search-form .search-submit {
-  transition: background 0.20s ease !important;
-}
-
-/* — style-marinelli — */
-body.style-marinelli .read-more {
-  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
-}
-
-body.style-marinelli .header-search-form .search-submit {
-  transition: background 0.20s ease !important;
-}
-
-/* — style-tintaepapel — */
-body.style-tintaepapel .read-more {
-  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
-}
-
-/* — style-colorado — */
-body.style-colorado .read-more {
-  transition: background 0.22s ease, box-shadow 0.22s ease, color 0.22s ease !important;
-}
-
-body.style-colorado .header-search-form .search-submit {
-  transition: background 0.20s ease !important;
-}
-
-/* — style-ceuafe — */
-body.style-ceuafe .header-search-form .search-submit {
-  transition: background 0.20s ease !important;
-}
-
-/* Reforço especificidade — nome do site em dourado v3.8.1 */
-body.style-ceuafe .site-header .site-title .site-name a,
-body.style-ceuafe .site-header .site-name a,
-body.style-ceuafe .site-branding .site-name a {
-  color: #F5C542 !important;
-  -webkit-text-fill-color: #F5C542 !important;
-  text-shadow: 0 1px 8px rgba(245,197,66,0.25) !important;
 }
 
 /* ==========================================================
@@ -6621,11 +5419,15 @@ body.style-colorado aside {
   line-height: 0;
   width: 160px;
   height: 110px;
+  min-width: 160px;
+  min-height: 110px;
 }
 
 .post-thumbnail-img {
-  width: 160px;
-  height: 110px;
+  width: 160px !important;
+  height: 110px !important;
+  max-width: 160px !important;
+  max-height: 110px !important;
   object-fit: cover;
   object-position: center;
   display: block;
@@ -6987,6 +5789,16 @@ body.style-rock .entry-title {
 body.style-rock .entry-title a {
   color: #ffffff;
   text-decoration: none;
+}
+
+body.style-rock .entry-title a:focus-visible {
+  outline: 3px solid #cc0000 !important;
+  outline-offset: 2px !important;
+  border-radius: 3px;
+}
+
+body.style-rock .entry-title a:focus:not(:focus-visible) {
+  outline: none !important;
 }
 
 body.style-rock .entry-title a:hover {

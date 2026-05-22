@@ -1,5 +1,17 @@
 # Changelog — Independent Theme
 
+## [4.4.0] — 2026-05-21
+
+### Visual
+- **Colorado reformulado** — header metálico em três camadas (vermelho vivo → vermelho médio → vermelho escuro), linha dourada após o header, botão Buscar em dourado com texto vermelho escuro, indicador dourado no item ativo do menu, widgets com faixa gradiente dourado→vermelho no topo, rodapé vermelho escuro com borda superior dourada e links em dourado no hover
+
+### Layout
+- **Imagem destacada nas páginas** — `page.php` agora exibe a imagem destacada no topo do conteúdo, igual aos posts. Busca o `alt` diretamente da biblioteca de mídia do WordPress. Não exibe na página inicial estática
+
+### Acessibilidade
+- **Foco por teclado global corrigido** — `*:focus:not(:focus-visible)` remove o outline azul padrão do browser no clique com mouse. `*:focus-visible` exibe o outline com a cor de destaque (`--accent-color`) de cada estilo. Cada um dos 10 estilos tem sua própria cor de foco coerente com sua identidade visual
+- **Imagens na listagem padronizadas** — todas as miniaturas fixadas em 160×110px com `object-fit: cover` e `object-position: center`. Nenhuma imagem cresce além do tamanho definido independente das dimensões originais
+
 ## [4.3.0] — 2026-05-21
 
 > *Lancei esta versão no dia em que completei 43 anos.*
@@ -26,6 +38,7 @@
   - Rodapé preto profundo com linha vermelha separando do conteúdo
   - Suporte completo a `prefers-reduced-motion`
   - Totalmente acessível — contraste WCAG AA validado em todos os pares
+- **Personalizador:** opção "Listar subpáginas" — quando desativada, páginas pai exibem apenas seu próprio conteúdo, sem listar as filhas abaixo
 
 ## [4.2.0] — 2026-05-20
 
@@ -48,6 +61,7 @@
 - **Campo e Paixão:** linha vermelha abaixo do menu reduzida de 3px para 2px
 - **Colorado:** busca e menu fixados à direita com flex global
 - **Moderno:** fallback de cor sólida no nome do site para browsers sem suporte a `background-clip: text`
+- **Marinelli:** reescrito do zero, fiel ao CSS original do Drupal 7
 
 ### Código
 - 4 keyframes órfãos do Céu e Fé removidos

@@ -561,6 +561,28 @@ function independent_theme_customize_register( $wp_customize ) {
       'rock'         => __( '🎸 Rock – Preto, Vermelho e Metal', 'independent-theme' ),
     ],
   ] );
+
+  // Opção: listar subpáginas
+  $wp_customize->add_section( 'independent_pages_section', [
+    'title'    => __( 'Páginas', 'independent-theme' ),
+    'priority' => 55,
+  ] );
+
+  $wp_customize->add_setting( 'independent_listar_subpaginas', [
+    'default'           => true,
+    'sanitize_callback' => function( $value ) {
+      return (bool) $value;
+    },
+    'transport'         => 'refresh',
+  ] );
+
+  $wp_customize->add_control( 'independent_listar_subpaginas', [
+    'label'       => __( 'Listar subpáginas', 'independent-theme' ),
+    'description' => __( 'Quando ativado, as subpáginas de uma página são listadas abaixo do seu conteúdo.', 'independent-theme' ),
+    'section'     => 'independent_pages_section',
+    'type'        => 'checkbox',
+  ] );
+
 }
 add_action( 'customize_register', 'independent_theme_customize_register' );
 

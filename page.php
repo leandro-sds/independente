@@ -9,24 +9,35 @@
         </header>
 
         <div class="page-content">
+          <?php if ( ! is_front_page() && has_post_thumbnail() ) : ?>
+            <figure class="post-featured-image">
+              <?php the_post_thumbnail( 'large', [
+                'loading' => 'eager',
+                'alt'     => get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) ?: get_the_title(),
+              ] ); ?>
+            </figure>
+          <?php endif; ?>
           <?php the_content(); ?>
         </div>
 
         <?php
-        // Paginação de subpáginas
-        $paged = get_query_var('paged') ? absint( get_query_var('paged') ) : 1;
+        // Lista subpáginas apenas se a opção estiver ativada no Personalizador
+        $listar_subpaginas = get_theme_mod( 'independent_listar_subpaginas', true );
 
-        $child_pages_query = new WP_Query([
-          'post_type'      => 'page',
-          'posts_per_page' => 10,
-          'paged'          => $paged,
-          'post_parent'    => get_the_ID(),
-          'orderby'        => 'date',
-          'order'          => 'DESC',
-          'no_found_rows'  => false,
-        ]);
+        if ( $listar_subpaginas ) :
+          $paged = get_query_var('paged') ? absint( get_query_var('paged') ) : 1;
 
-        if ( $child_pages_query->have_posts() ) :
+          $child_pages_query = new WP_Query([
+            'post_type'      => 'page',
+            'posts_per_page' => 10,
+            'paged'          => $paged,
+            'post_parent'    => get_the_ID(),
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+            'no_found_rows'  => false,
+          ]);
+
+          if ( $child_pages_query->have_posts() ) :
         ?>
           <section class="child-pages" aria-label="<?php esc_attr_e('Conteúdo relacionado', 'independent-theme'); ?>">
             <ul class="child-page-list">
@@ -49,6 +60,7 @@
           </section>
         <?php
           wp_reset_postdata();
+          endif;
         endif;
         ?>
 
