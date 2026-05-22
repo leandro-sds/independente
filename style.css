@@ -4,7 +4,7 @@ Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
 Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 9 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista, incluindo o estilo Colorado. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 4.4.0
+Version: 4.5.0
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -739,6 +739,59 @@ article:nth-child(5) { animation: fadeInUp 0.45s ease 0.42s both; }
 /* Footer: sobe suavemente */
 footer[role="contentinfo"] {
   animation: fadeInUp 0.5s ease 0.1s both;
+}
+
+/* ── Rodapé: 4 colunas ── */
+.footer-columns {
+  width: 100%;
+  background-color: var(--header-bg);
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.footer-columns-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+}
+
+.footer-col {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+/* ── Rodapé: faixa central ── */
+.footer-full-area {
+  width: 100%;
+  background-color: var(--header-bg);
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.footer-full-area .wrap {
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+}
+
+.footer-full-area .footer-widget--full {
+  width: 100%;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Mobile: colunas empilhadas */
+@media (max-width: 768px) {
+  .footer-columns-inner {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .footer-col {
+    flex: 1 1 100%;
+  }
 }
 
 /* Botão Buscar: transição de escala no hover — mais vivo */
@@ -2994,35 +3047,13 @@ body.style-campoepaixao{ --muted-text: #4a6a52; }
    Animações suaves e elegantes — sem carnaval 🎨
    ========================================================== */
 
-/* ── 1. Header com efeito aurora — luz se movendo suavemente ── */
-@keyframes ceuafeAurora {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 
-/* ── 2. Títulos com brilho coral suave ao entrar ── */
-@keyframes ceuafeTitleGlow {
-  0%   { text-shadow: none; opacity: 0; transform: translateY(12px); }
-  60%  { text-shadow: 0 0 20px rgba(224,123,57,0.25); opacity: 1; transform: translateY(0); }
-  100% { text-shadow: none; opacity: 1; transform: translateY(0); }
-}
 
-/* ── 3. Widgets com pulso coral suave no topo ── */
-@keyframes ceuafeWidgetPulse {
-  0%, 100% { opacity: 0.4; }
-  50%       { opacity: 1.0; }
-}
 
 /* ── 4. Blockquote com destaque especial para versículos ── */
 
 /* Aspas decorativas no blockquote */
 
-/* ── 5. Botões com hover brilhante e suave ── */
-@keyframes ceuafeButtonGlow {
-  0%   { box-shadow: 0 0 0 rgba(224,123,57,0); }
-  100% { box-shadow: 0 4px 20px rgba(224,123,57,0.35); }
-}
 
 /* ── Links no conteúdo com sublinhado coral animado ── */
 
@@ -4877,10 +4908,6 @@ body.style-vintagecafe main {
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-@keyframes coloradoWidgetPulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.85; }
-}
 
 /* ── Body: fundo branco sujo — como a camisa visitante ── */
 body.style-colorado {

@@ -1,27 +1,63 @@
 <footer role="contentinfo">
 
-  <div class="container">
+  <?php
+    $whatsapp  = sanitize_text_field( get_theme_mod( 'independent_whatsapp_url', '' ) );
+    $facebook  = sanitize_text_field( get_theme_mod( 'independent_facebook_url', '' ) );
+    $instagram = sanitize_text_field( get_theme_mod( 'independent_instagram_url', '' ) );
+    $youtube   = sanitize_text_field( get_theme_mod( 'independent_youtube_url', '' ) );
 
-    <?php
-      $whatsapp  = sanitize_text_field( get_theme_mod( 'independent_whatsapp_url', '' ) );
-      $facebook  = sanitize_text_field( get_theme_mod( 'independent_facebook_url', '' ) );
-      $instagram = sanitize_text_field( get_theme_mod( 'independent_instagram_url', '' ) );
-      $youtube   = sanitize_text_field( get_theme_mod( 'independent_youtube_url', '' ) );
+    $whatsapp_digits = $whatsapp ? preg_replace( '/\D/', '', $whatsapp ) : '';
+    $whatsapp_link   = $whatsapp_digits ? 'https://wa.me/' . $whatsapp_digits : '';
+    $facebook_link   = $facebook  ? 'https://www.facebook.com/' . ltrim( $facebook, '/' ) : '';
+    $instagram_link  = $instagram ? 'https://www.instagram.com/' . ltrim( $instagram, '/' ) : '';
+    $youtube_handle  = $youtube   ? ( str_starts_with( $youtube, '@' ) ? $youtube : '@' . $youtube ) : '';
+    $youtube_link    = $youtube   ? 'https://www.youtube.com/' . $youtube_handle : '';
 
-      // Monta URLs a partir dos nomes de usuário
-      $whatsapp_digits = $whatsapp ? preg_replace( '/\D/', '', $whatsapp ) : '';
-      $whatsapp_link   = $whatsapp_digits ? 'https://wa.me/' . $whatsapp_digits : '';
-      $facebook_link   = $facebook  ? 'https://www.facebook.com/' . ltrim( $facebook, '/' ) : '';
-      $instagram_link  = $instagram ? 'https://www.instagram.com/' . ltrim( $instagram, '/' ) : '';
-      $youtube_handle  = $youtube   ? ( str_starts_with( $youtube, '@' ) ? $youtube : '@' . $youtube ) : '';
-      $youtube_link    = $youtube   ? 'https://www.youtube.com/' . $youtube_handle : '';
-    ?>
+    $has_columns = is_active_sidebar('footer-1') || is_active_sidebar('footer-2') || is_active_sidebar('footer-3') || is_active_sidebar('footer-4');
+    $has_full    = is_active_sidebar('footer-full');
+  ?>
 
-    <?php if ( is_active_sidebar('footer-1') ) : ?>
-      <div class="footer-widgets" role="complementary" aria-label="<?php esc_attr_e('Rodapé', 'independent-theme'); ?>">
+  <?php if ( $has_columns ) : ?>
+  <div class="footer-columns" role="complementary" aria-label="<?php esc_attr_e('Rodapé — colunas', 'independent-theme'); ?>">
+    <div class="wrap footer-columns-inner">
+
+      <?php if ( is_active_sidebar('footer-1') ) : ?>
+      <div class="footer-col footer-col-1">
         <?php dynamic_sidebar('footer-1'); ?>
       </div>
-    <?php endif; ?>
+      <?php endif; ?>
+
+      <?php if ( is_active_sidebar('footer-2') ) : ?>
+      <div class="footer-col footer-col-2">
+        <?php dynamic_sidebar('footer-2'); ?>
+      </div>
+      <?php endif; ?>
+
+      <?php if ( is_active_sidebar('footer-3') ) : ?>
+      <div class="footer-col footer-col-3">
+        <?php dynamic_sidebar('footer-3'); ?>
+      </div>
+      <?php endif; ?>
+
+      <?php if ( is_active_sidebar('footer-4') ) : ?>
+      <div class="footer-col footer-col-4">
+        <?php dynamic_sidebar('footer-4'); ?>
+      </div>
+      <?php endif; ?>
+
+    </div>
+  </div>
+  <?php endif; ?>
+
+  <?php if ( $has_full ) : ?>
+  <div class="footer-full-area" role="complementary" aria-label="<?php esc_attr_e('Rodapé — faixa central', 'independent-theme'); ?>">
+    <div class="wrap">
+      <?php dynamic_sidebar('footer-full'); ?>
+    </div>
+  </div>
+  <?php endif; ?>
+
+  <div class="container">
 
     <?php if ( $whatsapp_link || $facebook_link || $instagram_link || $youtube_link ) : ?>
     <div class="social-icons" role="navigation" aria-label="<?php esc_attr_e('Redes sociais', 'independent-theme'); ?>">

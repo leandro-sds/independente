@@ -197,10 +197,50 @@ function independent_theme_widgets_init() {
   ] );
 
   register_sidebar( [
-    'name'          => __( 'Rodapé', 'independent-theme' ),
+    'name'          => __( 'Rodapé — Coluna 1', 'independent-theme' ),
     'id'            => 'footer-1',
-    'description'   => __( 'Widgets no rodapé', 'independent-theme' ),
+    'description'   => __( 'Primeira coluna do rodapé (de 4)', 'independent-theme' ),
     'before_widget' => '<div class="footer-widget">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h4>',
+    'after_title'   => '</h4>',
+  ] );
+
+  register_sidebar( [
+    'name'          => __( 'Rodapé — Coluna 2', 'independent-theme' ),
+    'id'            => 'footer-2',
+    'description'   => __( 'Segunda coluna do rodapé (de 4)', 'independent-theme' ),
+    'before_widget' => '<div class="footer-widget">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h4>',
+    'after_title'   => '</h4>',
+  ] );
+
+  register_sidebar( [
+    'name'          => __( 'Rodapé — Coluna 3', 'independent-theme' ),
+    'id'            => 'footer-3',
+    'description'   => __( 'Terceira coluna do rodapé (de 4)', 'independent-theme' ),
+    'before_widget' => '<div class="footer-widget">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h4>',
+    'after_title'   => '</h4>',
+  ] );
+
+  register_sidebar( [
+    'name'          => __( 'Rodapé — Coluna 4', 'independent-theme' ),
+    'id'            => 'footer-4',
+    'description'   => __( 'Quarta coluna do rodapé (de 4)', 'independent-theme' ),
+    'before_widget' => '<div class="footer-widget">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h4>',
+    'after_title'   => '</h4>',
+  ] );
+
+  register_sidebar( [
+    'name'          => __( 'Rodapé — Faixa Central', 'independent-theme' ),
+    'id'            => 'footer-full',
+    'description'   => __( 'Área de largura total abaixo das 4 colunas', 'independent-theme' ),
+    'before_widget' => '<div class="footer-widget footer-widget--full">',
     'after_widget'  => '</div>',
     'before_title'  => '<h4>',
     'after_title'   => '</h4>',
