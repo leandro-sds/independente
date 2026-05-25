@@ -61,7 +61,7 @@
 
     <?php if ( $whatsapp_link || $facebook_link || $instagram_link || $youtube_link ) : ?>
     <div class="social-icons" role="navigation" aria-label="<?php esc_attr_e('Redes sociais', 'independent-theme'); ?>">
-      <h3 class="social-title"><?php esc_html_e('Redes Sociais', 'independent-theme'); ?></h3>
+      <h4 class="social-title"><?php esc_html_e('Redes Sociais', 'independent-theme'); ?></h4>
       <div class="social-links">
 
         <?php if ( $whatsapp_link ) : ?>

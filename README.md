@@ -40,7 +40,7 @@ O Independent Theme foi construído com acessibilidade como prioridade, não com
 
 ## 🚀 Recursos
 
-- **9 estilos visuais** prontos para uso com identidade própria
+- **11 estilos visuais** prontos para uso com identidade própria
 - **Imagens destacadas** na listagem (pequena, à esquerda) e no post (grande, no topo)
 - **Menu mobile** com transição suave e acessível para leitores de tela
 - **Categorias e subcategorias** — exibe "Seções" quando há subcategorias; posts quando não há

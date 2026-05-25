@@ -61,7 +61,7 @@
                 <li>
                   <a href="<?php echo esc_url( get_permalink() ); ?>">
                     <?php if ( has_post_thumbnail() ) : ?>
-                      <div class="thumb"><?php the_post_thumbnail( 'thumbnail', [ 'alt' => '' ] ); ?></div>
+                      <div class="thumb"><?php the_post_thumbnail( 'thumbnail', [ 'alt' => esc_attr( get_the_title() ) ] ); ?></div>
                     <?php endif; ?>
                     <span class="title"><?php the_title(); ?></span>
                   </a>

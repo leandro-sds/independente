@@ -3,8 +3,8 @@ Theme Name: Independent Theme
 Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
-Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 9 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao futurista, incluindo o estilo Colorado. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 4.5.0
+Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 11 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao portal esportivo noturno. Totalmente compatível com leitores de tela e navegação por teclado.
+Version: 4.6.0
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
@@ -492,8 +492,8 @@ nav ul li.current-menu-ancestor > a {
   padding: 8px 18px;
   border: 2px solid var(--accent-color);
   border-radius: var(--radius-sm);
-  color: #1a1a1a !important;
-  -webkit-text-fill-color: #1a1a1a !important;
+  color: var(--text-color);
+  -webkit-text-fill-color: var(--text-color);
   font-weight: 600;
   font-size: 0.92rem;
   text-decoration: none !important;
@@ -616,10 +616,7 @@ nav ul li.current-menu-ancestor > a {
   }
 }
 
-.social-icons {
-  text-align: center;
-  margin-top: 20px;
-}
+/* .social-icons — estilos consolidados acima */
 
 .social-title {
   margin-bottom: 10px;
@@ -905,21 +902,20 @@ article:hover {
 .primary-nav .menu a,
 .primary-nav .menu li > a {
   -webkit-tap-highlight-color: transparent;
-  outline: 0 !important;
-  outline-width: 0 !important;
-  outline-offset: 0 !important;
-  outline-color: transparent !important;
-  outline-style: none !important;
 }
-.primary-nav .menu a:focus,
-.primary-nav .menu li > a:focus {
-  outline: 0 !important;
+/* Suprime outline apenas no clique (não-teclado) */
+.primary-nav .menu a:focus:not(:focus-visible),
+.primary-nav .menu li > a:focus:not(:focus-visible) {
+  outline: none !important;
   box-shadow: none !important;
 }
+/* Foco por teclado (Tab): visível e acessível — WCAG 2.4.7 */
 .primary-nav .menu a:focus-visible,
 .primary-nav .menu li > a:focus-visible {
-  outline: 0 !important;
-  box-shadow: 0 0 0 2px var(--accent-color);
+  outline: 3px solid var(--accent-color) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 5px rgba(0,0,0,0.15) !important;
+  border-radius: 4px !important;
 }
 
 /* Item ativo do menu principal */
@@ -1249,6 +1245,7 @@ article:last-of-type {
   border-radius: 0 8px 8px 0;
   color: var(--muted-text);
   font-style: italic;
+  position: relative;
 }
 
 /* Tabelas acessíveis */
@@ -1677,7 +1674,7 @@ body.style-marinelli .primary-nav .menu a {
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-weight: bold !important;
   text-transform: uppercase !important;
-  font-size: 0.92rem !important;
+  font-size: 0.95rem !important;
   text-decoration: none !important;
   text-shadow: rgba(10,10,10,0.4) 1px 2px 2px;
   background: linear-gradient(to bottom, #7ab0d4, #156aa3 40%);
@@ -1759,7 +1756,6 @@ body.style-marinelli .widget {
   background-color: #ffffff;
   border: 1px solid #e2e2e2;
   border-radius: 0 0 5px 5px;
-  margin-bottom: 15px;
 }
 
 body.style-marinelli .widget h3,
@@ -1948,7 +1944,11 @@ body.style-marinelli footer a {
 
 body.style-marinelli footer a:hover { color: #ffffff; }
 
-body.style-marinelli footer[role="contentinfo"] *:not(a):not(svg):not(path) {
+body.style-marinelli footer[role="contentinfo"] p,
+body.style-marinelli footer[role="contentinfo"] span,
+body.style-marinelli footer[role="contentinfo"] li,
+body.style-marinelli footer[role="contentinfo"] td,
+body.style-marinelli footer[role="contentinfo"] div:not([class*="widget"]):not([class*="footer"]) {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
@@ -2070,15 +2070,15 @@ body.style-campoepaixao .widget {
 
 /* ── Tinta & Papel: borda marrom entre áreas ── */
 body.style-tintaepapel main {
-  background-color: #fdfaf4;
+  background-color: #f2f4f6;
   border-right: 1px solid #c8c0b0;
 }
 body.style-tintaepapel aside {
-  background-color: #ede8dd;
+  background-color: #dde3e8;
   border-left: none;
 }
 body.style-tintaepapel .widget {
-  background-color: #fdfaf4;
+  background-color: #f2f4f6;
   border: 1px solid #c8c0b0;
 }
 
@@ -2462,12 +2462,11 @@ body.style-moderno .social-links a:hover {
 }
 
 /* Todos os elementos dentro do rodapé — seletor universal para cobrir qualquer estrutura de widget */
-body.style-moderno footer *:not(a):not(svg):not(path) {
+body.style-moderno footer p,
+body.style-moderno footer span,
+body.style-moderno footer li {
   color: #00f5d4 !important;
   -webkit-text-fill-color: #00f5d4 !important;
-  background: none !important;
-  background-clip: unset !important;
-  -webkit-background-clip: unset !important;
 }
 
 body.style-moderno footer h1,
@@ -2607,7 +2606,7 @@ body.style-moderno .page-content p,
 body.style-moderno .post-content li,
 body.style-moderno .page-content li {
   color: rgba(240,238,255,0.90);
-  line-height: 1.75;
+  line-height: 1.80;
 }
 
 /* Listas com marcador em ciano */
@@ -2635,7 +2634,6 @@ body.style-moderno .wp-block-separator {
    ========================================================== */
 
 /* Título "Início" e qualquer h1 de página — gradiente garantido */
-body.style-moderno h1,
 body.style-moderno h1,
 body.style-moderno h1.entry-title,
 body.style-moderno .page-header .entry-title,
@@ -2695,6 +2693,191 @@ body.style-moderno .widget [class*="now"] {
 /* Botão buscar em dourado */
 
 /* Paginação */
+
+
+/* ==========================================================
+   Céu e Fé — Estilos completos
+   Azul profundo + coral/laranja + branco — espiritual e acessível
+   ========================================================== */
+
+body.style-ceuafe {
+  background-color: #eaf2fb;
+  font-family: 'Inter', 'Roboto', system-ui, sans-serif;
+}
+
+body.style-ceuafe .site-header {
+  background: linear-gradient(180deg, #0d2b4a 0%, #0a2040 100%) !important;
+  border-bottom: 3px solid #07172e !important;
+  box-shadow: 0 3px 16px rgba(0,0,0,0.30) !important;
+}
+
+body.style-ceuafe .site-header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, #e07b39, rgba(224,123,57,0.30));
+  margin-top: 2px;
+}
+
+body.style-ceuafe .site-title .site-name a {
+  color: #ffffff;
+  font-family: 'Poppins', 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+body.style-ceuafe .site-title .site-description {
+  color: rgba(255,255,255,0.78);
+}
+
+body.style-ceuafe main {
+  background-color: #ffffff;
+  border-right: 1px solid rgba(13,43,74,0.10);
+}
+
+body.style-ceuafe aside {
+  background-color: #ddedf8;
+  border-left: none;
+}
+
+body.style-ceuafe .widget {
+  background-color: #ffffff;
+  border: 1px solid rgba(13,43,74,0.10);
+}
+
+body.style-ceuafe h1,
+body.style-ceuafe h2,
+body.style-ceuafe h3,
+body.style-ceuafe .entry-title {
+  color: #0d2b4a;
+  font-family: 'Poppins', 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+}
+
+body.style-ceuafe a {
+  color: #1a6aaa;
+  text-decoration: underline;
+}
+
+body.style-ceuafe a:hover {
+  color: #0d2b4a;
+}
+
+body.style-ceuafe .post-content p,
+body.style-ceuafe .page-content p,
+body.style-ceuafe .post-content li,
+body.style-ceuafe .page-content li {
+  color: #1a2535;
+  line-height: 1.80;
+}
+
+body.style-ceuafe .post-content blockquote,
+body.style-ceuafe .page-content blockquote {
+  border-left: 4px solid #e07b39 !important;
+  background: #eaf2fb !important;
+  color: #1a2535 !important;
+  border-radius: 0 10px 10px 0 !important;
+  padding: 1.4rem 1.8rem !important;
+  font-style: italic !important;
+  font-size: 1.05rem !important;
+  position: relative !important;
+}
+
+body.style-ceuafe .post-content blockquote::before,
+body.style-ceuafe .page-content blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  font-size: 4rem;
+  color: rgba(224,123,57,0.55);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+body.style-ceuafe .widget h3,
+body.style-ceuafe .widget h2,
+body.style-ceuafe .widget h4 {
+  color: #0d2b4a;
+  border-bottom-color: rgba(224,123,57,0.30);
+}
+
+body.style-ceuafe .header-search-form .search-submit {
+  background-color: #b85a20;
+  color: #ffffff;
+  border: none;
+}
+
+body.style-ceuafe .header-search-form .search-submit:hover {
+  background-color: #8f4010;
+  filter: none;
+}
+
+body.style-ceuafe footer[role="contentinfo"] {
+  background-color: #0d2b4a;
+  border-top: 2px solid rgba(224,123,57,0.40);
+}
+
+body.style-ceuafe .site-info,
+body.style-ceuafe .site-info p {
+  color: rgba(255,255,255,0.72);
+  border-top-color: rgba(255,255,255,0.15);
+}
+
+body.style-ceuafe footer a { color: rgba(255,255,255,0.82); }
+body.style-ceuafe footer a:hover { color: #ffffff; }
+body.style-ceuafe .social-title { color: #ffffff; }
+body.style-ceuafe .social-links a { color: rgba(255,255,255,0.80); }
+
+body.style-ceuafe footer[role="contentinfo"] p,
+body.style-ceuafe footer[role="contentinfo"] span,
+body.style-ceuafe footer[role="contentinfo"] li,
+body.style-ceuafe footer[role="contentinfo"] td,
+body.style-ceuafe footer[role="contentinfo"] div:not([class*="widget"]):not([class*="footer"]) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.style-ceuafe footer .footer-widget,
+body.style-ceuafe footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(255,255,255,0.15) !important;
+  box-shadow: none !important;
+}
+
+body.style-ceuafe .pagination .page-numbers {
+  color: #1a6aaa;
+  border-color: rgba(13,43,74,0.20);
+}
+
+body.style-ceuafe .pagination .current,
+body.style-ceuafe .pagination .page-numbers:hover {
+  background: #e07b39;
+  border-color: #e07b39;
+  color: #ffffff;
+}
+
+body.style-ceuafe .read-more {
+  background: #b85a20 !important;
+  color: #ffffff !important;
+}
+
+body.style-ceuafe .read-more:hover {
+  background: #8f4010 !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  body.style-ceuafe #main-menu {
+    background: #0a2040 !important;
+    border-top: 1px solid rgba(255,255,255,0.15) !important;
+  }
+
+  body.style-ceuafe #main-menu a {
+    color: #ffffff !important;
+  }
+}
 
 /* ==========================================================
    Vintage Café — Versão Clara
@@ -2771,7 +2954,7 @@ body.style-vintagecafe .header-search-form .search-submit {
 }
 
 body.style-vintagecafe .header-search-form .search-submit:hover {
-  background-color: #b8963e;
+  background-color: #7a6020;
   filter: none;
 }
 
@@ -2790,13 +2973,13 @@ body.style-campoepaixao .site-header {
 
 body.style-campoepaixao footer[role="contentinfo"] {
   background-color: #0d3318;
-  border-top: 2px solid rgba(204,0,0,0.40);
+  border-top: 2px solid rgba(232,160,32,0.50);
 }
 
 body.style-campoepaixao .site-info,
 body.style-campoepaixao .site-info p {
   color: rgba(255,255,255,0.75);
-  border-top-color: rgba(204,0,0,0.25);
+  border-top-color: rgba(232,160,32,0.30);
 }
 
 body.style-campoepaixao footer a { color: rgba(255,255,255,0.80); }
@@ -2805,7 +2988,9 @@ body.style-campoepaixao .social-title { color: #ffffff; }
 body.style-campoepaixao .social-links a { color: rgba(255,255,255,0.80); }
 
 /* Todos os elementos dentro do rodapé — seletor universal para cobrir qualquer estrutura de widget */
-body.style-campoepaixao footer *:not(a):not(svg):not(path) {
+body.style-campoepaixao footer p,
+body.style-campoepaixao footer span,
+body.style-campoepaixao footer li {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
@@ -2824,7 +3009,7 @@ body.style-campoepaixao footer .footer-widget h4 {
 }
 
 body.style-campoepaixao footer .widget::before {
-  background: linear-gradient(90deg, rgba(255,255,255,0.35), rgba(255,255,255,0.12), transparent) !important;
+  background: linear-gradient(90deg, rgba(232,160,32,0.50), rgba(232,160,32,0.15), transparent) !important;
 }
 
 body.style-campoepaixao footer .footer-widget,
@@ -2857,13 +3042,13 @@ body.style-campoepaixao .page-content p,
 body.style-campoepaixao .post-content li,
 body.style-campoepaixao .page-content li {
   color: #0a1f0f;
-  line-height: 1.75;
+  line-height: 1.80;
 }
 
 body.style-campoepaixao .post-content blockquote,
 body.style-campoepaixao .page-content blockquote {
-  border-left: 4px solid #cc0000;
-  background: #e0efe3;
+  border-left: 4px solid #e8a020;
+  background: #edf4ee;
   color: #0a1f0f;
   border-radius: 0 6px 6px 0;
 }
@@ -2872,17 +3057,18 @@ body.style-campoepaixao .widget h3,
 body.style-campoepaixao .widget h2,
 body.style-campoepaixao .widget h4 {
   color: #0d3318;
-  border-bottom-color: rgba(204,0,0,0.30);
+  border-bottom-color: rgba(232,160,32,0.50);
 }
 
 body.style-campoepaixao .header-search-form .search-submit {
-  background-color: #cc0000;
-  color: #ffffff;
+  background-color: #e8a020;
+  color: #0a1f0f;
   border: none;
+  font-weight: 700;
 }
 
 body.style-campoepaixao .header-search-form .search-submit:hover {
-  background-color: #aa0000;
+  background-color: #c48010;
   filter: none;
 }
 
@@ -2918,7 +3104,9 @@ body.style-neonpop .social-title { color: #ff2d78; }
 body.style-neonpop .social-links a { color: rgba(0,207,255,0.80); }
 
 /* Todos os elementos dentro do rodapé — seletor universal para cobrir qualquer estrutura de widget */
-body.style-neonpop footer *:not(a):not(svg):not(path) {
+body.style-neonpop footer p,
+body.style-neonpop footer span,
+body.style-neonpop footer li {
   color: #00cfff !important;
   -webkit-text-fill-color: #00cfff !important;
 }
@@ -2989,7 +3177,7 @@ body.style-neonpop .widget h4 {
 }
 
 body.style-neonpop .header-search-form .search-submit {
-  background: linear-gradient(135deg, #ff2d78, #c0135a);
+  background: linear-gradient(135deg, #e0226e, #c0135a);
   color: #ffffff;
   border: none;
 }
@@ -3167,7 +3355,7 @@ body.style-marinelli .page-content blockquote {
   font-style: italic !important;
   font-family: Georgia, 'Times New Roman', serif !important;
   font-size: 1.05rem !important;
-  line-height: 1.75 !important;
+  line-height: 1.80 !important;
   color: #1a2535 !important;
   box-shadow: inset 0 0 0 1px rgba(249,126,5,0.10) !important;
   position: relative !important;
@@ -3180,7 +3368,7 @@ body.style-marinelli .page-content blockquote::before {
   top: -8px;
   left: 14px;
   font-size: 3.5rem;
-  color: rgba(249,126,5,0.22);
+  color: rgba(249,126,5,0.70);
   font-family: Georgia, serif;
   line-height: 1;
   pointer-events: none;
@@ -3237,7 +3425,7 @@ body.style-campoepaixao .site-header::after {
   display: block;
   height: 2px;
   width: 0;
-  background: linear-gradient(90deg, #cc0000, #ff3333);
+  background: linear-gradient(90deg, #e8a020, #f5c842);
   animation: campoLine 0.7s ease forwards;
   margin-top: 2px;
 }
@@ -3249,7 +3437,7 @@ body.style-campoepaixao .site-header::after {
   }
 }
 
-/* ── 3. Menu hover com energia — fundo vermelho subindo ── */
+/* ── 3. Menu hover com energia — fundo dourado subindo ── */
 body.style-campoepaixao .primary-nav .menu a {
   position: relative !important;
   overflow: hidden !important;
@@ -3263,7 +3451,7 @@ body.style-campoepaixao .primary-nav .menu a::before {
   left: 0;
   width: 100%;
   height: 0%;
-  background: rgba(204,0,0,0.18);
+  background: rgba(232,160,32,0.18);
   transition: height 0.22s ease;
   border-radius: var(--radius-sm);
   pointer-events: none;
@@ -3314,17 +3502,17 @@ body.style-campoepaixao .page-content h3 {
 /* ── 5. Blockquote com estilo esportivo ── */
 body.style-campoepaixao .post-content blockquote,
 body.style-campoepaixao .page-content blockquote {
-  border-left: 5px solid #cc0000 !important;
+  border-left: 5px solid #e8a020 !important;
   background: linear-gradient(
     135deg,
-    rgba(204,0,0,0.04) 0%,
+    rgba(232,160,32,0.06) 0%,
     rgba(13,51,24,0.04) 100%
   ) !important;
   border-radius: 0 10px 10px 0 !important;
   padding: 1.4rem 1.8rem !important;
   font-style: italic !important;
   font-size: 1.05rem !important;
-  line-height: 1.75 !important;
+  line-height: 1.80 !important;
   color: #0a1f0f !important;
   position: relative !important;
   box-shadow: 0 2px 12px rgba(204,0,0,0.08) !important;
@@ -3337,13 +3525,13 @@ body.style-campoepaixao .page-content blockquote::before {
   top: -10px;
   left: 14px;
   font-size: 3.5rem;
-  color: rgba(204,0,0,0.18);
+  color: rgba(232,160,32,0.55);
   font-family: Georgia, serif;
   line-height: 1;
   pointer-events: none;
 }
 
-/* ── 6. Widgets com faixa vermelha no topo ── */
+/* ── 6. Widgets com faixa dourada no topo ── */
 body.style-campoepaixao .widget {
   position: relative;
   overflow: hidden;
@@ -3356,14 +3544,14 @@ body.style-campoepaixao .widget::before {
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, #cc0000, #ff3333, transparent);
+  background: linear-gradient(90deg, #e8a020, #f5c842, transparent);
   pointer-events: none;
 }
 
 body.style-campoepaixao .widget h3,
 body.style-campoepaixao .widget h2,
 body.style-campoepaixao .widget h4 {
-  border-bottom: 2px solid #cc0000 !important;
+  border-bottom: 2px solid #e8a020 !important;
   padding-bottom: 8px !important;
   color: #0d3318 !important;
   -webkit-text-fill-color: #0d3318 !important;
@@ -3371,28 +3559,27 @@ body.style-campoepaixao .widget h4 {
 
 /* ── 7. Botões hover com elevação ── */
 body.style-campoepaixao .header-search-form .search-submit:hover {
-  background: #aa0000 !important;
-  box-shadow: 0 4px 16px rgba(204,0,0,0.35) !important;
+  background: #c48010 !important;
+  box-shadow: 0 4px 16px rgba(232,160,32,0.35) !important;
   transform: translateY(-1px) !important;
 }
 
 body.style-campoepaixao .read-more:hover {
-  background: #aa0000 !important;
-  box-shadow: 0 4px 16px rgba(204,0,0,0.35) !important;
+  background: #c48010 !important;
+  box-shadow: 0 4px 16px rgba(232,160,32,0.35) !important;
   transform: translateY(-2px) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.style-campoepaixao .header-search-form .search-submit:hover,
-  
+  body.style-campoepaixao .header-search-form .search-submit:hover { transform: none !important; }
 }
 
 /* ── Links com sublinhado vermelho animado ── */
 body.style-campoepaixao .post-content a,
 body.style-campoepaixao .page-content a {
-  color: #0d5c28 !important;
+  color: #7a5500 !important;
   text-decoration: none !important;
-  background-image: linear-gradient(#cc0000, #cc0000) !important;
+  background-image: linear-gradient(#e8a020, #e8a020) !important;
   background-size: 0% 2px !important;
   background-repeat: no-repeat !important;
   background-position: left bottom !important;
@@ -3402,7 +3589,7 @@ body.style-campoepaixao .page-content a {
 
 body.style-campoepaixao .post-content a:hover,
 body.style-campoepaixao .page-content a:hover {
-  color: #cc0000 !important;
+  color: #c48010 !important;
   background-size: 100% 2px !important;
 }
 
@@ -3418,6 +3605,10 @@ body.style-campoepaixao .page-content a:hover {
    Tinta & Papel — Refinamentos Visuais v2
    Literário, editorial, introspectivo — suave como virar uma página
    ========================================================== */
+
+body.style-tintaepapel {
+  background-color: #e8ecf0;
+}
 
 /* ── 1. Header com profundidade de couro ── */
 body.style-tintaepapel .site-header {
@@ -3439,11 +3630,11 @@ body.style-tintaepapel .site-header {
 body.style-tintaepapel .site-header::after {
   content: '';
   display: block;
-  height: 2px;
+  height: 4px;
   width: 0;
-  background: linear-gradient(90deg, #8B5E1A, #c49a3c, #8B5E1A);
+  background: linear-gradient(90deg, #8B5E1A, #e0b060, #8B5E1A);
   animation: tintaLine 1.2s ease forwards;
-  margin-top: 2px;
+  margin-top: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3520,11 +3711,11 @@ body.style-tintaepapel .page-content blockquote {
   border-left: 5px solid #8B5E1A !important;
   background: #e8e0d0 !important;
   border-radius: 0 10px 10px 0 !important;
-  padding: 1.6rem 2rem !important;
+  padding: 1.4rem 1.8rem !important;
   font-style: italic !important;
   font-family: Georgia, 'Times New Roman', serif !important;
-  font-size: 1.08rem !important;
-  line-height: 1.85 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.80 !important;
   color: #2C1810 !important;
   position: relative !important;
   box-shadow: inset 0 0 0 1px rgba(139,94,26,0.12),
@@ -3538,7 +3729,7 @@ body.style-tintaepapel .page-content blockquote::before {
   top: -12px;
   left: 14px;
   font-size: 5rem;
-  color: rgba(139,94,26,0.18);
+  color: rgba(139,68,19,0.50);
   font-family: Georgia, serif;
   line-height: 1;
   pointer-events: none;
@@ -3623,8 +3814,7 @@ body.style-tintaepapel .read-more:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.style-tintaepapel .header-search-form .search-submit:hover,
-  
+  body.style-tintaepapel .header-search-form .search-submit:hover { transform: none !important; }
 }
 
 /* ==========================================================
@@ -3753,7 +3943,7 @@ body.style-default .page-content blockquote::before {
   top: -10px;
   left: 14px;
   font-size: 4rem;
-  color: rgba(246,173,85,0.22);
+  color: rgba(200,125,30,0.55);
   font-family: Georgia, serif;
   line-height: 1;
   pointer-events: none;
@@ -3823,8 +4013,7 @@ body.style-default .read-more:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.style-default .header-search-form .search-submit:hover,
-  
+  body.style-default .header-search-form .search-submit:hover { transform: none !important; }
 }
 
 /* ==========================================================
@@ -3983,7 +4172,7 @@ body.style-moderno .page-content blockquote::before {
   top: -10px;
   left: 14px;
   font-size: 4rem;
-  color: rgba(0,245,212,0.20);
+  color: rgba(0,245,212,0.55);
   font-family: Georgia, serif;
   line-height: 1;
   pointer-events: none;
@@ -4073,8 +4262,7 @@ body.style-moderno .header-search-form .search-submit:hover {
 
 
 @media (prefers-reduced-motion: reduce) {
-  body.style-moderno .header-search-form .search-submit:hover,
-  
+  body.style-moderno .header-search-form .search-submit:hover { transform: none !important; }
 }
 
 /* ==========================================================
@@ -4234,7 +4422,7 @@ body.style-neonpop .page-content blockquote::before {
   top: -10px;
   left: 14px;
   font-size: 4rem;
-  color: rgba(255,45,120,0.22);
+  color: rgba(255,45,120,0.55);
   font-family: Georgia, serif;
   line-height: 1;
   pointer-events: none;
@@ -4323,8 +4511,7 @@ body.style-neonpop .read-more:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.style-neonpop .header-search-form .search-submit:hover,
-  
+  body.style-neonpop .header-search-form .search-submit:hover { transform: none !important; }
 }
 
 /* ==========================================================
@@ -4436,11 +4623,11 @@ body.style-vintagecafe .page-content blockquote {
   border-left: 5px solid #c9922a !important;
   background: #ede4d0 !important;
   border-radius: 0 10px 10px 0 !important;
-  padding: 1.6rem 2rem !important;
+  padding: 1.4rem 1.8rem !important;
   font-style: italic !important;
   font-family: Georgia, 'Times New Roman', serif !important;
-  font-size: 1.08rem !important;
-  line-height: 1.85 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.80 !important;
   color: #2e1a0e !important;
   position: relative !important;
   box-shadow: inset 0 0 0 1px rgba(201,146,42,0.15),
@@ -4454,7 +4641,7 @@ body.style-vintagecafe .page-content blockquote::before {
   top: -12px;
   left: 14px;
   font-size: 5rem;
-  color: rgba(201,146,42,0.20);
+  color: rgba(138,92,18,0.65);
   font-family: Georgia, serif;
   line-height: 1;
   pointer-events: none;
@@ -4529,8 +4716,7 @@ body.style-vintagecafe .read-more:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body.style-vintagecafe .header-search-form .search-submit:hover,
-  
+  body.style-vintagecafe .header-search-form .search-submit:hover { transform: none !important; }
 }
 
 /* ── Textura sutil de papel vintage no conteúdo ── */
@@ -4558,7 +4744,7 @@ body.style-vintagecafe main {
 .comments-title {
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--text-color);
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--accent-color);
@@ -4621,11 +4807,11 @@ body.style-vintagecafe main {
 .comment-author-name {
   font-weight: 700;
   font-size: 0.95rem;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .comment-author-name a {
-  color: var(--primary-color) !important;
+  color: var(--text-color) !important;
   text-decoration: none;
 }
 
@@ -4641,7 +4827,7 @@ body.style-vintagecafe main {
 /* ── Conteúdo do comentário ── */
 .comment-content {
   font-size: 0.97rem;
-  line-height: 1.75;
+  line-height: 1.80;
   color: var(--text-color);
   margin-bottom: 0.75rem;
 }
@@ -4666,8 +4852,8 @@ body.style-vintagecafe main {
   display: inline-block;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #1a1a1a !important;
-  -webkit-text-fill-color: #1a1a1a !important;
+  color: var(--text-color);
+  -webkit-text-fill-color: var(--text-color);
   text-decoration: none !important;
   border: 2px solid var(--accent-color);
   border-radius: var(--radius-sm);
@@ -4715,7 +4901,7 @@ body.style-vintagecafe main {
 #reply-title {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--text-color);
   margin-bottom: 1.2rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--accent-color);
@@ -5150,7 +5336,7 @@ body.style-colorado .page-content blockquote {
   padding: 1.4rem 1.8rem !important;
   font-style: italic !important;
   font-size: 1.05rem !important;
-  line-height: 1.75 !important;
+  line-height: 1.80 !important;
   color: #1a0000 !important;
   position: relative !important;
   box-shadow: 0 2px 16px rgba(232,41,28,0.10) !important;
@@ -5163,7 +5349,7 @@ body.style-colorado .page-content blockquote::before {
   top: -10px;
   left: 14px;
   font-size: 3.5rem;
-  color: rgba(232,41,28,0.20);
+  color: rgba(232,41,28,0.45);
   font-family: Georgia, serif;
   line-height: 1;
   pointer-events: none;
@@ -5198,7 +5384,7 @@ body.style-colorado .widget h4 {
   font-weight: 700 !important;
   letter-spacing: 0.04em !important;
   text-transform: uppercase !important;
-  font-size: 0.82rem !important;
+  font-size: 0.85rem !important;
   border-bottom: 1px solid rgba(232,41,28,0.20) !important;
   padding-bottom: 8px !important;
 }
@@ -5228,7 +5414,7 @@ body.style-colorado .back-link a {
   color: #9c1510 !important;
   border: 2px solid rgba(232,41,28,0.40) !important;
   border-radius: 6px;
-  padding: 6px 16px;
+  padding: 8px 18px;
   font-weight: 600;
   font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
   text-decoration: none !important;
@@ -5318,7 +5504,9 @@ body.style-colorado footer a:hover {
   color: #f5c842 !important;
 }
 
-body.style-colorado footer[role="contentinfo"] *:not(a):not(svg):not(path) {
+body.style-colorado footer[role="contentinfo"] p,
+body.style-colorado footer[role="contentinfo"] span,
+body.style-colorado footer[role="contentinfo"] li {
   color: rgba(255,255,255,0.85) !important;
 }
 
@@ -5350,7 +5538,7 @@ body.style-colorado .page-content p,
 body.style-colorado .post-content li,
 body.style-colorado .page-content li {
   color: #1a0000 !important;
-  line-height: 1.85 !important;
+  line-height: 1.80 !important;
 }
 
 /* ── 17. Widget: textos ── */
@@ -5358,8 +5546,10 @@ body.style-colorado .widget p,
 body.style-colorado .widget li,
 body.style-colorado .widget span,
 body.style-colorado .widget a {
-  font-size: 0.95rem !important;
-  line-height: 1.70 !important;
+  line-height: 1.80 !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  hyphens: auto !important;
 }
 
 /* ── 18. Aside: sombra sutil ── */
@@ -5395,17 +5585,11 @@ body.style-colorado .page-content p,
 body.style-colorado .post-content li,
 body.style-colorado .page-content li {
   color: #1a0000 !important;
-  line-height: 1.85 !important;
+  line-height: 1.80 !important;
 }
 
 /* Widget — fonte levemente maior e mais legível */
-body.style-colorado .widget p,
-body.style-colorado .widget li,
-body.style-colorado .widget span,
-body.style-colorado .widget a {
-  font-size: 0.95rem !important;
-  line-height: 1.70 !important;
-}
+/* body.style-colorado .widget textos — usa base do tema */
 
 /* Campo de busca — borda mais nítida */
 body.style-colorado .header-search-form .search-field {
@@ -5424,7 +5608,7 @@ body.style-colorado .widget h2,
 body.style-colorado .widget h4 {
   color: #7a0e09 !important;
   -webkit-text-fill-color: #7a0e09 !important;
-  font-size: 0.82rem !important;
+  font-size: 0.85rem !important;
   letter-spacing: 0.06em !important;
 }
 
@@ -5495,55 +5679,52 @@ body.style-colorado aside {
 
 /* Fundo body menos verde — concentra atenção no conteúdo */
 body.style-campoepaixao {
-  background-color: #e8f2ea !important;
+  background-color: #edf4ee !important;
 }
 
 /* Aside — fundo levemente mais neutro, menos verde saturado */
 body.style-campoepaixao aside {
-  background-color: #ddeee0 !important;
+  background-color: #dde8df !important;
 }
 
 /* Widget — mais espaçamento interno para plugins de tabela */
-body.style-campoepaixao .widget {
-  padding: 1.4rem 1.2rem !important;
-}
+/* body.style-campoepaixao .widget padding — usa o padrão do tema */
 
 body.style-campoepaixao .widget p,
 body.style-campoepaixao .widget li,
 body.style-campoepaixao .widget span,
 body.style-campoepaixao .widget td,
 body.style-campoepaixao .widget tr {
-  font-size: 0.93rem !important;
-  line-height: 1.75 !important;
+  line-height: 1.80 !important;
 }
 
 /* Menu toggle — mais destaque visual */
 body.style-campoepaixao .menu-toggle {
   color: #ffffff !important;
-  border: 2px solid rgba(204,0,0,0.70) !important;
+  border: 2px solid rgba(232,160,32,0.70) !important;
   border-radius: 6px !important;
   padding: 6px 14px !important;
   font-weight: 600 !important;
-  background: rgba(204,0,0,0.15) !important;
+  background: rgba(232,160,32,0.12) !important;
 }
 
 body.style-campoepaixao .menu-toggle:hover {
-  background: rgba(204,0,0,0.35) !important;
-  border-color: #cc0000 !important;
+  background: rgba(232,160,32,0.25) !important;
+  border-color: #e8a020 !important;
 }
 
 /* Campo e Paixão — correção contraste botão Buscar v3.9.0
    Fundo vermelho com texto branco: 5.89:1 ✅ WCAG AA */
 body.style-campoepaixao .header-search-form .search-submit {
-  background-color: #cc0000 !important;
-  color: #ffffff !important;
-  border: 2px solid #ff3333 !important;
+  background-color: #e8a020 !important;
+  color: #0a1f0f !important;
+  border: 2px solid #c48010 !important;
   font-weight: 700 !important;
 }
 
 body.style-campoepaixao .header-search-form .search-submit:hover {
-  background-color: #aa0000 !important;
-  border-color: #cc0000 !important;
+  background-color: #c48010 !important;
+  border-color: #e8a020 !important;
 }
 
 /* ==========================================================
@@ -5619,7 +5800,7 @@ body.style-default      { --accent-color: #F6AD55; --on-accent: #1a1a1a; }
 body.style-ceuafe       { --accent-color: #F5C542; --on-accent: #0d1f35; }
 body.style-neonpop      { --accent-color: #FF2D78; --on-accent: #ffffff; }
 body.style-vintagecafe  { --accent-color: #c9922a; --on-accent: #ffffff; }
-body.style-campoepaixao { --accent-color: #cc0000; --on-accent: #ffffff; }
+body.style-campoepaixao { --accent-color: #e8a020; --on-accent: #0a1f0f; }
 body.style-moderno      { --accent-color: #00f5d4; --on-accent: #0a0818; }
 body.style-marinelli    { --accent-color: #F97316; --on-accent: #ffffff; }
 body.style-tintaepapel  { --accent-color: #8B5E1A; --on-accent: #FFF8F0; }
@@ -5873,7 +6054,7 @@ body.style-rock .page-content blockquote::before {
   top: -10px;
   left: 14px;
   font-size: 4rem;
-  color: rgba(204,0,0,0.30);
+  color: rgba(204,0,0,0.75);
   font-family: Georgia, serif;
   line-height: 1;
   pointer-events: none;
@@ -5905,7 +6086,7 @@ body.style-rock .back-link a {
   -webkit-text-fill-color: #cc0000 !important;
   border: 2px solid #cc0000;
   border-radius: 4px;
-  padding: 6px 16px;
+  padding: 8px 18px;
   font-family: 'Oswald', sans-serif;
   font-weight: 600;
   text-transform: uppercase;
@@ -5931,6 +6112,8 @@ body.style-rock .widget {
   background-color: #1e1e1e !important;
   border: 1px solid #2a2a2a !important;
   box-shadow: 0 2px 12px rgba(0,0,0,0.40) !important;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Linha vermelha no topo dos widgets */
@@ -5944,11 +6127,6 @@ body.style-rock .widget::before {
   background: linear-gradient(90deg, #cc0000, #660000);
 }
 
-body.style-rock .widget {
-  position: relative;
-  overflow: hidden;
-}
-
 body.style-rock .widget h2,
 body.style-rock .widget h3,
 body.style-rock .widget h4 {
@@ -5957,6 +6135,7 @@ body.style-rock .widget h4 {
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.06em !important;
+  font-size: 0.85rem !important;
   border-bottom: 1px solid rgba(204,0,0,0.25) !important;
   padding-bottom: 8px !important;
 }
@@ -6010,7 +6189,7 @@ body.style-rock .comment-reply a {
   font-family: 'Oswald', sans-serif !important;
   text-transform: uppercase !important;
   letter-spacing: 0.06em !important;
-  font-size: 0.82rem !important;
+  font-size: 0.85rem !important;
   font-weight: 600 !important;
   padding: 5px 12px !important;
   border-radius: 3px !important;
@@ -6055,7 +6234,7 @@ body.style-rock .comment-form .submit {
   text-transform: uppercase !important;
   letter-spacing: 0.08em !important;
   border-radius: 4px !important;
-  padding: 10px 28px !important;
+  padding: 0.65rem 1.6rem !important;
 }
 
 body.style-rock #submit:hover,
@@ -6126,7 +6305,9 @@ body.style-rock .social-links a:hover {
   color: #cc0000 !important;
 }
 
-body.style-rock footer[role="contentinfo"] *:not(a):not(svg):not(path) {
+body.style-rock footer[role="contentinfo"] p,
+body.style-rock footer[role="contentinfo"] span,
+body.style-rock footer[role="contentinfo"] li {
   color: #888880 !important;
 }
 
@@ -6152,6 +6333,7 @@ body.style-rock footer .widget {
 
 /* ── Accent color global ── */
 body.style-rock { --accent-color: #cc0000; --on-accent: #ffffff; }
+body.style-noitedejogo { --accent-color: #00b140; --on-accent: #0a1a0a; }
 
 /* ── Mobile ── */
 @media (max-width: 768px) {
@@ -6183,6 +6365,573 @@ body.style-rock { --accent-color: #cc0000; --on-accent: #ffffff; }
     animation: none !important;
   }
   body.style-rock .primary-nav .menu a::before {
+    display: none !important;
+  }
+}
+
+/* ==========================================================
+   ⚽ NOITE DE JOGO — Portal Esportivo
+   Verde noturno de estádio · Verde gramado · Amarelo de gol
+   Para portais de futebol, placares ao vivo, campeonatos
+   ========================================================== */
+
+/* ── Variáveis extras do Noite de Jogo ── */
+body.style-noitedejogo {
+  --primary-color:       #0d1f0f;
+  --accent-color:        #00b140;
+  --on-accent:           #0a1a0a;
+  --bg-light:            #141414;
+  --card-bg:             #1e1e1e;
+  --link-color:          #4dcc70;
+  --text-color:          #f0f0f0;
+  --muted-text:          #888888;
+  --border-color:        #2a2a2a;
+  --header-bg:           #0d1f0f;
+  --header-fg:           #ffffff;
+  --header-muted:        rgba(255,255,255,0.75);
+  --header-border:       rgba(0,177,64,0.30);
+  --header-title-color:  #ffffff;
+  --header-input-bg:     rgba(255,255,255,0.06);
+  --header-input-border: rgba(0,177,64,0.35);
+  background-color: #141414;
+  color: #f0f0f0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ── Header: verde noturno com gradiente de estádio ── */
+body.style-noitedejogo .site-header {
+  background: linear-gradient(180deg, #0d1f0f 0%, #091508 100%) !important;
+  border-bottom: 3px solid #0a1a0a !important;
+  box-shadow: 0 4px 24px rgba(0,177,64,0.15) !important;
+}
+
+/* ── Linha verde gramado rasgando ao carregar ── */
+@keyframes noiteJogoLine {
+  0%   { width: 0; opacity: 0.6; }
+  100% { width: 100%; opacity: 1; }
+}
+
+body.style-noitedejogo .site-header::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #00b140, #4dcc70, #f5c842);
+  animation: noiteJogoLine 0.5s ease forwards;
+  margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-noitedejogo .site-header::after {
+    animation: none !important;
+    width: 100% !important;
+  }
+}
+
+/* ── Nome do site ── */
+body.style-noitedejogo .site-title .site-name a {
+  color: #ffffff;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-decoration: none !important;
+}
+
+body.style-noitedejogo .site-title .site-description {
+  color: rgba(232,240,232,0.75);
+  letter-spacing: 0.03em;
+}
+
+/* ── Menu: hover com gramado subindo ── */
+body.style-noitedejogo .primary-nav {
+  background: rgba(0,0,0,0.25);
+  border-top: 1px solid rgba(0,177,64,0.20);
+  padding-bottom: 8px !important;
+}
+
+body.style-noitedejogo .primary-nav .menu a {
+  color: rgba(232,240,232,0.90) !important;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: color 0.22s ease !important;
+}
+
+body.style-noitedejogo .primary-nav .menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: rgba(0,177,64,0.18);
+  transition: height 0.22s ease;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+body.style-noitedejogo .primary-nav .menu a:hover::before {
+  height: 100%;
+}
+
+body.style-noitedejogo .primary-nav .menu a:hover {
+  color: #4dcc70 !important;
+}
+
+body.style-noitedejogo .primary-nav .menu li.current-menu-item > a,
+body.style-noitedejogo .primary-nav .menu li.current_page_item > a {
+  color: #00b140 !important;
+  background: rgba(0,177,64,0.12) !important;
+  border-bottom: 2px solid #00b140 !important;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important;
+  font-weight: 700 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-noitedejogo .primary-nav .menu a::before {
+    display: none !important;
+  }
+}
+
+/* ── Campo de busca ── */
+body.style-noitedejogo .header-search-form .search-field {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(0,177,64,0.35) !important;
+  color: #e8f0e8 !important;
+}
+
+body.style-noitedejogo .header-search-form .search-field::placeholder {
+  color: rgba(232,240,232,0.50) !important;
+}
+
+body.style-noitedejogo .header-search-form .search-submit {
+  background: #00b140 !important;
+  color: #0a1a0a !important;
+  border: none !important;
+  font-weight: 700 !important;
+}
+
+body.style-noitedejogo .header-search-form .search-submit:hover {
+  background: #009933 !important;
+  box-shadow: 0 4px 16px rgba(0,177,64,0.40) !important;
+  transform: translateY(-1px) !important;
+  filter: none !important;
+}
+
+/* ── Área de conteúdo ── */
+body.style-noitedejogo .site-content {
+  background-color: #141414;
+}
+
+body.style-noitedejogo main {
+  background-color: #1e1e1e !important;
+  border-right: 1px solid #2a2a2a;
+}
+
+body.style-noitedejogo aside {
+  background-color: #181818 !important;
+  border-left: 1px solid #2a2a2a !important;
+}
+
+/* ── Títulos: entrada de placar ── */
+@keyframes noiteImpact {
+  0%   { opacity: 0; transform: translateY(-6px) scaleY(1.03); }
+  100% { opacity: 1; transform: translateY(0) scaleY(1); }
+}
+
+body.style-noitedejogo h1,
+body.style-noitedejogo h2,
+body.style-noitedejogo h3,
+body.style-noitedejogo .entry-title {
+  color: #ffffff;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  animation: noiteImpact 0.25s ease both;
+}
+
+body.style-noitedejogo .entry-title a {
+  color: #e8f0e8;
+  text-decoration: none;
+}
+
+body.style-noitedejogo .entry-title a:hover {
+  color: #4dcc70;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-noitedejogo h1,
+  body.style-noitedejogo h2,
+  body.style-noitedejogo h3,
+  body.style-noitedejogo .entry-title {
+    animation: none !important;
+  }
+}
+
+/* ── Links ── */
+body.style-noitedejogo a {
+  color: #4dcc70;
+  text-decoration: none;
+}
+
+body.style-noitedejogo a:hover {
+  color: #00b140;
+}
+
+/* ── Links no conteúdo ── */
+body.style-noitedejogo .post-content a,
+body.style-noitedejogo .page-content a {
+  color: #4dcc70 !important;
+  text-decoration: none !important;
+  background-image: linear-gradient(#00b140, #00b140) !important;
+  background-size: 0% 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: left bottom !important;
+  transition: background-size 0.25s ease, color 0.2s ease !important;
+  padding-bottom: 1px !important;
+}
+
+body.style-noitedejogo .post-content a:hover,
+body.style-noitedejogo .page-content a:hover {
+  color: #00b140 !important;
+  background-size: 100% 1px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-noitedejogo .post-content a,
+  body.style-noitedejogo .page-content a {
+    text-decoration: underline !important;
+    background-image: none !important;
+  }
+}
+
+/* ── Texto corrido ── */
+body.style-noitedejogo .post-content p,
+body.style-noitedejogo .page-content p,
+body.style-noitedejogo .post-content li,
+body.style-noitedejogo .page-content li {
+  color: #f0f0f0;
+  line-height: 1.80;
+}
+
+/* ── Blockquote: destaque de crônica esportiva ── */
+body.style-noitedejogo .post-content blockquote,
+body.style-noitedejogo .page-content blockquote {
+  border-left: 5px solid #00b140 !important;
+  background: rgba(0,177,64,0.06) !important;
+  border-radius: 0 10px 10px 0 !important;
+  padding: 1.4rem 1.8rem !important;
+  font-style: italic !important;
+  font-size: 1.05rem !important;
+  line-height: 1.80 !important;
+  color: #e8f0e8 !important;
+  position: relative !important;
+  box-shadow: 0 2px 12px rgba(0,177,64,0.08) !important;
+}
+
+body.style-noitedejogo .post-content blockquote::before,
+body.style-noitedejogo .page-content blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  font-size: 4rem;
+  color: rgba(0,177,64,0.45);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ── Botão Leia mais ── */
+body.style-noitedejogo .read-more {
+  background: #00b140 !important;
+  color: #0a1a0a !important;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 0 2px 10px rgba(0,177,64,0.25) !important;
+}
+
+body.style-noitedejogo .read-more:hover {
+  background: #009933 !important;
+  box-shadow: 0 4px 16px rgba(0,177,64,0.40) !important;
+  transform: translateY(-2px) !important;
+  color: #0a1a0a !important;
+  filter: none !important;
+}
+
+/* ── Botão Voltar ── */
+body.style-noitedejogo .back-link a {
+  color: #4dcc70 !important;
+  -webkit-text-fill-color: #4dcc70 !important;
+  border: 2px solid rgba(0,177,64,0.50) !important;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+body.style-noitedejogo .back-link a:hover {
+  background: #00b140 !important;
+  border-color: #00b140 !important;
+  color: #0a1a0a !important;
+  -webkit-text-fill-color: #0a1a0a !important;
+}
+
+/* ── Widgets ── */
+body.style-noitedejogo .widget {
+  background-color: #222222 !important;
+  border: 1px solid #2a2a2a !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.30) !important;
+}
+
+/* Faixa verde gramado no topo dos widgets */
+body.style-noitedejogo .widget::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #00b140, #4dcc70, transparent);
+  pointer-events: none;
+}
+
+body.style-noitedejogo .widget h2,
+body.style-noitedejogo .widget h3,
+body.style-noitedejogo .widget h4 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  border-bottom: 1px solid rgba(0,177,64,0.30) !important;
+  padding-bottom: 8px !important;
+}
+
+body.style-noitedejogo .widget a {
+  color: #4dcc70;
+}
+
+body.style-noitedejogo .widget a:hover {
+  color: #00b140;
+}
+
+body.style-noitedejogo .widget p,
+body.style-noitedejogo .widget li,
+body.style-noitedejogo .widget span {
+  color: #888888 !important;
+  line-height: 1.80 !important;
+}
+
+/* ── Paginação ── */
+body.style-noitedejogo .pagination .page-numbers {
+  background: #222222 !important;
+  color: #4dcc70 !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+body.style-noitedejogo .pagination .page-numbers.current,
+body.style-noitedejogo .pagination .page-numbers:hover {
+  background: #00b140 !important;
+  border-color: #00b140 !important;
+  color: #0a1a0a !important;
+}
+
+/* ── Comentários ── */
+body.style-noitedejogo .comment-list .comment-body {
+  background: #242424 !important;
+  border: 1px solid #2a2a2a !important;
+}
+
+body.style-noitedejogo .comment-author .fn,
+body.style-noitedejogo .comment-author-name,
+body.style-noitedejogo .comment-author-name a {
+  color: #4dcc70 !important;
+  -webkit-text-fill-color: #4dcc70 !important;
+}
+
+body.style-noitedejogo .comment-reply-link,
+body.style-noitedejogo .reply a,
+body.style-noitedejogo .comment-reply a {
+  background: transparent !important;
+  border: 2px solid #00b140 !important;
+  color: #4dcc70 !important;
+  -webkit-text-fill-color: #4dcc70 !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 4px 12px !important;
+  transition: background 0.2s ease, color 0.2s ease !important;
+}
+
+body.style-noitedejogo .comment-reply-link:hover,
+body.style-noitedejogo .reply a:hover,
+body.style-noitedejogo .comment-reply a:hover {
+  background: #00b140 !important;
+  color: #0a1a0a !important;
+  -webkit-text-fill-color: #0a1a0a !important;
+}
+
+/* ── Formulário de comentários ── */
+body.style-noitedejogo .comment-form input,
+body.style-noitedejogo .comment-form textarea {
+  background: #141414 !important;
+  border: 1px solid #2a2a2a !important;
+  color: #f0f0f0 !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+body.style-noitedejogo .comment-form input:focus,
+body.style-noitedejogo .comment-form textarea:focus {
+  border-color: #00b140 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(0,177,64,0.25) !important;
+}
+
+body.style-noitedejogo .comment-form label {
+  color: #7a9a7a !important;
+}
+
+body.style-noitedejogo #submit,
+body.style-noitedejogo .comment-form .submit {
+  background: #00b140 !important;
+  color: #0a1a0a !important;
+  border: none !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 0.65rem 1.6rem !important;
+}
+
+body.style-noitedejogo #submit:hover,
+body.style-noitedejogo .comment-form .submit:hover {
+  background: #009933 !important;
+  box-shadow: 0 4px 16px rgba(0,177,64,0.40) !important;
+}
+
+/* ── Meta do post ── */
+body.style-noitedejogo .post-meta {
+  background: #181818 !important;
+  border-left: 4px solid #00b140 !important;
+  color: #888888 !important;
+}
+
+body.style-noitedejogo .post-meta a {
+  color: #4dcc70 !important;
+}
+
+/* ── Separadores horizontais ── */
+body.style-noitedejogo hr,
+body.style-noitedejogo .wp-block-separator {
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, rgba(0,177,64,0.40), transparent) !important;
+  margin: 2rem auto !important;
+}
+
+/* ── Rodapé ── */
+body.style-noitedejogo footer[role="contentinfo"] {
+  background: linear-gradient(180deg, #091508 0%, #060e06 100%) !important;
+  border-top: 3px solid #00b140 !important;
+  box-shadow: inset 0 1px 0 rgba(0,177,64,0.15) !important;
+}
+
+body.style-noitedejogo .site-info,
+body.style-noitedejogo .site-info p {
+  color: rgba(232,240,232,0.60) !important;
+  border-top-color: rgba(0,177,64,0.20) !important;
+}
+
+body.style-noitedejogo .social-title {
+  color: #4dcc70 !important;
+}
+
+body.style-noitedejogo footer a {
+  color: rgba(77,204,112,0.85) !important;
+}
+
+body.style-noitedejogo footer a:hover {
+  color: #4dcc70 !important;
+}
+
+body.style-noitedejogo .social-links a {
+  color: #7a9a7a !important;
+}
+
+body.style-noitedejogo .social-links a:hover {
+  color: #00b140 !important;
+}
+
+body.style-noitedejogo footer[role="contentinfo"] p,
+body.style-noitedejogo footer[role="contentinfo"] span,
+body.style-noitedejogo footer[role="contentinfo"] li {
+  color: rgba(232,240,232,0.70) !important;
+}
+
+body.style-noitedejogo footer .widget h2,
+body.style-noitedejogo footer .widget h3,
+body.style-noitedejogo footer .widget h4,
+body.style-noitedejogo footer .footer-widget h2,
+body.style-noitedejogo footer .footer-widget h3,
+body.style-noitedejogo footer .footer-widget h4 {
+  color: #4dcc70 !important;
+  -webkit-text-fill-color: #4dcc70 !important;
+  border-bottom-color: rgba(0,177,64,0.30) !important;
+}
+
+body.style-noitedejogo footer .widget::before {
+  background: linear-gradient(90deg, rgba(0,177,64,0.60), rgba(77,204,112,0.20), transparent) !important;
+}
+
+body.style-noitedejogo footer .footer-widget,
+body.style-noitedejogo footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(0,177,64,0.15) !important;
+  box-shadow: none !important;
+}
+
+/* ── Menu toggle ── */
+body.style-noitedejogo .menu-toggle {
+  color: #e8f0e8 !important;
+  border-color: rgba(0,177,64,0.40) !important;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  body.style-noitedejogo .menu-toggle {
+    color: #e8f0e8 !important;
+    border-color: rgba(0,177,64,0.40) !important;
+  }
+
+  body.style-noitedejogo #main-menu {
+    background: #141414 !important;
+    border-top: 1px solid rgba(0,177,64,0.20) !important;
+  }
+
+  body.style-noitedejogo #main-menu a {
+    border-bottom-color: rgba(0,177,64,0.10) !important;
+    color: #e8f0e8 !important;
+  }
+
+  body.style-noitedejogo .search-toggle {
+    color: #e8f0e8 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-noitedejogo h1,
+  body.style-noitedejogo h2,
+  body.style-noitedejogo h3,
+  body.style-noitedejogo .entry-title {
+    animation: none !important;
+  }
+  body.style-noitedejogo .primary-nav .menu a::before {
     display: none !important;
   }
 }

@@ -11,7 +11,7 @@
                 <?php the_post_thumbnail( 'medium', [
                   'class'   => 'post-thumbnail-img',
                   'loading' => 'lazy',
-                  'alt'     => esc_attr__( 'Imagem do post', 'independent-theme' ),
+                  'alt'     => esc_attr( get_the_title() ),
                 ] ); ?>
               </div>
             <?php endif; ?>
@@ -27,7 +27,7 @@
                 <?php the_excerpt(); ?>
               </div>
               <a class="read-more" href="<?php echo esc_url( get_permalink() ); ?>"
-                aria-label="<?php esc_attr_e( 'Leia mais', 'independent-theme' ); ?>">
+                aria-label="<?php echo esc_attr( sprintf( __( 'Leia mais sobre %s', 'independent-theme' ), get_the_title() ) ); ?>">
                 <?php esc_html_e( 'Leia mais', 'independent-theme' ); ?>
               </a>
             </div><!-- .post-list-content -->
@@ -45,7 +45,6 @@
         ?>
       </nav>
 
-      <?php independent_back_link(); ?>
 
     <?php else : ?>
       <article class="no-posts">

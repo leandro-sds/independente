@@ -1,4 +1,4 @@
-# Estilos Visuais — Independent Theme v4.3.0
+# Estilos Visuais — Independent Theme v4.6.0
 
 Cada estilo foi projetado com identidade própria, animações exclusivas e personalidade visual
 única — mantendo o mesmo layout, acessibilidade e funcionalidades em todos eles.
@@ -51,26 +51,27 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 - Linha âmbar dourada que se expande em 1.4s — como fita cassete
 - Menu hover com calor dourado subindo suavemente
 - Títulos com entrada de rádio de válvulas aquecendo
-- Blockquote estilo cardápio vintage — Georgia em itálico
-- Textura sutil de papel vintage no fundo do conteúdo
+- Blockquote estilo cardápio vintage — Georgia em itálico com borda âmbar
+- Fundo creme aquecido que reduz a fadiga ocular
 - Fonte Georgia serifada — elegância analógica
 - Visual que remete ao rádio de válvulas e às livrarias antigas
 
 ---
 
-## ⚽ Campo e Paixão — Futebol e Esportes
+## ⚽ Campo e Paixão — Futebol Clássico
 
-**Ideal para:** sites de futebol, esportes em geral, clubes, torcidas, academias, jornalismo esportivo.
+**Ideal para:** clubes tradicionais, federações, blogs de crônicas esportivas, portais de história do futebol, sites institucionais de esporte.
 
-- Cabeçalho verde escuro com gradiente — profundidade de estádio à noite
-- Linha vermelha que se expande — como apito de árbitro
-- Menu hover com fundo vermelho subindo — torcida se levantando
-- Botão Buscar em vermelho com texto branco — contraste WCAG AA garantido
+- Cabeçalho verde escuro com gradiente — profundidade de campo ao entardecer
+- Linha dourada-ouro que se expande ao carregar — troféu e prestígio
+- Menu hover com fundo dourado transparente subindo
+- Botão Buscar em ouro esportivo com texto verde escuro
 - Títulos com entrada de impacto — bola na trave
-- Blockquote com borda vermelha espessa e gradiente verde/vermelho
-- Widgets com faixa vermelha no topo e mais espaçamento interno
-- Fonte Montserrat bold — força e competição
-- Visual energético de estádio
+- Blockquote com borda dourada e fundo verde clarinho
+- Widgets com faixa dourada no topo
+- Fonte Montserrat bold — força e tradição
+- Paleta verde escuro + ouro: futebol de raiz, história e paixão tradicional
+- Visual de clube histórico, federação e campeonato clássico
 
 ---
 
@@ -79,14 +80,12 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 **Ideal para:** rádios gospel, igrejas, ministérios, sites de fé e espiritualidade.
 
 - Cabeçalho azul profundo com gradiente
-- Nome do site em dourado — impacto imediato e nobreza
-- Tagline em dourado suave
-- Linha dourada animada na base do cabeçalho
-- Item ativo do menu em dourado
-- Fundo do conteúdo em lavanda clarissima
-- Widgets com linha verde esperança no topo
-- Blockquote com borda azul celeste e aspas decorativas
-- Botão Buscar dourado com texto escuro
+- Linha coral/laranja animada na base do cabeçalho
+- Item ativo do menu destacado em coral
+- Fundo do conteúdo em azul-gelo suave — leveza e fluidez
+- Cards brancos que se destacam sutilmente sobre o fundo azulado
+- Blockquote com borda coral e aspas decorativas
+- Botão Buscar coral com texto branco
 - Fonte Poppins nos títulos, Inter no texto corrido
 - Visual que transmite serenidade, fé e modernidade
 
@@ -96,13 +95,13 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 
 **Ideal para:** escritores, blogs literários, jornalismo, poesia, crônicas, revistas.
 
-- Cabeçalho com gradiente marrom-acinzentado
-- Linha âmbar que se expande em 1.2s — como caneta sublinhando
+- Cabeçalho azul-acinzentado escuro (#2C3E50) com gradiente
+- Linha âmbar mais espessa que se expande — como caneta sublinhando
 - Menu hover com mancha de tinta âmbar subindo
 - Títulos com entrada de manuscrito — leve desfoque que se resolve
-- Blockquote estilo citação literária — Georgia em itálico
-- Textura sutil de papel no fundo do conteúdo
-- Widgets com borda âmbar e títulos em Georgia
+- Blockquote estilo citação literária — Georgia em itálico com borda âmbar
+- Fundo azul-acinzentado frio (#e8ecf0) — diferenciado do Vintage Café
+- Sidebar e widgets em tom azul-cinza (#dde3e8) — identidade distinta
 - Fonte Georgia serifada — máximo foco na leitura
 - Visual editorial clássico — o texto é o protagonista
 
@@ -118,7 +117,8 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 - Menu hover com cortina laranja subindo
 - Títulos com entrada de carimbo — sólido e preciso
 - Blockquote estilo editorial — borda laranja, Georgia em itálico
-- Widgets com linha laranja gradiente no topo
+- Widgets com gradiente azul nos cabeçalhos — estilo portal clássico
+- Linha laranja no topo dos widgets
 - Fonte Helvetica Neue/Arial — tipografia institucional
 - Visual de portal de notícias respeitável
 
@@ -134,7 +134,7 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 - Cabeçalho com nebulosa animada — roxo/violeta como galáxia
 - Linha ciano que pulsa alternando com violeta
 - Menu hover com fundo ciano e text-shadow elétrico
-- Títulos com entrada de holograma — brilho ciano
+- Títulos com gradiente branco→roxo→ciano — glassmorphism nos títulos
 - Blockquote com glassmorphism — borda ciano, fundo roxo translúcido
 - Widgets que pulsam entre bordas ciano e violeta
 - Fonte Montserrat bold — impacto e modernidade
@@ -146,13 +146,14 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 
 **Ideal para:** sites de clubes de futebol, torcidas, portais esportivos, academias com identidade vermelho e branco, associações esportivas.
 
-- Cabeçalho vermelho intenso com gradiente
+- Cabeçalho vermelho intenso com gradiente metálico em três camadas
 - Faixa branca que se expande ao carregar
-- Menu hover com fundo branco translúcido subindo
-- Títulos com entrada de impacto
+- Menu em caixa alta com hover branco translúcido
+- Botão Buscar dourado com texto escuro — destaque no header vermelho
+- Títulos com entrada de impacto — vermelho vibrante
 - Blockquote com borda vermelha espessa e gradiente rosado
-- Widgets com faixa vermelha no topo
-- Rodapé vermelho escuro com borda vermelha
+- Widgets com faixa dourada→vermelha no topo
+- Rodapé vermelho escuro com borda dourada
 - Fonte Montserrat bold — força e identidade
 - Visual vermelho e branco com identidade esportiva forte
 
@@ -171,15 +172,32 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 - Menu em caixa alta — Oswald bold, sem frescura
 - Menu hover com chama vermelha subindo
 - Títulos com entrada de impacto — sem suavidade, direto
-- Blockquote com aspas em vermelho sangue e fundo escuro
+- Blockquote com aspas em vermelho e fundo escuro
 - Widgets com borda vermelha no topo e fundo quase preto
 - Botão Leia mais em vermelho sólido, hover com brilho metálico
-- Comentários com nome do autor em vermelho, botão Responder com borda vermelha
-- Formulário de comentários com campos escuros e foco vermelho
-- Paginação escura com números em vermelho e fundo preto no atual
+- Paginação escura com números em vermelho
 - Rodapé preto profundo com linha vermelha separando do conteúdo
 - Fonte Oswald nos títulos e menu — força e identidade
 - Visual de palco, show e rádio rock
+
+---
+
+## ⚽ Noite de Jogo — Portal Esportivo
+
+**Ideal para:** portais de futebol, placares ao vivo, cobertura de campeonatos, jornalismo esportivo, sites de notícias de esporte.
+
+- Cabeçalho verde noturno profundo — atmosfera de estádio à noite
+- Linha animada verde gramado→amarelo de gol ao carregar
+- Menu hover com fundo verde translúcido subindo
+- Botão Buscar verde gramado vibrante com texto verde escuro
+- Títulos brancos com entrada de placar — dinâmico e urgente
+- Fundo grafite neutro (#141414) — sem puxar para o militar
+- Cards grafite (#1e1e1e) — texto branco respira com clareza
+- Blockquote com borda verde e fundo levemente esverdeado
+- Widgets grafite com faixa verde gramado no topo
+- Verde apenas na identidade: bordas, botões, faixas — conteúdo em grafite limpo
+- Fonte Montserrat 800 nos títulos — urgência de manchete
+- Visual de transmissão noturna, ESPN, SporTV, portais de campeonato
 
 ---
 
@@ -191,7 +209,8 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 | Portal de notícias / Institucional | 🏛️ Marinelli |
 | Rádio jovem / Podcast / DJ | 🎧 Neon Pop |
 | Música retrô / Jazz / Café | 📻 Vintage Café |
-| Futebol / Esportes / Jornalismo esportivo | ⚽ Campo e Paixão |
+| Futebol clássico / Clube / Federação | ⚽ Campo e Paixão |
+| Portal esportivo / Placar / Notícias | ⚽ Noite de Jogo |
 | Clube com identidade vermelho e branco | 🔴 Colorado |
 | Bandas, rádio rock, festivais, shows | 🎸 Rock |
 | Blog / Literatura / Escritor | ✍️ Tinta & Papel |
@@ -214,6 +233,7 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 - Widget de comentários recentes sem transbordamento
 - Contraste WCAG AA validado em todos os pares cor/fundo
 - Animações respeitam `prefers-reduced-motion`
+- Hierarquia de headings h1→h2→h3→h4 correta em todos os templates
 
 ---
 

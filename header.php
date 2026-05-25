@@ -19,11 +19,19 @@
         <?php endif; ?>
 
         <div class="site-title">
-          <p class="site-name">
-            <a href="<?php echo esc_url( home_url('/') ); ?>">
-              <?php echo esc_html( get_bloginfo('name') ); ?>
-            </a>
-          </p>
+          <?php if ( is_front_page() || is_home() ) : ?>
+            <h1 class="site-name">
+              <a href="<?php echo esc_url( home_url('/') ); ?>">
+                <?php echo esc_html( get_bloginfo('name') ); ?>
+              </a>
+            </h1>
+          <?php else : ?>
+            <p class="site-name">
+              <a href="<?php echo esc_url( home_url('/') ); ?>">
+                <?php echo esc_html( get_bloginfo('name') ); ?>
+              </a>
+            </p>
+          <?php endif; ?>
           <?php $desc = get_bloginfo('description'); if ( $desc ) : ?>
             <p class="site-description"><?php echo esc_html( $desc ); ?></p>
           <?php endif; ?>
@@ -81,7 +89,7 @@
           'menu_class'     => 'menu',
           'container'      => false,
           'fallback_cb'    => 'wp_page_menu',
-          'items_wrap'     => '<ul id="main-menu" class="%2$s" role="menubar">%3$s</ul>',
+          'items_wrap'     => '<ul id="main-menu" class="%2$s">%3$s</ul>',
         ]);
       ?>
     </nav>

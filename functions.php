@@ -599,6 +599,7 @@ function independent_theme_customize_register( $wp_customize ) {
       'moderno'      => __( '⚡ Moderno – Vibrante & Contemporâneo', 'independent-theme' ),
       'colorado'     => __( '🔴 Colorado – Vermelho e Branco', 'independent-theme' ),
       'rock'         => __( '🎸 Rock – Preto, Vermelho e Metal', 'independent-theme' ),
+      'noitedejogo'  => __( '⚽ Noite de Jogo – Portal Esportivo', 'independent-theme' ),
     ],
   ] );
 
@@ -709,18 +710,18 @@ $styles = [
      */
     'campoepaixao' => [
       '--primary-color'      => '#0d3318',   // verde escuro — header
-      '--bg-light'           => '#f0f7f1',   // verde muito claro — fundo da página
+      '--bg-light'           => '#edf4ee',   // verde muito claro — fundo da página
       '--card-bg'            => '#ffffff',   // branco — conteúdo
-      '--accent-color'       => '#cc0000',   // vermelho forte — botões e destaques
-      '--on-accent'          => '#ffffff',
-      '--link-color'         => '#0d5c28',   // verde médio — links legíveis
+      '--accent-color'       => '#e8a020',   // ouro esportivo — botões e destaques
+      '--on-accent'          => '#0a1f0f',   // verde escuro — texto nos botões dourados
+      '--link-color'         => '#7a5500',   // marrom-dourado — links legíveis no branco
       '--text-color'         => '#0a1f0f',   // verde quase preto — texto
       '--muted-text'         => '#4a6a52',   // verde acinzentado
       '--border-color'       => 'rgba(13,51,24,0.15)',
       '--header-title-color' => '#ffffff',
       '--header-muted'       => 'rgba(255,255,255,0.80)',
       '--header-border'      => 'rgba(255,255,255,0.18)',
-      '--focus-ring'         => '3px solid #cc0000',
+      '--focus-ring'         => '3px solid #e8a020',
       '--font-main'          => "'Inter', system-ui, sans-serif",
       '--font-title'         => "'Montserrat', 'Inter', system-ui, sans-serif",
       '--radius-sm'          => '6px',
@@ -758,8 +759,8 @@ $styles = [
      */
     'tintaepapel' => [
       '--primary-color'      => '#2C3E50',
-      '--bg-light'           => '#ede8dd',
-      '--card-bg'            => '#fdfaf4',
+      '--bg-light'           => '#e8ecf0',
+      '--card-bg'            => '#f2f4f6',
       '--accent-color'       => '#8B4513',
       '--on-accent'          => '#ffffff',
       '--link-color'         => '#2C6A9A',
@@ -879,6 +880,32 @@ $styles = [
       '--radius-lg'          => '8px',
     ],
 
+    /*
+     * ⚽ Noite de Jogo — Portal Esportivo
+     * Verde noturno de estádio · Verde gramado vibrante · Amarelo de gol
+     * Para portais de futebol, placares ao vivo, cobertura de campeonatos
+     */
+    'noitedejogo' => [
+      '--primary-color'      => '#0d1f0f',   // verde noturno — header
+      '--bg-light'           => '#141414',   // grafite neutro — fundo da página
+      '--card-bg'            => '#1e1e1e',   // grafite — cards e conteúdo
+      '--accent-color'       => '#00b140',   // verde gramado vibrante — botões
+      '--on-accent'          => '#0a1a0a',   // verde noturno — texto nos botões
+      '--link-color'         => '#4dcc70',   // verde médio — links
+      '--text-color'         => '#f0f0f0',   // branco neutro — texto principal
+      '--muted-text'         => '#888888',   // cinza neutro — texto secundário
+      '--border-color'       => '#2a2a2a',   // cinza escuro — bordas
+      '--header-title-color' => '#ffffff',
+      '--header-muted'       => 'rgba(255,255,255,0.75)',
+      '--header-border'      => 'rgba(0,177,64,0.30)',
+      '--focus-ring'         => '3px solid #00b140',
+      '--font-main'          => "'Inter', system-ui, sans-serif",
+      '--font-title'         => "'Montserrat', 'Inter', system-ui, sans-serif",
+      '--radius-sm'          => '6px',
+      '--radius-md'          => '10px',
+      '--radius-lg'          => '14px',
+    ],
+
   ];
 
   $css_vars = [
@@ -917,7 +944,7 @@ function independent_theme_late_style() {
     /* Suprime outline padrão apenas quando NÃO é navegação por teclado */
     .primary-nav .menu a:focus:not(:focus-visible),
     .primary-nav .menu li > a:focus:not(:focus-visible) {
-      outline: 0 !important;
+      outline: none !important;
       box-shadow: none !important;
     }
     /* Foco por teclado (Tab): indicador visual obrigatório — WCAG 2.4.7 */
@@ -1076,3 +1103,15 @@ function independent_render_category_children() {
  * Aparece apenas na tela de Menus (nav-menus.php).
  */
 
+
+function independent_theme_admin_menu_notice() {
+  $screen = get_current_screen();
+  if ( ! $screen || 'nav-menus' !== $screen->id ) {
+    return;
+  }
+  echo '<div class="notice notice-info is-dismissible">';
+  echo '<p><strong>' . esc_html__( 'Independent Theme — Dica de Menu', 'independent-theme' ) . '</strong><br>';
+  echo esc_html__( 'Para destacar um item de menu como botão, adicione a classe CSS "btn-primary" ou "btn-secondary" no campo de classes CSS do item (Opções de tela → marque "Classes CSS").', 'independent-theme' );
+  echo '</p></div>';
+}
+add_action( 'admin_notices', 'independent_theme_admin_menu_notice' );
