@@ -141,7 +141,7 @@
           $year_display = $current_year;
         }
       ?>
-      <p>&copy; <?php echo $year_display; ?> <?php echo esc_html( get_bloginfo('name') ); ?>. <?php esc_html_e('Todos os direitos reservados.', 'independent-theme'); ?></p>
+      <p>&copy; <?php echo esc_html( $year_display ); ?> <?php echo esc_html( get_bloginfo('name') ); ?>. <?php esc_html_e('Todos os direitos reservados.', 'independent-theme'); ?></p>
     </div>
 
   </div>

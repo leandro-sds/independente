@@ -46,7 +46,7 @@ function independent_theme_check_update( $transient ) {
       'url'         => "https://github.com/{$github_user}/{$github_repo}",
       'package'     => $zip_url,
       'requires'    => '6.0',
-      'requires_php'=> '7.4',
+      'requires_php'=> '8.0',
     ];
   }
 
@@ -80,7 +80,7 @@ function independent_theme_update_details( $false, $action, $args ) {
     'author'        => 'Leandro Souza',
     'homepage'      => 'https://github.com/leandro-sds/independent-theme',
     'requires'      => '6.0',
-    'requires_php'  => '7.4',
+    'requires_php'  => '8.0',
     'last_updated'  => $data->published_at ?? '',
     'sections'      => [
       'description' => $data->body ?? 'Tema WordPress acessível com 8 estilos visuais únicos.',
@@ -365,10 +365,7 @@ function independent_theme_customize_register( $wp_customize ) {
 	// Cabeçalho (autonomia + acessibilidade)
   $wp_customize->add_setting( 'independent_header_layout', [
     'default'           => 'left',
-    'sanitize_callback' => function ( $value ) {
-      $allowed = [ 'left', 'center', 'stacked' ];
-      return in_array( $value, $allowed, true ) ? $value : 'left';
-    },
+    'sanitize_callback' => 'independent_theme_sanitize_header_layout',
   ] );
 
   $wp_customize->add_control( 'independent_header_layout', [
@@ -385,7 +382,7 @@ function independent_theme_customize_register( $wp_customize ) {
 
   $wp_customize->add_setting( 'independent_header_show_search', [
     'default'           => 1,
-    'sanitize_callback' => function ( $v ) { return $v ? 1 : 0; },
+    'sanitize_callback' => 'independent_theme_sanitize_checkbox',
   ] );
 
   $wp_customize->add_control( 'independent_header_show_search', [
@@ -611,9 +608,7 @@ function independent_theme_customize_register( $wp_customize ) {
 
   $wp_customize->add_setting( 'independent_listar_subpaginas', [
     'default'           => true,
-    'sanitize_callback' => function( $value ) {
-      return (bool) $value;
-    },
+    'sanitize_callback' => 'independent_theme_sanitize_boolean',
     'transport'         => 'refresh',
   ] );
 
@@ -637,6 +632,28 @@ function independent_theme_sanitize_founding_year( $value ) {
     return $value;
   }
   return '';
+}
+
+/**
+ * Sanitiza o layout do cabeçalho: aceita apenas valores permitidos.
+ */
+function independent_theme_sanitize_header_layout( $value ) {
+  $allowed = [ 'left', 'center', 'stacked' ];
+  return in_array( $value, $allowed, true ) ? $value : 'left';
+}
+
+/**
+ * Sanitiza checkbox retornando 0 ou 1.
+ */
+function independent_theme_sanitize_checkbox( $value ) {
+  return $value ? 1 : 0;
+}
+
+/**
+ * Sanitiza valor booleano.
+ */
+function independent_theme_sanitize_boolean( $value ) {
+  return (bool) $value;
 }
 
 // Aplica estilo visual e tamanho da logo via variáveis CSS
@@ -1042,7 +1059,7 @@ function independent_back_link() {
   }
 
   $referer = wp_get_referer();
-  $url     = $referer ? $referer : home_url( '/' );
+  $url     = ( $referer && wp_validate_redirect( $referer, '' ) ) ? $referer : home_url( '/' );
 
   echo '<nav class="back-link" aria-label="' . esc_attr__( 'Navegação de retorno', 'independent-theme' ) . '">';
   echo '<a href="' . esc_url( $url ) . '">' . esc_html__( '← Voltar', 'independent-theme' ) . '</a>';

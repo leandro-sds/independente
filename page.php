@@ -29,7 +29,7 @@
         $listar_subpaginas = get_theme_mod( 'independent_listar_subpaginas', true );
 
         if ( $listar_subpaginas ) :
-          $paged = get_query_var('paged') ? absint( get_query_var('paged') ) : 1;
+          $paged = get_query_var('page') ? absint( get_query_var('page') ) : 1;
 
           $child_pages_query = new WP_Query([
             'post_type'      => 'page',
@@ -44,6 +44,7 @@
           if ( $child_pages_query->have_posts() ) :
         ?>
           <section class="child-pages" aria-label="<?php esc_attr_e('Conteúdo relacionado', 'independent-theme'); ?>">
+            <h2 class="child-pages-title"><?php esc_html_e( 'Páginas relacionadas', 'independent-theme' ); ?></h2>
             <ul class="child-page-list">
               <?php while ( $child_pages_query->have_posts() ) : $child_pages_query->the_post(); ?>
                 <li>

@@ -1,3 +1,24 @@
+## [4.7.0] — 2026-05-28
+
+### Correções de Bugs
+- **Paginação de subpáginas corrigida** — `page.php` usava `get_query_var('paged')` em vez de `get_query_var('page')`, fazendo a paginação travar sempre na página 1 em páginas com subpáginas
+- **`alt` da imagem destacada sem escape** — `single.php` usava `get_the_title()` diretamente no atributo `alt`; corrigido para `esc_attr( get_the_title() )`
+- **`echo` sem escape no rodapé** — `footer.php` exibia `$year_display` sem `esc_html()`
+- **`back_link` podia apontar para domínio externo** — substituído por `wp_validate_redirect()` para garantir que o botão Voltar só redireciona para URLs do próprio site
+
+### Melhorias de Acessibilidade e Consistência
+- **Seção de subpáginas com título `<h2>`** — `page.php` exibia a lista de subpáginas sem rótulo visível; adicionado `<h2 class="child-pages-title">Páginas relacionadas</h2>`, consistente com o comportamento das categorias em `archive.php`
+
+### Melhorias Visuais
+- **10Rock — contraste do texto secundário da sidebar** — `--muted-text` ajustado de `#888880` para `#b8b4ae`, garantindo legibilidade sobre o fundo `#111111`
+- **10Rock — espaçamento dos títulos em caixa alta** — `letter-spacing` do `entry-title` ajustado de `0.02em` para `0.06em`, abrindo a fonte condensada e melhorando o ritmo de leitura
+- **Noite de Jogo — contraste do texto secundário da sidebar** — `--muted-text` ajustado de `#888888` para `#aaaaaa`, saindo do limiar de acessibilidade para aprovação confortável no WCAG AA sobre `#141414`
+- **Neon Pop / Rádio Jovem — contraste do texto secundário da sidebar** — `--muted-text` ajustado de `#8888aa` para `#aaaac8`, mantendo o tom azulado característico com claridade suficiente sobre `#0a0a1a`
+
+### Qualidade de Código
+- **`sanitize_callback` com closures substituídas por funções nomeadas** — três callbacks anônimos no Personalizador (`header_layout`, `show_search`, `listar_subpaginas`) convertidos para funções nomeadas (`independent_theme_sanitize_header_layout`, `independent_theme_sanitize_checkbox`, `independent_theme_sanitize_boolean`), evitando problemas de serialização em sistemas de cache
+- **Requer PHP 8.0** — mínimo atualizado de 7.4 para 8.0, alinhado com as funções já utilizadas no tema (`str_starts_with`) e com a direção do ecossistema WordPress
+
 ## [4.6.0] — 2026-05-25
 
 ### Padronização Estrutural

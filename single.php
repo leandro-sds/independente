@@ -13,7 +13,7 @@
             <figure class="post-featured-image">
               <?php the_post_thumbnail( 'large', [
                 'loading' => 'eager',
-                'alt'     => get_the_title(),
+                'alt'     => esc_attr( get_the_title() ),
               ] ); ?>
             </figure>
           <?php endif; ?>

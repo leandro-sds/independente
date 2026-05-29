@@ -4,9 +4,9 @@ Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
 Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 11 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao portal esportivo noturno. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 4.6.0
+Version: 4.7.0
 Requires at least: 6.0
-Requires PHP: 7.4
+Requires PHP: 8.0
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: independent-theme
@@ -3188,9 +3188,14 @@ body.style-neonpop .header-search-form .search-submit:hover {
 }
 
 /* Muted text Neon Pop e Vintage Café atualizados */
-body.style-neonpop     { --muted-text: #8888aa; }
+body.style-neonpop     { --muted-text: #aaaac8; }
 body.style-vintagecafe { --muted-text: #7a6040; }
 body.style-campoepaixao{ --muted-text: #4a6a52; }
+
+body.style-neonpop .widget .excerpt,
+body.style-neonpop .widget .excerpt p {
+  color: #aaaac8 !important;
+}
 
 /* ==========================================================
    Céu e Fé — Renovação completa v2
@@ -5830,7 +5835,7 @@ body.style-rock {
   --card-bg:             #1a1a1a;
   --link-color:          #cc0000;
   --text-color:          #e8e4de;
-  --muted-text:          #888880;
+  --muted-text:          #b8b4ae;
   --border-color:        #2a2a2a;
   --header-bg:           #0a0a0a;
   --header-fg:           #e8e4de;
@@ -5990,7 +5995,7 @@ body.style-rock .entry-title {
   font-family: 'Oswald', 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.06em;
   animation: rockImpact 0.25s ease both;
 }
 
@@ -6151,7 +6156,13 @@ body.style-rock .widget a:hover {
 body.style-rock .widget p,
 body.style-rock .widget li,
 body.style-rock .widget span {
-  color: #a8a49e !important;
+  color: #c8c4be !important;
+}
+
+body.style-rock .widget .excerpt,
+body.style-rock .widget .excerpt p,
+body.style-rock .widget div:not([class*="h"]):not(.widget-title) {
+  color: #c8c4be !important;
 }
 
 /* ── Comentários ── */
@@ -6384,7 +6395,7 @@ body.style-noitedejogo {
   --card-bg:             #1e1e1e;
   --link-color:          #4dcc70;
   --text-color:          #f0f0f0;
-  --muted-text:          #888888;
+  --muted-text:          #aaaaaa;
   --border-color:        #2a2a2a;
   --header-bg:           #0d1f0f;
   --header-fg:           #ffffff;
@@ -6728,6 +6739,11 @@ body.style-noitedejogo .widget li,
 body.style-noitedejogo .widget span {
   color: #888888 !important;
   line-height: 1.80 !important;
+}
+
+body.style-noitedejogo .widget .excerpt,
+body.style-noitedejogo .widget .excerpt p {
+  color: #bbbbbb !important;
 }
 
 /* ── Paginação ── */
