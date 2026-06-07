@@ -1,0 +1,468 @@
+/*
+ * Independent Theme — responsive.css
+ *
+ * Arquivo dedicado à responsividade.
+ * Carregado DEPOIS de style.css e custom.css.
+ * Não redefine nenhuma variável de estilo visual.
+ * Só corrige layout, tamanho e posicionamento em telas pequenas.
+ *
+ * Breakpoints usados:
+ *   600px — celulares (telas reais chegam a ~430px de CSS pixels)
+ *   480px — reforços para telas ainda menores
+ *   360px — reforços para telas muito estreitas
+ *
+ * Por que 600px e não 480px?
+ *   Celulares modernos têm densidade alta (2x–3x). Um Moto G
+ *   com tela de 1080px físicos "aparece" como ~393px de CSS.
+ *   O breakpoint de 768px do style.css já atua. O de 600px
+ *   pega o intervalo que o emulador não cobre mas o aparelho cobre.
+ */
+
+/* ==========================================================
+   1. PREVENÇÃO DE OVERFLOW HORIZONTAL GLOBAL
+   Evita scroll lateral acidental em qualquer tela.
+   ========================================================== */
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* ==========================================================
+   2. IMAGENS E MÍDIA — nunca transbordam o container
+   ========================================================== */
+
+img,
+video,
+iframe,
+embed,
+object {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tabelas: scroll horizontal em vez de quebrar o layout */
+table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+
+/* ==========================================================
+   3. FORMULÁRIOS — evita zoom automático no iOS
+   iOS aplica zoom quando font-size < 16px em inputs.
+   ========================================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+  font-size: max(1rem, 16px);
+}
+
+/* ==========================================================
+   4. HEADER — logo, título e botões em telas pequenas
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+  /* Logo: nunca ocupa mais de metade da tela */
+  .logo img,
+  img.custom-logo,
+  .ls-logo {
+    max-height: 72px;
+    max-width: 48vw;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* Título e descrição do site: não transbordam */
+  .site-title .site-name {
+    font-size: clamp(0.95rem, 4vw, 1.2rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100vw - 100px);
+  }
+
+  .site-title .site-description {
+    font-size: clamp(0.75rem, 3vw, 0.9rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Botões de ação (Pesquisar + Menu): dividem a largura igualmente */
+  .header-actions {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .search-toggle,
+  .menu-toggle {
+    flex: 1 1 0;
+    justify-content: center;
+    min-height: 48px;
+    font-size: 0.9rem;
+  }
+
+  /* Padding lateral do header */
+  .header-wrap,
+  .wrap {
+    padding-left: 12px;
+    padding-right: 12px;
+    box-sizing: border-box;
+  }
+}
+
+/* Estilos Rock e Colorado: nome em ALL CAPS fica grande demais em mobile */
+
+/* ==========================================================
+   5. CONTEÚDO PRINCIPAL
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+  main {
+    padding: 14px 12px;
+  }
+
+  aside {
+    padding: 12px;
+  }
+
+  /* Títulos de artigo: hifenização apenas em palavras longas que não cabem */
+  .entry-title,
+  .post-title,
+  h1, h2, h3 {
+    overflow-wrap: anywhere;
+    word-break: normal;
+    hyphens: auto;  /* títulos longos podem usar hifenização automática */
+  }
+
+  /* Tamanhos de fonte proporcionais à tela */
+  h1, .entry-title { font-size: clamp(1.3rem, 5vw, 1.8rem); }
+  h2               { font-size: clamp(1.1rem, 4vw, 1.4rem); }
+  h3               { font-size: clamp(1rem,  3.5vw, 1.2rem); }
+
+  /* Texto do post */
+  .post-content,
+  .page-content,
+  .entry-content {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  /* Botões: área de toque mínima */
+  .read-more,
+  .btn,
+  .button,
+  input[type="submit"] {
+    min-height: 48px;
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+
+  /* Ajuste responsivo para o bloco de busca do Gutenberg em celulares */
+  .widget .wp-block-search .wp-block-search__inside-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100% !important;
+    gap: 4px !important;
+  }
+
+  .widget .wp-block-search__input {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-height: 48px !important;
+    font-size: 16px !important;
+  }
+
+  .widget .wp-block-search__button {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    min-height: 48px !important;
+    padding: 12px 16px !important;
+  }
+}
+
+/* ==========================================================
+   6. MENU DE NAVEGAÇÃO
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+  /* Itens do menu: área de toque confortável */
+  .primary-nav .menu a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================================
+   7. FOOTER — social, copyright, créditos
+   ========================================================== */
+
+/* Regra base (sem media query): footer sempre em coluna centralizada.
+   Funciona em qualquer largura porque o flex do footer deve ser coluna. */
+footer[role="contentinfo"] .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Social icons: sempre título em cima, ícones embaixo, centralizados */
+.social-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  width: 100%;
+}
+
+.social-title {
+  text-align: center;
+  width: 100%;
+}
+
+.social-links {
+  justify-content: center;
+  width: 100%;
+}
+
+/* Copyright e créditos: nunca transbordam */
+.site-info,
+.site-info p,
+.site-info--developer,
+.site-info--developer p {
+  width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+
+  footer[role="contentinfo"] .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Ícones sociais: área de toque mínima */
+  .social-links a {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .social-links {
+    gap: 12px;
+  }
+
+  .site-info {
+    font-size: 0.9rem;
+    padding: 0 8px;
+  }
+}
+
+/* ==========================================================
+   7B. WIDGET DE BUSCA — RESPONSIVIDADE EM TODAS AS TELAS
+   Garante que o formulário de busca da barra lateral
+   funcione corretamente em qualquer largura de tela.
+   ========================================================== */
+
+/* Base (sem media query): max-width previne overflow da sidebar */
+.widget .search-form,
+.widget_search .search-form,
+aside .search-form {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+
+  .widget .search-form,
+  .widget_search .search-form,
+  .wp-block-search__inside-wrapper,
+  aside .search-form {
+    gap: 4px;
+  }
+
+  .widget .search-form .search-submit,
+  .widget_search .search-form .search-submit,
+  .wp-block-search__button,
+  aside .search-form .search-submit {
+    padding: 0 10px;
+    font-size: 0.875rem;
+  }
+}
+
+/* ==========================================================
+   7C. ASIDE/SIDEBAR — CORREÇÃO DE LARGURA EM MOBILE
+   O min-width: 240px do aside conflita com o layout em coluna
+   abaixo de 768px. Aqui forçamos a largura total correta.
+   ========================================================== */
+
+@media (max-width: 768px) {
+  aside {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Widget dentro da sidebar: largura total, sem overflow horizontal */
+  .widget,
+  aside .widget {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* ==========================================================
+   8. WIDGET LATEST POSTS (bloco de posts do WordPress)
+   Evita espaço em branco quando post não tem imagem destacada.
+   ========================================================== */
+
+/* Figura vazia: remove sem deixar espaço */
+.wp-block-latest-posts__featured-image:empty,
+.wp-block-latest-posts__featured-image a:empty,
+.wp-block-latest-posts__featured-image figure:empty {
+  display: none;
+}
+
+.wp-block-latest-posts__featured-image img[src=""],
+.wp-block-latest-posts__featured-image img:not([src]) {
+  display: none;
+}
+
+@media (max-width: 600px) {
+
+  .wp-block-latest-posts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .wp-block-latest-posts li {
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color, #e0e0e0);
+  }
+
+  .wp-block-latest-posts li:last-child {
+    border-bottom: none;
+  }
+
+  .wp-block-latest-posts__featured-image img {
+    width: 100%;
+    max-height: 160px;
+    object-fit: cover;
+    margin-bottom: 8px;
+  }
+
+  .wp-block-latest-posts__post-title {
+    font-size: 1rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .wp-block-latest-posts__post-date,
+  .wp-block-latest-posts__post-excerpt {
+    font-size: 0.875rem;
+    color: var(--muted-text, #666);
+  }
+
+  /* Widget clássico "Posts recentes" */
+  .widget_recent_entries ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .widget_recent_entries li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color, #e0e0e0);
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .widget_recent_entries li:last-child {
+    border-bottom: none;
+  }
+
+  /* Ajuste elástico para o bloco de busca Gutenberg em celulares */
+  .sidebar .widget .wp-block-search .wp-block-search__inside-wrapper,
+  #secondary .widget .wp-block-search .wp-block-search__inside-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100% !important;
+    gap: 0 !important;
+  }
+  .sidebar .widget .wp-block-search__input,
+  #secondary .widget .wp-block-search__input {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-height: 44px !important;
+  }
+  .sidebar .widget .wp-block-search__button,
+  #secondary .widget .wp-block-search__button {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    min-height: 44px !important;
+    padding: 0 15px !important;
+  }
+}
+
+/* ==========================================================
+   9. PAGINAÇÃO
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+  .pagination .page-numbers {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ==========================================================
+   10. BOTÃO "VOLTAR AO TOPO"
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+  #back-to-top,
+  .back-to-top {
+    bottom: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+  }
+}

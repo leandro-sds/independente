@@ -1,0 +1,520 @@
+/*
+ * Independent Theme — Estilo: marinelli
+ * Gerado automaticamente na refatoração v5.2
+ * NÃO editar manualmente sem atualizar style.css
+ */
+
+/* ── Regras de desktop ── */
+
+body.style-marinelli {
+  background-color: #17293d;
+  font-family: 'Inter', "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color: #333333;
+  line-height: 1.6; /* era padrão (~1.4) — mais respiro na leitura */
+}
+
+body.style-marinelli .site-content {
+  background-color: #ffffff;
+  border: 6px solid #054b81; /* borda levemente mais fina */
+  border-top: 0;
+  box-shadow: 0 8px 32px rgba(5,27,50,0.45), 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: 0 0 6px 6px; /* cantos inferiores arredondados */
+}
+
+body.style-marinelli .site-header {
+  background-color: #054b81 !important;
+  border-bottom: 3px solid #17293d !important;
+  box-shadow: none !important;
+}
+
+body.style-marinelli .site-title .site-name a {
+  color: #ffffff;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-shadow: rgba(10,10,10,0.4) 2px 3px 3px;
+  text-decoration: none !important;
+}
+
+body.style-marinelli .site-title .site-description {
+  color: rgba(255,255,255,0.85);
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+body.style-marinelli .site-header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, #f97e05, rgba(249,126,5,0.3));
+  width: 100%;
+  animation: none;
+}
+
+body.style-marinelli .primary-nav {
+  background: #156aa3;
+  padding-bottom: 0 !important;
+}
+
+body.style-marinelli .primary-nav .menu a {
+  color: #ffffff !important;
+  font-family: 'Inter', "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 600 !important; /* era bold — peso mais refinado */
+  text-transform: uppercase !important;
+  font-size: 0.92rem !important;
+  text-decoration: none !important;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.18); /* sombra mais suave */
+  background: linear-gradient(to bottom, #2272b8, #1a63a6 100%); /* gradiente sutil */
+  border-radius: 4px 4px 0 0; /* arredondamento minimalista */
+  padding: 10px 18px !important; /* mais respiro */
+  letter-spacing: 0.04em !important;
+}
+
+body.style-marinelli .primary-nav .menu a:hover {
+  background: rgba(249,126,5,0.85) !important; /* laranja flat no hover */
+  color: #ffffff !important;
+}
+
+body.style-marinelli .primary-nav .menu li.current-menu-item > a,
+body.style-marinelli .primary-nav .menu li.current_page_item > a {
+  background: #f97e05 !important; /* laranja flat — sem gradiente */
+  color: #ffffff !important;
+  border-bottom: none !important;
+  box-shadow: 0 2px 6px rgba(249,126,5,0.35) !important;
+}
+
+body.style-marinelli .header-search .search-form .search-field {
+  background-color: rgba(255,255,255,0.12) !important; /* fundo sutil */
+  border: 2px solid rgba(255,255,255,0.55) !important; /* borda fina */
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  font-family: 'Inter', "Helvetica Neue", Arial, Helvetica, sans-serif !important;
+}
+
+body.style-marinelli .header-search .search-form .search-field::placeholder {
+  color: rgba(255,255,255,0.75) !important;
+}
+
+body.style-marinelli .header-search .search-form .search-field:focus {
+  background-color: #054b81 !important;
+}
+
+body.style-marinelli .header-search .search-form .search-submit {
+  background-color: #f97e05 !important; /* laranja direto — flat design */
+  border: none !important; /* sem borda branca grossa */
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 6px rgba(249,126,5,0.40) !important; /* sombra difusa */
+  filter: none !important;
+  letter-spacing: 0.04em !important;
+}
+
+body.style-marinelli .header-search .search-form .search-submit:hover,
+body.style-marinelli .header-search .search-form .search-submit:focus-visible {
+  background-color: #f97e05 !important;
+  border-color: #f97e05 !important;
+  filter: none !important;
+}
+
+body.style-marinelli .menu-toggle {
+  background: rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.40);
+  color: #ffffff;
+}
+
+body.style-marinelli .menu-toggle:hover {
+  background: rgba(255,255,255,0.22);
+}
+
+body.style-marinelli main {
+  background-color: #f7f9fa;
+  border-right: 1px solid #dde3ec;
+}
+
+body.style-marinelli aside {
+  background-color: #eef1f5;
+  border-left: none;
+}
+
+body.style-marinelli .widget {
+  background-color: #ffffff;
+  border: 1px solid #dde3ec;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.04);
+}
+
+body.style-marinelli .widget h3,
+body.style-marinelli .widget h2,
+body.style-marinelli .widget h4 {
+  font-size: 1em !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: linear-gradient(to bottom, #2e6fa8 0%, #1e5799 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 2px 4px rgba(0,0,0,0.15) !important;
+  padding: 10px 12px !important;
+  margin: -1.75rem -1.75rem 1rem -1.75rem !important;
+  border-radius: 6px 6px 0 0 !important;
+  border-bottom: none !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.30) !important;
+}
+
+body.style-marinelli h1,
+body.style-marinelli h2,
+body.style-marinelli h3,
+body.style-marinelli h4 {
+  font-family: 'Inter', "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 600; /* era normal — mais presença sem ser pesado */
+  color: #333333;
+  letter-spacing: -0.01em; /* era -0.03em — menos compressão */
+  line-height: 1.3;
+}
+
+body.style-marinelli .entry-title,
+body.style-marinelli h1.entry-title {
+  color: #054b81;
+  font-weight: bold;
+}
+
+body.style-marinelli h2,
+body.style-marinelli h3 {
+  border-bottom: 1px solid #e2e2e2;
+  padding-bottom: 5px;
+}
+
+body.style-marinelli a {
+  color: #156aa3;
+  text-decoration: underline;
+}
+
+body.style-marinelli a:hover {
+  color: #054b81;
+}
+
+body.style-marinelli a:active {
+  color: #f97e05;
+}
+
+body.style-marinelli .site-header a,
+body.style-marinelli .primary-nav a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+body.style-marinelli .post-content blockquote,
+body.style-marinelli .page-content blockquote {
+  border-left: 4px solid #156aa3 !important;
+  background: #f0f4f8 !important;
+  color: #555555 !important;
+  border-radius: 0 5px 5px 0 !important;
+}
+
+body.style-marinelli .read-more {
+  background: #f97e05 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+
+body.style-marinelli .read-more:hover {
+  background: #d4680a !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  filter: none !important;
+}
+
+body.style-marinelli .comment-reply-link,
+body.style-marinelli .reply a,
+body.style-marinelli .comment-reply a {
+  background: #f97e05 !important;
+  border: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-weight: bold !important;
+  border-radius: 4px !important;
+}
+
+body.style-marinelli .comment-reply-link:hover,
+body.style-marinelli .reply a:hover,
+body.style-marinelli .comment-reply a:hover {
+  background: #d4680a !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.style-marinelli .comment-author .fn,
+body.style-marinelli .comment-author-name,
+body.style-marinelli .comment-author-name a {
+  color: #054b81 !important;
+}
+
+body.style-marinelli .back-link a {
+  color: #156aa3 !important;
+  border: 1px solid #156aa3 !important;
+  border-radius: 4px;
+  padding: 6px 14px;
+  text-decoration: none !important;
+}
+
+body.style-marinelli .back-link a:hover {
+  background: #f97e05 !important;
+  border-color: #f97e05 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.style-marinelli .pagination .page-numbers {
+  border-radius: 3px;
+  border: 1px solid #c8ccd1;
+  color: #156aa3;
+}
+
+body.style-marinelli .pagination .current,
+body.style-marinelli .pagination .page-numbers:hover {
+  background: linear-gradient(to bottom, #7ab0d4, #156aa3 40%);
+  border-color: #156aa3;
+  color: #ffffff;
+}
+
+body.style-marinelli article:nth-child(even) {
+  background-color: #f5f7fa;
+}
+
+body.style-marinelli article:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+body.style-marinelli article {
+  border-bottom-color: #e2e2e2;
+}
+
+body.style-marinelli hr,
+body.style-marinelli .wp-block-separator {
+  border-color: #c8ccd1;
+  border-width: 1px 0 0;
+}
+
+body.style-marinelli footer[role="contentinfo"] {
+  background-color: #17293d;
+  border-top: 3px solid #054b81;
+}
+
+body.style-marinelli .site-info,
+body.style-marinelli .site-info p {
+  color: rgba(255,255,255,0.80) !important;
+  border-top-color: rgba(255,255,255,0.15) !important;
+}
+
+body.style-marinelli .social-title { color: #ffffff !important; }
+
+body.style-marinelli footer a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+}
+
+body.style-marinelli footer a:hover { color: #ffffff; }
+
+body.style-marinelli footer[role="contentinfo"] p,
+body.style-marinelli footer[role="contentinfo"] span,
+body.style-marinelli footer[role="contentinfo"] li,
+body.style-marinelli footer[role="contentinfo"] td,
+body.style-marinelli footer[role="contentinfo"] div:not([class*="widget"]):not([class*="footer"]) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.style-marinelli footer .widget h1,
+body.style-marinelli footer .widget h2,
+body.style-marinelli footer .widget h3,
+body.style-marinelli footer .widget h4,
+body.style-marinelli footer .footer-widget h1,
+body.style-marinelli footer .footer-widget h2,
+body.style-marinelli footer .footer-widget h3,
+body.style-marinelli footer .footer-widget h4 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-bottom-color: rgba(255,255,255,0.20) !important;
+}
+
+body.style-marinelli footer .widget::before {
+  background: linear-gradient(90deg, rgba(249,126,5,0.60), rgba(249,126,5,0.25), transparent) !important;
+}
+
+body.style-marinelli footer .footer-widget,
+body.style-marinelli footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(255,255,255,0.15) !important;
+  box-shadow: none !important;
+}
+
+body.style-marinelli .logo img,
+body.style-marinelli img.custom-logo,
+body.style-marinelli .custom-logo-link,
+body.style-marinelli .custom-logo-link:focus,
+body.style-marinelli a.custom-logo-link,
+body.style-marinelli .site-header figure,
+body.style-marinelli .site-header .wp-block-image,
+body.style-marinelli .logo {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  body.style-marinelli #main-menu {
+    background: #054b81 !important;
+    border-top: 1px solid rgba(255,255,255,0.15) !important;
+  }
+
+  body.style-marinelli #main-menu a {
+    border-bottom-color: rgba(255,255,255,0.10) !important;
+    color: #ffffff !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-marinelli .primary-nav .menu a::before {
+    display: none !important;
+  }
+}
+
+body.style-marinelli .site-header {
+  background: linear-gradient(
+    180deg,
+    #0a5590 0%,
+    #054b81 60%,
+    #043d6a 100%
+  ) !important; /* gradiente suavizado — menos contraste, mais volumetria */
+  border-bottom: 3px solid #17293d !important;
+  box-shadow: 0 3px 16px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.08) !important;
+}
+
+body.style-marinelli .site-header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: #f97e05;
+  animation: marinelliLine 0.8s ease forwards;
+  margin-top: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-marinelli .site-header::after {
+    animation: none !important;
+    width: 100% !important;
+  }
+}
+
+body.style-marinelli .primary-nav .menu a {
+  position: relative !important;
+  overflow: hidden !important;
+  transition: color 0.25s ease !important;
+}
+
+body.style-marinelli .primary-nav .menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: rgba(249,126,5,0.15);
+  transition: height 0.25s ease;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+body.style-marinelli .primary-nav .menu a:hover::before {
+  height: 100%;
+}
+
+body.style-marinelli .primary-nav .menu a:hover {
+  color: #f97e05 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-marinelli .primary-nav .menu a::before {
+    display: none !important;
+  }
+}
+
+body.style-marinelli .entry-title,
+body.style-marinelli .post-content h2,
+body.style-marinelli .page-content h2 {
+  animation: marinelliStamp 0.5s ease both !important;
+}
+
+body.style-marinelli .post-content h3,
+body.style-marinelli .page-content h3 {
+  animation: marinelliStamp 0.5s ease 0.1s both !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-marinelli .entry-title,
+  body.style-marinelli .post-content h2,
+  body.style-marinelli .post-content h3,
+  body.style-marinelli .page-content h2,
+  body.style-marinelli .page-content h3 {
+    animation: none !important;
+  }
+}
+
+body.style-marinelli .post-content blockquote,
+body.style-marinelli .page-content blockquote {
+  border-left: 5px solid #f97e05 !important;
+  background: #f5f7fa !important;
+  border-radius: 0 !important;
+  padding: 1.4rem 1.8rem !important;
+  font-style: italic !important;
+  font-family: Georgia, 'Times New Roman', serif !important;
+  font-size: 1.05rem !important;
+  line-height: 1.80 !important;
+  color: #1a2535 !important;
+  box-shadow: inset 0 0 0 1px rgba(249,126,5,0.10) !important;
+  position: relative !important;
+}
+
+body.style-marinelli .post-content blockquote::before,
+body.style-marinelli .page-content blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -8px;
+  left: 14px;
+  font-size: 3.5rem;
+  color: rgba(249,126,5,0.70);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+body.style-marinelli .widget,
+body.style-marinelli .widget_block {
+  position: relative;
+  overflow: visible /* era hidden — cortava o formulário de busca */;
+}
+
+body.style-marinelli .widget::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #f97e05, transparent);
+  pointer-events: none;
+}
+
+body.style-marinelli .widget h3,
+body.style-marinelli .widget h2,
+body.style-marinelli .widget h4 {
+  border-bottom: 2px solid #f97e05 !important;
+  padding-bottom: 8px !important;
+}
+
+body.style-marinelli    { --accent-color: #F97316; --on-accent: #ffffff; }

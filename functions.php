@@ -270,6 +270,38 @@ function independent_theme_scripts() {
     );
   }
 
+  $responsive_css = $theme_path . '/assets/css/responsive.css';
+  if ( file_exists( $responsive_css ) ) {
+    wp_enqueue_style(
+      'independent-theme-responsive',
+      $theme_uri . '/assets/css/responsive.css',
+      [ 'independent-theme-style', 'independent-theme-custom' ],
+      filemtime( $responsive_css )
+    );
+  }
+
+  // Carrega apenas o CSS do estilo ativo — o usuário não baixa CSS de outros estilos
+  $active_style = get_theme_mod( 'independent_site_style', 'default' );
+  $style_css    = $theme_path . '/assets/css/estilos/' . sanitize_file_name( $active_style ) . '.css';
+  if ( file_exists( $style_css ) ) {
+    wp_enqueue_style(
+      'independent-theme-estilo',
+      $theme_uri . '/assets/css/estilos/' . sanitize_file_name( $active_style ) . '.css',
+      [ 'independent-theme-style', 'independent-theme-custom', 'independent-theme-responsive' ],
+      filemtime( $style_css )
+    );
+  }
+
+  // Google Fonts: carrega apenas quando o estilo ativo precisar
+  if ( 'alvorada' === $active_style ) {
+    wp_enqueue_style(
+      'independent-theme-fonts-alvorada',
+      'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap',
+      [],
+      null
+    );
+  }
+
   $custom_js = $theme_path . '/assets/js/custom.js';
   if ( file_exists( $custom_js ) ) {
     wp_enqueue_script(
@@ -587,6 +619,7 @@ function independent_theme_customize_register( $wp_customize ) {
     'type'    => 'select',
     'choices' => [
       'default'      => __( 'Padrão do Tema', 'independent-theme' ),
+      'alvorada'     => __( '🌅 Alvorada – Minimalismo Orgânico', 'independent-theme' ),
       'neonpop'      => __( '🎧 Rádio Jovem – Neon Pop', 'independent-theme' ),
       'vintagecafe'  => __( '📻 Rádio Retrô – Vintage Café', 'independent-theme' ),
       'campoepaixao' => __( '⚽ Site de Futebol – Campo e Paixão', 'independent-theme' ),
@@ -923,6 +956,31 @@ $styles = [
       '--radius-lg'          => '14px',
     ],
 
+    /*
+     * 🌅 Alvorada — Minimalismo Orgânico / Calm Tech Design
+     * Verde Oliva · Alabastro · Dourado Champagne
+     */
+    'alvorada' => [
+      '--primary-color'      => '#2C3E2B',   // verde oliva profundo — header
+      '--bg-light'           => '#EDEBE4',   // alabastro escurecido — sidebar
+      '--card-bg'            => '#FFFFFF',   // branco puro — cards
+      '--accent-color'       => '#C9A227',   // dourado champagne — botões e destaques
+      '--on-accent'          => '#1E2B1D',   // verde escuro — texto nos botões dourados
+      '--link-color'         => '#4A7C59',   // verde suave — links
+      '--text-color'         => '#2D2D2D',   // grafite caloroso — texto principal
+      '--muted-text'         => '#6B6858',   // bege acinzentado — texto secundário
+      '--border-color'       => '#E2DDD4',   // bege claro — bordas
+      '--header-title-color' => '#F7F5F0',   // alabastro — título no header
+      '--header-muted'       => 'rgba(247,245,240,0.68)',
+      '--header-border'      => 'rgba(201,162,39,0.25)',
+      '--focus-ring'         => '2px solid #C9A227',
+      '--font-main'          => "'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
+      '--font-title'         => "'Playfair Display', 'Lora', Georgia, serif",
+      '--radius-sm'          => '8px',
+      '--radius-md'          => '14px',
+      '--radius-lg'          => '20px',
+    ],
+
   ];
 
   $css_vars = [
@@ -972,10 +1030,10 @@ function independent_theme_late_style() {
       box-shadow: 0 0 0 5px rgba(0,0,0,0.15) !important;
       border-radius: 4px !important;
     }
-    /* Busca: campo e botão mesma altura */
-    .header-search-form { align-items: stretch !important; }
-    .header-search-form .search-field,
-    .header-search-form .search-submit { height: 44px !important; box-sizing: border-box !important; }
+    /* Busca no cabeçalho: campo e botão mesma altura */
+    .header-search .search-form { align-items: center !important; }
+    .header-search .search-form .search-field,
+    .header-search .search-form .search-submit { height: 44px !important; box-sizing: border-box !important; }
 
     /* Logo: respeita valores do Personalizador */
     .logo img,
@@ -1006,9 +1064,9 @@ add_action( 'wp_head', 'independent_theme_late_style', 999 );
 // Adiciona classe ao body com base no estilo
 function independent_theme_body_class( $classes ) {
   $style = get_theme_mod( 'independent_site_style', 'default' );
-  if ( 'default' !== $style ) {
-    $classes[] = 'style-' . sanitize_html_class( $style );
-  }
+  // Sempre adiciona a classe de estilo — inclusive 'style-default'.
+  // Isso garante que body.style-default dispare as regras CSS dedicadas.
+  $classes[] = 'style-' . sanitize_html_class( $style );
 
   $layout = get_theme_mod( 'independent_header_layout', 'left' );
   $classes[] = 'header-layout-' . sanitize_html_class( $layout );

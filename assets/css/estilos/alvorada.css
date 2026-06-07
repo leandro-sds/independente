@@ -1,0 +1,907 @@
+/*
+ * Independent Theme — Estilo: alvorada
+ * ─────────────────────────────────────────────────────────────
+ * Minimalismo Orgânico · Calm Tech Design
+ * Desenhado exclusivamente para a Rádio Maior Amor
+ * "A luz da manhã que acolhe e eleva"
+ * ─────────────────────────────────────────────────────────────
+ */
+
+/* ══════════════════════════════════════════════════════════════
+   VARIÁVEIS DO ALVORADA
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada {
+  --primary-color:        #2C3E2B;
+  --accent-color:         #C9A227;
+  --on-accent:            #ffffff;
+  --bg-light:             #EDEBE4;
+  --card-bg:              #FFFFFF;
+  --link-color:           #4A7C59;
+  --text-color:           #2D2D2D;
+  --muted-text:           #6B6858;
+  --border-color:         #E2DDD4;
+  --header-bg:            #2C3E2B;
+  --header-fg:            #F7F5F0;
+  --header-muted:         rgba(247,245,240,0.68);
+  --header-input-bg:      rgba(247,245,240,0.10);
+  --header-input-border:  rgba(247,245,240,0.38);
+  --font-main:            'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-heading:         'Playfair Display', 'Lora', Georgia, 'Times New Roman', serif;
+  --focus-ring:           2px solid #C9A227;
+  --radius-sm:            8px;
+  --radius-md:            14px;
+  --radius-lg:            20px;
+  --transition-fast:      0.4s ease;
+  --shadow-glow:          0 4px 24px rgba(201,162,39,0.10), 0 1px 6px rgba(44,62,43,0.06);
+  --shadow-glow-hover:    0 8px 36px rgba(201,162,39,0.18), 0 2px 10px rgba(44,62,43,0.08);
+
+  background-color: #F7F5F0;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  color: #2D2D2D;
+  line-height: 1.75;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BODY E LAYOUT GERAL
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .site-content {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+body.style-alvorada main {
+  background-color: transparent;
+  border-right: 1px solid #E2DDD4;
+}
+
+body.style-alvorada aside {
+  background-color: #EDEBE4;
+  border-left: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CABEÇALHO — Verde Oliva Profundo
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .site-header {
+  background: linear-gradient(
+    160deg,
+    #344835 0%,
+    #2C3E2B 55%,
+    #243320 100%
+  ) !important;
+  border-bottom: none !important;
+  box-shadow:
+    0 2px 20px rgba(0,0,0,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.06) !important;
+  position: relative;
+}
+
+/* Linha dourada animada no rodapé do header */
+body.style-alvorada .site-header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #C9A227, #E5C158, rgba(201,162,39,0.20));
+  animation: alvoradaAurora 1.2s cubic-bezier(0.4,0,0.2,1) forwards;
+  margin-top: 0;
+}
+
+@keyframes alvoradaAurora {
+  from { width: 0; opacity: 0.4; }
+  to   { width: 100%; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-alvorada .site-header::after {
+    animation: none !important;
+    width: 100% !important;
+  }
+}
+
+/* Nome do site */
+body.style-alvorada .site-title .site-name a {
+  color: #F7F5F0;
+  font-family: 'Playfair Display', 'Lora', Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none !important;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.20);
+}
+
+body.style-alvorada .site-title .site-description {
+  color: rgba(247,245,240,0.72);
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+/* Campo de busca do header */
+body.style-alvorada .header-search .search-form .search-field {
+  background-color: rgba(247,245,240,0.10) !important;
+  border: 1.5px solid rgba(247,245,240,0.35) !important;
+  color: #F7F5F0 !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
+  transition: all var(--transition-fast) !important;
+}
+
+body.style-alvorada .header-search .search-form .search-field::placeholder {
+  color: rgba(247,245,240,0.55) !important;
+}
+
+body.style-alvorada .header-search .search-form .search-field:focus {
+  background-color: rgba(247,245,240,0.18) !important;
+  border-color: #C9A227 !important;
+  box-shadow: 0 0 0 3px rgba(201,162,39,0.20) !important;
+}
+
+/* Botão de busca — dourado */
+body.style-alvorada .header-search .search-form .search-submit {
+  background-color: #C9A227 !important;
+  border: none !important;
+  color: #1E2B1D !important; /* era #ffffff — texto escuro sobre dourado: contraste perfeito */
+  font-weight: 700 !important;
+  border-radius: var(--radius-sm) !important;
+  letter-spacing: 0.04em !important;
+  box-shadow: 0 2px 8px rgba(201,162,39,0.35) !important;
+  transition: all var(--transition-fast) !important;
+  filter: none !important;
+}
+
+body.style-alvorada .header-search .search-form .search-submit:hover {
+  background-color: #E5C158 !important;
+  box-shadow: 0 4px 14px rgba(201,162,39,0.50) !important;
+  transform: translateY(-1px);
+  filter: none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   NAVEGAÇÃO
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .primary-nav {
+  background: rgba(36,51,32,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding-bottom: 0 !important;
+  border-top: 1px solid rgba(201,162,39,0.18);
+}
+
+body.style-alvorada .primary-nav .menu a {
+  color: #E5C158 !important; /* era rgba(247,245,240,0.88) — dourado tem contraste superior sobre verde-oliva */
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  font-weight: 500 !important;
+  font-size: 0.92rem !important;
+  letter-spacing: 0.05em !important;
+  text-transform: none !important;
+  text-decoration: none !important;
+  padding: 11px 18px !important;
+  border-radius: 6px 6px 0 0;
+  transition: all var(--transition-fast) !important;
+  position: relative;
+}
+
+body.style-alvorada .primary-nav .menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #C9A227;
+  transition: width var(--transition-fast);
+  border-radius: 2px 2px 0 0;
+}
+
+body.style-alvorada .primary-nav .menu a:hover {
+  color: #E5C158 !important; /* mantém dourado no hover, fundo ligeiramente mais visível */
+  background: rgba(201,162,39,0.15) !important;
+}
+
+body.style-alvorada .primary-nav .menu a:hover::after {
+  width: 70%;
+}
+
+body.style-alvorada .primary-nav .menu li.current-menu-item > a,
+body.style-alvorada .primary-nav .menu li.current_page_item > a {
+  color: #F7F5F0 !important; /* item ativo: branco sobre fundo dourado semitransparente */
+  background: rgba(201,162,39,0.30) !important;
+  font-weight: 600 !important;
+}
+
+body.style-alvorada .primary-nav .menu li.current-menu-item > a::after,
+body.style-alvorada .primary-nav .menu li.current_page_item > a::after {
+  width: 70%;
+}
+
+body.style-alvorada .menu-toggle {
+  background: rgba(247,245,240,0.08);
+  border: 1.5px solid rgba(247,245,240,0.30);
+  color: #F7F5F0;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+body.style-alvorada .menu-toggle:hover {
+  background: rgba(247,245,240,0.16);
+  border-color: rgba(201,162,39,0.60);
+}
+
+@media (max-width: 768px) {
+  body.style-alvorada #main-menu {
+    background: #2C3E2B !important;
+    border-top: 1px solid rgba(201,162,39,0.20) !important;
+  }
+  body.style-alvorada #main-menu a {
+    border-bottom-color: rgba(247,245,240,0.08) !important;
+    color: rgba(247,245,240,0.88) !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TIPOGRAFIA — Playfair Display para títulos
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada h1,
+body.style-alvorada h2,
+body.style-alvorada h3,
+body.style-alvorada h4 {
+  font-family: 'Playfair Display', 'Lora', Georgia, serif;
+  font-weight: 700;
+  color: #1E2B1D;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+body.style-alvorada .entry-title,
+body.style-alvorada h1.entry-title {
+  color: #2C3E2B;
+  font-family: 'Playfair Display', 'Lora', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
+body.style-alvorada h2,
+body.style-alvorada h3 {
+  border-bottom: 1px solid #E2DDD4;
+  padding-bottom: 6px;
+}
+
+body.style-alvorada .post-content h2,
+body.style-alvorada .page-content h2 {
+  color: #2C3E2B;
+  border-bottom-color: rgba(201,162,39,0.35);
+}
+
+body.style-alvorada .post-content h3,
+body.style-alvorada .page-content h3 {
+  color: #3A4E39;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LINKS
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada a {
+  color: #4A7C59;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+body.style-alvorada a:hover {
+  color: #2C3E2B;
+}
+
+body.style-alvorada a:active {
+  color: #C9A227;
+}
+
+body.style-alvorada .site-header a,
+body.style-alvorada .primary-nav a {
+  text-decoration: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CARDS DE ARTIGO — Glow Espiritual
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada article {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid #E2DDD4 !important;
+  box-shadow: var(--shadow-glow);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+  overflow: visible !important;
+}
+
+body.style-alvorada article:hover {
+  box-shadow: var(--shadow-glow-hover);
+  transform: translateY(-2px);
+}
+
+body.style-alvorada article:nth-child(even),
+body.style-alvorada article:nth-child(odd) {
+  background-color: #FFFFFF;
+}
+
+body.style-alvorada article {
+  border-bottom-color: transparent !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BOTÕES DE AÇÃO
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .read-more {
+  background: #C9A227 !important;
+  color: #1a1a1a !important;
+  -webkit-text-fill-color: #1a1a1a !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.04em !important;
+  border-radius: var(--radius-sm) !important;
+  border: none !important;
+  box-shadow: 0 2px 10px rgba(201,162,39,0.30) !important;
+  text-decoration: none !important;
+  transition: all var(--transition-fast) !important;
+  padding: 10px 22px !important;
+}
+
+body.style-alvorada .read-more:hover {
+  background: #E5C158 !important;
+  color: #1a1a1a !important;
+  -webkit-text-fill-color: #1a1a1a !important;
+  box-shadow: 0 4px 16px rgba(201,162,39,0.45) !important;
+  transform: translateY(-1px);
+  filter: none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BLOCKQUOTE — Versículos e Citações
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .post-content blockquote,
+body.style-alvorada .page-content blockquote {
+  border-left: 3px solid #C9A227 !important;
+  background: linear-gradient(135deg, #FDFCF8 0%, #F7F5F0 100%) !important;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0 !important;
+  padding: 1.6rem 2rem !important;
+  font-family: 'Playfair Display', 'Lora', Georgia, serif !important;
+  font-style: italic !important;
+  font-size: 1.08rem !important;
+  line-height: 1.85 !important;
+  color: #3A3228 !important;
+  box-shadow: 0 2px 16px rgba(201,162,39,0.08), inset 0 0 0 1px rgba(201,162,39,0.08) !important;
+  position: relative !important;
+}
+
+body.style-alvorada .post-content blockquote::before,
+body.style-alvorada .page-content blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: -12px;
+  left: 18px;
+  font-size: 4rem;
+  color: rgba(201,162,39,0.35);
+  font-family: 'Playfair Display', Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   WIDGETS DA SIDEBAR
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .widget,
+body.style-alvorada .widget_block {
+  background-color: #FFFFFF;
+  border: 1px solid #E2DDD4;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glow);
+  overflow: visible;
+  transition: box-shadow var(--transition-fast);
+}
+
+body.style-alvorada .widget:hover,
+body.style-alvorada .widget_block:hover {
+  box-shadow: var(--shadow-glow-hover);
+}
+
+body.style-alvorada .widget h3,
+body.style-alvorada .widget h2,
+body.style-alvorada .widget h4 {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.10em !important;
+  color: #4A7C59 !important;
+  -webkit-text-fill-color: #4A7C59 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 0 10px 0 !important;
+  margin-bottom: 1rem !important;
+  border-bottom: 2px solid #C9A227 !important;
+  border-radius: 0 !important;
+  text-shadow: none !important;
+}
+
+body.style-alvorada aside .widget a {
+  color: #4A7C59;
+  transition: color var(--transition-fast);
+}
+
+body.style-alvorada aside .widget a:hover {
+  color: #2C3E2B;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PAGINAÇÃO
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .pagination .page-numbers {
+  border-radius: var(--radius-sm);
+  border: 1.5px solid #C9A227;
+  color: #4A7C59;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  transition: all var(--transition-fast);
+}
+
+body.style-alvorada .pagination .current,
+body.style-alvorada .pagination .page-numbers:hover {
+  background: #C9A227;
+  border-color: #C9A227;
+  color: #1a1a1a;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HR E SEPARADORES
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada hr,
+body.style-alvorada .wp-block-separator {
+  border-color: #E2DDD4;
+  border-width: 1px 0 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   COMENTÁRIOS
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .comment-reply-link,
+body.style-alvorada .reply a,
+body.style-alvorada .comment-reply a {
+  background: #C9A227 !important;
+  border: none !important;
+  color: #1a1a1a !important;
+  -webkit-text-fill-color: #1a1a1a !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-sm) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+body.style-alvorada .comment-reply-link:hover,
+body.style-alvorada .reply a:hover,
+body.style-alvorada .comment-reply a:hover {
+  background: #E5C158 !important;
+  color: #1a1a1a !important;
+  -webkit-text-fill-color: #1a1a1a !important;
+}
+
+body.style-alvorada .comment-author .fn,
+body.style-alvorada .comment-author-name,
+body.style-alvorada .comment-author-name a {
+  color: #2C3E2B !important;
+  font-family: 'Playfair Display', Georgia, serif !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BACK LINK
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .back-link a {
+  color: #4A7C59 !important;
+  border: 1.5px solid #4A7C59 !important;
+  border-radius: var(--radius-sm);
+  padding: 7px 16px;
+  text-decoration: none !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+body.style-alvorada .back-link a:hover {
+  background: #2C3E2B !important;
+  border-color: #2C3E2B !important;
+  color: #F7F5F0 !important;
+  -webkit-text-fill-color: #F7F5F0 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RODAPÉ — Verde Oliva Profundo
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada footer[role="contentinfo"] {
+  background: linear-gradient(160deg, #344835 0%, #2C3E2B 60%, #1E2B1D 100%);
+  border-top: 2px solid rgba(201,162,39,0.30);
+}
+
+body.style-alvorada .site-info,
+body.style-alvorada .site-info p {
+  color: rgba(247,245,240,0.72) !important;
+  border-top-color: rgba(247,245,240,0.12) !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+
+body.style-alvorada .social-title {
+  color: #F7F5F0 !important;
+  font-family: 'Playfair Display', Georgia, serif !important;
+}
+
+body.style-alvorada footer a {
+  color: rgba(247,245,240,0.80);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+body.style-alvorada footer a:hover {
+  color: #C9A227;
+}
+
+body.style-alvorada footer[role="contentinfo"] p,
+body.style-alvorada footer[role="contentinfo"] span,
+body.style-alvorada footer[role="contentinfo"] li,
+body.style-alvorada footer[role="contentinfo"] td,
+body.style-alvorada footer[role="contentinfo"] div:not([class*="widget"]):not([class*="footer"]) {
+  color: rgba(247,245,240,0.80) !important;
+  -webkit-text-fill-color: rgba(247,245,240,0.80) !important;
+}
+
+body.style-alvorada footer .widget h1,
+body.style-alvorada footer .widget h2,
+body.style-alvorada footer .widget h3,
+body.style-alvorada footer .widget h4,
+body.style-alvorada footer .footer-widget h1,
+body.style-alvorada footer .footer-widget h2,
+body.style-alvorada footer .footer-widget h3,
+body.style-alvorada footer .footer-widget h4 {
+  color: #F7F5F0 !important;
+  -webkit-text-fill-color: #F7F5F0 !important;
+  border-bottom-color: rgba(201,162,39,0.30) !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
+  letter-spacing: 0.08em !important;
+}
+
+body.style-alvorada footer .footer-widget,
+body.style-alvorada footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(247,245,240,0.12) !important;
+  box-shadow: none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LOGO — Sem bordas
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .logo img,
+body.style-alvorada img.custom-logo,
+body.style-alvorada .custom-logo-link,
+body.style-alvorada a.custom-logo-link,
+body.style-alvorada .site-header figure,
+body.style-alvorada .site-header .wp-block-image,
+body.style-alvorada .logo {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ANIMAÇÃO DE ENTRADA DOS TÍTULOS
+   ══════════════════════════════════════════════════════════════ */
+@keyframes alvoradaFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+body.style-alvorada .entry-title,
+body.style-alvorada .post-content h2,
+body.style-alvorada .page-content h2 {
+  animation: alvoradaFade 0.6s ease both;
+}
+
+body.style-alvorada .post-content h3,
+body.style-alvorada .page-content h3 {
+  animation: alvoradaFade 0.6s ease 0.1s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-alvorada .entry-title,
+  body.style-alvorada .post-content h2,
+  body.style-alvorada .post-content h3,
+  body.style-alvorada .page-content h2,
+  body.style-alvorada .page-content h3 {
+    animation: none !important;
+  }
+  body.style-alvorada .site-header::after {
+    animation: none !important;
+    width: 100% !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   VARIÁVEIS GLOBAIS DO TEMA (override)
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada {
+  --accent-color: #C9A227;
+  --on-accent: #1a1a1a;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   META DO POST — data, autor, categorias
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .post-meta {
+  color: #6B6858 !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  font-size: 0.85rem !important;
+  background: transparent !important;
+  border-left: 3px solid #C9A227 !important;
+  padding-left: 10px !important;
+}
+
+body.style-alvorada .post-meta a {
+  color: #4A7C59 !important;
+  text-decoration: none !important;
+  transition: color var(--transition-fast);
+}
+
+body.style-alvorada .post-meta a:hover {
+  color: #2C3E2B !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   EXCERPT — resumo de posts na listagem
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .excerpt,
+body.style-alvorada .excerpt p {
+  color: #4A453C !important;
+  line-height: 1.70 !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+
+body.style-alvorada .widget .excerpt,
+body.style-alvorada .widget .excerpt p {
+  color: #6B6858 !important;
+  font-size: 0.88rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   MINIATURA DE POSTS NA LISTAGEM
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .post-thumbnail-img {
+  border-radius: var(--radius-md) !important;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+body.style-alvorada article:hover .post-thumbnail-img {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(44,62,43,0.15) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   COMENTÁRIOS
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .comment-list .comment-body {
+  background: #FFFFFF !important;
+  border: 1px solid #E2DDD4 !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-glow) !important;
+  padding: 1.25rem 1.5rem !important;
+}
+
+body.style-alvorada .comment-metadata a {
+  color: #6B6858 !important;
+  font-size: 0.82rem !important;
+  text-decoration: none !important;
+  transition: color var(--transition-fast);
+}
+
+body.style-alvorada .comment-metadata a:hover {
+  color: #C9A227 !important;
+}
+
+body.style-alvorada .comment-content p {
+  color: #2D2D2D !important;
+  line-height: 1.75 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FORMULÁRIO DE COMENTÁRIOS
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .comment-form input[type="text"],
+body.style-alvorada .comment-form input[type="email"],
+body.style-alvorada .comment-form input[type="url"],
+body.style-alvorada .comment-form textarea {
+  background: #FFFFFF !important;
+  border: 1.5px solid #E2DDD4 !important;
+  color: #2D2D2D !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast) !important;
+}
+
+body.style-alvorada .comment-form input:focus,
+body.style-alvorada .comment-form textarea:focus {
+  border-color: #C9A227 !important;
+  box-shadow: 0 0 0 3px rgba(201,162,39,0.15) !important;
+  outline: none !important;
+}
+
+body.style-alvorada .comment-form .submit {
+  background: #C9A227 !important;
+  color: #1E2B1D !important;
+  border: none !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 0 2px 8px rgba(201,162,39,0.30) !important;
+  transition: all var(--transition-fast) !important;
+  letter-spacing: 0.04em !important;
+}
+
+body.style-alvorada .comment-form .submit:hover {
+  background: #E5C158 !important;
+  box-shadow: 0 4px 14px rgba(201,162,39,0.45) !important;
+  transform: translateY(-1px);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BUSCA — search-toggle e resultado de busca
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .search-toggle {
+  color: #E5C158 !important;
+  transition: color var(--transition-fast);
+}
+
+body.style-alvorada .search-toggle:hover {
+  color: #F7F5F0 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SOCIAL LINKS
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .social-links a {
+  color: rgba(247,245,240,0.70) !important;
+  transition: color var(--transition-fast);
+}
+
+body.style-alvorada .social-links a:hover {
+  color: #C9A227 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   WIDGET — SEARCH GUTENBERG (wp-block-search)
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .wp-block-search__inside-wrapper {
+  display: flex !important;
+  width: 100% !important;
+}
+
+body.style-alvorada .wp-block-search__input {
+  background: #FFFFFF !important;
+  border: 1.5px solid #E2DDD4 !important;
+  color: #2D2D2D !important;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm) !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
+}
+
+body.style-alvorada .wp-block-search__input:focus {
+  border-color: #C9A227 !important;
+  outline: none !important;
+}
+
+body.style-alvorada .wp-block-search__button {
+  background: #C9A227 !important;
+  color: #1E2B1D !important;
+  border: none !important;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
+  font-weight: 700 !important;
+  transition: all var(--transition-fast) !important;
+}
+
+body.style-alvorada .wp-block-search__button:hover {
+  background: #E5C158 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   WIDGET TITLE (título dos widgets na sidebar)
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .widget-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.10em !important;
+  color: #4A7C59 !important;
+  border-bottom: 2px solid #C9A227 !important;
+  padding-bottom: 10px !important;
+  margin-bottom: 1rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LISTAGEM DE POSTS — título na listagem
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .entry-title a {
+  color: #2C3E2B !important;
+  text-decoration: none !important;
+  transition: color var(--transition-fast);
+}
+
+body.style-alvorada .entry-title a:hover {
+  color: #C9A227 !important;
+}
+
+body.style-alvorada .entry-title a:focus-visible {
+  outline: 2px solid #C9A227 !important;
+  outline-offset: 2px !important;
+  border-radius: 3px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   POST CONTENT — links inline
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .post-content a,
+body.style-alvorada .page-content a {
+  color: #4A7C59 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  transition: color var(--transition-fast);
+}
+
+body.style-alvorada .post-content a:hover,
+body.style-alvorada .page-content a:hover {
+  color: #2C3E2B !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PÁGINA DE BUSCA E 404
+   ══════════════════════════════════════════════════════════════ */
+body.style-alvorada .search-form .search-field,
+body.style-alvorada .no-results .search-form .search-field,
+body.style-alvorada .error-404 .search-form .search-field {
+  background: #FFFFFF !important;
+  border: 1.5px solid #E2DDD4 !important;
+  color: #2D2D2D !important;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm) !important;
+}
+
+body.style-alvorada .search-form .search-submit,
+body.style-alvorada .no-results .search-form .search-submit,
+body.style-alvorada .error-404 .search-form .search-submit {
+  background: #C9A227 !important;
+  color: #1E2B1D !important;
+  border: none !important;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
+  font-weight: 700 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVIDADE MOBILE
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+  body.style-alvorada .site-title .site-name a {
+    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+  }
+
+  body.style-alvorada .site-title .site-description {
+    font-size: clamp(0.75rem, 3vw, 0.88rem);
+  }
+
+  body.style-alvorada article {
+    border-radius: var(--radius-md) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-alvorada article:hover {
+    transform: none !important;
+  }
+  body.style-alvorada .read-more:hover,
+  body.style-alvorada .comment-form .submit:hover {
+    transform: none !important;
+  }
+  body.style-alvorada article:hover .post-thumbnail-img {
+    transform: none !important;
+  }
+}

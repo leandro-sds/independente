@@ -1,0 +1,209 @@
+/*
+ * Independent Theme — Estilo: default
+ * Gerado automaticamente na refatoração v5.2
+ * NÃO editar manualmente sem atualizar style.css
+ */
+
+/* ── Regras de desktop ── */
+
+body:not([class*="style-"]) aside,
+body.style-default aside {
+  background-color: var(--bg-light);
+  border-left: 1px solid var(--border-color);
+}
+
+body:not([class*="style-"]) .primary-nav .menu li a,
+body.style-default .primary-nav .menu li a {
+  color: rgba(255,255,255,0.90) !important;
+}
+
+body:not([class*="style-"]) main,
+body.style-default main {
+  border-right: 1px solid var(--border-color);
+}
+
+body:not([class*="style-"]) aside,
+body.style-default aside {
+  border-left: none;
+  background-color: var(--bg-light);
+}
+
+body.style-default .site-header {
+  background: linear-gradient(
+    180deg,
+    #273046 0%,
+    #1a2235 100%
+  ) !important;
+  border-bottom: 3px solid #111827 !important;
+  box-shadow: 0 3px 16px rgba(0,0,0,0.25) !important;
+}
+
+body.style-default .site-header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, #F6AD55, #f0c070, #F6AD55);
+  animation: defaultLine 1.0s ease forwards;
+  margin-top: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-default .site-header::after {
+    animation: none !important;
+    width: 100% !important;
+  }
+}
+
+body.style-default .primary-nav .menu a {
+  position: relative !important;
+  overflow: hidden !important;
+  transition: color 0.25s ease !important;
+}
+
+body.style-default .primary-nav .menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: rgba(246,173,85,0.14);
+  transition: height 0.25s ease;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+body.style-default .primary-nav .menu a:hover::before {
+  height: 100%;
+}
+
+body.style-default .primary-nav .menu a:hover {
+  color: #F6AD55 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-default .primary-nav .menu a::before {
+    display: none !important;
+  }
+}
+
+body.style-default .entry-title,
+body.style-default .post-content h2,
+body.style-default .page-content h2 {
+  animation: defaultFade 0.7s ease both !important;
+}
+
+body.style-default .post-content h3,
+body.style-default .page-content h3 {
+  animation: defaultFade 0.7s ease 0.1s both !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-default .entry-title,
+  body.style-default .post-content h2,
+  body.style-default .post-content h3,
+  body.style-default .page-content h2,
+  body.style-default .page-content h3 {
+    animation: none !important;
+  }
+}
+
+body.style-default .post-content blockquote,
+body.style-default .page-content blockquote {
+  border-left: 4px solid #F6AD55 !important;
+  background: linear-gradient(
+    135deg,
+    rgba(246,173,85,0.06) 0%,
+    rgba(39,48,70,0.04) 100%
+  ) !important;
+  border-radius: 0 12px 12px 0 !important;
+  padding: 1.4rem 1.8rem !important;
+  font-style: italic !important;
+  font-size: 1.05rem !important;
+  line-height: 1.80 !important;
+  color: #1e2532 !important;
+  position: relative !important;
+  box-shadow: 0 2px 12px rgba(246,173,85,0.10) !important;
+}
+
+body.style-default .post-content blockquote::before,
+body.style-default .page-content blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  font-size: 4rem;
+  color: rgba(200,125,30,0.55);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+body.style-default .widget,
+body.style-default .widget_block {
+  position: relative;
+  overflow: visible; /* era hidden — cortava o formulário de busca */
+}
+
+body.style-default .widget::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #F6AD55, #f0c070, transparent);
+  pointer-events: none;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+body.style-default .widget h3,
+body.style-default .widget h2 {
+  border-bottom: 2px solid #F6AD55 !important;
+  padding-bottom: 8px !important;
+}
+
+body.style-default .post-content a,
+body.style-default .page-content a {
+  color: #2B6CB0 !important;
+  text-decoration: none !important;
+  background-image: linear-gradient(#F6AD55, #F6AD55) !important;
+  background-size: 0% 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: left bottom !important;
+  transition: background-size 0.35s ease, color 0.2s ease !important;
+  padding-bottom: 1px !important;
+}
+
+body.style-default .post-content a:hover,
+body.style-default .page-content a:hover {
+  color: #1a3a6b !important;
+  background-size: 100% 1px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-default .post-content a,
+  body.style-default .page-content a {
+    text-decoration: underline !important;
+    background-image: none !important;
+  }
+}
+
+body.style-default .header-search .search-form .search-submit:hover {
+  background: #d4891a !important;
+  box-shadow: 0 3px 14px rgba(246,173,85,0.35) !important;
+  transform: translateY(-1px) !important;
+}
+
+body.style-default .read-more:hover {
+  background: #d4891a !important;
+  box-shadow: 0 3px 14px rgba(246,173,85,0.35) !important;
+  transform: translateY(-2px) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-default .header-search .search-form .search-submit:hover { transform: none !important; }
+}
+
+body.style-default      { --accent-color: #F6AD55; --on-accent: #1a1a1a; }

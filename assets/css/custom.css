@@ -7,6 +7,54 @@
  * Este arquivo NÃO redefine .skip-link para evitar conflitos.
  */
 
+/* ============================================================
+   SEGURANÇA: garante que .search-field dentro de widget NÃO herda
+   o min-width:220px do .header-search .search-form.
+   ============================================================ */
+.widget .search-field,
+.widget_block .search-field,
+aside .search-field,
+.widget_search .search-field {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+/* Gutenberg wp-block-search — campo largo */
+.widget .wp-block-search,
+aside .wp-block-search {
+  width: 100% !important;
+}
+
+.widget .wp-block-search__inside-wrapper,
+aside .wp-block-search__inside-wrapper,
+.wp-block-search__inside-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.widget .wp-block-search__input,
+aside .wp-block-search__input,
+.wp-block-search__input {
+  flex: 1 1 auto !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.widget .wp-block-search__button,
+aside .wp-block-search__button,
+.wp-block-search__button {
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  width: auto !important;
+}
+
 /* Garante boa área de toque em todos os controles interativos (WCAG 2.5.5) */
 button,
 input[type="submit"],
@@ -97,17 +145,172 @@ input[type="email"] {
   margin-top: 1rem;
 }
 
-/* Sidebar: títulos de widget */
-.sidebar .widget h3 {
+/* Sidebar: títulos de widget
+   Usa --text-color em vez de --muted-text para garantir contraste WCAG AA
+   em todos os 11 estilos, incluindo os temas escuros (Rock, Neon Pop, Moderno). */
+.sidebar .widget h3,
+aside .widget h3 {
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--muted-text);
+  color: var(--text-color);
   margin-bottom: 1rem;
   padding-bottom: 0.6rem;
   border-bottom: 2px solid var(--accent-color);
 }
+
+/* ============================================================
+   WIDGET DE BUSCA DA BARRA LATERAL — SOLUÇÃO GRID
+
+   Estrutura searchform.php (label = IRMÃO do input):
+     <form>
+       <label><span>...</span></label>  ← irmão, sem conteúdo visível
+       <input class="search-field">     ← filho direto do form
+       <button class="search-submit">   ← filho direto do form
+     </form>
+
+   Solução: CSS Grid com 2 colunas (campo cresce, botão fixo).
+   Label oculto com display:none — input tem aria-label próprio.
+   ============================================================ */
+
+/* Form: grid de 2 colunas */
+.widget .search-form,
+.widget_search .search-form,
+aside .search-form {
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+}
+
+/* Label: ocultado — input já tem aria-label */
+.widget .search-form label,
+.widget_search .search-form label,
+aside .search-form label {
+  display: none !important;
+}
+
+/* Campo: ocupa coluna 1, cresce */
+.widget .search-form .search-field,
+.widget_search .search-form .search-field,
+aside .search-form .search-field {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 44px !important;
+  box-sizing: border-box !important;
+  padding: 0 12px !important;
+  border: 1px solid var(--border-color) !important;
+  border-right: none !important;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm) !important;
+  background: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  font-family: var(--font-main) !important;
+  font-size: 1rem !important;
+  margin: 0 !important;
+}
+
+.widget .search-form .search-field:focus,
+.widget_search .search-form .search-field:focus,
+aside .search-form .search-field:focus {
+  border-color: var(--accent-color) !important;
+  outline: var(--focus-ring) !important;
+  outline-offset: 2px;
+}
+
+/* Botão: ocupa coluna 2, tamanho intrínseco */
+.widget .search-form .search-submit,
+.widget .search-form input[type="submit"],
+.widget_search .search-form .search-submit,
+.widget_search .search-form input[type="submit"],
+aside .search-form .search-submit,
+aside .search-form input[type="submit"] {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  width: auto !important;
+  height: 44px !important;
+  box-sizing: border-box !important;
+  padding: 0 16px !important;
+  border: none !important;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
+  background: var(--accent-color) !important;
+  color: var(--on-accent) !important;
+  font-family: var(--font-main) !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.widget .search-form .search-submit:hover,
+.widget .search-form input[type="submit"]:hover,
+.widget_search .search-form .search-submit:hover,
+.widget_search .search-form input[type="submit"]:hover,
+aside .search-form .search-submit:hover,
+aside .search-form input[type="submit"]:hover {
+  filter: brightness(1.12) !important;
+}
+
+.widget .search-form .search-submit:focus-visible,
+.widget .search-form input[type="submit"]:focus-visible,
+.widget_search .search-form .search-submit:focus-visible,
+.widget_search .search-form input[type="submit"]:focus-visible,
+aside .search-form .search-submit:focus-visible,
+aside .search-form input[type="submit"]:focus-visible {
+  outline: var(--focus-ring) !important;
+  outline-offset: 2px;
+}
+
+/* Gutenberg wp-block-search — cobre todas as variantes */
+.wp-block-search__inside-wrapper,
+.wp-block-search__button-inside .wp-block-search__inside-wrapper {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.wp-block-search__input {
+  flex: 1 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.wp-block-search__button {
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  width: auto !important;
+}
+
+/* Título do widget */
+.widget_search .widget-title,
+.wp-block-search__label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.wp-block-search { width: 100%; }
 
 /* Footer: widgets lado a lado em tela grande */
 @media (min-width: 768px) {

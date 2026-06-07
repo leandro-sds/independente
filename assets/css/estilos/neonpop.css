@@ -1,0 +1,357 @@
+/*
+ * Independent Theme — Estilo: neonpop
+ * Gerado automaticamente na refatoração v5.2
+ * NÃO editar manualmente sem atualizar style.css
+ */
+
+/* ── Regras de desktop ── */
+
+body.style-neonpop .widget,
+body.style-neonpop article,
+body.style-neonpop aside {
+  border: 1px solid rgba(0,191,255,0.15);
+}
+
+body.style-neonpop main {
+  background-color: #12122a;
+  border-right: 1px solid rgba(255,45,120,0.20);
+}
+
+body.style-neonpop aside {
+  background-color: #0a0a1a;
+  border-left: 1px solid rgba(255,45,120,0.15);
+}
+
+body.style-neonpop .widget {
+  background-color: #12122a;
+  border: 1px solid rgba(255,45,120,0.20);
+}
+
+body.style-neonpop .site-content {
+  border-left: 1px solid rgba(255,45,120,0.10);
+  border-right: 1px solid rgba(255,45,120,0.10);
+}
+
+body.style-neonpop .site-header {
+  background: linear-gradient(135deg, #0d0d1a, #1a0a2a);
+  border-bottom: 2px solid rgba(255,45,120,0.40);
+}
+
+body.style-neonpop .site-title .site-name a {
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255,45,120,0.60);
+}
+
+body.style-neonpop footer[role="contentinfo"] {
+  background: linear-gradient(135deg, #0d0d1a, #07070f);
+  border-top: 2px solid rgba(255,45,120,0.30);
+}
+
+body.style-neonpop .site-info,
+body.style-neonpop .site-info p {
+  color: rgba(200,200,255,0.70);
+  border-top-color: rgba(255,45,120,0.20);
+}
+
+body.style-neonpop footer a { color: rgba(0,207,255,0.80); }
+
+body.style-neonpop footer a:hover { color: #00cfff; }
+
+body.style-neonpop .social-title { color: #ff2d78; }
+
+body.style-neonpop .social-links a { color: rgba(0,207,255,0.80); }
+
+body.style-neonpop footer p,
+body.style-neonpop footer span,
+body.style-neonpop footer li {
+  color: #00cfff !important;
+  -webkit-text-fill-color: #00cfff !important;
+}
+
+body.style-neonpop footer .widget h1,
+body.style-neonpop footer .widget h2,
+body.style-neonpop footer .widget h3,
+body.style-neonpop footer .widget h4,
+body.style-neonpop footer .footer-widget h1,
+body.style-neonpop footer .footer-widget h2,
+body.style-neonpop footer .footer-widget h3,
+body.style-neonpop footer .footer-widget h4 {
+  color: #00cfff !important;
+  -webkit-text-fill-color: #00cfff !important;
+  border-bottom-color: rgba(255,45,120,0.40) !important;
+}
+
+body.style-neonpop footer .widget::before {
+  background: linear-gradient(90deg, rgba(255,45,120,0.60), rgba(0,207,255,0.30), transparent) !important;
+}
+
+body.style-neonpop footer .footer-widget,
+body.style-neonpop footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(255,45,120,0.20) !important;
+  box-shadow: none !important;
+}
+
+body.style-neonpop h1,
+body.style-neonpop h2,
+body.style-neonpop h3,
+body.style-neonpop .entry-title {
+  color: #ff2d78;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+}
+
+body.style-neonpop .entry-title a {
+  color: #ff2d78;
+  text-decoration: none;
+}
+
+body.style-neonpop .entry-title a:hover {
+  color: #00cfff;
+}
+
+body.style-neonpop a {
+  color: #00cfff;
+}
+
+body.style-neonpop a:hover {
+  color: #ff2d78;
+}
+
+body.style-neonpop .post-content blockquote,
+body.style-neonpop .page-content blockquote {
+  border-left: 4px solid #ff2d78;
+  background: rgba(255,45,120,0.06);
+  color: #E8E8F8;
+  border-radius: 0 6px 6px 0;
+}
+
+body.style-neonpop .widget h3,
+body.style-neonpop .widget h2,
+body.style-neonpop .widget h4 {
+  color: #ff2d78;
+  border-bottom-color: rgba(255,45,120,0.30);
+}
+
+body.style-neonpop .header-search .search-form .search-submit {
+  background: linear-gradient(135deg, #e0226e, #c0135a);
+  color: #ffffff;
+  border: none;
+}
+
+body.style-neonpop .header-search .search-form .search-submit:hover {
+  background: linear-gradient(135deg, #00cfff, #0099cc);
+  filter: none;
+}
+
+body.style-neonpop     { --muted-text: #aaaac8; }
+
+body.style-neonpop .widget .excerpt,
+body.style-neonpop .widget .excerpt p {
+  color: #aaaac8 !important;
+}
+
+body.style-neonpop .site-header {
+  background: linear-gradient(
+    135deg,
+    #0a0818 0%,
+    #1a0a2e 25%,
+    #0d0520 50%,
+    #1a0a2e 75%,
+    #0a0818 100%
+  ) !important;
+  background-size: 300% 300% !important;
+  animation: neonPopGradient 8s ease infinite !important;
+  border-bottom: 1px solid rgba(255,45,120,0.30) !important;
+  box-shadow: 0 4px 30px rgba(255,45,120,0.10) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-neonpop .site-header {
+    animation: none !important;
+    background-size: 100% 100% !important;
+  }
+}
+
+body.style-neonpop .site-header::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 100%;
+  animation: neonPulse 2s ease-in-out infinite;
+  margin-top: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-neonpop .site-header::after {
+    animation: none !important;
+    background: linear-gradient(90deg, transparent, #ff2d78, transparent) !important;
+    opacity: 0.6;
+  }
+}
+
+body.style-neonpop .primary-nav .menu a {
+  position: relative !important;
+  overflow: hidden !important;
+  transition: color 0.22s ease, text-shadow 0.22s ease !important;
+}
+
+body.style-neonpop .primary-nav .menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: rgba(255,45,120,0.12);
+  transition: height 0.22s ease;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+body.style-neonpop .primary-nav .menu a:hover::before {
+  height: 100%;
+}
+
+body.style-neonpop .primary-nav .menu a:hover {
+  color: #ff2d78 !important;
+  text-shadow: 0 0 10px rgba(255,45,120,0.60) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-neonpop .primary-nav .menu a::before {
+    display: none !important;
+  }
+  body.style-neonpop .primary-nav .menu a:hover {
+    text-shadow: none !important;
+  }
+}
+
+body.style-neonpop .entry-title,
+body.style-neonpop .post-content h2,
+body.style-neonpop .page-content h2 {
+  animation: neonLED 0.7s ease both !important;
+}
+
+body.style-neonpop .post-content h3,
+body.style-neonpop .page-content h3 {
+  animation: neonLED 0.7s ease 0.10s both !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-neonpop .entry-title,
+  body.style-neonpop .post-content h2,
+  body.style-neonpop .post-content h3,
+  body.style-neonpop .page-content h2,
+  body.style-neonpop .page-content h3 {
+    animation: none !important;
+  }
+}
+
+body.style-neonpop .post-content blockquote,
+body.style-neonpop .page-content blockquote {
+  border-left: 3px solid #ff2d78 !important;
+  background: rgba(255,45,120,0.06) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: 0 12px 12px 0 !important;
+  padding: 1.4rem 1.8rem !important;
+  font-style: italic !important;
+  font-size: 1.05rem !important;
+  line-height: 1.80 !important;
+  color: #f0eeff !important;
+  position: relative !important;
+  box-shadow: 0 0 20px rgba(255,45,120,0.08),
+              inset 0 0 0 1px rgba(255,45,120,0.15) !important;
+}
+
+body.style-neonpop .post-content blockquote::before,
+body.style-neonpop .page-content blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  font-size: 4rem;
+  color: rgba(255,45,120,0.55);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+body.style-neonpop .widget,
+body.style-neonpop .widget_block {
+  animation: neonWidgetGlow 3s ease-in-out infinite !important;
+  position: relative;
+  overflow: visible; /* era hidden — cortava formulário de busca */
+}
+
+body.style-neonpop .widget::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  animation: neonPulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+body.style-neonpop .widget h3,
+body.style-neonpop .widget h2,
+body.style-neonpop .widget h4 {
+  border-bottom: 1px solid rgba(255,45,120,0.35) !important;
+  padding-bottom: 8px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-neonpop .widget {
+    animation: none !important;
+  }
+  body.style-neonpop .widget::before {
+    animation: none !important;
+    opacity: 0.5;
+  }
+}
+
+body.style-neonpop .post-content a,
+body.style-neonpop .page-content a {
+  color: #00cfff !important;
+  text-decoration: none !important;
+  background-image: linear-gradient(#ff2d78, #ff2d78) !important;
+  background-size: 0% 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: left bottom !important;
+  transition: background-size 0.20s ease, color 0.2s ease !important;
+  padding-bottom: 1px !important;
+}
+
+body.style-neonpop .post-content a:hover,
+body.style-neonpop .page-content a:hover {
+  color: #ff2d78 !important;
+  background-size: 100% 1px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-neonpop .post-content a,
+  body.style-neonpop .page-content a {
+    text-decoration: underline !important;
+    background-image: none !important;
+  }
+}
+
+body.style-neonpop .header-search .search-form .search-submit:hover {
+  background: #d4165e !important;
+  box-shadow: 0 4px 20px rgba(255,45,120,0.50) !important;
+  transform: translateY(-1px) !important;
+}
+
+body.style-neonpop .read-more:hover {
+  background: #d4165e !important;
+  box-shadow: 0 4px 20px rgba(255,45,120,0.50) !important;
+  transform: translateY(-2px) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-neonpop .header-search .search-form .search-submit:hover { transform: none !important; }
+}
+
+body.style-neonpop      { --accent-color: #FF2D78; --on-accent: #ffffff; }

@@ -1,0 +1,230 @@
+/*
+ * Independent Theme — Estilo: ceuafe
+ * Gerado automaticamente na refatoração v5.2
+ * NÃO editar manualmente sem atualizar style.css
+ */
+
+/* ── Regras de desktop ── */
+
+body.style-ceuafe {
+  background-color: #eaf2fb;
+  font-family: 'Inter', 'Roboto', system-ui, sans-serif;
+}
+
+body.style-ceuafe .site-header {
+  background: linear-gradient(180deg, #0d2b4a 0%, #0a2040 100%) !important;
+  border-bottom: 3px solid #07172e !important;
+  box-shadow: 0 3px 16px rgba(0,0,0,0.30) !important;
+}
+
+body.style-ceuafe .site-header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, #e07b39, rgba(224,123,57,0.30));
+  margin-top: 2px;
+}
+
+body.style-ceuafe .site-title .site-name a {
+  color: #ffffff;
+  font-family: 'Poppins', 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+body.style-ceuafe .site-title .site-description {
+  color: rgba(255,255,255,0.78);
+}
+
+body.style-ceuafe main {
+  background-color: #ffffff;
+  border-right: 1px solid rgba(13,43,74,0.10);
+}
+
+body.style-ceuafe aside {
+  background-color: #ddedf8;
+  border-left: none;
+}
+
+body.style-ceuafe .widget,
+body.style-ceuafe .widget_block {
+  background-color: #ffffff;
+  border: 1px solid rgba(13,43,74,0.10);
+}
+
+body.style-ceuafe .wp-block-search__inside-wrapper {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+}
+
+body.style-ceuafe .wp-block-search__input {
+  flex: 1 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+body.style-ceuafe .wp-block-search__button {
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  background-color: #e07b39 !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+body.style-ceuafe h1,
+body.style-ceuafe h2,
+body.style-ceuafe h3,
+body.style-ceuafe .entry-title {
+  color: #0d2b4a;
+  font-family: 'Poppins', 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+}
+
+body.style-ceuafe a {
+  color: #1a6aaa;
+  text-decoration: underline;
+}
+
+body.style-ceuafe a:hover {
+  color: #0d2b4a;
+}
+
+body.style-ceuafe .post-content p,
+body.style-ceuafe .page-content p,
+body.style-ceuafe .post-content li,
+body.style-ceuafe .page-content li {
+  color: #1a2535;
+  line-height: 1.80;
+}
+
+body.style-ceuafe .post-content blockquote,
+body.style-ceuafe .page-content blockquote {
+  border-left: 4px solid #e07b39 !important;
+  background: #eaf2fb !important;
+  color: #1a2535 !important;
+  border-radius: 0 10px 10px 0 !important;
+  padding: 1.4rem 1.8rem !important;
+  font-style: italic !important;
+  font-size: 1.05rem !important;
+  position: relative !important;
+}
+
+body.style-ceuafe .post-content blockquote::before,
+body.style-ceuafe .page-content blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  font-size: 4rem;
+  color: rgba(224,123,57,0.55);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+body.style-ceuafe .widget h3,
+body.style-ceuafe .widget h2,
+body.style-ceuafe .widget h4 {
+  color: #0d2b4a;
+  border-bottom-color: rgba(224,123,57,0.30);
+}
+
+body.style-ceuafe .header-search .search-form .search-submit {
+  background-color: #b85a20;
+  color: #ffffff;
+  border: none;
+}
+
+body.style-ceuafe .header-search .search-form .search-submit:hover {
+  background-color: #8f4010;
+  filter: none;
+}
+
+body.style-ceuafe footer[role="contentinfo"] {
+  background-color: #0d2b4a;
+  border-top: 2px solid rgba(224,123,57,0.40);
+}
+
+body.style-ceuafe .site-info,
+body.style-ceuafe .site-info p {
+  color: rgba(255,255,255,0.72);
+  border-top-color: rgba(255,255,255,0.15);
+}
+
+body.style-ceuafe footer a { color: rgba(255,255,255,0.82); }
+
+body.style-ceuafe footer a:hover { color: #ffffff; }
+
+body.style-ceuafe .social-title { color: #ffffff; }
+
+body.style-ceuafe .social-links a { color: rgba(255,255,255,0.80); }
+
+body.style-ceuafe footer[role="contentinfo"] p,
+body.style-ceuafe footer[role="contentinfo"] span,
+body.style-ceuafe footer[role="contentinfo"] li,
+body.style-ceuafe footer[role="contentinfo"] td,
+body.style-ceuafe footer[role="contentinfo"] div:not([class*="widget"]):not([class*="footer"]) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.style-ceuafe footer .footer-widget,
+body.style-ceuafe footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(255,255,255,0.15) !important;
+  box-shadow: none !important;
+}
+
+body.style-ceuafe .pagination .page-numbers {
+  color: #1a6aaa;
+  border-color: rgba(13,43,74,0.20);
+}
+
+body.style-ceuafe .pagination .current,
+body.style-ceuafe .pagination .page-numbers:hover {
+  background: #e07b39;
+  border-color: #e07b39;
+  color: #ffffff;
+}
+
+body.style-ceuafe .read-more {
+  background: #b85a20 !important;
+  color: #ffffff !important;
+}
+
+body.style-ceuafe .read-more:hover {
+  background: #8f4010 !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  body.style-ceuafe #main-menu {
+    background: #0a2040 !important;
+    border-top: 1px solid rgba(255,255,255,0.15) !important;
+  }
+
+  body.style-ceuafe #main-menu a {
+    color: #ffffff !important;
+  }
+}
+
+body.style-ceuafe       { --accent-color: #F5C542; --on-accent: #0d1f35; }
+
+body.style-ceuafe .widget .wp-block-search__button {
+  background-color: #b85a20 !important;
+  color: #ffffff !important;
+  border: none !important;
+  text-transform: none !important;
+  font-weight: 700 !important;
+  padding: 0 15px !important;
+}
+
+body.style-ceuafe .widget .wp-block-search__button:hover {
+  background-color: #8f4010 !important;
+}

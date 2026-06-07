@@ -2,10 +2,11 @@
 /**
  * Template do formulário de busca.
  *
- * Acessibilidade:
- * - Label para leitores de tela
- * - Campo type="search"
- * - Botão com texto (não só ícone)
+ * Usa apenas a classe "search-form" — sem "header-search-form".
+ * Os estilos do cabeçalho são aplicados via contexto:
+ *   .header-search .search-form  (no header.php)
+ *   .widget .search-form         (nos widgets/sidebar)
+ * Isso evita que o min-width e cores do cabeçalho vazem para a sidebar.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,8 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $unique_id = wp_unique_id( 'search-form-' );
 ?>
-
-<form role="search" method="get" class="search-form header-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+<form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
   <label for="<?php echo esc_attr( $unique_id ); ?>">
     <span class="screen-reader-text">
       <?php echo esc_html_x( 'Pesquisar por:', 'label', 'independent-theme' ); ?>

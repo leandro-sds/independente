@@ -1,0 +1,691 @@
+/*
+ * Independent Theme — Estilo: moderno
+ * Gerado automaticamente na refatoração v5.2
+ * NÃO editar manualmente sem atualizar style.css
+ */
+
+/* ── Regras de desktop ── */
+
+body.style-moderno     { --muted-text: rgba(200,185,255,0.92); }
+
+body.style-moderno {
+  background: radial-gradient(ellipse at 20% 50%, #1a0a2e 0%, #0a0818 60%);
+  background-attachment: fixed;
+}
+
+body.style-moderno .site-header {
+  background: linear-gradient(135deg, #0f0c29, #1a0a3e, #0d1b3e, #0f0c29);
+  background-size: 300% 300%;
+  animation: fadeInDown 0.45s ease both, gradientShift 8s ease infinite;
+  border-bottom: 1px solid rgba(0,245,212,0.25);
+  box-shadow: 0 4px 30px rgba(0,245,212,0.08);
+}
+
+body.style-moderno .site-title .site-name a {
+  color: #00f5d4; /* fallback para browsers sem suporte a background-clip: text */
+  background: linear-gradient(90deg, #ffffff, #00f5d4, #c77dff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-decoration: none !important;
+}
+
+body.style-moderno .site-title .site-description {
+  color: rgba(0,245,212,0.80);
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+}
+
+body.style-moderno .primary-nav .menu a {
+  color: rgba(240,238,255,0.95) !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.03em !important;
+  border-radius: 10px !important;
+  transition: background 0.22s ease, color 0.22s ease,
+              box-shadow 0.22s ease !important;
+}
+
+body.style-moderno .primary-nav .menu a:hover {
+  background: rgba(0,245,212,0.12) !important;
+  color: #00f5d4 !important;
+  box-shadow: 0 0 12px rgba(0,245,212,0.20) !important;
+}
+
+body.style-moderno .primary-nav .menu li.current-menu-item > a,
+body.style-moderno .primary-nav .menu li.current_page_item > a {
+  color: #00f5d4 !important;
+  background: rgba(0,245,212,0.10) !important;
+  border-bottom: 2px solid #00f5d4 !important;
+  border-radius: 10px 10px 0 0 !important;
+  font-weight: 700 !important;
+}
+
+body.style-moderno .header-search .search-form .search-field {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(0,245,212,0.30) !important;
+  color: #f0eeff !important;
+  border-radius: 10px !important;
+  backdrop-filter: blur(4px);
+}
+
+body.style-moderno .header-search .search-form .search-field::placeholder {
+  color: rgba(0,245,212,0.50) !important;
+}
+
+body.style-moderno .header-search .search-form .search-submit {
+  background: linear-gradient(135deg, #00f5d4, #00b4d8) !important;
+  color: #0a0818 !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+body.style-moderno .header-search .search-form .search-submit:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 0 20px rgba(0,245,212,0.50) !important;
+  filter: none !important;
+}
+
+body.style-moderno .site-content {
+  background: transparent;
+}
+
+body.style-moderno main {
+  background: rgba(26,21,53,0.85);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(199,125,255,0.15);
+}
+
+body.style-moderno aside {
+  background: rgba(15,12,41,0.90);
+  border-left: 1px solid rgba(0,245,212,0.12);
+}
+
+body.style-moderno article,
+body.style-moderno .widget {
+  background: rgba(255,255,255,0.05) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(199,125,255,0.25) !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.40),
+    0 2px 8px rgba(0,0,0,0.20),
+    inset 0 1px 0 rgba(255,255,255,0.10),
+    inset 0 -1px 0 rgba(0,245,212,0.06) !important;
+  transition: transform 0.28s ease, box-shadow 0.28s ease,
+              border-color 0.28s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+body.style-moderno article::before,
+body.style-moderno .widget::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,255,255,0.04) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: none;
+  pointer-events: none;
+}
+
+body.style-moderno article:hover::before,
+body.style-moderno .widget:hover::before {
+  animation: shimmer 0.7s ease forwards;
+}
+
+body.style-moderno article:hover,
+body.style-moderno .widget:hover {
+  transform: translateY(-3px) !important;
+  border-color: rgba(0,245,212,0.40) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.40),
+              0 0 20px rgba(0,245,212,0.12) !important;
+}
+
+body.style-moderno h1,
+body.style-moderno h2,
+body.style-moderno h3,
+body.style-moderno .entry-title {
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  /* Gradiente de texto em todos os títulos — com ou sem link */
+  background: linear-gradient(90deg, #ffffff, #c77dff, #00f5d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.style-moderno .entry-title a {
+  background: linear-gradient(90deg, #f0eeff, #c77dff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+}
+
+body.style-moderno .entry-title a:hover {
+  background: linear-gradient(90deg, #00f5d4, #c77dff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+body.style-moderno .widget h3,
+body.style-moderno .widget h2,
+body.style-moderno .widget h4 {
+  background: linear-gradient(90deg, #00f5d4, #c77dff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid rgba(0,245,212,0.25);
+  padding-bottom: 8px;
+  margin-bottom: 1rem;
+}
+
+body.style-moderno a {
+  color: #c77dff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+body.style-moderno a:hover {
+  color: #00f5d4;
+}
+
+body.style-moderno .post-content a,
+body.style-moderno .page-content a {
+  color: #c77dff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+body.style-moderno .post-content blockquote,
+body.style-moderno .page-content blockquote {
+  border-left: 3px solid #00f5d4;
+  background: rgba(0,245,212,0.05);
+  border-radius: 0 12px 12px 0;
+  color: rgba(240,238,255,0.85);
+  box-shadow: inset 0 0 20px rgba(0,245,212,0.04);
+}
+
+body.style-moderno .read-more {
+  background: linear-gradient(135deg, #00f5d4, #00b4d8) !important;
+  color: #0a0818 !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 15px rgba(0,245,212,0.30) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+body.style-moderno .read-more:hover {
+  background: #00c4a8 !important;
+  box-shadow: 0 4px 20px rgba(0,245,212,0.40) !important;
+  transform: translateY(-2px) scale(1.03) !important;
+  color: #0a0818 !important;
+  filter: none !important;
+}
+
+body.style-moderno .pagination .page-numbers {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(199,125,255,0.25);
+  border-radius: 10px;
+  color: #c77dff;
+  backdrop-filter: blur(4px);
+}
+
+body.style-moderno .pagination .current,
+body.style-moderno .pagination .page-numbers:hover {
+  background: linear-gradient(135deg, #00f5d4, #00b4d8);
+  color: #0a0818;
+  border-color: transparent;
+  box-shadow: 0 0 15px rgba(0,245,212,0.40);
+}
+
+body.style-moderno footer[role="contentinfo"] {
+  background: linear-gradient(135deg, #0f0c29, #0a0818);
+  border-top: 1px solid rgba(0,245,212,0.15);
+  box-shadow: 0 -4px 30px rgba(0,245,212,0.05);
+}
+
+body.style-moderno .site-info,
+body.style-moderno .site-info p {
+  color: rgba(200,180,255,0.65);
+  border-top-color: rgba(0,245,212,0.10);
+}
+
+body.style-moderno footer a {
+  color: rgba(0,245,212,0.80);
+  text-decoration: none;
+}
+
+body.style-moderno footer a:hover {
+  color: #00f5d4;
+}
+
+body.style-moderno .social-title {
+  color: #f0eeff;
+}
+
+body.style-moderno .social-links a {
+  color: rgba(200,180,255,0.80);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+body.style-moderno .social-links a:hover {
+  color: #00f5d4;
+  transform: scale(1.15);
+}
+
+body.style-moderno footer p,
+body.style-moderno footer span,
+body.style-moderno footer li {
+  color: #00f5d4 !important;
+  -webkit-text-fill-color: #00f5d4 !important;
+}
+
+body.style-moderno footer h1,
+body.style-moderno footer h2,
+body.style-moderno footer h3,
+body.style-moderno footer h4,
+body.style-moderno footer .widget-title,
+body.style-moderno footer .widget h2,
+body.style-moderno footer .widget h3 {
+  border-bottom-color: rgba(0,245,212,0.25) !important;
+}
+
+body.style-moderno footer .widget::before {
+  background: linear-gradient(90deg, rgba(0,245,212,0.50), rgba(199,125,255,0.25), transparent) !important;
+}
+
+body.style-moderno footer .footer-widget,
+body.style-moderno footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(0,245,212,0.20) !important;
+  box-shadow: none !important;
+}
+
+body.style-moderno .menu-toggle {
+  background: rgba(0,245,212,0.08) !important;
+  border: 1px solid rgba(0,245,212,0.30) !important;
+  color: #f0eeff !important;
+}
+
+body.style-moderno .menu-toggle:hover {
+  background: rgba(0,245,212,0.18) !important;
+}
+
+body.style-moderno .logo img,
+body.style-moderno img.custom-logo {
+  animation: floatUp 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(0,245,212,0.25));
+}
+
+body.style-moderno .widget {
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+body.style-moderno article {
+  animation: borderGlow 5s ease-in-out infinite;
+}
+
+body.style-moderno .widget:nth-child(1) { animation-delay: 0s; }
+
+body.style-moderno .widget:nth-child(2) { animation-delay: 1s; }
+
+body.style-moderno .widget:nth-child(3) { animation-delay: 2s; }
+
+body.style-moderno article:nth-child(1) { animation-delay: 0s; }
+
+body.style-moderno article:nth-child(2) { animation-delay: 0.8s; }
+
+body.style-moderno article:nth-child(3) { animation-delay: 1.6s; }
+
+body.style-moderno article:nth-child(4) { animation-delay: 2.4s; }
+
+body.style-moderno main {
+  border-right: 1px solid rgba(199,125,255,0.12);
+}
+
+body.style-moderno .custom-logo-link,
+body.style-moderno a.custom-logo-link {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+body.style-moderno .widget::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(0,245,212,0.60),
+    rgba(199,125,255,0.60),
+    transparent
+  );
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+body.style-moderno .widget:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(0,245,212,0.50) !important;
+  box-shadow:
+    0 16px 48px rgba(0,0,0,0.50),
+    0 0 30px rgba(0,245,212,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.12),
+    inset 0 -1px 0 rgba(0,245,212,0.08) !important;
+}
+
+body.style-moderno h1.entry-title:not(:has(a)),
+body.style-moderno .entry-title:not(:has(a)) {
+  background: linear-gradient(90deg, #ffffff 20%, #c77dff 60%, #00f5d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.style-moderno aside {
+  background: rgba(10,8,24,0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+body.style-moderno main {
+  background: rgba(26,21,53,0.80) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+body.style-moderno .post-content p,
+body.style-moderno .page-content p,
+body.style-moderno .post-content li,
+body.style-moderno .page-content li {
+  color: rgba(240,238,255,0.90);
+  line-height: 1.80;
+}
+
+body.style-moderno .post-content ul li::marker,
+body.style-moderno .page-content ul li::marker {
+  color: #00f5d4;
+}
+
+body.style-moderno hr,
+body.style-moderno .wp-block-separator {
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(0,245,212,0.40),
+    rgba(199,125,255,0.40),
+    transparent
+  ) !important;
+  margin: 2rem auto !important;
+}
+
+body.style-moderno h1,
+body.style-moderno h1.entry-title,
+body.style-moderno .page-header .entry-title,
+body.style-moderno .entry-title {
+  background: linear-gradient(90deg, #ffffff 15%, #c77dff 55%, #00f5d4 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+body.style-moderno .widget p,
+body.style-moderno .widget span,
+body.style-moderno .widget small,
+body.style-moderno .widget label,
+body.style-moderno aside p,
+body.style-moderno aside span {
+  color: rgba(220,210,255,0.92) !important;
+}
+
+body.style-moderno aside .widget *:not(h2):not(h3):not(a):not(button) {
+  color: rgba(200,185,255,0.90);
+}
+
+body.style-moderno .widget [class*="status"],
+body.style-moderno .widget [class*="label"],
+body.style-moderno .widget [class*="live"],
+body.style-moderno .widget [class*="now"] {
+  color: #00f5d4 !important;
+  font-weight: 600 !important;
+}
+
+body.style-moderno .site-header {
+  background: linear-gradient(
+    135deg,
+    #0f0c29 0%,
+    #1a0a3e 25%,
+    #0d1b3e 50%,
+    #1a0a3e 75%,
+    #0f0c29 100%
+  ) !important;
+  background-size: 300% 300% !important;
+  animation: modernoNebula 10s ease infinite,
+             fadeInDown 0.45s ease both !important;
+  border-bottom: 1px solid rgba(0,245,212,0.25) !important;
+  box-shadow: 0 4px 30px rgba(0,245,212,0.08) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-moderno .site-header {
+    animation: none !important;
+    background-size: 100% 100% !important;
+  }
+}
+
+body.style-moderno .site-header::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    #00f5d4,
+    rgba(199,125,255,0.8),
+    #00f5d4,
+    transparent
+  );
+  animation: modernoPulse 2.5s ease-in-out infinite;
+  margin-top: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-moderno .site-header::after {
+    animation: none !important;
+    opacity: 0.6;
+  }
+}
+
+body.style-moderno .primary-nav .menu a {
+  position: relative !important;
+  overflow: hidden !important;
+  transition: color 0.22s ease, text-shadow 0.22s ease !important;
+}
+
+body.style-moderno .primary-nav .menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: rgba(0,245,212,0.10);
+  transition: height 0.22s ease;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+body.style-moderno .primary-nav .menu a:hover::before {
+  height: 100%;
+}
+
+body.style-moderno .primary-nav .menu a:hover {
+  color: #00f5d4 !important;
+  text-shadow: 0 0 12px rgba(0,245,212,0.50) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-moderno .primary-nav .menu a::before {
+    display: none !important;
+  }
+  body.style-moderno .primary-nav .menu a:hover {
+    text-shadow: none !important;
+  }
+}
+
+body.style-moderno .entry-title,
+body.style-moderno .post-content h2,
+body.style-moderno .page-content h2 {
+  animation: modernoHolo 0.8s ease both !important;
+}
+
+body.style-moderno .post-content h3,
+body.style-moderno .page-content h3 {
+  animation: modernoHolo 0.8s ease 0.12s both !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-moderno .entry-title,
+  body.style-moderno .post-content h2,
+  body.style-moderno .post-content h3,
+  body.style-moderno .page-content h2,
+  body.style-moderno .page-content h3 {
+    animation: none !important;
+  }
+}
+
+body.style-moderno .post-content blockquote,
+body.style-moderno .page-content blockquote {
+  border-left: 3px solid #00f5d4 !important;
+  background: rgba(0,245,212,0.05) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: 0 12px 12px 0 !important;
+  padding: 1.4rem 1.8rem !important;
+  font-style: italic !important;
+  font-size: 1.05rem !important;
+  line-height: 1.80 !important;
+  color: #f0eeff !important;
+  position: relative !important;
+  box-shadow: 0 0 20px rgba(0,245,212,0.08),
+              inset 0 0 0 1px rgba(0,245,212,0.12) !important;
+}
+
+body.style-moderno .post-content blockquote::before,
+body.style-moderno .page-content blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  font-size: 4rem;
+  color: rgba(0,245,212,0.55);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+body.style-moderno .widget,
+body.style-moderno .widget_block {
+  animation: modernoWidgetGlow 4s ease-in-out infinite !important;
+  position: relative;
+  overflow: visible; /* era hidden — cortava formulário de busca */
+}
+
+body.style-moderno .widget::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    #00f5d4,
+    rgba(199,125,255,0.8),
+    transparent
+  );
+  animation: modernoPulse 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+body.style-moderno .widget h3,
+body.style-moderno .widget h2,
+body.style-moderno .widget h4 {
+  border-bottom: 1px solid rgba(0,245,212,0.30) !important;
+  padding-bottom: 8px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-moderno .widget {
+    animation: none !important;
+  }
+  body.style-moderno .widget::before {
+    animation: none !important;
+    opacity: 0.5;
+  }
+}
+
+body.style-moderno .post-content a,
+body.style-moderno .page-content a {
+  color: #c77dff !important;
+  text-decoration: none !important;
+  background-image: linear-gradient(#00f5d4, #00f5d4) !important;
+  background-size: 0% 1px !important;
+  background-repeat: no-repeat !important;
+  background-position: left bottom !important;
+  transition: background-size 0.25s ease, color 0.2s ease !important;
+  padding-bottom: 1px !important;
+}
+
+body.style-moderno .post-content a:hover,
+body.style-moderno .page-content a:hover {
+  color: #00f5d4 !important;
+  background-size: 100% 1px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-moderno .post-content a,
+  body.style-moderno .page-content a {
+    text-decoration: underline !important;
+    background-image: none !important;
+  }
+}
+
+body.style-moderno .header-search .search-form .search-submit:hover {
+  background: #00c4a8 !important;
+  box-shadow: 0 4px 20px rgba(0,245,212,0.40) !important;
+  transform: translateY(-1px) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-moderno .header-search .search-form .search-submit:hover { transform: none !important; }
+}
+
+body.style-moderno      { --accent-color: #00f5d4; --on-accent: #0a0818; }

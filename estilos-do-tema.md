@@ -1,4 +1,4 @@
-# Estilos Visuais — Independent Theme v4.6.0
+# Estilos Visuais — Independent Theme v5.3
 
 Cada estilo foi projetado com identidade própria, animações exclusivas e personalidade visual
 única — mantendo o mesmo layout, acessibilidade e funcionalidades em todos eles.
@@ -25,6 +25,25 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 - Widgets com linha dourada gradiente no topo
 - Fonte Inter — neutra e versátil
 - Visual elegante para qualquer ocasião
+
+---
+
+## 🌅 Alvorada — Minimalismo Orgânico
+
+**Ideal para:** rádios gospel, rádios cristãs, ministérios de louvor, sites espirituais, portais de fé com identidade moderna e acolhedora.
+
+- Cabeçalho Verde Oliva Profundo (`#2C3E2B`) com gradiente sutil
+- Linha dourada animada que se expande suavemente ao carregar
+- Menu com texto Dourado Champagne sobre verde-oliva — contraste elegante
+- Fundo Alabastro caloroso (`#F7F5F0`) — aconchego de manhã tranquila
+- Cards brancos com glow dourado difuso — parecem iluminados por uma aura
+- Bordas arredondadas generosas (14–20px) — curvas que transmitem acolhimento
+- Títulos em **Playfair Display** serifada — elegância e profundidade espiritual
+- Corpo e menus em **Plus Jakarta Sans** — limpeza e legibilidade moderna
+- Blockquote com aspas douradas gigantes — perfeito para versículos bíblicos
+- Transições suaves de 0.4s — o site se move no ritmo de uma música tranquila
+- Rodapé em Verde Oliva Profundo consistente com o cabeçalho
+- Visual: tecnologicamente impecável e espiritualmente acolhedor
 
 ---
 
@@ -71,13 +90,12 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 - Widgets com faixa dourada no topo
 - Fonte Montserrat bold — força e tradição
 - Paleta verde escuro + ouro: futebol de raiz, história e paixão tradicional
-- Visual de clube histórico, federação e campeonato clássico
 
 ---
 
 ## ✝️ Céu e Fé — Site Cristão
 
-**Ideal para:** rádios gospel, igrejas, ministérios, sites de fé e espiritualidade.
+**Ideal para:** igrejas, ministérios, portais de notícias cristãs, sites de fé e espiritualidade.
 
 - Cabeçalho azul profundo com gradiente
 - Linha coral/laranja animada na base do cabeçalho
@@ -95,13 +113,12 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 
 **Ideal para:** escritores, blogs literários, jornalismo, poesia, crônicas, revistas.
 
-- Cabeçalho azul-acinzentado escuro (#2C3E50) com gradiente
+- Cabeçalho azul-acinzentado escuro com gradiente
 - Linha âmbar mais espessa que se expande — como caneta sublinhando
 - Menu hover com mancha de tinta âmbar subindo
 - Títulos com entrada de manuscrito — leve desfoque que se resolve
 - Blockquote estilo citação literária — Georgia em itálico com borda âmbar
-- Fundo azul-acinzentado frio (#e8ecf0) — diferenciado do Vintage Café
-- Sidebar e widgets em tom azul-cinza (#dde3e8) — identidade distinta
+- Fundo azul-acinzentado frio — editorial e sóbrio
 - Fonte Georgia serifada — máximo foco na leitura
 - Visual editorial clássico — o texto é o protagonista
 
@@ -111,16 +128,15 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 
 **Ideal para:** portais de notícias, rádios, igrejas, prefeituras, associações, sites institucionais.
 
-- Cabeçalho azul-aço escuro com gradiente sólido
+- Cabeçalho azul-aço com gradiente sutil e volumétrico
 - Linha laranja que se expande ao carregar — assinatura inconfundível
-- Menu em caixa alta — elegância formal
-- Menu hover com cortina laranja subindo
-- Títulos com entrada de carimbo — sólido e preciso
-- Blockquote estilo editorial — borda laranja, Georgia em itálico
-- Widgets com gradiente azul nos cabeçalhos — estilo portal clássico
-- Linha laranja no topo dos widgets
-- Fonte Helvetica Neue/Arial — tipografia institucional
-- Visual de portal de notícias respeitável
+- Menu flat design com gradiente quase imperceptível
+- Item ativo e hover com laranja flat — sem bordas brancas, apenas sombra suave
+- Botão Buscar laranja sem borda, tipografia Inter moderna
+- Cantos arredondados minimalistas (4–6px) — acabamento premium
+- Títulos com font-weight 600 e letter-spacing refinado
+- Fonte Inter com line-height 1.6 — leitura confortável e moderna
+- Visual: homenagem retrô-chic ao Drupal clássico com acabamento de 2026
 
 > *"Durante muito tempo, enquanto usava Drupal, o Marinelli foi o tema*
 > *da Rádio Maior Amor."* — Leandro Souza
@@ -148,14 +164,13 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 
 - Cabeçalho vermelho intenso com gradiente metálico em três camadas
 - Faixa branca que se expande ao carregar
-- Menu em caixa alta com hover branco translúcido
+- Menu em caixa alta com texto branco e contraste reforçado
 - Botão Buscar dourado com texto escuro — destaque no header vermelho
 - Títulos com entrada de impacto — vermelho vibrante
 - Blockquote com borda vermelha espessa e gradiente rosado
 - Widgets com faixa dourada→vermelha no topo
 - Rodapé vermelho escuro com borda dourada
 - Fonte Montserrat bold — força e identidade
-- Visual vermelho e branco com identidade esportiva forte
 
 > *"O Colorado nasceu para a ACELGO — Associação de Cegos para Esportes e Lazer de Goiás,*
 > *parceira do Vila Nova Futebol de Cegos. Vermelho e branco que representam*
@@ -171,7 +186,7 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 - Linha vermelha que rasga ao carregar — rápida e agressiva (0.3s)
 - Menu em caixa alta — Oswald bold, sem frescura
 - Menu hover com chama vermelha subindo
-- Títulos com entrada de impacto — sem suavidade, direto
+- Títulos em branco acinzentado (`#e8e4de`) com letter-spacing 0.08em — sem halação
 - Blockquote com aspas em vermelho e fundo escuro
 - Widgets com borda vermelha no topo e fundo quase preto
 - Botão Leia mais em vermelho sólido, hover com brilho metálico
@@ -191,11 +206,10 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 - Menu hover com fundo verde translúcido subindo
 - Botão Buscar verde gramado vibrante com texto verde escuro
 - Títulos brancos com entrada de placar — dinâmico e urgente
-- Fundo grafite neutro (#141414) — sem puxar para o militar
-- Cards grafite (#1e1e1e) — texto branco respira com clareza
+- Fundo grafite neutro — sem puxar para o militar
+- Cards grafite — texto branco respira com clareza
 - Blockquote com borda verde e fundo levemente esverdeado
 - Widgets grafite com faixa verde gramado no topo
-- Verde apenas na identidade: bordas, botões, faixas — conteúdo em grafite limpo
 - Fonte Montserrat 800 nos títulos — urgência de manchete
 - Visual de transmissão noturna, ESPN, SporTV, portais de campeonato
 
@@ -205,7 +219,8 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 
 | Tipo de site | Estilo recomendado |
 |---|---|
-| Rádio gospel / Igreja / Ministério | ✝️ Céu e Fé |
+| Rádio cristã / Ministério de louvor | 🌅 Alvorada |
+| Igreja / Site cristão / Portal de fé | ✝️ Céu e Fé |
 | Portal de notícias / Institucional | 🏛️ Marinelli |
 | Rádio jovem / Podcast / DJ | 🎧 Neon Pop |
 | Música retrô / Jazz / Café | 📻 Vintage Café |
@@ -223,6 +238,7 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 
 - Layout responsivo — desktop, tablet e mobile
 - Imagem destacada na listagem (pequena, à esquerda) e no post (grande, no topo)
+- Imagens no corpo do post: largura total, altura máxima 500px com `object-fit: cover`
 - Menu mobile com transição suave e acessível para leitores de tela
 - Categorias exibem "Seções" quando têm subcategorias; posts quando não têm
 - Ordenação de categorias compatível com plugin de ordenação
@@ -234,6 +250,7 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 - Contraste WCAG AA validado em todos os pares cor/fundo
 - Animações respeitam `prefers-reduced-motion`
 - Hierarquia de headings h1→h2→h3→h4 correta em todos os templates
+- Conteúdo principal com altura mínima de 60vh — sem vazios visuais em páginas curtas
 
 ---
 
