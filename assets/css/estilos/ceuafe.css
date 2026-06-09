@@ -9,6 +9,8 @@
 body.style-ceuafe {
   background-color: #eaf2fb;
   font-family: 'Inter', 'Roboto', system-ui, sans-serif;
+  font-size: 1.02rem; /* ligeiramente maior — mais legível */
+  font-weight: 420; /* um toque mais presente sem ser bold */
 }
 
 body.style-ceuafe .site-header {
@@ -49,7 +51,22 @@ body.style-ceuafe aside {
 body.style-ceuafe .widget,
 body.style-ceuafe .widget_block {
   background-color: #ffffff;
-  border: 1px solid rgba(13,43,74,0.10);
+  border: 1px solid rgba(13,43,74,0.08);
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(13,43,74,0.07), 0 1px 4px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s ease;
+}
+
+body.style-ceuafe .widget:hover,
+body.style-ceuafe .widget_block:hover {
+  box-shadow: 0 6px 20px rgba(13,43,74,0.11), 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Widget do player: faixa terracota no topo para dar mais destaque */
+body.style-ceuafe .widget_pr_widget,
+body.style-ceuafe .widget:has(.pr-player) {
+  border-top: 3px solid #e07b39 !important;
+  box-shadow: 0 4px 18px rgba(224,123,57,0.12), 0 1px 4px rgba(0,0,0,0.04) !important;
 }
 
 body.style-ceuafe .wp-block-search__inside-wrapper {
@@ -87,52 +104,63 @@ body.style-ceuafe .entry-title {
 }
 
 body.style-ceuafe a {
-  color: #1a6aaa;
+  color: #0d4f8c; /* era #1a6aaa — mais escuro, contraste WCAG AA mais forte */
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 body.style-ceuafe a:hover {
-  color: #0d2b4a;
+  color: #e07b39;
 }
 
 body.style-ceuafe .post-content p,
 body.style-ceuafe .page-content p,
 body.style-ceuafe .post-content li,
 body.style-ceuafe .page-content li {
-  color: #1a2535;
-  line-height: 1.80;
+  color: #141e2b; /* era #1a2535 — mais escuro para melhor contraste */
+  line-height: 1.85;
+  font-size: 1.03rem;
 }
 
 body.style-ceuafe .post-content blockquote,
 body.style-ceuafe .page-content blockquote {
-  border-left: 4px solid #e07b39 !important;
-  background: #eaf2fb !important;
-  color: #1a2535 !important;
-  border-radius: 0 10px 10px 0 !important;
-  padding: 1.4rem 1.8rem !important;
+  border-left: 5px solid #e07b39 !important;
+  background: linear-gradient(135deg, #fdf8f0 0%, #f7f0e4 60%, #f2e8d5 100%) !important; /* pergaminho */
+  color: #2a1f14 !important;
+  border-radius: 0 12px 12px 0 !important;
+  padding: 2rem 2.2rem 1.8rem 2.4rem !important;
   font-style: italic !important;
-  font-size: 1.05rem !important;
+  font-size: 1.12rem !important;
+  font-family: Georgia, 'Garamond', 'Times New Roman', serif !important; /* serifada clássica */
+  line-height: 1.85 !important;
   position: relative !important;
+  box-shadow: 0 3px 16px rgba(224,123,57,0.10), inset 0 0 0 1px rgba(224,123,57,0.12) !important;
 }
 
 body.style-ceuafe .post-content blockquote::before,
 body.style-ceuafe .page-content blockquote::before {
-  content: '"';
+  content: '\201C';
   position: absolute;
-  top: -10px;
-  left: 14px;
-  font-size: 4rem;
-  color: rgba(224,123,57,0.55);
-  font-family: Georgia, serif;
+  top: -18px;
+  left: 16px;
+  font-size: 6rem; /* era 4rem — aspas maiores e mais ornamentais */
+  color: rgba(224,123,57,0.50);
+  font-family: Georgia, 'Garamond', serif;
   line-height: 1;
   pointer-events: none;
+  text-shadow: 1px 1px 0 rgba(224,123,57,0.15);
 }
 
 body.style-ceuafe .widget h3,
 body.style-ceuafe .widget h2,
 body.style-ceuafe .widget h4 {
-  color: #0d2b4a;
-  border-bottom-color: rgba(224,123,57,0.30);
+  color: #b85a20 !important;
+  border-bottom-color: rgba(224,123,57,0.35) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  padding-left: 4px !important; /* alinha visualmente com o conteúdo interno do player */
 }
 
 body.style-ceuafe .header-search .search-form .search-submit {
@@ -194,13 +222,23 @@ body.style-ceuafe .pagination .page-numbers:hover {
 }
 
 body.style-ceuafe .read-more {
-  background: #b85a20 !important;
+  background: #c86820 !important; /* terracota mais escuro — mais contraste */
   color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  padding: 10px 24px !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.03em !important;
+  box-shadow: 0 2px 8px rgba(200,104,32,0.30) !important;
+  transition: all 0.3s ease !important;
 }
 
 body.style-ceuafe .read-more:hover {
-  background: #8f4010 !important;
+  background: #a05518 !important;
   color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(200,104,32,0.45) !important;
+  transform: translateY(-1px);
+  filter: none !important;
 }
 
 @media (max-width: 768px) {
@@ -227,4 +265,228 @@ body.style-ceuafe .widget .wp-block-search__button {
 
 body.style-ceuafe .widget .wp-block-search__button:hover {
   background-color: #8f4010 !important;
+}
+/* ── Componentes adicionados na auditoria v5.3 ── */
+
+
+body.style-ceuafe .primary-nav {
+  background: rgba(0,0,0,0.25);
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+body.style-ceuafe .primary-nav .menu a {
+  color: rgba(255,255,255,0.88) !important;
+  transition: all 0.3s ease !important;
+}
+body.style-ceuafe .primary-nav .menu a:hover {
+  color: #e07b39 !important;
+  background: rgba(255,255,255,0.08) !important;
+}
+body.style-ceuafe .primary-nav .menu li.current-menu-item > a,
+body.style-ceuafe .primary-nav .menu li.current_page_item > a {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  background: rgba(224,123,57,0.30) !important; /* fundo destacado — estado ativo claro */
+  border-radius: 6px 6px 0 0;
+  border-bottom: 3px solid #e07b39 !important; /* sublinhado terracota forte */
+  padding-bottom: 8px !important;
+}
+
+body.style-ceuafe .post-content a,
+body.style-ceuafe .page-content a {
+  color: #0d4f8c !important; /* consistente com o link global */
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  transition: color 0.3s ease;
+}
+body.style-ceuafe .post-content a:hover,
+body.style-ceuafe .page-content a:hover {
+  color: #e07b39 !important;
+}
+
+body.style-ceuafe .post-meta {
+  color: #445566 !important; /* era #5a6a7a — mais escuro, mais legível */
+  font-size: 0.88rem !important;
+  background: transparent !important;
+  border-left: 3px solid #e07b39 !important;
+  padding-left: 10px !important;
+}
+body.style-ceuafe .post-meta a {
+  color: #0d4f8c !important;
+  text-decoration: none !important;
+}
+body.style-ceuafe .post-meta a:hover {
+  color: #e07b39 !important;
+}
+
+body.style-ceuafe .excerpt,
+body.style-ceuafe .excerpt p {
+  color: #1a1a1a !important;
+  line-height: 1.7 !important;
+}
+
+body.style-ceuafe article {
+  background-color: #ffffff;
+  border: 1px solid #d0dce8 !important;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+body.style-ceuafe article:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10) !important;
+  transform: translateY(-2px);
+}
+
+body.style-ceuafe .comment-list .comment-body {
+  background: #ffffff !important;
+  border: 1px solid #d0dce8 !important;
+  border-radius: 8px !important;
+  padding: 1.25rem 1.5rem !important;
+}
+body.style-ceuafe .comment-metadata a {
+  color: #5a6a7a !important;
+  font-size: 0.82rem !important;
+  text-decoration: none !important;
+}
+body.style-ceuafe .comment-metadata a:hover {
+  color: #e07b39 !important;
+}
+body.style-ceuafe .comment-content p {
+  color: #1a1a1a !important;
+  line-height: 1.75 !important;
+}
+body.style-ceuafe .comment-author .fn,
+body.style-ceuafe .comment-author-name {
+  color: #1a1a1a !important;
+}
+
+body.style-ceuafe .comment-form input[type="text"],
+body.style-ceuafe .comment-form input[type="email"],
+body.style-ceuafe .comment-form input[type="url"],
+body.style-ceuafe .comment-form textarea {
+  background: #ffffff !important;
+  border: 1.5px solid #d0dce8 !important;
+  color: #1a1a1a !important;
+  border-radius: 6px !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+body.style-ceuafe .comment-form input:focus,
+body.style-ceuafe .comment-form textarea:focus {
+  border-color: #e07b39 !important;
+  box-shadow: 0 0 0 3px #e07b3922 !important;
+  outline: none !important;
+}
+body.style-ceuafe .comment-form .submit {
+  background: #e07b39 !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 700 !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+  letter-spacing: 0.04em !important;
+}
+body.style-ceuafe .comment-form .submit:hover {
+  opacity: 0.88 !important;
+  transform: translateY(-1px);
+}
+
+body.style-ceuafe .back-link a {
+  color: #1a6aaa !important;
+  border: 1.5px solid #e07b39 !important;
+  border-radius: 6px;
+  padding: 7px 16px;
+  text-decoration: none !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+body.style-ceuafe .back-link a:hover {
+  background: #e07b39 !important;
+  color: #ffffff !important;
+}
+
+body.style-ceuafe .error-404 .page-title,
+body.style-ceuafe .no-results .page-title {
+  color: #e07b39 !important;
+}
+body.style-ceuafe .error-404 .search-form .search-field,
+body.style-ceuafe .no-results .search-form .search-field {
+  background: #ffffff !important;
+  border: 1.5px solid #d0dce8 !important;
+  color: #1a1a1a !important;
+  border-radius: 6px 0 0 6px !important;
+}
+body.style-ceuafe .error-404 .search-form .search-submit,
+body.style-ceuafe .no-results .search-form .search-submit {
+  background: #e07b39 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 600px) {
+  body.style-ceuafe .site-title .site-name a {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+  }
+  body.style-ceuafe .site-title .site-description {
+    font-size: clamp(0.75rem, 3vw, 0.88rem);
+  }
+  body.style-ceuafe article {
+    border-radius: 8px !important;
+  }
+}
+
+body.style-ceuafe .post-thumbnail-img {
+  border-radius: 6px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body.style-ceuafe article:hover .post-thumbnail-img {
+  transform: scale(1.02);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-ceuafe article:hover {
+    transform: none !important;
+  }
+  body.style-ceuafe article:hover .post-thumbnail-img {
+    transform: none !important;
+  }
+  body.style-ceuafe .back-link a:hover,
+  body.style-ceuafe .comment-form .submit:hover,
+  body.style-ceuafe .read-more:hover {
+    transform: none !important;
+  }
+}
+/* ── Melhorias editoriais v5.4 ── */
+
+/* Imagens dentro de widgets */
+body.style-ceuafe .widget img,
+body.style-ceuafe .widget_block img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 10px rgba(13,43,74,0.10) !important;
+  transition: box-shadow 0.3s ease !important;
+  display: block !important;
+}
+
+body.style-ceuafe .widget img:hover,
+body.style-ceuafe .widget_block img:hover {
+  box-shadow: 0 4px 16px rgba(13,43,74,0.16) !important;
+}
+
+body.style-ceuafe .widget img:hover,
+body.style-ceuafe .widget_block img:hover {
+  box-shadow: 0 4px 16px rgba(13,43,74,0.16) !important;
+}
+
+/* Efeito "Ao Vivo" — usa as classes reais do plugin Player Radio */
+@keyframes ceuafePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.55; transform: scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-ceuafe .widget img:hover,
+  body.style-ceuafe .widget_block img:hover {
+    box-shadow: 0 2px 10px rgba(13,43,74,0.10) !important;
+  }
 }

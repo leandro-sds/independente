@@ -518,3 +518,165 @@ body.style-marinelli .widget h4 {
 }
 
 body.style-marinelli    { --accent-color: #F97316; --on-accent: #ffffff; }
+/* ── Componentes adicionados na auditoria v5.3 ── */
+
+
+body.style-marinelli .post-content a,
+body.style-marinelli .page-content a {
+  color: #1a5fa8 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  transition: color 0.3s ease;
+}
+body.style-marinelli .post-content a:hover,
+body.style-marinelli .page-content a:hover {
+  color: #F97316 !important;
+}
+
+body.style-marinelli .post-meta {
+  color: #666666 !important;
+  font-size: 0.85rem !important;
+  background: transparent !important;
+  border-left: 3px solid #F97316 !important;
+  padding-left: 10px !important;
+}
+body.style-marinelli .post-meta a {
+  color: #1a5fa8 !important;
+  text-decoration: none !important;
+}
+body.style-marinelli .post-meta a:hover {
+  color: #F97316 !important;
+}
+
+body.style-marinelli .excerpt,
+body.style-marinelli .excerpt p {
+  color: #333333 !important;
+  line-height: 1.7 !important;
+}
+
+body.style-marinelli .comment-list .comment-body {
+  background: #ffffff !important;
+  border: 1px solid #dde3ec !important;
+  border-radius: 8px !important;
+  padding: 1.25rem 1.5rem !important;
+}
+body.style-marinelli .comment-metadata a {
+  color: #666666 !important;
+  font-size: 0.82rem !important;
+  text-decoration: none !important;
+}
+body.style-marinelli .comment-metadata a:hover {
+  color: #F97316 !important;
+}
+body.style-marinelli .comment-content p {
+  color: #333333 !important;
+  line-height: 1.75 !important;
+}
+body.style-marinelli .comment-author .fn,
+body.style-marinelli .comment-author-name {
+  color: #333333 !important;
+}
+
+body.style-marinelli .comment-form input[type="text"],
+body.style-marinelli .comment-form input[type="email"],
+body.style-marinelli .comment-form input[type="url"],
+body.style-marinelli .comment-form textarea {
+  background: #ffffff !important;
+  border: 1.5px solid #dde3ec !important;
+  color: #333333 !important;
+  border-radius: 6px !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+body.style-marinelli .comment-form input:focus,
+body.style-marinelli .comment-form textarea:focus {
+  border-color: #F97316 !important;
+  box-shadow: 0 0 0 3px #F9731622 !important;
+  outline: none !important;
+}
+body.style-marinelli .comment-form .submit {
+  background: #F97316 !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 700 !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+  letter-spacing: 0.04em !important;
+}
+body.style-marinelli .comment-form .submit:hover {
+  opacity: 0.88 !important;
+  transform: translateY(-1px);
+}
+
+body.style-marinelli .wp-block-search__inside-wrapper {
+  display: flex !important;
+  width: 100% !important;
+}
+body.style-marinelli .wp-block-search__input {
+  background: #ffffff !important;
+  border: 1.5px solid #dde3ec !important;
+  color: #333333 !important;
+  border-radius: 6px 0 0 6px !important;
+}
+body.style-marinelli .wp-block-search__input:focus {
+  border-color: #F97316 !important;
+  outline: none !important;
+}
+body.style-marinelli .wp-block-search__button {
+  background: #F97316 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-weight: 700 !important;
+  transition: all 0.3s ease !important;
+}
+body.style-marinelli .wp-block-search__button:hover {
+  opacity: 0.88 !important;
+}
+
+body.style-marinelli .social-links a {
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+body.style-marinelli .social-links a:hover {
+  color: #F97316 !important;
+  opacity: 0.85;
+}
+
+body.style-marinelli .error-404 .page-title,
+body.style-marinelli .no-results .page-title {
+  color: #F97316 !important;
+}
+body.style-marinelli .error-404 .search-form .search-field,
+body.style-marinelli .no-results .search-form .search-field {
+  background: #ffffff !important;
+  border: 1.5px solid #dde3ec !important;
+  color: #333333 !important;
+  border-radius: 6px 0 0 6px !important;
+}
+body.style-marinelli .error-404 .search-form .search-submit,
+body.style-marinelli .no-results .search-form .search-submit {
+  background: #F97316 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 600px) {
+  body.style-marinelli .site-title .site-name a {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+  }
+  body.style-marinelli .site-title .site-description {
+    font-size: clamp(0.75rem, 3vw, 0.88rem);
+  }
+  body.style-marinelli article {
+    border-radius: 8px !important;
+  }
+}
+
+body.style-marinelli .post-thumbnail-img {
+  border-radius: 6px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body.style-marinelli article:hover .post-thumbnail-img {
+  transform: scale(1.02);
+}

@@ -1,6 +1,20 @@
 # Changelog — Independent Theme
 
+## [5.4] — 2026-06-09
+
+### Auditoria Completa de Estilos
+
+Todos os 11 estilos (exceto Alvorada, já completo) auditados sistematicamente contra checklist de 23 componentes. Adicionados os componentes faltantes em cada estilo sem modificar o que já existia:
+
+- **Componentes adicionados universalmente** — 404/busca sem resultados, thumbnail com hover suave, busca Gutenberg (`wp-block-search`), post-meta com borda colorida, excerpt, comentários, formulário de comentários, social links, paginação, back link, responsividade mobile e `prefers-reduced-motion`.
+- **Todos os 12 estilos** agora cobrem **23/23 componentes** verificados.
+- **Sintaxe CSS verificada** — chaves balanceadas em todos os 15 arquivos CSS.
+- **Nenhum estilo existente foi modificado** — apenas adições, usando as cores corretas de cada estilo.
+
+---
+
 ## [5.3] — 2026-06-07
+
 
 ### Melhorias
 

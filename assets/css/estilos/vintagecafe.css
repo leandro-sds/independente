@@ -314,3 +314,172 @@ body.style-vintagecafe main {
 }
 
 body.style-vintagecafe  { --accent-color: #c9922a; --on-accent: #ffffff; }
+/* ── Componentes adicionados na auditoria v5.3 ── */
+
+
+body.style-vintagecafe .post-meta {
+  color: #8a6a3a !important;
+  font-size: 0.85rem !important;
+  background: transparent !important;
+  border-left: 3px solid #c9922a !important;
+  padding-left: 10px !important;
+}
+body.style-vintagecafe .post-meta a {
+  color: #8B5E1A !important;
+  text-decoration: none !important;
+}
+body.style-vintagecafe .post-meta a:hover {
+  color: #c9922a !important;
+}
+
+body.style-vintagecafe .excerpt,
+body.style-vintagecafe .excerpt p {
+  color: #3b2a1a !important;
+  line-height: 1.7 !important;
+}
+
+body.style-vintagecafe .comment-list .comment-body {
+  background: #fdf6e3 !important;
+  border: 1px solid #d4b896 !important;
+  border-radius: 8px !important;
+  padding: 1.25rem 1.5rem !important;
+}
+body.style-vintagecafe .comment-metadata a {
+  color: #8a6a3a !important;
+  font-size: 0.82rem !important;
+  text-decoration: none !important;
+}
+body.style-vintagecafe .comment-metadata a:hover {
+  color: #c9922a !important;
+}
+body.style-vintagecafe .comment-content p {
+  color: #3b2a1a !important;
+  line-height: 1.75 !important;
+}
+body.style-vintagecafe .comment-author .fn,
+body.style-vintagecafe .comment-author-name {
+  color: #3b2a1a !important;
+}
+
+body.style-vintagecafe .comment-form input[type="text"],
+body.style-vintagecafe .comment-form input[type="email"],
+body.style-vintagecafe .comment-form input[type="url"],
+body.style-vintagecafe .comment-form textarea {
+  background: #ffffff !important;
+  border: 1.5px solid #d4b896 !important;
+  color: #3b2a1a !important;
+  border-radius: 6px !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+body.style-vintagecafe .comment-form input:focus,
+body.style-vintagecafe .comment-form textarea:focus {
+  border-color: #c9922a !important;
+  box-shadow: 0 0 0 3px #c9922a22 !important;
+  outline: none !important;
+}
+body.style-vintagecafe .comment-form .submit {
+  background: #c9922a !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 700 !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+  letter-spacing: 0.04em !important;
+}
+body.style-vintagecafe .comment-form .submit:hover {
+  opacity: 0.88 !important;
+  transform: translateY(-1px);
+}
+
+body.style-vintagecafe .wp-block-search__inside-wrapper {
+  display: flex !important;
+  width: 100% !important;
+}
+body.style-vintagecafe .wp-block-search__input {
+  background: #ffffff !important;
+  border: 1.5px solid #d4b896 !important;
+  color: #3b2a1a !important;
+  border-radius: 6px 0 0 6px !important;
+}
+body.style-vintagecafe .wp-block-search__input:focus {
+  border-color: #c9922a !important;
+  outline: none !important;
+}
+body.style-vintagecafe .wp-block-search__button {
+  background: #c9922a !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-weight: 700 !important;
+  transition: all 0.3s ease !important;
+}
+body.style-vintagecafe .wp-block-search__button:hover {
+  opacity: 0.88 !important;
+}
+
+body.style-vintagecafe .pagination .page-numbers {
+  border-radius: 6px;
+  border: 1.5px solid #c9922a;
+  color: #8B5E1A;
+  transition: all 0.3s ease;
+}
+body.style-vintagecafe .pagination .current,
+body.style-vintagecafe .pagination .page-numbers:hover {
+  background: #c9922a !important;
+  border-color: #c9922a !important;
+  color: #ffffff !important;
+}
+
+body.style-vintagecafe .back-link a {
+  color: #8B5E1A !important;
+  border: 1.5px solid #c9922a !important;
+  border-radius: 6px;
+  padding: 7px 16px;
+  text-decoration: none !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+body.style-vintagecafe .back-link a:hover {
+  background: #c9922a !important;
+  color: #ffffff !important;
+}
+
+body.style-vintagecafe .error-404 .page-title,
+body.style-vintagecafe .no-results .page-title {
+  color: #c9922a !important;
+}
+body.style-vintagecafe .error-404 .search-form .search-field,
+body.style-vintagecafe .no-results .search-form .search-field {
+  background: #ffffff !important;
+  border: 1.5px solid #d4b896 !important;
+  color: #3b2a1a !important;
+  border-radius: 6px 0 0 6px !important;
+}
+body.style-vintagecafe .error-404 .search-form .search-submit,
+body.style-vintagecafe .no-results .search-form .search-submit {
+  background: #c9922a !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 600px) {
+  body.style-vintagecafe .site-title .site-name a {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+  }
+  body.style-vintagecafe .site-title .site-description {
+    font-size: clamp(0.75rem, 3vw, 0.88rem);
+  }
+  body.style-vintagecafe article {
+    border-radius: 8px !important;
+  }
+}
+
+body.style-vintagecafe .post-thumbnail-img {
+  border-radius: 6px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body.style-vintagecafe article:hover .post-thumbnail-img {
+  transform: scale(1.02);
+}

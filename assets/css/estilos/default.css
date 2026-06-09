@@ -207,3 +207,203 @@ body.style-default .read-more:hover {
 }
 
 body.style-default      { --accent-color: #F6AD55; --on-accent: #1a1a1a; }
+/* ── Componentes adicionados na auditoria v5.3 ── */
+
+
+body.style-default .post-meta {
+  color: #666666 !important;
+  font-size: 0.85rem !important;
+  background: transparent !important;
+  border-left: 3px solid #F6AD55 !important;
+  padding-left: 10px !important;
+}
+body.style-default .post-meta a {
+  color: #2B6CB0 !important;
+  text-decoration: none !important;
+}
+body.style-default .post-meta a:hover {
+  color: #F6AD55 !important;
+}
+
+body.style-default .excerpt,
+body.style-default .excerpt p {
+  color: #333333 !important;
+  line-height: 1.7 !important;
+}
+
+body.style-default article {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb !important;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+body.style-default article:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10) !important;
+  transform: translateY(-2px);
+}
+
+body.style-default .comment-list .comment-body {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  padding: 1.25rem 1.5rem !important;
+}
+body.style-default .comment-metadata a {
+  color: #666666 !important;
+  font-size: 0.82rem !important;
+  text-decoration: none !important;
+}
+body.style-default .comment-metadata a:hover {
+  color: #F6AD55 !important;
+}
+body.style-default .comment-content p {
+  color: #333333 !important;
+  line-height: 1.75 !important;
+}
+body.style-default .comment-author .fn,
+body.style-default .comment-author-name {
+  color: #333333 !important;
+}
+
+body.style-default .comment-form input[type="text"],
+body.style-default .comment-form input[type="email"],
+body.style-default .comment-form input[type="url"],
+body.style-default .comment-form textarea {
+  background: #ffffff !important;
+  border: 1.5px solid #e5e7eb !important;
+  color: #333333 !important;
+  border-radius: 6px !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+body.style-default .comment-form input:focus,
+body.style-default .comment-form textarea:focus {
+  border-color: #F6AD55 !important;
+  box-shadow: 0 0 0 3px #F6AD5522 !important;
+  outline: none !important;
+}
+body.style-default .comment-form .submit {
+  background: #F6AD55 !important;
+  color: #1a1a1a !important;
+  border: none !important;
+  font-weight: 700 !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+  letter-spacing: 0.04em !important;
+}
+body.style-default .comment-form .submit:hover {
+  opacity: 0.88 !important;
+  transform: translateY(-1px);
+}
+
+body.style-default .wp-block-search__inside-wrapper {
+  display: flex !important;
+  width: 100% !important;
+}
+body.style-default .wp-block-search__input {
+  background: #ffffff !important;
+  border: 1.5px solid #e5e7eb !important;
+  color: #333333 !important;
+  border-radius: 6px 0 0 6px !important;
+}
+body.style-default .wp-block-search__input:focus {
+  border-color: #F6AD55 !important;
+  outline: none !important;
+}
+body.style-default .wp-block-search__button {
+  background: #F6AD55 !important;
+  color: #1a1a1a !important;
+  border: none !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-weight: 700 !important;
+  transition: all 0.3s ease !important;
+}
+body.style-default .wp-block-search__button:hover {
+  opacity: 0.88 !important;
+}
+
+body.style-default .widget,
+body.style-default .widget_block {
+  position: relative;
+  overflow: visible;
+}
+
+body.style-default footer a {
+  transition: color 0.3s ease;
+}
+body.style-default footer a:hover {
+  color: #F6AD55 !important;
+}
+
+body.style-default .social-links a {
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+body.style-default .social-links a:hover {
+  color: #F6AD55 !important;
+  opacity: 0.85;
+}
+
+body.style-default .pagination .page-numbers {
+  border-radius: 6px;
+  border: 1.5px solid #F6AD55;
+  color: #2B6CB0;
+  transition: all 0.3s ease;
+}
+body.style-default .pagination .current,
+body.style-default .pagination .page-numbers:hover {
+  background: #F6AD55 !important;
+  border-color: #F6AD55 !important;
+  color: #1a1a1a !important;
+}
+
+body.style-default .back-link a {
+  color: #2B6CB0 !important;
+  border: 1.5px solid #F6AD55 !important;
+  border-radius: 6px;
+  padding: 7px 16px;
+  text-decoration: none !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+body.style-default .back-link a:hover {
+  background: #F6AD55 !important;
+  color: #1a1a1a !important;
+}
+
+body.style-default .error-404 .page-title,
+body.style-default .no-results .page-title {
+  color: #F6AD55 !important;
+}
+body.style-default .error-404 .search-form .search-field,
+body.style-default .no-results .search-form .search-field {
+  background: #ffffff !important;
+  border: 1.5px solid #e5e7eb !important;
+  color: #333333 !important;
+  border-radius: 6px 0 0 6px !important;
+}
+body.style-default .error-404 .search-form .search-submit,
+body.style-default .no-results .search-form .search-submit {
+  background: #F6AD55 !important;
+  color: #1a1a1a !important;
+  border: none !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 600px) {
+  body.style-default .site-title .site-name a {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+  }
+  body.style-default .site-title .site-description {
+    font-size: clamp(0.75rem, 3vw, 0.88rem);
+  }
+  body.style-default article {
+    border-radius: 8px !important;
+  }
+}
+
+body.style-default .post-thumbnail-img {
+  border-radius: 6px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body.style-default article:hover .post-thumbnail-img {
+  transform: scale(1.02);
+}

@@ -540,3 +540,81 @@ body.style-noitedejogo .menu-toggle {
     display: none !important;
   }
 }
+/* ── Componentes adicionados na auditoria v5.3 ── */
+
+
+body.style-noitedejogo article {
+  background-color: #1e1e1e;
+  border: 1px solid #2a2a2a !important;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+body.style-noitedejogo article:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10) !important;
+  transform: translateY(-2px);
+}
+
+body.style-noitedejogo .wp-block-search__inside-wrapper {
+  display: flex !important;
+  width: 100% !important;
+}
+body.style-noitedejogo .wp-block-search__input {
+  background: #2a2a2a !important;
+  border: 1.5px solid #444 !important;
+  color: #f0f0f0 !important;
+  border-radius: 6px 0 0 6px !important;
+}
+body.style-noitedejogo .wp-block-search__input:focus {
+  border-color: #00b140 !important;
+  outline: none !important;
+}
+body.style-noitedejogo .wp-block-search__button {
+  background: #00b140 !important;
+  color: #0a1a0a !important;
+  border: none !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-weight: 700 !important;
+  transition: all 0.3s ease !important;
+}
+body.style-noitedejogo .wp-block-search__button:hover {
+  opacity: 0.88 !important;
+}
+
+body.style-noitedejogo .error-404 .page-title,
+body.style-noitedejogo .no-results .page-title {
+  color: #00b140 !important;
+}
+body.style-noitedejogo .error-404 .search-form .search-field,
+body.style-noitedejogo .no-results .search-form .search-field {
+  background: #2a2a2a !important;
+  border: 1.5px solid #444 !important;
+  color: #f0f0f0 !important;
+  border-radius: 6px 0 0 6px !important;
+}
+body.style-noitedejogo .error-404 .search-form .search-submit,
+body.style-noitedejogo .no-results .search-form .search-submit {
+  background: #00b140 !important;
+  color: #0a1a0a !important;
+  border: none !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 600px) {
+  body.style-noitedejogo .site-title .site-name a {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+  }
+  body.style-noitedejogo .site-title .site-description {
+    font-size: clamp(0.75rem, 3vw, 0.88rem);
+  }
+  body.style-noitedejogo article {
+    border-radius: 8px !important;
+  }
+}
+
+body.style-noitedejogo .post-thumbnail-img {
+  border-radius: 6px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body.style-noitedejogo article:hover .post-thumbnail-img {
+  transform: scale(1.02);
+}

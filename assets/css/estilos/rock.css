@@ -544,3 +544,81 @@ body.style-rock { --accent-color: #cc0000; --on-accent: #ffffff; }
     font-size: clamp(0.7rem, 2.8vw, 0.82rem);
   }
 }
+/* ── Componentes adicionados na auditoria v5.3 ── */
+
+
+body.style-rock .post-content a,
+body.style-rock .page-content a {
+  color: #cc0000 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  transition: color 0.3s ease;
+}
+body.style-rock .post-content a:hover,
+body.style-rock .page-content a:hover {
+  color: #cc0000 !important;
+}
+
+body.style-rock article {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a !important;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+body.style-rock article:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10) !important;
+  transform: translateY(-2px);
+}
+
+body.style-rock .wp-block-search__inside-wrapper {
+  display: flex !important;
+  width: 100% !important;
+}
+body.style-rock .wp-block-search__input {
+  background: #2a2a2a !important;
+  border: 1.5px solid #444 !important;
+  color: #e8e4de !important;
+  border-radius: 6px 0 0 6px !important;
+}
+body.style-rock .wp-block-search__input:focus {
+  border-color: #cc0000 !important;
+  outline: none !important;
+}
+body.style-rock .wp-block-search__button {
+  background: #cc0000 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-weight: 700 !important;
+  transition: all 0.3s ease !important;
+}
+body.style-rock .wp-block-search__button:hover {
+  opacity: 0.88 !important;
+}
+
+body.style-rock .error-404 .page-title,
+body.style-rock .no-results .page-title {
+  color: #cc0000 !important;
+}
+body.style-rock .error-404 .search-form .search-field,
+body.style-rock .no-results .search-form .search-field {
+  background: #2a2a2a !important;
+  border: 1.5px solid #444 !important;
+  color: #e8e4de !important;
+  border-radius: 6px 0 0 6px !important;
+}
+body.style-rock .error-404 .search-form .search-submit,
+body.style-rock .no-results .search-form .search-submit {
+  background: #cc0000 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 0 6px 6px 0 !important;
+  font-weight: 700 !important;
+}
+
+body.style-rock .post-thumbnail-img {
+  border-radius: 6px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body.style-rock article:hover .post-thumbnail-img {
+  transform: scale(1.02);
+}

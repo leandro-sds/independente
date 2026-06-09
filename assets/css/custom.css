@@ -365,3 +365,51 @@ aside .search-form input[type="submit"]:focus-visible {
     color: #555;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   PLAYER RADIO — Integração global com o Independent Theme
+   O plugin usa color: inherit e currentColor em tudo,
+   então basta colorir os elementos-chave com --accent-color.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Botão de play: borda e ícone SVG no acento do estilo ativo */
+.widget .pr-player .pr-play-btn {
+  color: var(--accent-color, currentColor) !important;
+}
+
+/* Botão de mudo: mesma cor de acento */
+.widget .pr-player .pr-mute-btn {
+  color: var(--accent-color, currentColor) !important;
+  opacity: 0.7 !important;
+}
+
+/* Barras do visualizador: acento do estilo */
+.widget .pr-player .pr-bar {
+  background-color: var(--accent-color, currentColor) !important;
+}
+
+/* Ponto AO VIVO: acento do estilo (já tem animação de pulso no plugin) */
+.widget .pr-player .pr-live-dot {
+  background-color: var(--accent-color, currentColor) !important;
+}
+
+/* Slider de volume: thumb no acento */
+.widget .pr-player .pr-volume::-webkit-slider-thumb {
+  background: var(--accent-color, currentColor) !important;
+}
+.widget .pr-player .pr-volume::-moz-range-thumb {
+  background: var(--accent-color, currentColor) !important;
+}
+
+/* Borda do container: acento com baixa opacidade */
+.widget .pr-player {
+  --pr-border-color: color-mix(in srgb, var(--accent-color, #888888) 22%, transparent);
+  --pr-surface:      color-mix(in srgb, var(--accent-color, #888888) 8%, transparent);
+  --pr-radius:       var(--radius-md, 12px);
+}
+
+/* Botão retry e status bar: usa a borda do acento */
+.widget .pr-player .pr-retry-btn {
+  border-color: var(--accent-color, currentColor) !important;
+  color: var(--accent-color, currentColor) !important;
+}
