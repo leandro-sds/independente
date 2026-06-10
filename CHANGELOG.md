@@ -1,5 +1,11 @@
 # Changelog — Independent Theme
 
+## [5.6] — 2026-06-10
+
+Versão idêntica à 5.5 — republicada por problema técnico no GitHub.
+
+---
+
 ## [5.5] — 2026-06-10
 
 ### Novo Estilo: Gospel ✨ — "Luz que Rompe"
