@@ -6,7 +6,7 @@ O Independent Theme nasceu da experiência real de um desenvolvedor cego constru
 
 ---
 
-## 🎨 12 Estilos Visuais
+## 🎨 13 Estilos Visuais
 
 Selecionáveis em **Aparência → Personalizar → Estilo Visual**. A troca é instantânea — nenhum conteúdo, menu ou widget é perdido. Só mudam as cores, fontes, animações e identidade visual.
 
@@ -16,6 +16,7 @@ Cada estilo é carregado sob demanda — o visitante baixa apenas o CSS do estil
 |---|---|
 | ⬜ **Padrão** | Qualquer tipo de site — neutro e elegante |
 | 🌅 **Alvorada** | Rádio cristã, ministérios de louvor, sites espirituais modernos |
+| ✨ **Gospel** | Rádios gospel, músicos, bandas, ministérios, portais de louvor |
 | 🎧 **Neon Pop** | Rádio jovem, podcast, DJ, games, streamers |
 | 📻 **Vintage Café** | Rádio retrô, jazz, blues, cafeterias, saudosismo |
 | ⚽ **Campo e Paixão** | Futebol clássico, clubes, federações, jornalismo esportivo |
@@ -45,7 +46,7 @@ O Independent Theme foi construído com acessibilidade como prioridade, não com
 
 ## 🚀 Recursos
 
-- **12 estilos visuais** com identidade própria, carregados sob demanda
+- **13 estilos visuais** com identidade própria, carregados sob demanda
 - **Imagem destacada** normalizada — altura máxima 350px com `object-fit: cover`
 - **Imagens no corpo do post** — largura total, altura máxima 500px, sem sobreposição de texto
 - **Menu mobile** com transição suave e acessível para leitores de tela

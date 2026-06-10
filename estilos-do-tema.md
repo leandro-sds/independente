@@ -47,6 +47,31 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 
 ---
 
+## ✨ Gospel — Luz que Rompe
+
+**Ideal para:** rádios gospel, músicos, bandas de louvor, ministérios musicais, portais de notícias gospel, eventos cristãos jovens.
+
+- Cabeçalho Midnight Indigo profundo (`#07071A`) — o céu antes do amanhecer
+- Linha animada lilás→dourado→lilás que explode ao carregar — "a luz que rompe"
+- Menu com underline gradiente dourado/lilás que cresce no hover
+- Item ativo do menu em Dourado Solar `#FFD166`
+- Botão "Buscar" dourado com glow luminoso
+- Cards com **borda gradiente vertical dourado→lilás** via `::before` — detalhe exclusivo
+- Glow dourado difuso em cards, widgets e botões — efeito de aura divina
+- Títulos em **Raleway ExtraBold 800** — presença de pôster de show, impacto total
+- Links em **Lilás Divino** `#A78BFA` — inesperado, espiritual, diferente
+- Blockquote com fundo indigo profundo, Raleway itálico e aspas ornamentais douradas brilhantes
+- Widget titles em dourado com letter-spacing — visual de produção musical
+- Rodapé indigo consistente com o header
+- Integração com Player Radio — botão, barras e AO VIVO em dourado solar
+- Fundo `#0B0B1F` com cards `#0F0F24` — profundidade e sofisticação
+
+> *Inspirado nas grandes produções de louvor contemporâneo —*
+> *Elevation Worship, Hillsong United, Bethel Music.*
+> *Para quem ver o site se perguntar: "Foi um cego que fez isso?"*
+
+---
+
 ## 🎧 Neon Pop — Rádio Jovem
 
 **Ideal para:** rádios jovens, podcasts, música eletrônica, DJs, streamers, games, entretenimento digital.
@@ -220,6 +245,7 @@ Todos os pares de cor/fundo foram validados com contraste WCAG AA (mínimo 4.5:1
 | Tipo de site | Estilo recomendado |
 |---|---|
 | Rádio cristã / Ministério de louvor | 🌅 Alvorada |
+| Rádio gospel / Banda / Ministério jovem | ✨ Gospel |
 | Igreja / Site cristão / Portal de fé | ✝️ Céu e Fé |
 | Portal de notícias / Institucional | 🏛️ Marinelli |
 | Rádio jovem / Podcast / DJ | 🎧 Neon Pop |

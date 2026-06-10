@@ -1,0 +1,865 @@
+/*
+ * Independent Theme — Estilo: gospel
+ * ─────────────────────────────────────────────────────────────
+ * "Luz que Rompe" — Gospel Moderno
+ * Para rádios gospel, músicos, bandas, portais e ministérios
+ * Inspirado nas grandes produções de louvor contemporâneo
+ * ─────────────────────────────────────────────────────────────
+ */
+
+/* ══════════════════════════════════════════════════════════════
+   VARIÁVEIS
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel {
+  --primary-color:        #07071A;
+  --accent-color:         #FFD166;
+  --on-accent:            #07071A;
+  --secondary-color:      #A78BFA;
+  --bg-light:             #0D0D2B;
+  --card-bg:              #0F0F24;
+  --link-color:           #A78BFA;
+  --text-color:           #F0EFF8;
+  --muted-text:           #8B8AA8;
+  --border-color:         #1E1E3F;
+  --header-bg:            #07071A;
+  --header-fg:            #F0EFF8;
+  --header-muted:         rgba(240,239,248,0.65);
+  --header-input-bg:      rgba(240,239,248,0.08);
+  --header-input-border:  rgba(240,239,248,0.25);
+  --font-main:            'Inter', system-ui, sans-serif;
+  --font-heading:         'Raleway', 'Inter', system-ui, sans-serif;
+  --focus-ring:           2px solid #FFD166;
+  --radius-sm:            8px;
+  --radius-md:            14px;
+  --radius-lg:            20px;
+  --transition:           0.35s ease;
+  --glow-gold:            0 0 20px rgba(255,209,102,0.18), 0 2px 8px rgba(0,0,0,0.40);
+  --glow-gold-hover:      0 0 32px rgba(255,209,102,0.28), 0 4px 16px rgba(0,0,0,0.50);
+
+  background-color: #0B0B1F;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #F0EFF8;
+  line-height: 1.75;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BODY E LAYOUT
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .site-content {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+body.style-gospel main {
+  background-color: #0B0B1F;
+  border-right: 1px solid #1E1E3F;
+}
+
+body.style-gospel aside {
+  background-color: #0D0D2B;
+  border-left: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CABEÇALHO — Midnight Indigo
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .site-header {
+  background: linear-gradient(
+    160deg,
+    #0D0D2A 0%,
+    #07071A 50%,
+    #050514 100%
+  ) !important;
+  border-bottom: none !important;
+  box-shadow:
+    0 2px 30px rgba(0,0,0,0.60),
+    inset 0 1px 0 rgba(255,209,102,0.06) !important;
+  position: relative;
+}
+
+/* Linha dourada que explode ao carregar — "luz que rompe" */
+body.style-gospel .site-header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #A78BFA 15%,
+    #FFD166 50%,
+    #A78BFA 85%,
+    transparent 100%
+  );
+  animation: gospelLight 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  box-shadow: 0 0 12px rgba(255,209,102,0.50);
+}
+
+@keyframes gospelLight {
+  0%   { width: 0; opacity: 0; }
+  40%  { opacity: 1; }
+  100% { width: 100%; opacity: 1; }
+}
+
+/* Nome do site */
+body.style-gospel .site-title .site-name a {
+  color: #F0EFF8 !important;
+  font-family: 'Raleway', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-decoration: none !important;
+  text-shadow: 0 0 20px rgba(255,209,102,0.20);
+}
+
+body.style-gospel .site-title .site-description {
+  color: rgba(240,239,248,0.60);
+  font-family: 'Inter', system-ui, sans-serif;
+  letter-spacing: 0.06em;
+  font-size: 0.82rem;
+}
+
+/* Campo de busca */
+body.style-gospel .header-search .search-form .search-field {
+  background-color: rgba(240,239,248,0.08) !important;
+  border: 1.5px solid rgba(240,239,248,0.20) !important;
+  color: #F0EFF8 !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  transition: all var(--transition) !important;
+}
+
+body.style-gospel .header-search .search-form .search-field::placeholder {
+  color: rgba(240,239,248,0.40) !important;
+}
+
+body.style-gospel .header-search .search-form .search-field:focus {
+  background-color: rgba(240,239,248,0.12) !important;
+  border-color: #FFD166 !important;
+  box-shadow: 0 0 0 3px rgba(255,209,102,0.15) !important;
+  outline: none !important;
+}
+
+/* Botão buscar — dourado solar */
+body.style-gospel .header-search .search-form .search-submit {
+  background-color: #FFD166 !important;
+  border: none !important;
+  color: #07071A !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-sm) !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: 0 0 14px rgba(255,209,102,0.30) !important;
+  transition: all var(--transition) !important;
+  filter: none !important;
+}
+
+body.style-gospel .header-search .search-form .search-submit:hover {
+  background-color: #FFE08A !important;
+  box-shadow: 0 0 22px rgba(255,209,102,0.50) !important;
+  transform: translateY(-1px);
+  filter: none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   NAVEGAÇÃO
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .primary-nav {
+  background: rgba(5,5,20,0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,209,102,0.12);
+}
+
+body.style-gospel .primary-nav .menu a {
+  color: rgba(240,239,248,0.82) !important;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 500 !important;
+  font-size: 0.90rem !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
+  text-decoration: none !important;
+  padding: 11px 16px !important;
+  border-radius: 6px 6px 0 0;
+  transition: all var(--transition) !important;
+  position: relative;
+}
+
+/* Underline dourado que cresce no hover */
+body.style-gospel .primary-nav .menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #A78BFA, #FFD166);
+  transition: width var(--transition);
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 0 8px rgba(255,209,102,0.40);
+}
+
+body.style-gospel .primary-nav .menu a:hover {
+  color: #F0EFF8 !important;
+  background: rgba(255,209,102,0.06) !important;
+}
+
+body.style-gospel .primary-nav .menu a:hover::after {
+  width: 70%;
+}
+
+body.style-gospel .primary-nav .menu li.current-menu-item > a,
+body.style-gospel .primary-nav .menu li.current_page_item > a {
+  color: #FFD166 !important;
+  font-weight: 600 !important;
+  background: rgba(255,209,102,0.08) !important;
+}
+
+body.style-gospel .primary-nav .menu li.current-menu-item > a::after,
+body.style-gospel .primary-nav .menu li.current_page_item > a::after {
+  width: 70%;
+}
+
+body.style-gospel .menu-toggle {
+  background: rgba(255,209,102,0.08);
+  border: 1.5px solid rgba(255,209,102,0.25);
+  color: #FFD166;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+
+body.style-gospel .menu-toggle:hover {
+  background: rgba(255,209,102,0.16);
+}
+
+@media (max-width: 768px) {
+  body.style-gospel #main-menu {
+    background: #07071A !important;
+    border-top: 1px solid rgba(255,209,102,0.15) !important;
+  }
+  body.style-gospel #main-menu a {
+    border-bottom-color: rgba(255,255,255,0.06) !important;
+    color: rgba(240,239,248,0.88) !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TIPOGRAFIA — Raleway para títulos
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel h1,
+body.style-gospel h2,
+body.style-gospel h3,
+body.style-gospel h4 {
+  font-family: 'Raleway', system-ui, sans-serif;
+  font-weight: 800;
+  color: #F0EFF8;
+  letter-spacing: -0.01em;
+  line-height: 1.20;
+}
+
+body.style-gospel .entry-title,
+body.style-gospel h1.entry-title {
+  color: #F0EFF8;
+  font-family: 'Raleway', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.70rem;
+}
+
+body.style-gospel h2,
+body.style-gospel h3 {
+  border-bottom: 1px solid #1E1E3F;
+  padding-bottom: 6px;
+}
+
+body.style-gospel .post-content h2,
+body.style-gospel .page-content h2 {
+  color: #F0EFF8;
+  border-bottom-color: rgba(255,209,102,0.20);
+}
+
+body.style-gospel .post-content h3,
+body.style-gospel .page-content h3 {
+  color: rgba(240,239,248,0.90);
+}
+
+/* Entrada suave dos títulos */
+@keyframes gospelFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+body.style-gospel .entry-title {
+  animation: gospelFade 0.5s ease both;
+}
+
+body.style-gospel .post-content h2,
+body.style-gospel .page-content h2 {
+  animation: gospelFade 0.5s ease 0.08s both;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LINKS
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel a {
+  color: #A78BFA;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+
+body.style-gospel a:hover {
+  color: #FFD166;
+}
+
+body.style-gospel .site-header a,
+body.style-gospel .primary-nav a {
+  text-decoration: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LINKS NO CONTEÚDO
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .post-content a,
+body.style-gospel .page-content a {
+  color: #A78BFA !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  transition: color var(--transition);
+}
+
+body.style-gospel .post-content a:hover,
+body.style-gospel .page-content a:hover {
+  color: #FFD166 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CARDS DE ARTIGO — Glow Dourado
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel article {
+  background-color: #0F0F24 !important;
+  border: 1px solid #1E1E3F !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--glow-gold);
+  transition: box-shadow var(--transition), transform var(--transition);
+  overflow: visible !important;
+  position: relative;
+}
+
+/* Borda gradiente dourado→lilás — o detalhe que impressiona */
+body.style-gospel article::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  height: 70%;
+  width: 3px;
+  background: linear-gradient(180deg, #FFD166 0%, #A78BFA 100%);
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 10px rgba(255,209,102,0.30);
+}
+
+body.style-gospel article:hover {
+  box-shadow: var(--glow-gold-hover);
+  transform: translateY(-3px);
+}
+
+body.style-gospel article:nth-child(even),
+body.style-gospel article:nth-child(odd) {
+  background-color: #0F0F24 !important;
+}
+
+body.style-gospel article {
+  border-bottom-color: transparent !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   EXCERPT
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .excerpt,
+body.style-gospel .excerpt p {
+  color: #C4C3D8 !important;
+  line-height: 1.75 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   POST META
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .post-meta {
+  color: #8B8AA8 !important;
+  font-size: 0.84rem !important;
+  background: transparent !important;
+  border-left: 3px solid #FFD166 !important;
+  padding-left: 10px !important;
+}
+
+body.style-gospel .post-meta a {
+  color: #A78BFA !important;
+  text-decoration: none !important;
+}
+
+body.style-gospel .post-meta a:hover {
+  color: #FFD166 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   THUMBNAIL
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .post-thumbnail-img {
+  border-radius: var(--radius-sm) !important;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+body.style-gospel article:hover .post-thumbnail-img {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(255,209,102,0.15) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BOTÃO LEIA MAIS
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .read-more {
+  background: #FFD166 !important;
+  color: #07071A !important;
+  -webkit-text-fill-color: #07071A !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.04em !important;
+  border-radius: var(--radius-sm) !important;
+  border: none !important;
+  box-shadow: 0 0 16px rgba(255,209,102,0.25) !important;
+  text-decoration: none !important;
+  transition: all var(--transition) !important;
+  padding: 10px 22px !important;
+}
+
+body.style-gospel .read-more:hover {
+  background: #FFE08A !important;
+  color: #07071A !important;
+  -webkit-text-fill-color: #07071A !important;
+  box-shadow: 0 0 28px rgba(255,209,102,0.45) !important;
+  transform: translateY(-2px);
+  filter: none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BLOCKQUOTE — Citações e Versículos
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .post-content blockquote,
+body.style-gospel .page-content blockquote {
+  border-left: 4px solid #FFD166 !important;
+  background: linear-gradient(135deg, #0F0F30 0%, #0A0A24 100%) !important;
+  color: #E8E7F8 !important;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0 !important;
+  padding: 2rem 2.2rem 1.8rem 2.4rem !important;
+  font-style: italic !important;
+  font-size: 1.10rem !important;
+  font-family: 'Raleway', Georgia, serif !important;
+  font-weight: 500 !important;
+  line-height: 1.85 !important;
+  position: relative !important;
+  box-shadow: 0 0 24px rgba(255,209,102,0.08), inset 0 0 0 1px rgba(255,209,102,0.08) !important;
+}
+
+body.style-gospel .post-content blockquote::before,
+body.style-gospel .page-content blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: -14px;
+  left: 16px;
+  font-size: 6rem;
+  color: rgba(255,209,102,0.45);
+  font-family: 'Raleway', Georgia, serif;
+  font-weight: 800;
+  line-height: 1;
+  pointer-events: none;
+  text-shadow: 0 0 20px rgba(255,209,102,0.30);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   WIDGETS
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .widget,
+body.style-gospel .widget_block {
+  background-color: #0F0F24;
+  border: 1px solid #1E1E3F;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-gold);
+  overflow: visible;
+  transition: box-shadow var(--transition);
+}
+
+body.style-gospel .widget:hover,
+body.style-gospel .widget_block:hover {
+  box-shadow: var(--glow-gold-hover);
+}
+
+body.style-gospel .widget h3,
+body.style-gospel .widget h2,
+body.style-gospel .widget h4,
+body.style-gospel .widget-title {
+  color: #FFD166 !important;
+  -webkit-text-fill-color: #FFD166 !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+  border-bottom: 1px solid rgba(255,209,102,0.20) !important;
+  padding-bottom: 10px !important;
+  margin-bottom: 1rem !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-shadow: 0 0 12px rgba(255,209,102,0.25);
+}
+
+body.style-gospel aside .widget a {
+  color: #A78BFA;
+  transition: color var(--transition);
+}
+
+body.style-gospel aside .widget a:hover {
+  color: #FFD166;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   COMENTÁRIOS
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .comment-list .comment-body {
+  background: #0F0F24 !important;
+  border: 1px solid #1E1E3F !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--glow-gold) !important;
+  padding: 1.25rem 1.5rem !important;
+}
+
+body.style-gospel .comment-metadata a {
+  color: #8B8AA8 !important;
+  font-size: 0.82rem !important;
+  text-decoration: none !important;
+  transition: color var(--transition);
+}
+
+body.style-gospel .comment-metadata a:hover {
+  color: #FFD166 !important;
+}
+
+body.style-gospel .comment-content p {
+  color: #C4C3D8 !important;
+  line-height: 1.75 !important;
+}
+
+body.style-gospel .comment-author .fn,
+body.style-gospel .comment-author-name {
+  color: #F0EFF8 !important;
+  font-family: 'Raleway', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+}
+
+body.style-gospel .comment-reply-link,
+body.style-gospel .reply a {
+  background: #FFD166 !important;
+  color: #07071A !important;
+  -webkit-text-fill-color: #07071A !important;
+  border: none !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-sm) !important;
+  transition: all var(--transition) !important;
+  box-shadow: 0 0 12px rgba(255,209,102,0.20) !important;
+}
+
+body.style-gospel .comment-reply-link:hover,
+body.style-gospel .reply a:hover {
+  background: #FFE08A !important;
+  box-shadow: 0 0 20px rgba(255,209,102,0.40) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FORMULÁRIO DE COMENTÁRIOS
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .comment-form input[type="text"],
+body.style-gospel .comment-form input[type="email"],
+body.style-gospel .comment-form input[type="url"],
+body.style-gospel .comment-form textarea {
+  background: #0F0F24 !important;
+  border: 1.5px solid #1E1E3F !important;
+  color: #F0EFF8 !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  transition: border-color var(--transition), box-shadow var(--transition) !important;
+}
+
+body.style-gospel .comment-form input:focus,
+body.style-gospel .comment-form textarea:focus {
+  border-color: #FFD166 !important;
+  box-shadow: 0 0 0 3px rgba(255,209,102,0.12) !important;
+  outline: none !important;
+}
+
+body.style-gospel .comment-form .submit {
+  background: #FFD166 !important;
+  color: #07071A !important;
+  border: none !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 0 0 16px rgba(255,209,102,0.25) !important;
+  transition: all var(--transition) !important;
+  letter-spacing: 0.04em !important;
+}
+
+body.style-gospel .comment-form .submit:hover {
+  background: #FFE08A !important;
+  box-shadow: 0 0 28px rgba(255,209,102,0.45) !important;
+  transform: translateY(-1px);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BUSCA GUTENBERG
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .wp-block-search__inside-wrapper {
+  display: flex !important;
+  width: 100% !important;
+}
+
+body.style-gospel .wp-block-search__input {
+  background: #0F0F24 !important;
+  border: 1.5px solid #1E1E3F !important;
+  color: #F0EFF8 !important;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm) !important;
+}
+
+body.style-gospel .wp-block-search__input:focus {
+  border-color: #FFD166 !important;
+  outline: none !important;
+}
+
+body.style-gospel .wp-block-search__button {
+  background: #FFD166 !important;
+  color: #07071A !important;
+  border: none !important;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
+  font-weight: 700 !important;
+  transition: all var(--transition) !important;
+}
+
+body.style-gospel .wp-block-search__button:hover {
+  background: #FFE08A !important;
+  box-shadow: 0 0 16px rgba(255,209,102,0.35) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PAGINAÇÃO
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .pagination .page-numbers {
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(255,209,102,0.35);
+  color: #A78BFA;
+  background: transparent;
+  transition: all var(--transition);
+}
+
+body.style-gospel .pagination .current,
+body.style-gospel .pagination .page-numbers:hover {
+  background: #FFD166 !important;
+  border-color: #FFD166 !important;
+  color: #07071A !important;
+  box-shadow: 0 0 16px rgba(255,209,102,0.35) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BACK LINK
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .back-link a {
+  color: #A78BFA !important;
+  border: 1.5px solid rgba(167,139,250,0.50) !important;
+  border-radius: var(--radius-sm);
+  padding: 7px 16px;
+  text-decoration: none !important;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+body.style-gospel .back-link a:hover {
+  background: #A78BFA !important;
+  border-color: #A78BFA !important;
+  color: #07071A !important;
+  -webkit-text-fill-color: #07071A !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SOCIAL LINKS
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .social-links a {
+  color: rgba(240,239,248,0.70) !important;
+  transition: color var(--transition);
+}
+
+body.style-gospel .social-links a:hover {
+  color: #FFD166 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SEARCH TOGGLE
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .search-toggle {
+  color: rgba(240,239,248,0.80) !important;
+  transition: color var(--transition);
+}
+
+body.style-gospel .search-toggle:hover {
+  color: #FFD166 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BUSCA E 404
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .error-404 .page-title,
+body.style-gospel .no-results .page-title {
+  color: #FFD166 !important;
+  font-family: 'Raleway', system-ui, sans-serif !important;
+  font-weight: 800 !important;
+}
+
+body.style-gospel .error-404 .search-form .search-field,
+body.style-gospel .no-results .search-form .search-field {
+  background: #0F0F24 !important;
+  border: 1.5px solid #1E1E3F !important;
+  color: #F0EFF8 !important;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm) !important;
+}
+
+body.style-gospel .error-404 .search-form .search-submit,
+body.style-gospel .no-results .search-form .search-submit {
+  background: #FFD166 !important;
+  color: #07071A !important;
+  border: none !important;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
+  font-weight: 700 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RODAPÉ
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel footer[role="contentinfo"] {
+  background: linear-gradient(160deg, #0D0D2A 0%, #07071A 60%, #050514 100%);
+  border-top: 1px solid rgba(255,209,102,0.15);
+}
+
+body.style-gospel .site-info,
+body.style-gospel .site-info p {
+  color: rgba(240,239,248,0.55) !important;
+  border-top-color: rgba(240,239,248,0.08) !important;
+}
+
+body.style-gospel .social-title {
+  color: #F0EFF8 !important;
+  font-family: 'Raleway', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+}
+
+body.style-gospel footer a {
+  color: rgba(240,239,248,0.65);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+body.style-gospel footer a:hover {
+  color: #FFD166;
+}
+
+body.style-gospel footer[role="contentinfo"] p,
+body.style-gospel footer[role="contentinfo"] span,
+body.style-gospel footer[role="contentinfo"] li {
+  color: rgba(240,239,248,0.65) !important;
+  -webkit-text-fill-color: rgba(240,239,248,0.65) !important;
+}
+
+body.style-gospel footer .widget h1,
+body.style-gospel footer .widget h2,
+body.style-gospel footer .widget h3,
+body.style-gospel footer .widget h4,
+body.style-gospel footer .footer-widget h1,
+body.style-gospel footer .footer-widget h2,
+body.style-gospel footer .footer-widget h3,
+body.style-gospel footer .footer-widget h4 {
+  color: #FFD166 !important;
+  -webkit-text-fill-color: #FFD166 !important;
+  border-bottom-color: rgba(255,209,102,0.20) !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  letter-spacing: 0.10em !important;
+}
+
+body.style-gospel footer .footer-widget,
+body.style-gospel footer .widget {
+  background-color: transparent !important;
+  border-color: rgba(240,239,248,0.08) !important;
+  box-shadow: none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LOGO
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel .logo img,
+body.style-gospel img.custom-logo,
+body.style-gospel .custom-logo-link,
+body.style-gospel a.custom-logo-link,
+body.style-gospel .site-header figure,
+body.style-gospel .site-header .wp-block-image,
+body.style-gospel .logo {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   VARIÁVEIS GLOBAIS DO TEMA
+   ══════════════════════════════════════════════════════════════ */
+body.style-gospel {
+  --accent-color: #FFD166;
+  --on-accent: #07071A;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVIDADE MOBILE
+   ══════════════════════════════════════════════════════════════ */
+@media (max-width: 600px) {
+  body.style-gospel .site-title .site-name a {
+    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+  }
+
+  body.style-gospel .site-title .site-description {
+    font-size: clamp(0.72rem, 3vw, 0.85rem);
+  }
+
+  body.style-gospel article {
+    border-radius: var(--radius-md) !important;
+  }
+
+  body.style-gospel article::before {
+    display: none; /* sem a borda lateral em mobile — fica mais limpo */
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ══════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  body.style-gospel .site-header::after {
+    animation: none !important;
+    width: 100% !important;
+  }
+  body.style-gospel .entry-title,
+  body.style-gospel .post-content h2,
+  body.style-gospel .page-content h2 {
+    animation: none !important;
+  }
+  body.style-gospel article:hover,
+  body.style-gospel .read-more:hover,
+  body.style-gospel .comment-form .submit:hover {
+    transform: none !important;
+  }
+  body.style-gospel article:hover .post-thumbnail-img {
+    transform: none !important;
+  }
+}

@@ -302,6 +302,15 @@ function independent_theme_scripts() {
     );
   }
 
+  if ( 'gospel' === $active_style ) {
+    wp_enqueue_style(
+      'independent-theme-fonts-gospel',
+      'https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap',
+      [],
+      null
+    );
+  }
+
   $custom_js = $theme_path . '/assets/js/custom.js';
   if ( file_exists( $custom_js ) ) {
     wp_enqueue_script(
@@ -620,6 +629,7 @@ function independent_theme_customize_register( $wp_customize ) {
     'choices' => [
       'default'      => __( 'Padrão do Tema', 'independent-theme' ),
       'alvorada'     => __( '🌅 Alvorada – Minimalismo Orgânico', 'independent-theme' ),
+      'gospel'       => __( '✨ Gospel – Luz que Rompe', 'independent-theme' ),
       'neonpop'      => __( '🎧 Rádio Jovem – Neon Pop', 'independent-theme' ),
       'vintagecafe'  => __( '📻 Rádio Retrô – Vintage Café', 'independent-theme' ),
       'campoepaixao' => __( '⚽ Site de Futebol – Campo e Paixão', 'independent-theme' ),
@@ -976,6 +986,31 @@ $styles = [
       '--focus-ring'         => '2px solid #C9A227',
       '--font-main'          => "'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
       '--font-title'         => "'Playfair Display', 'Lora', Georgia, serif",
+      '--radius-sm'          => '8px',
+      '--radius-md'          => '14px',
+      '--radius-lg'          => '20px',
+    ],
+
+    /*
+     * ✨ Gospel — Luz que Rompe
+     * Midnight Indigo · Dourado Solar · Lilás Divino
+     */
+    'gospel' => [
+      '--primary-color'      => '#07071A',
+      '--bg-light'           => '#0D0D2B',
+      '--card-bg'            => '#0F0F24',
+      '--accent-color'       => '#FFD166',
+      '--on-accent'          => '#07071A',
+      '--link-color'         => '#A78BFA',
+      '--text-color'         => '#F0EFF8',
+      '--muted-text'         => '#8B8AA8',
+      '--border-color'       => '#1E1E3F',
+      '--header-title-color' => '#F0EFF8',
+      '--header-muted'       => 'rgba(240,239,248,0.65)',
+      '--header-border'      => 'rgba(255,209,102,0.20)',
+      '--focus-ring'         => '2px solid #FFD166',
+      '--font-main'          => "'Inter', system-ui, sans-serif",
+      '--font-title'         => "'Raleway', system-ui, sans-serif",
       '--radius-sm'          => '8px',
       '--radius-md'          => '14px',
       '--radius-lg'          => '20px',

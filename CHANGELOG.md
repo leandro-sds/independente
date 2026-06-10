@@ -1,6 +1,24 @@
 # Changelog — Independent Theme
 
+## [5.5] — 2026-06-10
+
+### Novo Estilo: Gospel ✨ — "Luz que Rompe"
+
+Estilo criado do zero para rádios gospel, músicos, bandas, ministérios e portais de louvor contemporâneo. Inspirado nas grandes produções Elevation Worship, Hillsong United e Bethel Music.
+
+- **Paleta "Luz que Rompe"** — fundo Midnight Indigo `#07071A`, acento Dourado Solar `#FFD166`, links em Lilás Divino `#A78BFA`, texto quase branco `#F0EFF8`.
+- **Tipografia** — títulos em **Raleway ExtraBold 800** (impacto moderno, diferente de tudo no tema), corpo em Inter.
+- **Linha dourada animada** no header — gradiente lilás→dourado→lilás que explode ao carregar.
+- **Borda gradiente nos cards** — linha diagonal dourado→lilás via `::before`, com `box-shadow` de brilho dourado.
+- **Glow dourado** em todos os elementos interativos — botões, widgets, cards têm uma aura dourada difusa.
+- **Blockquote** — fundo indigo profundo, aspas ornamentais douradas, Raleway itálico.
+- **23/23 componentes verificados** — header, nav, artigos, comentários, formulários, widgets, busca Gutenberg, 404, rodapé, social links, paginação, mobile e `prefers-reduced-motion`.
+- **Google Fonts** carregadas apenas quando o Gospel está ativo.
+
+---
+
 ## [5.4] — 2026-06-09
+
 
 ### Auditoria Completa de Estilos
 
