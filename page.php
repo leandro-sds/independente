@@ -21,7 +21,13 @@
               ] ); ?>
             </figure>
           <?php endif; ?>
-          <?php the_content(); ?>
+          <?php
+          the_content();
+          wp_link_pages( [
+            'before' => '<div class="page-links">' . esc_html__( 'Páginas:', 'independente' ),
+            'after'  => '</div>',
+          ] );
+          ?>
         </div>
 
         <?php
@@ -43,8 +49,8 @@
 
           if ( $child_pages_query->have_posts() ) :
         ?>
-          <section class="child-pages" aria-label="<?php esc_attr_e('Conteúdo relacionado', 'independent-theme'); ?>">
-            <h2 class="child-pages-title"><?php esc_html_e( 'Páginas relacionadas', 'independent-theme' ); ?></h2>
+          <section class="child-pages" aria-label="<?php esc_attr_e('Conteúdo relacionado', 'independente'); ?>">
+            <h2 class="child-pages-title"><?php esc_html_e( 'Páginas relacionadas', 'independente' ); ?></h2>
             <ul class="child-page-list">
               <?php while ( $child_pages_query->have_posts() ) : $child_pages_query->the_post(); ?>
                 <li>
@@ -58,8 +64,8 @@
               'total'     => $child_pages_query->max_num_pages,
               'current'   => $paged,
               'mid_size'  => 2,
-              'prev_text' => __('« Anterior', 'independent-theme'),
-              'next_text' => __('Próximo »', 'independent-theme'),
+              'prev_text' => __('« Anterior', 'independente'),
+              'next_text' => __('Próximo »', 'independente'),
             ]);
             ?>
           </section>
@@ -72,6 +78,8 @@
         <?php independent_back_link(); ?>
       </article>
     <?php endwhile; endif; ?>
+
+    <?php independent_content_extra(); ?>
   </main>
 
   <?php get_sidebar(); ?>

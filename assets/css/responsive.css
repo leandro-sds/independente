@@ -466,3 +466,11 @@ aside .search-form {
     height: 48px;
   }
 }
+
+/* Respiro do bloco claro antes do rodapé: reduzido no mobile para
+   ficar proporcional à tela menor (no desktop é --space-xl) */
+@media (max-width: 600px) {
+  .site-content {
+    padding-bottom: var(--space-lg);
+  }
+}

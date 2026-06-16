@@ -134,7 +134,7 @@ body.style-neonpop .widget h4 {
 }
 
 body.style-neonpop .header-search .search-form .search-submit {
-  background: linear-gradient(135deg, #e0226e, #c0135a);
+  background: linear-gradient(135deg, #f0317e, #d4165e); /* era #e0226e/#c0135a — magenta mais claro p/ saltar no fundo escuro */
   color: #ffffff;
   border: none;
 }
@@ -517,4 +517,14 @@ body.style-neonpop .post-thumbnail-img {
 }
 body.style-neonpop article:hover .post-thumbnail-img {
   transform: scale(1.02);
+}
+/* ── Conteúdo Extra: exceção consciente ao padrão "cor do conteúdo" ──
+   No Neon Pop o article é um cartão claro sobre o main escuro, mas os
+   textos internos dos widgets (excerpts, links neon) foram projetados
+   para cartão escuro — forçar o claro quebraria o contraste WCAG.
+   Os widgets extras mantêm o cartão escuro, na cor do main (#12122a),
+   integrando-se à coluna de conteúdo sem destoar. */
+body.style-neonpop .content-extra .widget {
+  background-color: #12122a !important;
+  border: 1px solid rgba(255,45,120,0.20) !important;
 }

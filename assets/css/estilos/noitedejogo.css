@@ -125,7 +125,7 @@ body.style-noitedejogo .header-search .search-form .search-field {
 }
 
 body.style-noitedejogo .header-search .search-form .search-field::placeholder {
-  color: rgba(232,240,232,0.50) !important;
+  color: rgba(232,240,232,0.55) !important;
 }
 
 body.style-noitedejogo .header-search .search-form .search-submit {
@@ -406,7 +406,7 @@ body.style-noitedejogo .comment-form textarea:focus {
 }
 
 body.style-noitedejogo .comment-form label {
-  color: #7a9a7a !important;
+  color: #b8d4b8 !important; /* era #7a9a7a — contraste fraco sobre o verde-escuro do rodapé */
 }
 
 body.style-noitedejogo #submit,
@@ -468,7 +468,7 @@ body.style-noitedejogo footer a:hover {
 }
 
 body.style-noitedejogo .social-links a {
-  color: #7a9a7a !important;
+  color: #b8d4b8 !important; /* era #7a9a7a — contraste fraco sobre o verde-escuro do rodapé */
 }
 
 body.style-noitedejogo .social-links a:hover {

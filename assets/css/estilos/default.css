@@ -58,6 +58,7 @@ body.style-default .site-header::after {
 body.style-default .primary-nav .menu a {
   position: relative !important;
   overflow: hidden !important;
+  color: #ffffff !important; /* explícito — não depender da herança da base; 100% para contraste máximo */
   transition: color 0.25s ease !important;
 }
 
@@ -334,11 +335,12 @@ body.style-default footer a:hover {
 }
 
 body.style-default .social-links a {
+  color: rgba(255,255,255,0.92) !important; /* explícito — não depender da herança da base */
   transition: color 0.3s ease, opacity 0.3s ease;
 }
 body.style-default .social-links a:hover {
   color: #F6AD55 !important;
-  opacity: 0.85;
+  opacity: 1;
 }
 
 body.style-default .pagination .page-numbers {

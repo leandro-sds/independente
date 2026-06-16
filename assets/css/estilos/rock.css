@@ -119,7 +119,7 @@ body.style-rock .header-search .search-form .search-field {
 }
 
 body.style-rock .header-search .search-form .search-field::placeholder {
-  color: rgba(232,228,222,0.40) !important;
+  color: rgba(232,228,222,0.55) !important;
 }
 
 body.style-rock .header-search .search-form .search-submit {
@@ -292,7 +292,7 @@ body.style-rock .widget::before {
 body.style-rock .widget h2,
 body.style-rock .widget h3,
 body.style-rock .widget h4 {
-  color: #cc0000 !important;
+  color: #ff3333 !important; /* era #cc0000 — contraste insuficiente (2.96) sobre cards escuros de widget */
   font-family: 'Oswald', 'Barlow Condensed', sans-serif !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
@@ -303,13 +303,13 @@ body.style-rock .widget h4 {
 }
 
 body.style-rock .widget a {
-  color: #cc0000;
+  color: #ff3333; /* era #cc0000 — contraste AA (4.78) sobre cards escuros de widget */
   hyphens: none;
   word-break: normal;
 }
 
 body.style-rock .widget a:hover {
-  color: #ff3333;
+  color: #ff6666;
 }
 
 body.style-rock .widget p,
@@ -414,7 +414,7 @@ body.style-rock .comment-form .submit:hover {
 body.style-rock .post-meta {
   background: #161616 !important;
   border-left: 4px solid #cc0000 !important;
-  color: #888880 !important;
+  color: #cfcfc8 !important; /* era #888880 — contraste fraco sobre o preto do rodapé */
 }
 
 body.style-rock .post-meta a {
@@ -459,11 +459,11 @@ body.style-rock footer a:hover {
 }
 
 body.style-rock .social-title {
-  color: #cc0000 !important;
+  color: #ff3333 !important; /* era #cc0000 — contraste insuficiente (3.4) sobre o rodapé preto */
 }
 
 body.style-rock .social-links a {
-  color: #888880 !important;
+  color: #cfcfc8 !important; /* era #888880 — contraste fraco sobre o preto do rodapé */
 }
 
 body.style-rock .social-links a:hover {
@@ -473,7 +473,7 @@ body.style-rock .social-links a:hover {
 body.style-rock footer[role="contentinfo"] p,
 body.style-rock footer[role="contentinfo"] span,
 body.style-rock footer[role="contentinfo"] li {
-  color: #888880 !important;
+  color: #cfcfc8 !important; /* era #888880 — contraste fraco sobre o preto do rodapé */
 }
 
 body.style-rock footer .widget h2,
@@ -482,7 +482,7 @@ body.style-rock footer .widget h4,
 body.style-rock footer .footer-widget h2,
 body.style-rock footer .footer-widget h3,
 body.style-rock footer .footer-widget h4 {
-  color: #cc0000 !important;
+  color: #ff3333 !important; /* era #cc0000 — contraste insuficiente (3.4) sobre o rodapé preto */
   border-bottom-color: rgba(204,0,0,0.30) !important;
 }
 
@@ -621,4 +621,11 @@ body.style-rock .post-thumbnail-img {
 }
 body.style-rock article:hover .post-thumbnail-img {
   transform: scale(1.02);
+}
+/* ── Conteúdo Extra: widgets seguem o visual do cartão de conteúdo ──
+   Remove a faixa vermelha de topo (assinatura da sidebar) e alinha
+   fundo e borda ao article (#1a1a1a / #2a2a2a) */
+body.style-rock .content-extra .widget {
+  background-color: #1a1a1a !important;
+  border: 1px solid #2a2a2a !important;
 }

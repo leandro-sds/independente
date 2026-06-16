@@ -4,7 +4,7 @@
   <main id="primary" role="main">
     <header class="search-header">
       <h1>
-        <?php esc_html_e('Resultados da busca por:', 'independent-theme'); ?>
+        <?php esc_html_e('Resultados da busca por:', 'independente'); ?>
         <em><?php echo esc_html( get_search_query() ); ?></em>
       </h1>
     </header>
@@ -19,19 +19,19 @@
           </h2>
           <div class="excerpt">
             <?php the_excerpt(); ?>
-            <a class="read-more" href="<?php echo esc_url( get_permalink() ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Leia mais sobre %s', 'independent-theme' ), get_the_title() ) ); ?>">
-              <?php esc_html_e('Leia mais', 'independent-theme'); ?>
+            <a class="read-more" href="<?php echo esc_url( get_permalink() ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Leia mais sobre %s', 'independente' ), get_the_title() ) ); ?>">
+              <?php esc_html_e('Leia mais', 'independente'); ?>
             </a>
           </div>
         </article>
       <?php endwhile; ?>
 
-      <nav class="pagination" aria-label="<?php esc_attr_e('Paginação', 'independent-theme'); ?>">
+      <nav class="pagination" aria-label="<?php esc_attr_e('Paginação', 'independente'); ?>">
         <?php
           the_posts_pagination([
             'mid_size'  => 2,
-            'prev_text' => __('« Anterior', 'independent-theme'),
-            'next_text' => __('Próximo »', 'independent-theme'),
+            'prev_text' => __('« Anterior', 'independente'),
+            'next_text' => __('Próximo »', 'independente'),
           ]);
         ?>
       </nav>
@@ -40,12 +40,14 @@
 
     <?php else : ?>
       <article class="no-results">
-        <h2><?php esc_html_e('Nenhum resultado encontrado', 'independent-theme'); ?></h2>
-        <p><?php esc_html_e('Tente refinar sua busca ou explore outras seções do site.', 'independent-theme'); ?></p>
+        <h2><?php esc_html_e('Nenhum resultado encontrado', 'independente'); ?></h2>
+        <p><?php esc_html_e('Tente refinar sua busca ou explore outras seções do site.', 'independente'); ?></p>
         <?php get_search_form(); ?>
         <?php independent_back_link(); ?>
       </article>
     <?php endif; ?>
+
+    <?php independent_content_extra(); ?>
   </main>
 
   <?php get_sidebar(); ?>

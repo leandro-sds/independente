@@ -128,7 +128,7 @@ body.style-alvorada .header-search .search-form .search-field {
 }
 
 body.style-alvorada .header-search .search-form .search-field::placeholder {
-  color: rgba(247,245,240,0.55) !important;
+  color: rgba(247,245,240,0.70) !important;
 }
 
 body.style-alvorada .header-search .search-form .search-field:focus {
@@ -139,9 +139,9 @@ body.style-alvorada .header-search .search-form .search-field:focus {
 
 /* Botão de busca — dourado */
 body.style-alvorada .header-search .search-form .search-submit {
-  background-color: #C9A227 !important;
+  background-color: #d4af37 !important; /* era #C9A227 — dourado mais claro p/ saltar mais sobre o verde-oliva */
   border: none !important;
-  color: #1E2B1D !important; /* era #ffffff — texto escuro sobre dourado: contraste perfeito */
+  color: #1E2B1D !important; /* texto escuro sobre dourado: contraste 7.0 */
   font-weight: 700 !important;
   border-radius: var(--radius-sm) !important;
   letter-spacing: 0.04em !important;
@@ -762,7 +762,7 @@ body.style-alvorada .search-toggle:hover {
    SOCIAL LINKS
    ══════════════════════════════════════════════════════════════ */
 body.style-alvorada .social-links a {
-  color: rgba(247,245,240,0.70) !important;
+  color: rgba(247,245,240,0.95) !important; /* era 0.70 — contraste fraco no rodapé escuro */
   transition: color var(--transition-fast);
 }
 

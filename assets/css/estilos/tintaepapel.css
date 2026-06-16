@@ -64,6 +64,7 @@ body.style-tintaepapel .site-header::after {
 body.style-tintaepapel .primary-nav .menu a {
   position: relative !important;
   overflow: hidden !important;
+  color: #e8c478 !important; /* dourado claro — contraste AA (6.6) sobre o cabeçalho #2C3E50; não depender da herança */
   transition: color 0.30s ease !important;
 }
 
@@ -417,4 +418,9 @@ body.style-tintaepapel .post-thumbnail-img {
 }
 body.style-tintaepapel article:hover .post-thumbnail-img {
   transform: scale(1.02);
+}
+/* ── Conteúdo Extra: widgets seguem o visual do cartão de conteúdo ──
+   Fundo branco e borda do article (em vez do cinza #f2f4f6 da sidebar) */
+body.style-tintaepapel .content-extra .widget {
+  border: 1px solid #d1c5b0 !important;
 }

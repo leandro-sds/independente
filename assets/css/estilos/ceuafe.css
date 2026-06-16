@@ -14,7 +14,7 @@ body.style-ceuafe {
 }
 
 body.style-ceuafe .site-header {
-  background: linear-gradient(180deg, #0d2b4a 0%, #0a2040 100%) !important;
+  background: linear-gradient(180deg, #103358 0%, #0a2040 55%, #06152b 100%) !important; /* céu profundo: claro no topo → escuro embaixo */
   border-bottom: 3px solid #07172e !important;
   box-shadow: 0 3px 16px rgba(0,0,0,0.30) !important;
 }
@@ -99,7 +99,7 @@ body.style-ceuafe h2,
 body.style-ceuafe h3,
 body.style-ceuafe .entry-title {
   color: #0d2b4a;
-  font-family: 'Poppins', 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-family: 'Playfair Display', 'Lora', Georgia, serif; /* serifada clássica: peso e tradição de Bíblia impressa */
   font-weight: 700;
 }
 
@@ -128,11 +128,11 @@ body.style-ceuafe .page-content blockquote {
   background: linear-gradient(135deg, #fdf8f0 0%, #f7f0e4 60%, #f2e8d5 100%) !important; /* pergaminho */
   color: #2a1f14 !important;
   border-radius: 0 12px 12px 0 !important;
-  padding: 2rem 2.2rem 1.8rem 2.4rem !important;
+  padding: 2.4rem 2.4rem 2.2rem 2.6rem !important;
   font-style: italic !important;
-  font-size: 1.12rem !important;
-  font-family: Georgia, 'Garamond', 'Times New Roman', serif !important; /* serifada clássica */
-  line-height: 1.85 !important;
+  font-size: 1.4rem !important; /* era 1.12rem — versículo monumental, âncora visual da página */
+  font-family: 'Playfair Display', Georgia, 'Garamond', serif !important; /* serifada elegante */
+  line-height: 1.95 !important; /* mais respiro entre linhas */
   position: relative !important;
   box-shadow: 0 3px 16px rgba(224,123,57,0.10), inset 0 0 0 1px rgba(224,123,57,0.12) !important;
 }
@@ -144,7 +144,7 @@ body.style-ceuafe .page-content blockquote::before {
   top: -18px;
   left: 16px;
   font-size: 6rem; /* era 4rem — aspas maiores e mais ornamentais */
-  color: rgba(224,123,57,0.50);
+  color: rgba(184,84,26,0.85); /* era rgba(224,123,57,0.50) — ocre escuro p/ contraste AA sobre o bege */
   font-family: Georgia, 'Garamond', serif;
   line-height: 1;
   pointer-events: none;
@@ -274,7 +274,7 @@ body.style-ceuafe .primary-nav {
   border-top: 1px solid rgba(255,255,255,0.10);
 }
 body.style-ceuafe .primary-nav .menu a {
-  color: rgba(255,255,255,0.88) !important;
+  color: #ffffff !important;
   transition: all 0.3s ease !important;
 }
 body.style-ceuafe .primary-nav .menu a:hover {
@@ -489,4 +489,52 @@ body.style-ceuafe .widget_block img:hover {
   body.style-ceuafe .widget_block img:hover {
     box-shadow: 0 2px 10px rgba(13,43,74,0.10) !important;
   }
+}
+
+/* ── Microinterações v6.1 (Céu e Fé) ── */
+
+/* Surgimento suave (fade-up) — leveza e elevação, combinando com a temática "Céu".
+   A ordem do DOM não muda; é só apresentação. Respeita prefers-reduced-motion abaixo. */
+@keyframes ceuafeFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+body.style-ceuafe .site-content article,
+body.style-ceuafe .site-content .page-content,
+body.style-ceuafe .site-content .post-content {
+  animation: ceuafeFadeUp 0.6s ease both;
+}
+
+/* Flutuação dos banners/anúncios no hover (Conteúdo Extra e widgets de imagem):
+   a caixa sobe levemente e a sombra se espalha — resposta tátil visual. */
+body.style-ceuafe .content-extra .widget,
+body.style-ceuafe .content-extra .widget_block {
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+body.style-ceuafe .content-extra .widget:hover,
+body.style-ceuafe .content-extra .widget_block:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 12px 28px rgba(13,43,74,0.22) !important;
+}
+
+/* Acessibilidade: quem pede menos movimento não recebe o fade-up nem a flutuação */
+@media (prefers-reduced-motion: reduce) {
+  body.style-ceuafe .site-content article,
+  body.style-ceuafe .site-content .page-content,
+  body.style-ceuafe .site-content .post-content {
+    animation: none !important;
+  }
+  body.style-ceuafe .content-extra .widget:hover,
+  body.style-ceuafe .content-extra .widget_block:hover {
+    transform: none !important;
+    box-shadow: 0 4px 16px rgba(13,43,74,0.16) !important;
+  }
+}
+
+/* Indicador de foco (navegação por teclado) com alto contraste sobre o fundo claro:
+   o amarelo-dourado do acento é ótimo como preenchimento de botão, mas fraco como
+   anel fino sobre o bege. Usa o azul-marinho da identidade (contraste 12.7). */
+body.style-ceuafe :focus-visible {
+  outline: 3px solid #0d2b4a !important;
+  outline-offset: 2px !important;
 }

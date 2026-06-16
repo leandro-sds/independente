@@ -163,7 +163,7 @@ body.style-colorado .header-search .search-form .search-field {
 }
 
 body.style-colorado .header-search .search-form .search-field::placeholder {
-  color: rgba(255,255,255,0.60) !important;
+  color: rgba(255,255,255,0.70) !important;
 }
 
 body.style-colorado .header-search .search-form .search-field:focus {

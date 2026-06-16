@@ -130,7 +130,7 @@ body.style-gospel .header-search .search-form .search-field {
 }
 
 body.style-gospel .header-search .search-form .search-field::placeholder {
-  color: rgba(240,239,248,0.40) !important;
+  color: rgba(240,239,248,0.55) !important;
 }
 
 body.style-gospel .header-search .search-form .search-field:focus {
@@ -171,7 +171,7 @@ body.style-gospel .primary-nav {
 }
 
 body.style-gospel .primary-nav .menu a {
-  color: rgba(240,239,248,0.82) !important;
+  color: rgba(240,239,248,0.95) !important; /* era 0.82 — contraste no menu escuro */
   font-family: 'Inter', system-ui, sans-serif;
   font-weight: 500 !important;
   font-size: 0.90rem !important;
@@ -691,7 +691,7 @@ body.style-gospel .back-link a:hover {
    SOCIAL LINKS
    ══════════════════════════════════════════════════════════════ */
 body.style-gospel .social-links a {
-  color: rgba(240,239,248,0.70) !important;
+  color: rgba(240,239,248,0.95) !important; /* era 0.70 — contraste fraco no rodapé escuro */
   transition: color var(--transition);
 }
 

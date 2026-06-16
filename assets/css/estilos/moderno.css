@@ -74,7 +74,7 @@ body.style-moderno .header-search .search-form .search-field {
 }
 
 body.style-moderno .header-search .search-form .search-field::placeholder {
-  color: rgba(0,245,212,0.50) !important;
+  color: rgba(0,245,212,0.60) !important;
 }
 
 body.style-moderno .header-search .search-form .search-submit {
@@ -88,7 +88,7 @@ body.style-moderno .header-search .search-form .search-submit {
 
 body.style-moderno .header-search .search-form .search-submit:hover {
   transform: scale(1.05) !important;
-  box-shadow: 0 0 20px rgba(0,245,212,0.50) !important;
+  box-shadow: 0 0 20px rgba(0,245,212,0.60) !important;
   filter: none !important;
 }
 
@@ -314,7 +314,7 @@ body.style-moderno footer .widget h3 {
 }
 
 body.style-moderno footer .widget::before {
-  background: linear-gradient(90deg, rgba(0,245,212,0.50), rgba(199,125,255,0.25), transparent) !important;
+  background: linear-gradient(90deg, rgba(0,245,212,0.60), rgba(199,125,255,0.25), transparent) !important;
 }
 
 body.style-moderno footer .footer-widget,
@@ -392,7 +392,7 @@ body.style-moderno .widget::after {
 
 body.style-moderno .widget:hover {
   transform: translateY(-4px) !important;
-  border-color: rgba(0,245,212,0.50) !important;
+  border-color: rgba(0,245,212,0.60) !important;
   box-shadow:
     0 16px 48px rgba(0,0,0,0.50),
     0 0 30px rgba(0,245,212,0.15),
@@ -549,7 +549,7 @@ body.style-moderno .primary-nav .menu a:hover::before {
 
 body.style-moderno .primary-nav .menu a:hover {
   color: #00f5d4 !important;
-  text-shadow: 0 0 12px rgba(0,245,212,0.50) !important;
+  text-shadow: 0 0 12px rgba(0,245,212,0.60) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -844,4 +844,14 @@ body.style-moderno .post-thumbnail-img {
 }
 body.style-moderno article:hover .post-thumbnail-img {
   transform: scale(1.02);
+}
+/* ── Conteúdo Extra: widgets seguem o visual do cartão de conteúdo ──
+   Restaura o brilho compartilhado com o article (::before de shine é
+   parte do vidro, não listra de sidebar) e combina a entrada de baixo
+   com o borderGlow do article */
+body.style-moderno .content-extra .widget::before {
+  display: block !important;
+}
+body.style-moderno .content-extra .widget {
+  animation: fadeInUp 0.5s ease 0.15s both, borderGlow 5s ease-in-out 1s infinite !important;
 }

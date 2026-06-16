@@ -1,20 +1,20 @@
 /*
-Theme Name: Independent Theme
+Theme Name: Independente
 Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
-Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 11 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao portal esportivo noturno. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 5.6
+Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 13 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao portal esportivo noturno. Totalmente compatível com leitores de tela e navegação por teclado.
+Version: 6.2
 Requires at least: 6.0
+Tested up to: 6.8
 Requires PHP: 8.0
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: independent-theme
-Tags: blog, two-columns, custom-logo, custom-menu, custom-colors, featured-images, accessibility-ready, responsive-layout, rtl-language-support, translation-ready, footer-widgets
+Copyright: 2024-2026 Leandro Souza
+Text Domain: independente
+Tags: blog, two-columns, custom-logo, custom-menu, custom-colors, featured-images, accessibility-ready, rtl-language-support, translation-ready, footer-widgets
 */
 
-/* Fontes via Google Fonts — Inter + Montserrat + Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Poppins:wght@400;600;700;800&display=swap');
 
 :root {
   --primary-color: #273046;
@@ -150,6 +150,7 @@ footer[role="contentinfo"],
   display: flex;
   justify-content: center;
   background-color: var(--bg-light);
+  padding-bottom: var(--space-xl); /* respiro do bloco claro antes do corte para o rodapé */
 }
 
 .container {
@@ -159,7 +160,7 @@ footer[role="contentinfo"],
   max-width: 1200px;
   margin: 0;
   padding: 0;
-  align-items: flex-start;
+  align-items: stretch; /* era flex-start — agora main e aside têm sempre a mesma altura */
 }
 
 .wrap{
@@ -178,11 +179,25 @@ footer[role="contentinfo"],
 }
 main {
   flex: 1 1 0;
-  padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-lg);
+  padding: var(--space-lg);
   background-color: var(--card-bg);
   min-width: 0;
   min-height: 60vh; /* evita vazio visual em páginas curtas com sidebar longa */
   transition: background-color var(--transition-fast);
+  /* Coluna flex: permite que o cartão do artigo estique e absorva
+     o espaço vazio quando o conteúdo é mais curto que a sidebar */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Página (page.php): o artigo é o único filho do main.
+   Estica o cartão até o fim da coluna — elimina o "vão" branco
+   abaixo do conteúdo em páginas curtas com sidebar longa.
+   Não afeta listagens (index/archive têm <nav class="pagination">
+   após os artigos) nem posts (single tem comentários/relacionados). */
+main > article:only-child,
+main > article:last-child {
+  flex: 1 0 auto;
 }
 
 aside {
@@ -207,6 +222,48 @@ article, .widget, .footer-widget {
    (especialmente formulários de busca) não fique apertado na sidebar de 300px */
 aside .widget {
   padding: var(--space-md) var(--space-sm);
+}
+
+/* ── Articles aninhados em widgets não são cartões de post ──────────
+   Plugins de listagem (posts recentes, posts por categoria etc.) marcam
+   cada item como <article> — uso correto de HTML. As regras de cartão de
+   post (a global do base e os reforços de cada estilo, vários com
+   !important e com ::before decorativo) não devem alcançá-los: sem esta
+   exceção, cada item vira um cartão branco com sombra, ilegível em
+   rodapés escuros e visualmente duplicado dentro de qualquer widget.
+
+   Especificidade: body + :is(.widget|.footer-widget) + :is(article) +
+   :is(article) = 0,4,1, acima de body.style-X article (0,2,1) de todos
+   os 13 estilos, garantindo vitória sem depender da ordem de carga.
+   Os !important nas propriedades cobrem os reforços de estilo que também
+   usam !important. Vale para os 13 estilos sem tocar nos arquivos deles. */
+body :is(.widget, .footer-widget) :is(article):is(article) {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+  border-radius: 0 !important;
+  animation: none !important;
+}
+
+/* Pseudo-elementos decorativos do article (brilho de vidro no Moderno,
+   barra no Gospel) não fazem sentido em item de widget */
+body :is(.widget, .footer-widget) :is(article):is(article)::before,
+body :is(.widget, .footer-widget) :is(article):is(article)::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Anula hover de cartão (elevação/sombra) e a zebra de listagem
+   (nth-child) que alguns estilos aplicam aos articles */
+body :is(.widget, .footer-widget) :is(article):is(article):hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 .header-search .search-form{
@@ -349,6 +406,10 @@ nav ul li.current-menu-ancestor > a {
 }
 
 .social-icons a:hover,
+.social-icons a:focus-visible {
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
 
 /* Subpáginas */
 .child-pages {
@@ -626,6 +687,10 @@ nav ul li.current-menu-ancestor > a {
 }
 
 .social-links a:hover,
+.social-links a:focus-visible {
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
 
 .site-title .site-name a { color: inherit; text-decoration: none; }
 .site-title .site-name a:hover, .site-title .site-name a:focus { text-decoration: underline; }
@@ -749,6 +814,31 @@ footer[role="contentinfo"] {
 .footer-full-area .wrap {
   padding-top: var(--space-md);
   padding-bottom: var(--space-md);
+}
+
+/* ── Rodapé: blindagem dos widgets ─────────────────────────────────
+   Todos os 13 estilos têm rodapé escuro. Esta blindagem garante que
+   qualquer conteúdo colocado em widgets do rodapé adote o visual do
+   rodapé, em vez de carregar visuais pensados para fundo claro:
+
+   1) Títulos de widget: herdam a cor de texto do rodapé (clara), com
+      especificidade alta para vencer as cores de título de widget que
+      cada estilo define para a barra lateral (algumas com !important).
+   2) Conteúdo interno: listas, grupos e blocos com fundo escolhido no
+      editor perdem caixas/cartões próprios e viram texto solto sobre o
+      rodapé — evita "caixas brancas" com texto branco invisível.
+      Botões são preservados (fundo de botão é intencional). */
+body footer[role="contentinfo"] :is(.widget, .footer-widget) :is(h1, h2, h3, h4, h5, h6, .widget-title) {
+  color: inherit !important;
+}
+
+body footer[role="contentinfo"] :is(.widget, .footer-widget)
+  :is(ul, ol, li, .wp-block-group, .wp-block-columns, .wp-block-column,
+      [class*="has-background"]:not(.wp-block-button__link)) {
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
 .footer-full-area .footer-widget--full {
@@ -1295,7 +1385,9 @@ article:last-of-type {
 
 /* Blockquote acessível */
 .post-content blockquote,
-.page-content blockquote {
+.page-content blockquote,
+.post-content .wp-block-quote,
+.page-content .wp-block-quote {
   margin: 1.5rem 0;
   padding: 1rem 1.25rem 1rem 1.5rem;
   border-left: 4px solid var(--accent-color);
@@ -1306,13 +1398,50 @@ article:last-of-type {
   position: relative;
 }
 
+/* Legenda de imagem/figura (figcaption e legenda de bloco Gutenberg) */
+.post-content figcaption,
+.page-content figcaption,
+.post-content .wp-element-caption,
+.page-content .wp-element-caption {
+  font-size: 0.85rem;
+  color: var(--muted-text);
+  text-align: center;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Texto destacado/grifado */
+.post-content mark,
+.page-content mark {
+  background: var(--accent-color);
+  color: var(--on-accent);
+  padding: 0 0.2em;
+  border-radius: 2px;
+}
+
 /* Tabelas acessíveis */
 .post-content table,
-.page-content table {
+.page-content table,
+.post-content .wp-block-table table,
+.page-content .wp-block-table table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
   margin: 1.5rem 0;
+}
+
+/* Campo select (formulários, herda o visual dos demais campos) */
+.post-content select,
+.page-content select,
+.comment-field select,
+.search-form select {
+  padding: 0.6rem 0.9rem;
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
 }
 
 .post-content th,
@@ -2671,6 +2800,53 @@ body.no-sidebar #primary {
   max-width: 100% !important;
 }
 
+/* Sem sidebar: centraliza o cartão de conteúdo no main de largura total.
+   O texto já tem teto de 72ch (--prose-max); sem isto, o conteúdo ficaria
+   encostado na margem esquerda com grande vazio à direita em telas largas.
+   Centralizar a coluna de leitura dá o visual de "site moderno" de coluna única. */
+body.no-sidebar main > article,
+body.no-sidebar main > .pagination,
+body.no-sidebar main > .child-pages,
+body.no-sidebar main > .related-posts,
+body.no-sidebar main > #comments,
+body.no-sidebar main > .content-extra {
+  width: 100%;
+  max-width: calc(var(--prose-max) + 2 * var(--space-lg));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Conteúdo Extra: região de widgets abaixo do conteúdo principal ──
+   Renderizada dentro de <main>, antes da barra lateral no DOM, garantindo a
+   ordem de leitura: cabeçalho → corpo → conteúdo extra → sidebar → rodapé.
+   Como o main é uma coluna flex, margin-top: auto faz a região absorver a
+   folga vertical de páginas curtas, ancorando-a no pé da coluna. Em páginas
+   longas, a folga é zero e resta apenas o respiro do padding-top. */
+.content-extra {
+  margin-top: auto;
+  padding-top: var(--space-lg);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+/* O gap do grid cuida do espaçamento; anula a margem padrão dos widgets
+   e troca a entrada lateral (pensada para a sidebar) por entrada de baixo.
+   A cor de fundo segue o cartão de conteúdo (--card-bg, a mesma do article),
+   para que a região pareça conteúdo — não um pedaço da barra lateral. */
+main .content-extra .widget {
+  margin-bottom: 0;
+  animation: fadeInUp 0.5s ease 0.15s both;
+  background-color: var(--card-bg) !important;
+}
+
+/* Remove a listra decorativa de destaque (assinatura visual da sidebar)
+   que vários estilos aplicam via ::before no topo dos widgets */
+main .content-extra .widget::before {
+  display: none !important;
+}
+
 /* ==========================================================
    Rock — Preto, Vermelho e Metal
    Para bandas, rádios rock, shows, festivais e roqueiros
@@ -2837,3 +3013,48 @@ aside .widget ul li a {
   cursor: pointer !important;
 }
 /* Aplica a cor terracota do estilo Céu e Fé no botão do Gutenberg */
+
+/* =WordPress Required Classes
+-------------------------------------------------------------- */
+
+/* Imagens com legenda */
+.wp-caption {
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.wp-caption img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.wp-caption-text,
+.wp-element-caption {
+  font-size: 0.875rem;
+  color: var(--muted-text);
+  text-align: center;
+  margin-top: 0.4rem;
+  font-style: italic;
+}
+
+/* Posts fixados no topo */
+.sticky {
+  border-left: 4px solid var(--accent-color);
+  padding-left: 1rem;
+}
+
+/* Legenda de galeria */
+.gallery-caption {
+  font-size: 0.875rem;
+  color: var(--muted-text);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Comentário do autor do post */
+.bypostauthor > .comment-body {
+  background: color-mix(in srgb, var(--accent-color) 8%, transparent);
+  border-left: 3px solid var(--accent-color);
+  padding-left: 0.75rem;
+}

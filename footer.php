@@ -18,7 +18,7 @@
   ?>
 
   <?php if ( $has_columns ) : ?>
-  <div class="footer-columns" role="complementary" aria-label="<?php esc_attr_e('Rodapé — colunas', 'independent-theme'); ?>">
+  <div class="footer-columns" role="complementary" aria-label="<?php esc_attr_e('Rodapé — colunas', 'independente'); ?>">
     <div class="wrap footer-columns-inner">
 
       <?php if ( is_active_sidebar('footer-1') ) : ?>
@@ -50,7 +50,7 @@
   <?php endif; ?>
 
   <?php if ( $has_full ) : ?>
-  <div class="footer-full-area" role="complementary" aria-label="<?php esc_attr_e('Rodapé — faixa central', 'independent-theme'); ?>">
+  <div class="footer-full-area" role="complementary" aria-label="<?php esc_attr_e('Rodapé — faixa central', 'independente'); ?>">
     <div class="wrap">
       <?php dynamic_sidebar('footer-full'); ?>
     </div>
@@ -60,12 +60,12 @@
   <div class="container">
 
     <?php if ( $whatsapp_link || $facebook_link || $instagram_link || $youtube_link ) : ?>
-    <div class="social-icons" role="navigation" aria-label="<?php esc_attr_e('Redes sociais', 'independent-theme'); ?>">
-      <h4 class="social-title"><?php esc_html_e('Redes Sociais', 'independent-theme'); ?></h4>
+    <div class="social-icons" role="navigation" aria-label="<?php esc_attr_e('Redes sociais', 'independente'); ?>">
+      <h4 class="social-title"><?php esc_html_e('Redes Sociais', 'independente'); ?></h4>
       <div class="social-links">
 
         <?php if ( $whatsapp_link ) : ?>
-        <a href="<?php echo esc_url( $whatsapp_link ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e('WhatsApp', 'independent-theme'); ?>">
+        <a href="<?php echo esc_url( $whatsapp_link ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e('WhatsApp', 'independente'); ?>">
           <span class="social-icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
               <path d="M20.5 3.5A11 11 0 0 0 3.7 17.7L3 21l3.4-.7A11 11 0 0 0 20.5 3.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
@@ -77,7 +77,7 @@
         <?php endif; ?>
 
         <?php if ( $facebook_link ) : ?>
-        <a href="<?php echo esc_url( $facebook_link ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e('Facebook', 'independent-theme'); ?>">
+        <a href="<?php echo esc_url( $facebook_link ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e('Facebook', 'independente'); ?>">
           <span class="social-icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
               <path d="M14 9h2V6h-2c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.1l.9-3H13v-2c0-.6.4-1 1-1Z" fill="currentColor"/>
@@ -88,7 +88,7 @@
         <?php endif; ?>
 
         <?php if ( $instagram_link ) : ?>
-        <a href="<?php echo esc_url( $instagram_link ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e('Instagram', 'independent-theme'); ?>">
+        <a href="<?php echo esc_url( $instagram_link ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e('Instagram', 'independente'); ?>">
           <span class="social-icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
               <path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Z" fill="none" stroke="currentColor" stroke-width="1.8"/>
@@ -101,7 +101,7 @@
         <?php endif; ?>
 
         <?php if ( $youtube_link ) : ?>
-        <a href="<?php echo esc_url( $youtube_link ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e('YouTube', 'independent-theme'); ?>">
+        <a href="<?php echo esc_url( $youtube_link ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e('YouTube', 'independente'); ?>">
           <span class="social-icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
               <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31.3 31.3 0 0 0 2 12a31.3 31.3 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 22 12a31.3 31.3 0 0 0-.4-4.8Z" fill="currentColor"/>
@@ -127,7 +127,7 @@
           : esc_html( $dev_name );
     ?>
     <div class="site-info site-info--developer">
-      <p><?php echo wp_kses( sprintf( __( 'Desenvolvido por %s', 'independent-theme' ), $dev_link ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ] ] ); ?></p>
+      <p><?php echo wp_kses( sprintf( __( 'Desenvolvido por %s', 'independente' ), $dev_link ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ] ] ); ?></p>
     </div>
     <?php endif; ?>
 
@@ -141,7 +141,7 @@
           $year_display = $current_year;
         }
       ?>
-      <p>&copy; <?php echo esc_html( $year_display ); ?> <?php echo esc_html( get_bloginfo('name') ); ?>. <?php esc_html_e('Todos os direitos reservados.', 'independent-theme'); ?></p>
+      <p>&copy; <?php echo esc_html( $year_display ); ?> <?php echo esc_html( get_bloginfo('name') ); ?>. <?php esc_html_e('Todos os direitos reservados.', 'independente'); ?></p>
     </div>
 
   </div>

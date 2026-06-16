@@ -483,3 +483,8 @@ body.style-vintagecafe .post-thumbnail-img {
 body.style-vintagecafe article:hover .post-thumbnail-img {
   transform: scale(1.02);
 }
+/* ── Conteúdo Extra: widgets seguem o visual do cartão de conteúdo ──
+   Cartão branco do article em vez do creme da sidebar; borda dourada do article */
+body.style-vintagecafe .content-extra .widget {
+  border: 1px solid rgba(212,175,55,0.20) !important;
+}

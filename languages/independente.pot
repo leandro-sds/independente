@@ -1,0 +1,17 @@
+# Copyright (C) 2024 Leandro Souza
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Independent Theme 6.2\n"
+"Report-Msgid-Bugs-To: https://github.com/leandro-sds/independent-theme/issues\n"
+"POT-Creation-Date: 2026-06-14T00:00:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Independent Theme\n"
+"X-Domain: independente\n"

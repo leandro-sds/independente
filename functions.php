@@ -9,87 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
-/**
- * Atualização automática via GitHub
- * Verifica releases e notifica o painel do WordPress
- */
-function independent_theme_check_update( $transient ) {
-  if ( empty( $transient->checked ) ) {
-    return $transient;
-  }
-
-  $theme_slug  = 'independent-theme';
-  $github_user = 'leandro-sds';
-  $github_repo = 'independent-theme';
-  $current     = wp_get_theme( $theme_slug );
-  $current_ver = $current->get( 'Version' );
-
-  $api_url  = "https://api.github.com/repos/{$github_user}/{$github_repo}/releases/latest";
-  $response = wp_remote_get( $api_url, [
-    'timeout'    => 10,
-    'user-agent' => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ),
-  ] );
-
-  if ( is_wp_error( $response ) ) return $transient;
-
-  $data = json_decode( wp_remote_retrieve_body( $response ) );
-
-  if ( empty( $data->tag_name ) ) return $transient;
-
-  $latest_ver = ltrim( $data->tag_name, 'v' );
-
-  if ( version_compare( $current_ver, $latest_ver, '<' ) ) {
-    $zip_url = "https://github.com/{$github_user}/{$github_repo}/releases/download/{$data->tag_name}/independent-theme-{$latest_ver}.zip";
-    $transient->response[ $theme_slug ] = [
-      'theme'       => $theme_slug,
-      'new_version' => $latest_ver,
-      'url'         => "https://github.com/{$github_user}/{$github_repo}",
-      'package'     => $zip_url,
-      'requires'    => '6.0',
-      'requires_php'=> '8.0',
-    ];
-  }
-
-  return $transient;
-}
-add_filter( 'pre_set_site_transient_update_themes', 'independent_theme_check_update' );
-
-/**
- * Exibe informações da versão mais recente na tela de detalhes do tema
- */
-function independent_theme_update_details( $false, $action, $args ) {
-  if ( $action !== 'theme_information' ) return $false;
-  if ( ! isset( $args->slug ) || $args->slug !== 'independent-theme' ) return $false;
-
-  $response = wp_remote_get( 'https://api.github.com/repos/leandro-sds/independent-theme/releases/latest', [
-    'timeout'    => 10,
-    'user-agent' => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ),
-  ] );
-
-  if ( is_wp_error( $response ) ) return $false;
-
-  $data = json_decode( wp_remote_retrieve_body( $response ) );
-  if ( empty( $data->tag_name ) ) return $false;
-
-  $latest_ver = ltrim( $data->tag_name, 'v' );
-
-  return (object) [
-    'name'          => 'Independent Theme',
-    'slug'          => 'independent-theme',
-    'version'       => $latest_ver,
-    'author'        => 'Leandro Souza',
-    'homepage'      => 'https://github.com/leandro-sds/independent-theme',
-    'requires'      => '6.0',
-    'requires_php'  => '8.0',
-    'last_updated'  => $data->published_at ?? '',
-    'sections'      => [
-      'description' => $data->body ?? 'Tema WordPress acessível com 8 estilos visuais únicos.',
-    ],
-    'download_link' => "https://github.com/leandro-sds/independent-theme/releases/download/{$data->tag_name}/independent-theme-{$latest_ver}.zip",
-  ];
-}
-add_filter( 'themes_api', 'independent_theme_update_details', 10, 3 );
-
 
 /**
  * Define a largura máxima do conteúdo incorporado (embeds, iframes, vídeos).
@@ -107,7 +26,7 @@ if ( ! isset( $content_width ) ) {
 
 
 function independent_theme_setup() {
-  load_theme_textdomain( 'independent-theme', get_template_directory() . '/languages' );
+  load_theme_textdomain( 'independente', get_template_directory() . '/languages' );
 
   add_theme_support( 'title-tag' );
   add_theme_support( 'post-thumbnails' );
@@ -129,7 +48,7 @@ function independent_theme_setup() {
   add_editor_style( 'assets/css/editor-style.css' );
 
   register_nav_menus( [
-    'main-menu' => __( 'Menu Principal', 'independent-theme' ),
+    'main-menu' => __( 'Menu Principal', 'independente' ),
   ] );
 }
 add_action( 'after_setup_theme', 'independent_theme_setup' );
@@ -160,7 +79,7 @@ function independent_theme_comment( $comment, $args, $depth ) {
 
       <?php if ( '0' === $comment->comment_approved ) : ?>
         <p class="comment-awaiting-moderation">
-          <?php esc_html_e( 'Seu comentário está aguardando moderação.', 'independent-theme' ); ?>
+          <?php esc_html_e( 'Seu comentário está aguardando moderação.', 'independente' ); ?>
         </p>
       <?php endif; ?>
 
@@ -187,9 +106,9 @@ function independent_theme_comment( $comment, $args, $depth ) {
 // Registro de áreas de widgets
 function independent_theme_widgets_init() {
   register_sidebar( [
-    'name'          => __( 'Barra Lateral', 'independent-theme' ),
+    'name'          => __( 'Barra Lateral', 'independente' ),
     'id'            => 'sidebar-1',
-    'description'   => __( 'Widgets na barra lateral', 'independent-theme' ),
+    'description'   => __( 'Widgets na barra lateral', 'independente' ),
     'before_widget' => '<div class="widget">',
     'after_widget'  => '</div>',
     'before_title'  => '<h3>',
@@ -197,9 +116,19 @@ function independent_theme_widgets_init() {
   ] );
 
   register_sidebar( [
-    'name'          => __( 'Rodapé — Coluna 1', 'independent-theme' ),
+    'name'          => __( 'Conteúdo Extra — abaixo do conteúdo', 'independente' ),
+    'id'            => 'content-extra',
+    'description'   => __( 'Aparece abaixo do conteúdo principal, antes da barra lateral na ordem de leitura. Em telas largas, os widgets ficam lado a lado, ajudando a preencher páginas curtas. Quando vazio, nada é exibido.', 'independente' ),
+    'before_widget' => '<div class="widget">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ] );
+
+  register_sidebar( [
+    'name'          => __( 'Rodapé — Coluna 1', 'independente' ),
     'id'            => 'footer-1',
-    'description'   => __( 'Primeira coluna do rodapé (de 4)', 'independent-theme' ),
+    'description'   => __( 'Primeira coluna do rodapé (de 4)', 'independente' ),
     'before_widget' => '<div class="footer-widget">',
     'after_widget'  => '</div>',
     'before_title'  => '<h4>',
@@ -207,9 +136,9 @@ function independent_theme_widgets_init() {
   ] );
 
   register_sidebar( [
-    'name'          => __( 'Rodapé — Coluna 2', 'independent-theme' ),
+    'name'          => __( 'Rodapé — Coluna 2', 'independente' ),
     'id'            => 'footer-2',
-    'description'   => __( 'Segunda coluna do rodapé (de 4)', 'independent-theme' ),
+    'description'   => __( 'Segunda coluna do rodapé (de 4)', 'independente' ),
     'before_widget' => '<div class="footer-widget">',
     'after_widget'  => '</div>',
     'before_title'  => '<h4>',
@@ -217,9 +146,9 @@ function independent_theme_widgets_init() {
   ] );
 
   register_sidebar( [
-    'name'          => __( 'Rodapé — Coluna 3', 'independent-theme' ),
+    'name'          => __( 'Rodapé — Coluna 3', 'independente' ),
     'id'            => 'footer-3',
-    'description'   => __( 'Terceira coluna do rodapé (de 4)', 'independent-theme' ),
+    'description'   => __( 'Terceira coluna do rodapé (de 4)', 'independente' ),
     'before_widget' => '<div class="footer-widget">',
     'after_widget'  => '</div>',
     'before_title'  => '<h4>',
@@ -227,9 +156,9 @@ function independent_theme_widgets_init() {
   ] );
 
   register_sidebar( [
-    'name'          => __( 'Rodapé — Coluna 4', 'independent-theme' ),
+    'name'          => __( 'Rodapé — Coluna 4', 'independente' ),
     'id'            => 'footer-4',
-    'description'   => __( 'Quarta coluna do rodapé (de 4)', 'independent-theme' ),
+    'description'   => __( 'Quarta coluna do rodapé (de 4)', 'independente' ),
     'before_widget' => '<div class="footer-widget">',
     'after_widget'  => '</div>',
     'before_title'  => '<h4>',
@@ -237,9 +166,9 @@ function independent_theme_widgets_init() {
   ] );
 
   register_sidebar( [
-    'name'          => __( 'Rodapé — Faixa Central', 'independent-theme' ),
+    'name'          => __( 'Rodapé — Faixa Central', 'independente' ),
     'id'            => 'footer-full',
-    'description'   => __( 'Área de largura total abaixo das 4 colunas', 'independent-theme' ),
+    'description'   => __( 'Área de largura total abaixo das 4 colunas', 'independente' ),
     'before_widget' => '<div class="footer-widget footer-widget--full">',
     'after_widget'  => '</div>',
     'before_title'  => '<h4>',
@@ -247,6 +176,25 @@ function independent_theme_widgets_init() {
   ] );
 }
 add_action( 'widgets_init', 'independent_theme_widgets_init' );
+
+/**
+ * Conteúdo Extra — região exibida abaixo do conteúdo principal, dentro de <main>.
+ *
+ * Ordem de leitura garantida pelo DOM: cabeçalho → corpo → conteúdo extra →
+ * barra lateral → rodapé. É um landmark "region" (section + aria-label),
+ * então usuários de leitor de telas podem saltar direto para ele.
+ * Quando a área está vazia, nada é impresso — nenhuma marcação, nenhum espaço.
+ */
+function independent_content_extra() {
+  if ( ! is_active_sidebar( 'content-extra' ) ) {
+    return;
+  }
+  ?>
+  <section class="content-extra" aria-label="<?php esc_attr_e( 'Conteúdo extra', 'independente' ); ?>">
+    <?php dynamic_sidebar( 'content-extra' ); ?>
+  </section>
+  <?php
+}
 
 // Enfileiramento de scripts e estilos (com versionamento por filemtime)
 function independent_theme_scripts() {
@@ -292,6 +240,18 @@ function independent_theme_scripts() {
     );
   }
 
+  // Google Fonts: fontes padrão do tema (Inter, Montserrat, Poppins)
+  // Carregadas sempre, exceto nos estilos que substituem a tipografia por completo
+  $styles_with_own_fonts = [ 'alvorada', 'gospel', 'vintagecafe', 'tintaepapel', 'marinelli' ];
+  if ( ! in_array( $active_style, $styles_with_own_fonts, true ) ) {
+    wp_enqueue_style(
+      'independent-theme-fonts-default',
+      'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Poppins:wght@400;600;700;800&display=swap',
+      [],
+      null
+    );
+  }
+
   // Google Fonts: carrega apenas quando o estilo ativo precisar
   if ( 'alvorada' === $active_style ) {
     wp_enqueue_style(
@@ -321,6 +281,11 @@ function independent_theme_scripts() {
       true
     );
   }
+
+  // Script de resposta a comentários — obrigatório em páginas singulares com comentários abertos
+  if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+    wp_enqueue_script( 'comment-reply' );
+  }
 }
 add_action( 'wp_enqueue_scripts', 'independent_theme_scripts' );
 
@@ -331,7 +296,7 @@ add_action( 'wp_enqueue_scripts', 'independent_theme_scripts' );
  */
 function independent_theme_skip_link() {
   echo '<a class="skip-link" href="#primary" style="position:fixed!important;top:-200px!important;left:1rem!important;opacity:0!important;pointer-events:none!important;z-index:10000;">';
-  echo esc_html__( 'Pular para o conteúdo', 'independent-theme' );
+  echo esc_html__( 'Pular para o conteúdo', 'independente' );
   echo '</a>';
 }
 add_action( 'wp_body_open', 'independent_theme_skip_link', 1 );
@@ -350,8 +315,8 @@ function independent_theme_customize_register( $wp_customize ) {
     'transport'         => 'refresh',
   ] );
   $wp_customize->add_control( 'independent_logo_width', [
-    'label'       => __( 'Largura máxima da logo (px)', 'independent-theme' ),
-    'description' => __( 'Ex.: 120 = compacta · 200 = padrão · 400 = grande. Intervalo: 40 – 800 px.', 'independent-theme' ),
+    'label'       => __( 'Largura máxima da logo (px)', 'independente' ),
+    'description' => __( 'Ex.: 120 = compacta · 200 = padrão · 400 = grande. Intervalo: 40 – 800 px.', 'independente' ),
     'section'     => $logo_section,
     'type'        => 'number',
     'priority'    => 10,
@@ -370,8 +335,8 @@ function independent_theme_customize_register( $wp_customize ) {
     'transport'         => 'refresh',
   ] );
   $wp_customize->add_control( 'independent_logo_height', [
-    'label'       => __( 'Altura máxima da logo (px)', 'independent-theme' ),
-    'description' => __( 'Ex.: 50 = baixa · 80 = padrão · 160 = alta. Intervalo: 20 – 400 px.', 'independent-theme' ),
+    'label'       => __( 'Altura máxima da logo (px)', 'independente' ),
+    'description' => __( 'Ex.: 50 = baixa · 80 = padrão · 160 = alta. Intervalo: 20 – 400 px.', 'independente' ),
     'section'     => $logo_section,
     'type'        => 'number',
     'priority'    => 11,
@@ -390,8 +355,8 @@ function independent_theme_customize_register( $wp_customize ) {
     'transport'         => 'refresh',
   ] );
   $wp_customize->add_control( 'independent_logo_scale', [
-    'label'       => __( 'Escala da logo (%)', 'independent-theme' ),
-    'description' => __( '100% = tamanho normal. Aumente para ampliar a logo sem precisar substituir o arquivo.', 'independent-theme' ),
+    'label'       => __( 'Escala da logo (%)', 'independente' ),
+    'description' => __( '100% = tamanho normal. Aumente para ampliar a logo sem precisar substituir o arquivo.', 'independente' ),
     'section'     => $logo_section,
     'type'        => 'number',
     'priority'    => 12,
@@ -410,14 +375,14 @@ function independent_theme_customize_register( $wp_customize ) {
   ] );
 
   $wp_customize->add_control( 'independent_header_layout', [
-    'label'       => __( 'Layout do cabeçalho', 'independent-theme' ),
-    'description' => __( 'Dica: "Logo à esquerda" costuma ser o mais previsível. Use "Centralizado" para destaque máximo. "Logo acima" ajuda quando a logo é grande.', 'independent-theme' ),
+    'label'       => __( 'Layout do cabeçalho', 'independente' ),
+    'description' => __( 'Dica: "Logo à esquerda" costuma ser o mais previsível. Use "Centralizado" para destaque máximo. "Logo acima" ajuda quando a logo é grande.', 'independente' ),
     'section'     => $logo_section,
     'type'        => 'select',
     'choices'     => [
-      'left'    => __( 'Logo à esquerda, ações à direita', 'independent-theme' ),
-      'center'  => __( 'Centralizado (logo + nome no centro)', 'independent-theme' ),
-      'stacked' => __( 'Logo acima do nome (em coluna)', 'independent-theme' ),
+      'left'    => __( 'Logo à esquerda, ações à direita', 'independente' ),
+      'center'  => __( 'Centralizado (logo + nome no centro)', 'independente' ),
+      'stacked' => __( 'Logo acima do nome (em coluna)', 'independente' ),
     ],
   ] );
 
@@ -427,7 +392,7 @@ function independent_theme_customize_register( $wp_customize ) {
   ] );
 
   $wp_customize->add_control( 'independent_header_show_search', [
-    'label'   => __( 'Mostrar busca no cabeçalho', 'independent-theme' ),
+    'label'   => __( 'Mostrar busca no cabeçalho', 'independente' ),
     'section' => $logo_section,
     'type'    => 'checkbox',
   ] );
@@ -435,7 +400,7 @@ function independent_theme_customize_register( $wp_customize ) {
 
   // Rodapé — Ano de fundação
   $wp_customize->add_section( 'independent_footer_section', [
-    'title'    => __( 'Rodapé', 'independent-theme' ),
+    'title'    => __( 'Rodapé', 'independente' ),
     'priority' => 38,
   ] );
 
@@ -445,8 +410,8 @@ function independent_theme_customize_register( $wp_customize ) {
   ] );
 
   $wp_customize->add_control( 'independent_founding_year', [
-    'label'       => __( 'Ano de fundação do projeto', 'independent-theme' ),
-    'description' => __( 'Se preenchido, o copyright exibirá o intervalo. Ex.: 2013 → © 2013–2026. Deixe em branco para exibir apenas o ano atual.', 'independent-theme' ),
+    'label'       => __( 'Ano de fundação do projeto', 'independente' ),
+    'description' => __( 'Se preenchido, o copyright exibirá o intervalo. Ex.: 2013 → © 2013–2026. Deixe em branco para exibir apenas o ano atual.', 'independente' ),
     'section'     => 'independent_footer_section',
     'type'        => 'number',
     'input_attrs' => [
@@ -464,7 +429,7 @@ function independent_theme_customize_register( $wp_customize ) {
   ] );
 
   $wp_customize->add_control( 'independent_developer_show', [
-    'label'   => __( 'Exibir crédito do desenvolvedor', 'independent-theme' ),
+    'label'   => __( 'Exibir crédito do desenvolvedor', 'independente' ),
     'section' => 'independent_footer_section',
     'type'    => 'checkbox',
   ] );
@@ -475,8 +440,8 @@ function independent_theme_customize_register( $wp_customize ) {
   ] );
 
   $wp_customize->add_control( 'independent_developer_name', [
-    'label'       => __( 'Nome do desenvolvedor', 'independent-theme' ),
-    'description' => __( 'Ex.: João Silva, Agência XYZ. Deixe em branco para ocultar o nome.', 'independent-theme' ),
+    'label'       => __( 'Nome do desenvolvedor', 'independente' ),
+    'description' => __( 'Ex.: João Silva, Agência XYZ. Deixe em branco para ocultar o nome.', 'independente' ),
     'section'     => 'independent_footer_section',
     'type'        => 'text',
   ] );
@@ -487,15 +452,15 @@ function independent_theme_customize_register( $wp_customize ) {
   ] );
 
   $wp_customize->add_control( 'independent_developer_url', [
-    'label'       => __( 'URL do desenvolvedor', 'independent-theme' ),
-    'description' => __( 'Deixe em branco para exibir o nome sem link.', 'independent-theme' ),
+    'label'       => __( 'URL do desenvolvedor', 'independente' ),
+    'description' => __( 'Deixe em branco para exibir o nome sem link.', 'independente' ),
     'section'     => 'independent_footer_section',
     'type'        => 'url',
   ] );
 
   // Redes sociais
   $wp_customize->add_section( 'independent_social_section', [
-    'title'    => __( 'Redes Sociais', 'independent-theme' ),
+    'title'    => __( 'Redes Sociais', 'independente' ),
     'priority' => 40,
   ] );
 
@@ -505,8 +470,8 @@ function independent_theme_customize_register( $wp_customize ) {
     'sanitize_callback' => 'sanitize_text_field',
   ] );
   $wp_customize->add_control( 'independent_whatsapp_url', [
-    'label'       => __( 'WhatsApp', 'independent-theme' ),
-    'description' => __( 'Apenas os números com código do país. Ex.: 5544997540049', 'independent-theme' ),
+    'label'       => __( 'WhatsApp', 'independente' ),
+    'description' => __( 'Apenas os números com código do país. Ex.: 5544997540049', 'independente' ),
     'section'     => 'independent_social_section',
     'type'        => 'text',
   ] );
@@ -517,8 +482,8 @@ function independent_theme_customize_register( $wp_customize ) {
     'sanitize_callback' => 'sanitize_text_field',
   ] );
   $wp_customize->add_control( 'independent_facebook_url', [
-    'label'       => __( 'Facebook', 'independent-theme' ),
-    'description' => __( 'Apenas o nome de usuário. Ex.: radiomaioramoroficial', 'independent-theme' ),
+    'label'       => __( 'Facebook', 'independente' ),
+    'description' => __( 'Apenas o nome de usuário. Ex.: radiomaioramoroficial', 'independente' ),
     'section'     => 'independent_social_section',
     'type'        => 'text',
   ] );
@@ -529,8 +494,8 @@ function independent_theme_customize_register( $wp_customize ) {
     'sanitize_callback' => 'sanitize_text_field',
   ] );
   $wp_customize->add_control( 'independent_instagram_url', [
-    'label'       => __( 'Instagram', 'independent-theme' ),
-    'description' => __( 'Apenas o nome de usuário. Ex.: radiomaioramoroficial', 'independent-theme' ),
+    'label'       => __( 'Instagram', 'independente' ),
+    'description' => __( 'Apenas o nome de usuário. Ex.: radiomaioramoroficial', 'independente' ),
     'section'     => 'independent_social_section',
     'type'        => 'text',
   ] );
@@ -541,15 +506,15 @@ function independent_theme_customize_register( $wp_customize ) {
     'sanitize_callback' => 'sanitize_text_field',
   ] );
   $wp_customize->add_control( 'independent_youtube_url', [
-    'label'       => __( 'YouTube', 'independent-theme' ),
-    'description' => __( 'Nome do canal com ou sem @. Ex.: @radiomaioramor', 'independent-theme' ),
+    'label'       => __( 'YouTube', 'independente' ),
+    'description' => __( 'Nome do canal com ou sem @. Ex.: @radiomaioramor', 'independente' ),
     'section'     => 'independent_social_section',
     'type'        => 'text',
   ] );
 
   // Hero Section
   $wp_customize->add_section( 'independent_hero_section', [
-    'title'    => __( 'Seção de Destaque (Hero)', 'independent-theme' ),
+    'title'    => __( 'Seção de Destaque (Hero)', 'independente' ),
     'priority' => 35,
   ] );
 
@@ -559,7 +524,7 @@ function independent_theme_customize_register( $wp_customize ) {
     'transport'         => 'refresh',
   ] );
   $wp_customize->add_control( 'independent_hero_enabled', [
-    'label'   => __( 'Ativar seção de destaque', 'independent-theme' ),
+    'label'   => __( 'Ativar seção de destaque', 'independente' ),
     'section' => 'independent_hero_section',
     'type'    => 'checkbox',
   ] );
@@ -570,8 +535,8 @@ function independent_theme_customize_register( $wp_customize ) {
     'transport'         => 'refresh',
   ] );
   $wp_customize->add_control( 'independent_hero_title', [
-    'label'       => __( 'Título', 'independent-theme' ),
-    'description' => __( 'Título principal da seção de destaque.', 'independent-theme' ),
+    'label'       => __( 'Título', 'independente' ),
+    'description' => __( 'Título principal da seção de destaque.', 'independente' ),
     'section'     => 'independent_hero_section',
     'type'        => 'text',
   ] );
@@ -582,8 +547,8 @@ function independent_theme_customize_register( $wp_customize ) {
     'transport'         => 'refresh',
   ] );
   $wp_customize->add_control( 'independent_hero_subtitle', [
-    'label'       => __( 'Subtítulo', 'independent-theme' ),
-    'description' => __( 'Texto secundário abaixo do título.', 'independent-theme' ),
+    'label'       => __( 'Subtítulo', 'independente' ),
+    'description' => __( 'Texto secundário abaixo do título.', 'independente' ),
     'section'     => 'independent_hero_section',
     'type'        => 'text',
   ] );
@@ -594,8 +559,8 @@ function independent_theme_customize_register( $wp_customize ) {
     'transport'         => 'refresh',
   ] );
   $wp_customize->add_control( 'independent_hero_button_text', [
-    'label'       => __( 'Texto do botão', 'independent-theme' ),
-    'description' => __( 'Deixe em branco para não exibir o botão.', 'independent-theme' ),
+    'label'       => __( 'Texto do botão', 'independente' ),
+    'description' => __( 'Deixe em branco para não exibir o botão.', 'independente' ),
     'section'     => 'independent_hero_section',
     'type'        => 'text',
   ] );
@@ -606,14 +571,14 @@ function independent_theme_customize_register( $wp_customize ) {
     'transport'         => 'refresh',
   ] );
   $wp_customize->add_control( 'independent_hero_button_url', [
-    'label'       => __( 'URL do botão', 'independent-theme' ),
+    'label'       => __( 'URL do botão', 'independente' ),
     'section'     => 'independent_hero_section',
     'type'        => 'url',
   ] );
 
   // Estilo visual
   $wp_customize->add_section( 'independent_style_section', [
-    'title'    => __( 'Estilo Visual', 'independent-theme' ),
+    'title'    => __( 'Estilo Visual', 'independente' ),
     'priority' => 50,
   ] );
 
@@ -623,29 +588,29 @@ function independent_theme_customize_register( $wp_customize ) {
   ] );
 
   $wp_customize->add_control( 'independent_site_style', [
-    'label'   => __( 'Escolha o estilo do site', 'independent-theme' ),
+    'label'   => __( 'Escolha o estilo do site', 'independente' ),
     'section' => 'independent_style_section',
     'type'    => 'select',
     'choices' => [
-      'default'      => __( 'Padrão do Tema', 'independent-theme' ),
-      'alvorada'     => __( '🌅 Alvorada – Minimalismo Orgânico', 'independent-theme' ),
-      'gospel'       => __( '✨ Gospel – Luz que Rompe', 'independent-theme' ),
-      'neonpop'      => __( '🎧 Rádio Jovem – Neon Pop', 'independent-theme' ),
-      'vintagecafe'  => __( '📻 Rádio Retrô – Vintage Café', 'independent-theme' ),
-      'campoepaixao' => __( '⚽ Site de Futebol – Campo e Paixão', 'independent-theme' ),
-      'ceuafe'       => __( '✝️ Site Cristão – Céu e Fé', 'independent-theme' ),
-      'tintaepapel'  => __( '✍️ Site para Escritor – Tinta & Papel', 'independent-theme' ),
-      'marinelli'    => __( '🏛️ Institucional – Marinelli Drupal', 'independent-theme' ),
-      'moderno'      => __( '⚡ Moderno – Vibrante & Contemporâneo', 'independent-theme' ),
-      'colorado'     => __( '🔴 Colorado – Vermelho e Branco', 'independent-theme' ),
-      'rock'         => __( '🎸 Rock – Preto, Vermelho e Metal', 'independent-theme' ),
-      'noitedejogo'  => __( '⚽ Noite de Jogo – Portal Esportivo', 'independent-theme' ),
+      'default'      => __( 'Padrão do Tema', 'independente' ),
+      'alvorada'     => __( '🌅 Alvorada – Minimalismo Orgânico', 'independente' ),
+      'gospel'       => __( '✨ Gospel – Luz que Rompe', 'independente' ),
+      'neonpop'      => __( '🎧 Rádio Jovem – Neon Pop', 'independente' ),
+      'vintagecafe'  => __( '📻 Rádio Retrô – Vintage Café', 'independente' ),
+      'campoepaixao' => __( '⚽ Site de Futebol – Campo e Paixão', 'independente' ),
+      'ceuafe'       => __( '✝️ Site Cristão – Céu e Fé', 'independente' ),
+      'tintaepapel'  => __( '✍️ Site para Escritor – Tinta & Papel', 'independente' ),
+      'marinelli'    => __( '🏛️ Institucional – Marinelli Drupal', 'independente' ),
+      'moderno'      => __( '⚡ Moderno – Vibrante & Contemporâneo', 'independente' ),
+      'colorado'     => __( '🔴 Colorado – Vermelho e Branco', 'independente' ),
+      'rock'         => __( '🎸 Rock – Preto, Vermelho e Metal', 'independente' ),
+      'noitedejogo'  => __( '⚽ Noite de Jogo – Portal Esportivo', 'independente' ),
     ],
   ] );
 
   // Opção: listar subpáginas
   $wp_customize->add_section( 'independent_pages_section', [
-    'title'    => __( 'Páginas', 'independent-theme' ),
+    'title'    => __( 'Páginas', 'independente' ),
     'priority' => 55,
   ] );
 
@@ -656,8 +621,8 @@ function independent_theme_customize_register( $wp_customize ) {
   ] );
 
   $wp_customize->add_control( 'independent_listar_subpaginas', [
-    'label'       => __( 'Listar subpáginas', 'independent-theme' ),
-    'description' => __( 'Quando ativado, as subpáginas de uma página são listadas abaixo do seu conteúdo.', 'independent-theme' ),
+    'label'       => __( 'Listar subpáginas', 'independente' ),
+    'description' => __( 'Quando ativado, as subpáginas de uma página são listadas abaixo do seu conteúdo.', 'independente' ),
     'section'     => 'independent_pages_section',
     'type'        => 'checkbox',
   ] );
@@ -1138,10 +1103,7 @@ add_filter( 'get_the_archive_title', function ( $title ) {
   return $title;
 } );
 
-// Otimizações de segurança e performance (WP Head)
-remove_action( 'wp_head', 'wp_generator' );
-remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
 
 /**
  * Link "Voltar" seguro (evita javascript:history.back).
@@ -1154,8 +1116,8 @@ function independent_back_link() {
   $referer = wp_get_referer();
   $url     = ( $referer && wp_validate_redirect( $referer, '' ) ) ? $referer : home_url( '/' );
 
-  echo '<nav class="back-link" aria-label="' . esc_attr__( 'Navegação de retorno', 'independent-theme' ) . '">';
-  echo '<a href="' . esc_url( $url ) . '">' . esc_html__( '← Voltar', 'independent-theme' ) . '</a>';
+  echo '<nav class="back-link" aria-label="' . esc_attr__( 'Navegação de retorno', 'independente' ) . '">';
+  echo '<a href="' . esc_url( $url ) . '">' . esc_html__( '← Voltar', 'independente' ) . '</a>';
   echo '</nav>';
 }
 
@@ -1189,8 +1151,8 @@ function independent_render_category_children() {
     return false;
   }
 
-  echo '<section class="child-pages child-categories" aria-label="' . esc_attr__( 'Seções', 'independent-theme' ) . '">';
-  echo '<h2 class="child-pages-title">' . esc_html__( 'Seções', 'independent-theme' ) . '</h2>';
+  echo '<section class="child-pages child-categories" aria-label="' . esc_attr__( 'Seções', 'independente' ) . '">';
+  echo '<h2 class="child-pages-title">' . esc_html__( 'Seções', 'independente' ) . '</h2>';
   echo '<ul class="child-page-list">';
 
   foreach ( $children as $cat ) {
@@ -1220,8 +1182,8 @@ function independent_theme_admin_menu_notice() {
     return;
   }
   echo '<div class="notice notice-info is-dismissible">';
-  echo '<p><strong>' . esc_html__( 'Independent Theme — Dica de Menu', 'independent-theme' ) . '</strong><br>';
-  echo esc_html__( 'Para destacar um item de menu como botão, adicione a classe CSS "btn-primary" ou "btn-secondary" no campo de classes CSS do item (Opções de tela → marque "Classes CSS").', 'independent-theme' );
+  echo '<p><strong>' . esc_html__( 'Independent Theme — Dica de Menu', 'independente' ) . '</strong><br>';
+  echo esc_html__( 'Para destacar um item de menu como botão, adicione a classe CSS "btn-primary" ou "btn-secondary" no campo de classes CSS do item (Opções de tela → marque "Classes CSS").', 'independente' );
   echo '</p></div>';
 }
 add_action( 'admin_notices', 'independent_theme_admin_menu_notice' );

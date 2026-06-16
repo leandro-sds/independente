@@ -27,20 +27,20 @@
                 <?php the_excerpt(); ?>
               </div>
               <a class="read-more" href="<?php echo esc_url( get_permalink() ); ?>"
-                aria-label="<?php echo esc_attr( sprintf( __( 'Leia mais sobre %s', 'independent-theme' ), get_the_title() ) ); ?>">
-                <?php esc_html_e( 'Leia mais', 'independent-theme' ); ?>
+                aria-label="<?php echo esc_attr( sprintf( __( 'Leia mais sobre %s', 'independente' ), get_the_title() ) ); ?>">
+                <?php esc_html_e( 'Leia mais', 'independente' ); ?>
               </a>
             </div><!-- .post-list-content -->
           </div><!-- .post-list-inner -->
         </article>
       <?php endwhile; ?>
 
-      <nav class="pagination" aria-label="<?php esc_attr_e( 'Paginação', 'independent-theme' ); ?>">
+      <nav class="pagination" aria-label="<?php esc_attr_e( 'Paginação', 'independente' ); ?>">
         <?php
           the_posts_pagination( [
             'mid_size'  => 2,
-            'prev_text' => __( '« Anterior', 'independent-theme' ),
-            'next_text' => __( 'Próximo »', 'independent-theme' ),
+            'prev_text' => __( '« Anterior', 'independente' ),
+            'next_text' => __( 'Próximo »', 'independente' ),
           ] );
         ?>
       </nav>
@@ -48,10 +48,12 @@
 
     <?php else : ?>
       <article class="no-posts">
-        <h2><?php esc_html_e( 'Nenhum conteúdo encontrado', 'independent-theme' ); ?></h2>
-        <p><?php esc_html_e( 'Desculpe, não há posts disponíveis no momento.', 'independent-theme' ); ?></p>
+        <h2><?php esc_html_e( 'Nenhum conteúdo encontrado', 'independente' ); ?></h2>
+        <p><?php esc_html_e( 'Desculpe, não há posts disponíveis no momento.', 'independente' ); ?></p>
       </article>
     <?php endif; ?>
+
+    <?php independent_content_extra(); ?>
   </main>
 
   <?php get_sidebar(); ?>
