@@ -317,18 +317,27 @@ aside .search-form {
 }
 
 /* ==========================================================
-   7C. ASIDE/SIDEBAR — CORREÇÃO DE LARGURA EM MOBILE
+   7C. ASIDE/SIDEBAR — CORREÇÃO DE LARGURA E ALTURA EM MOBILE
    O min-width: 240px do aside conflita com o layout em coluna
    abaixo de 768px. Aqui forçamos a largura total correta.
+
+   flex-grow DEVE ser 0: no layout empilhado o .container é flex-row com
+   align-items: stretch; um flex-grow > 0 (ou o flex-basis:100% sozinho com
+   grow herdado) faz a sidebar ESTICAR verticalmente para a altura do
+   container, criando um vão vazio enorme depois do último widget — o widget
+   aparece espremido no topo de uma sidebar gigante e o resto fica em branco,
+   dando a impressão de que a sidebar está vazia. Com flex: 0 0 auto a sidebar
+   ocupa a largura total (100%) mas a altura do próprio conteúdo.
    ========================================================== */
 
 @media (max-width: 768px) {
   aside {
-    flex: 1 1 100% !important;
+    flex: 0 0 auto !important;   /* largura cheia, altura = conteúdo (não estica) */
+    width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
-    width: 100%;
     box-sizing: border-box;
+    align-self: stretch;         /* largura total na transversal; altura vem do conteúdo */
   }
 
   /* Widget dentro da sidebar: largura total, sem overflow horizontal */
@@ -468,9 +477,65 @@ aside .search-form {
 }
 
 /* Respiro do bloco claro antes do rodapé: reduzido no mobile para
-   ficar proporcional à tela menor (no desktop é --space-xl) */
-@media (max-width: 600px) {
+   ficar proporcional à tela menor. No desktop é --space-xl (4rem);
+   no mobile usamos --space-sm (1rem) para o conteúdo/sidebar não
+   ficarem com um vão grande de fundo claro antes do rodapé. */
+@media (max-width: 768px) {
   .site-content {
-    padding-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+  }
+}
+
+/* ==========================================================
+   11. BLINDAGEM CONTRA O RODAPÉ SOBREPOR O CONTEÚDO (MOBILE)
+
+   Causa raiz: no desktop o main usa `flex: 1 1 0` (flex-basis: 0) — ele
+   ignora a altura do próprio conteúdo e ocupa o espaço que o flex distribui
+   ao lado da sidebar. Isso é correto no layout de duas colunas.
+
+   No mobile (≤768px) o .container vira coluna empilhada, mas o main MANTÉM
+   flex-basis: 0. Como o container empilhado não tem altura de referência,
+   o flex-grow não tem o que distribuir e o main colapsa numa altura mínima,
+   IGNORANDO seu conteúdo. O artigo (block) transborda para fora da caixa do
+   main, e o rodapé — posicionado logo após o main "achatado" — sobe por cima
+   do conteúdo que vazou. É a sobreposição relatada no celular.
+
+   Correção: no mobile o main passa a `flex-basis: auto`, voltando a se
+   dimensionar pela altura do seu conteúdo. Assim o main sempre contém todo
+   o artigo e o rodapé fica sempre abaixo dele. O desktop não é tocado. */
+@media (max-width: 768px) {
+
+  .site-content main {
+    flex: 0 0 auto;       /* altura = altura do conteúdo (não mais flex-basis:0) */
+    min-height: 0;        /* sem altura artificial no empilhado */
+  }
+
+  .site-content aside {
+    flex: 0 0 auto;       /* mesma lógica para a sidebar empilhada */
+  }
+
+  .site-content main > article:only-child,
+  .site-content main > article:last-child {
+    flex: 0 1 auto;       /* anula o flex-grow do desktop, sem efeito no fluxo block */
+  }
+
+  /* Último widget da sidebar empilhada: sem margem inferior. A margem de
+     cartão (var(--space-lg)) separa widgets entre si, mas no último ela vira
+     espaço morto entre o widget e o rodapé. Removida só no mobile. */
+  .site-content aside .sidebar-widgets > .widget:last-child,
+  .site-content aside > .widget:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Títulos de "Nenhum resultado encontrado" e "Página não encontrada" no mobile:
+     - sem hifenização automática (evita quebras estranhas como "en-/contrado");
+     - fonte ligeiramente menor e wrap suave para caber em 360px sem cortar palavras. */
+  .no-results h2,
+  .no-posts h2,
+  .error-404 .page-header h1 {
+    font-size: 1.2rem;
+    hyphens: none;
+    overflow-wrap: break-word;
+    word-break: normal;
   }
 }

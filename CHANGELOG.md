@@ -1,5 +1,146 @@
 # Changelog — Independent Theme
 
+## [6.8] — 2026-06-24
+
+### Ajustes finos no menu de navegação (continuação das melhorias da 6.7)
+
+- **Encaixe do item ativo com a linha do header** — após o aumento do
+  afastamento do menu (30px) e da altura dos itens (~57px) introduzidos na 6.7,
+  o destaque do item ativo (com `border-bottom` e fundo) ficou visualmente
+  "solto" em relação à linha inferior do cabeçalho. Adicionado `padding: 5px` e
+  `margin-bottom: -4px` ao `.primary-nav`, e zerado o `padding-bottom` do
+  `.site-header` (de 8px para 0). Agora o destaque do item ativo se ancora
+  exatamente na borda do header, dando o acabamento esperado em desktop. Sem
+  efeito perceptível no mobile (o `padding-bottom` zerado é absorvido pelo
+  layout empilhado e o `margin-bottom` negativo só atua onde há a linha
+  inferior do header). Sugestão da revisão da comunidade.
+
+### Correção (formulário de busca desalinhado em "Sem resultados" e 404)
+
+- **Campo de busca e botão "Buscar" quebravam em linhas separadas no mobile**
+  nas páginas de "Nenhum resultado encontrado" e 404 — esses contextos não
+  herdavam o layout grid já usado na busca da sidebar; o formulário caía no
+  comportamento padrão block do navegador, fazendo o input e o botão ficarem
+  em linhas diferentes em telas estreitas. Aplicado o mesmo padrão grid de
+  2 colunas (campo cresce, botão com largura intrínseca, bordas integradas)
+  que a sidebar já usa, agora também para `.no-results` e `.error-404`.
+  Validado nos 13 estilos.
+
+### Correção (quebra feia de palavra no título no mobile)
+
+- **"Nenhum resultado en-contrado" hifenizava no meio da palavra** em telas
+  de 360px, deixando o título com aparência amadora. O `hyphens: auto`
+  herdado fazia o navegador quebrar a palavra automaticamente. No mobile
+  (≤768px), os títulos `.no-results h2`, `.no-posts h2` e
+  `.error-404 .page-header h1` agora têm `hyphens: none`, `font-size: 1.2rem`
+  e wrap suave (`overflow-wrap: break-word`, `word-break: normal`).
+  A palavra "encontrado" agora cai inteira na linha de baixo, sem hifenização.
+
+Todas as correções preservam os 13 estilos (estrutura idêntica, apenas cores
+próprias) e foram validadas por renderização real.
+
+---
+
+## [6.7] — 2026-06-22
+
+### Correção (alinhamento dos botões Menu/Pesquisar no mobile)
+
+- **Botões Menu e Pesquisar desalinhados a partir de 768px** — o `.menu-toggle`
+  mantinha um `margin-bottom: 10px` resíduo do antigo sistema de menu (em que o
+  menu abria como irmão direto do botão). Na estrutura atual o menu fica num
+  `<nav class="primary-nav">` separado, então essa margem só desalinhava o botão
+  em relação ao `.search-toggle` ao lado. Removida; os dois botões agora alinham.
+  O respiro do menu é mantido pelo `margin-top` do `.primary-nav`.
+
+### Correção (botão "Leia mais" cortado na busca)
+
+- **Botão "Leia mais" aparecia cortado na página de resultados de busca** — no
+  `search.php` o link `.read-more` estava dentro do `<div class="excerpt">`, que
+  tem `max-height` + `overflow: hidden` e um degradê inferior. O botão caía na
+  zona cortada e ficava parcialmente escondido. Movido para fora do `.excerpt`,
+  alinhando ao padrão já usado em `index.php` e `archive.php`. O efeito de
+  degradê no resumo é preservado; o botão fica inteiro e clicável.
+
+### Correção (acessibilidade — skip-link não aparecia ao receber foco)
+
+- **O link "Pular para o conteúdo" recebia foco mas permanecia invisível** —
+  estilos inline com `!important` no próprio elemento impediam que a regra
+  `.skip-link:focus` o trouxesse para a tela. Resultado: usuários de teclado
+  perdiam o foco em um link invisível (falha WCAG 2.4.1). Removidos os estilos
+  inline; o CSS existente (`.skip-link` / `.skip-link:focus`) passa a controlar
+  a exibição. O link agora aparece corretamente ao receber foco, em todos os
+  estilos.
+
+### Correção (menu mobile quebrava em duas colunas)
+
+- **No menu aberto em telas pequenas, o último item pulava para uma segunda
+  coluna no topo** — o `.primary-nav .menu` herdava `flex-wrap: wrap` da regra
+  base; combinado com `flex-direction: column` e altura limitada, o flexbox
+  empilhava os itens até "encher" e quebrava o excedente para uma nova coluna
+  (ex.: "Contato" aparecia no topo, ao lado de "Início"). Adicionado
+  `flex-wrap: nowrap` ao menu no mobile, garantindo que todos os itens fiquem
+  numa única coluna, na ordem correta. Verificado nos 13 estilos.
+
+Todas as correções preservam os 13 estilos (estrutura idêntica, apenas cores
+próprias) e não afetam o desktop além do previsto.
+
+### Melhorias no menu de navegação (sugestões da comunidade)
+
+- **Mais respiro entre o menu e o cabeçalho no desktop** — o afastamento do
+  `.primary-nav` passou de 4px para 30px em telas ≥769px, dando um espaçamento
+  mais agradável entre a barra do menu e a linha do cabeçalho. No mobile o
+  afastamento é zerado, para os botões ficarem próximos da linha do header.
+- **Itens do menu com altura mais confortável no desktop** — a área de cada
+  item do menu foi aumentada para ~57px de altura (via padding vertical),
+  ampliando a área de clique e melhorando a leitura. Aplicado apenas em desktop
+  (≥769px); no mobile o espaçamento de toque já existente é mantido.
+
+---
+
+## [6.6] — 2026-06-22
+
+### Correção (rodapé sobrepondo o conteúdo no mobile)
+
+- **Rodapé tampava o conteúdo no celular** — em telas ≤768px, quando o
+  conteúdo da página era mais alto que a primeira dobra, o rodapé subia por
+  cima do texto a partir do fim da primeira tela, escondendo tudo abaixo
+  (relatado em dois sites com estilos diferentes). Causa: o `main` usa
+  `flex: 1 1 0` (flex-basis: 0) para preencher o espaço ao lado da sidebar no
+  desktop — comportamento correto em duas colunas. No mobile, com o layout
+  empilhado e sem altura de referência, o flex-basis 0 fazia o `main` colapsar
+  numa altura mínima e ignorar o próprio conteúdo: o artigo transbordava para
+  fora da caixa do `main` e o rodapé, posicionado logo após o `main` achatado,
+  cobria o conteúdo que vazou. Corrigido restringindo o esticamento do cartão
+  (`flex: 1 0 auto` no artigo) ao desktop (`min-width: 769px`) e, no mobile
+  (`max-width: 768px`), fazendo o `main` e a sidebar voltarem a se dimensionar
+  pela altura do próprio conteúdo (`flex: 0 0 auto`). O rodapé passa a ficar
+  sempre abaixo de todo o conteúdo.
+
+### Correção (barra lateral esticada escondia o widget no mobile)
+
+- **Widget da barra lateral parecia sumir no celular** — no layout empilhado,
+  a sidebar usava `flex: 1 1 100%`. O `flex-grow: 1` fazia a sidebar esticar
+  verticalmente para a altura do container, criando um vão vazio grande depois
+  do último widget: o widget ficava espremido no topo de uma sidebar gigante e
+  o resto aparecia em branco, dando a impressão de que a barra lateral estava
+  vazia. Corrigido para `flex: 0 0 auto` (largura total mantida, altura igual à
+  do conteúdo), de modo que o widget preenche a sidebar e o rodapé vem logo a
+  seguir, sem vão fantasma.
+
+Ambas as correções são apenas de apresentação (`style.css` e `responsive.css`),
+sem mudança no desktop nem no HTML/PHP.
+
+### Ajuste (espaço antes do rodapé no mobile)
+
+- **Respiro grande de fundo claro antes do rodapé** — no mobile o vão entre o
+  fim do conteúdo/sidebar e o rodapé ficava maior que o necessário. Reduzido o
+  `padding-bottom` do `.site-content` no mobile (de `--space-lg` para
+  `--space-sm`) e removida a margem inferior do último widget da sidebar
+  empilhada, que virava espaço morto antes do rodapé. Respiro final discreto e
+  proporcional à tela. Sem efeito no desktop.
+
+---
+
 ## [6.2] — 2026-06-14
 
 ### Atualização automática

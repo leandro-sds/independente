@@ -4,7 +4,7 @@ Theme URI: https://github.com/leandro-sds/independent-theme
 Author: Leandro Souza
 Author URI: https://github.com/leandro-sds
 Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 13 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao portal esportivo noturno. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 6.2
+Version: 6.8
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.0
@@ -13,6 +13,21 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Copyright: 2024-2026 Leandro Souza
 Text Domain: independente
 Tags: blog, two-columns, custom-logo, custom-menu, custom-colors, featured-images, accessibility-ready, rtl-language-support, translation-ready, footer-widgets
+*/
+
+/*
+Independente WordPress Theme, Copyright 2024-2026 Leandro Souza
+Independente is distributed under the terms of the GNU GPL v2 or later.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
 */
 
 
@@ -131,13 +146,12 @@ img {
 .site-header{
   background-color: var(--header-bg);
   color: var(--header-fg);
-  padding: 10px 0 8px;
+  padding: 10px 0 0;
   border-bottom: 1px solid var(--header-border);
   transition: background-color var(--transition-fast);
 }
 
-footer[role="contentinfo"],
-.site-footer {
+footer[role="contentinfo"] {
   background-color: var(--header-bg);
   color: var(--header-fg);
   padding: 32px 0 20px;
@@ -194,10 +208,20 @@ main {
    Estica o cartão até o fim da coluna — elimina o "vão" branco
    abaixo do conteúdo em páginas curtas com sidebar longa.
    Não afeta listagens (index/archive têm <nav class="pagination">
-   após os artigos) nem posts (single tem comentários/relacionados). */
-main > article:only-child,
-main > article:last-child {
-  flex: 1 0 auto;
+   após os artigos) nem posts (single tem comentários/relacionados).
+
+   IMPORTANTE: só vale acima de 768px. No desktop o main é uma coluna flex
+   com altura de referência (min-height:60vh + sidebar ao lado), então o
+   flex-grow estica o cartão corretamente. No mobile o layout é empilhado e
+   o min-height do main é zerado; sem altura de referência, flex:1 0 auto faz
+   o artigo crescer DESACOPLADO da caixa do main, transbordando-a — o main
+   colapsa na altura mínima e o conteúdo longo passa a ser coberto pelo
+   rodapé. Por isso a regra fica restrita ao desktop. */
+@media (min-width: 769px) {
+  main > article:only-child,
+  main > article:last-child {
+    flex: 1 0 auto;
+  }
 }
 
 aside {
@@ -593,6 +617,16 @@ nav ul li.current-menu-ancestor > a {
 
   .site-content main {
     padding: var(--space-md) var(--space-sm);
+    /* No mobile o layout é empilhado (coluna), então a altura mínima de
+       60vh — útil no desktop para acompanhar a sidebar ao lado — não tem
+       função e gera espaço vazio. Aqui o conteúdo define a altura. */
+    min-height: 0;
+  }
+
+  /* Mesma lógica para a sidebar: respeita o tamanho do seu conteúdo,
+     sem altura artificial. Um bloco, fim; dois blocos, fim. */
+  .site-content aside {
+    min-height: 0;
   }
 
   /* aside: padding unificado — remove conflito com a regra "main, aside" abaixo */
@@ -629,7 +663,7 @@ nav ul li.current-menu-ancestor > a {
 
   .menu-toggle {
     display: inline-flex;
-    margin-bottom: 10px;
+    margin-bottom: 0; /* alinhado ao .search-toggle ao lado; o respiro do menu vem do margin-top do .primary-nav */
   }
 
   nav ul {
@@ -816,6 +850,27 @@ footer[role="contentinfo"] {
   padding-bottom: var(--space-md);
 }
 
+/* Harmoniza o alinhamento do rodapé em telas largas: o conteúdo da faixa
+   central (versículo, localização) é centralizado e com largura de leitura
+   confortável, acompanhando as redes sociais e os créditos — que já são
+   centralizados — para um rodapé visualmente equilibrado. No mobile o
+   texto volta a ficar à esquerda (regra na media query) para leitura fluida. */
+@media (min-width: 769px) {
+  .footer-full-area .wrap {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  /* Botões dentro da faixa central centralizada mantêm largura natural
+     (não esticam para a largura toda) e ficam centralizados horizontalmente. */
+  .footer-full-area .wrap :is(button, .wp-block-button__link, a.button, input[type="submit"]) {
+    display: inline-block;
+    width: auto;
+  }
+}
+
 /* ── Rodapé: blindagem dos widgets ─────────────────────────────────
    Todos os 13 estilos têm rodapé escuro. Esta blindagem garante que
    qualquer conteúdo colocado em widgets do rodapé adote o visual do
@@ -937,7 +992,9 @@ article:hover {
 }
 
 .primary-nav{
-  margin-top: 4px;
+  margin-top: 30px; /* respiro maior entre o menu e a linha do header (desktop) — sugestão de revisão da comunidade */
+  padding: 5px;
+  margin-bottom: -4px; /* ajusta a base do menu para o item ativo (border-bottom destacado) encaixar com a linha do header */
 }
 
 .primary-nav .menu{
@@ -1091,9 +1148,13 @@ article:hover {
     min-width: 0;
   }
   /* Menu recolhido por padrão no mobile — expande com transição suave */
+  .primary-nav{
+    margin-top: 0; /* no mobile, sem afastamento — botões colados na linha do header (sugestão de revisão) */
+  }
   .primary-nav .menu{
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap; /* impede que itens quebrem para uma 2ª coluna ao atingir a altura — todos empilham */
     gap: 4px;
     width: 100%;
     margin-top: 8px;
@@ -1115,93 +1176,6 @@ article:hover {
     padding: 12px 14px;
     border-radius: 8px;
     width: 100%;
-  }
-}
-
-/* =========================
-   Layout do cabeçalho (Personalizador)
-   Classes no body: header-layout-left | header-layout-center | header-layout-stacked
-   ========================= */
-body.header-layout-left .header-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 1rem;
-}
-body.header-layout-left .branding{
-  display:flex;
-  align-items:center;
-  gap: 1rem;
-  min-width: 0;
-}
-body.header-layout-left .header-actions{
-  display:flex;
-  align-items:center;
-  gap: .75rem;
-}
-
-/* Centralizado: branding e ações em coluna, alinhados ao centro */
-body.header-layout-center .header-top{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap: .75rem;
-  text-align:center;
-}
-body.header-layout-center .branding{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap: .5rem;
-}
-body.header-layout-center .site-title{
-  align-items:center;
-}
-body.header-layout-center .header-actions{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:.75rem;
-  width: 100%;
-  max-width: 600px;
-}
-/* No layout centralizado, o formulário de busca ocupa a largura disponível */
-body.header-layout-center .header-search,
-body.header-layout-center .header-search .search-form {
-  width: 100%;
-}
-body.header-layout-center .header-search .search-form .search-field {
-  flex: 1 1 auto;
-  min-width: 0;
-  max-width: 100%;
-}
-
-/* Empilhado: logo acima do nome, porém mantém ações à direita no desktop */
-body.header-layout-stacked .branding{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap: .25rem;
-}
-@media (min-width: 720px){
-  body.header-layout-stacked .header-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap: 1rem;
-  }
-}
-@media (max-width: 719px){
-  body.header-layout-stacked .header-top{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    gap: .75rem;
-  }
-  body.header-layout-stacked .header-actions{
-    width:100%;
   }
 }
 
@@ -1604,8 +1578,7 @@ a.btn-secondary:hover {
   border-top: 1px solid var(--border-color);
 }
 
-/* Cards com mais respiro interno */
-.card,
+/* Cards/widgets com mais respiro interno */
 .wp-block-group,
 .widget {
   padding: var(--space-md);
@@ -1629,12 +1602,6 @@ a.btn-secondary:hover {
   word-break: normal;
   hyphens: none;
   max-width: 100%;
-}
-
-/* Limite de largura do container principal de texto */
-.wrap.single-wrap,
-.wrap.page-wrap {
-  max-width: calc(var(--prose-max) + 2 * var(--space-lg));
 }
 
 /* Search submit e botões de formulário consistentes */
@@ -1692,10 +1659,10 @@ input[type="submit"]:hover {
   color: var(--on-accent);
 }
 
-/* Header: menu links levemente menores em desktop para mais itens */
+/* Header: itens do menu com altura confortável em desktop (~57px) — sugestão de revisão da comunidade */
 @media (min-width: 769px) {
   .primary-nav .menu a {
-    padding: 7px 13px;
+    padding: 21px 13px;
     font-size: 0.92rem;
   }
 }
@@ -2506,79 +2473,70 @@ footer .container {
    Usa variáveis CSS — herda identidade de cada estilo
    ========================================================== */
 
-.hero-section {
+/* ==========================================================
+   ÁREA DE DESTAQUE — largura total, abaixo do cabeçalho
+   Contêiner neutro para qualquer widget (player, banner,
+   imagem, CTA). Dá respiro e centralização sem impor estilo
+   ao conteúdo interno.
+   ========================================================== */
+.destaque-section {
   background: var(--primary-color);
-  padding: 3.5rem 1.5rem;
-  text-align: center;
+  padding: 1.75rem 1.5rem;
   border-bottom: 3px solid var(--accent-color);
-}
-
-.hero-inner {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.hero-title {
-  font-family: var(--font-title);
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 800;
-  color: var(--header-title-color);
-  margin-bottom: 0.75rem;
-  line-height: 1.20;
-  letter-spacing: -0.01em;
   animation: fadeInDown 0.6s ease both;
 }
 
-.hero-subtitle {
-  font-family: var(--font-main);
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--header-muted);
-  margin-bottom: 1.8rem;
-  line-height: 1.60;
-  animation: fadeInUp 0.6s ease 0.15s both;
+.destaque-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.hero-button {
-  display: inline-block;
-  background: var(--accent-color);
-  color: var(--on-accent);
-  font-family: var(--font-main);
-  font-weight: 700;
-  font-size: 1rem;
-  padding: 0.75rem 2rem;
-  border-radius: var(--radius-md);
-  text-decoration: none;
-  transition: filter 0.22s ease, transform 0.22s ease,
-              box-shadow 0.22s ease;
-  animation: fadeInUp 0.6s ease 0.30s both;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+/* Cada widget na faixa de destaque tem uma largura de conteúdo confortável
+   (até 640px): com 1 widget estreito (ex.: player), evita o "vazio" ao
+   redor; com 2+ widgets, eles dividem o espaço e quebram no mobile.
+   flex-grow 0 impede que um único widget estique até a faixa toda. */
+.destaque-inner > .destaque-widget {
+  flex: 0 1 640px;
+  max-width: 100%;
+  margin: 0;
 }
 
-.hero-button:hover {
-  filter: brightness(0.88);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.20);
+/* Imagens e banners preenchem a largura, centralizados */
+.destaque-widget img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: var(--radius-md, 8px);
 }
 
-.hero-button:focus {
-  outline: var(--focus-ring);
-  outline-offset: 3px;
+/* Título de widget na área de destaque (quando houver) */
+.destaque-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 800;
+  color: var(--header-title-color);
+  margin: 0 0 0.5rem;
+  line-height: 1.25;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-title,
-  .hero-subtitle,
-  .hero-button {
+  .destaque-section {
     animation: none !important;
-  }
-  .hero-button:hover {
-    transform: none !important;
   }
 }
 
 @media (max-width: 600px) {
-  .hero-section {
-    padding: 2.5rem 1rem;
+  .destaque-section {
+    padding: 1.25rem 1rem;
   }
 }
 

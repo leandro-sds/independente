@@ -538,3 +538,98 @@ body.style-ceuafe :focus-visible {
   outline: 3px solid #0d2b4a !important;
   outline-offset: 2px !important;
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   Refinamentos editoriais v6.3 (Céu e Fé)
+   Cinco aprimoramentos estéticos sutis que elevam o estilo sem mudar
+   sua identidade (céu profundo + terracota + pergaminho + serifa).
+   Mantêm contraste WCAG AA e respeitam prefers-reduced-motion.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* 1) Halo de luz no cabeçalho — um raio de sol dourado e difuso rompendo
+   o céu escuro, no canto superior direito. Puramente decorativo, atrás do
+   conteúdo (z-index/pointer-events neutros), não interfere na leitura. */
+body.style-ceuafe .site-header {
+  position: relative;
+  overflow: hidden;
+}
+body.style-ceuafe .site-header::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: 6%;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle,
+              rgba(245,197,66,0.22) 0%,
+              rgba(224,123,57,0.10) 38%,
+              transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+/* Garante que o conteúdo do cabeçalho fique acima do halo */
+body.style-ceuafe .header-wrap,
+body.style-ceuafe .header-top {
+  position: relative;
+  z-index: 1;
+}
+
+/* 5) Borda inferior do cabeçalho um pouco mais luminosa (dourado vivo)
+   e gradiente de céu com transição mais suave. */
+body.style-ceuafe .site-header {
+  background: linear-gradient(180deg, #0c2f54 0%, #0a2444 50%, #06152b 100%) !important;
+  border-bottom: 3px solid #07172e !important;
+}
+body.style-ceuafe .site-header::after {
+  background: linear-gradient(90deg, #e8a44a, rgba(232,164,74,0.25)) !important;
+}
+
+/* 2) Filete dourado sob os títulos de seção — acabamento editorial.
+   Aplica-se aos títulos de conteúdo (não aos de widget, que já têm
+   sua própria borda inferior). */
+body.style-ceuafe .post-content h2,
+body.style-ceuafe .page-content h2,
+body.style-ceuafe .entry-title {
+  position: relative;
+  padding-bottom: 10px;
+}
+body.style-ceuafe .post-content h2::after,
+body.style-ceuafe .page-content h2::after,
+body.style-ceuafe .entry-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, #e8a44a, rgba(232,164,74,0));
+  border-radius: 0;
+}
+
+/* 3) Aspas ornamentais do versículo reposicionadas — mais integradas ao
+   bloco de pergaminho, peso e posição refinados (complementa a regra
+   blockquote::before existente, ajustando posição e cor). */
+body.style-ceuafe .post-content blockquote::before,
+body.style-ceuafe .page-content blockquote::before {
+  top: -6px !important;
+  left: 12px !important;
+  font-size: 5rem !important;
+  color: rgba(184,84,26,0.55) !important;
+  text-shadow: 1px 2px 2px rgba(224,123,57,0.12) !important;
+}
+
+/* 4) Referência bíblica em destaque dourado — separa visualmente a citação
+   (ex.: "— João 15:13") do corpo do versículo, como em Bíblias impressas.
+   Segurança: só colore um <cite>, OU o último parágrafo QUANDO houver mais
+   de um parágrafo (p:not(:only-child):last-child). Assim, se o versículo
+   for um bloco único, ele NÃO é colorido por engano. */
+body.style-ceuafe .post-content blockquote cite,
+body.style-ceuafe .page-content blockquote cite,
+body.style-ceuafe .post-content blockquote p:last-child:not(:only-child),
+body.style-ceuafe .page-content blockquote p:last-child:not(:only-child) {
+  color: #b8541a !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  font-style: italic !important;
+  font-size: 1.05rem !important;
+}

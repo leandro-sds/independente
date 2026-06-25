@@ -106,6 +106,16 @@ function independent_theme_comment( $comment, $args, $depth ) {
 // Registro de áreas de widgets
 function independent_theme_widgets_init() {
   register_sidebar( [
+    'name'          => __( 'Destaque — abaixo do cabeçalho', 'independente' ),
+    'id'            => 'destaque',
+    'description'   => __( 'Área de largura total logo abaixo do cabeçalho, antes do conteúdo. No celular aparece no topo, sendo o primeiro elemento visível. Ideal para um player de rádio, banner, imagem em destaque ou chamada para ação. Quando vazia, nada é exibido.', 'independente' ),
+    'before_widget' => '<div class="widget destaque-widget">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h2 class="destaque-title">',
+    'after_title'   => '</h2>',
+  ] );
+
+  register_sidebar( [
     'name'          => __( 'Barra Lateral', 'independente' ),
     'id'            => 'sidebar-1',
     'description'   => __( 'Widgets na barra lateral', 'independente' ),
@@ -295,7 +305,7 @@ add_action( 'wp_enqueue_scripts', 'independent_theme_scripts' );
  * nem de JavaScript. Ao receber foco via Tab, o CSS o traz à tela.
  */
 function independent_theme_skip_link() {
-  echo '<a class="skip-link" href="#primary" style="position:fixed!important;top:-200px!important;left:1rem!important;opacity:0!important;pointer-events:none!important;z-index:10000;">';
+  echo '<a class="skip-link" href="#primary">';
   echo esc_html__( 'Pular para o conteúdo', 'independente' );
   echo '</a>';
 }
@@ -510,70 +520,6 @@ function independent_theme_customize_register( $wp_customize ) {
     'description' => __( 'Nome do canal com ou sem @. Ex.: @radiomaioramor', 'independente' ),
     'section'     => 'independent_social_section',
     'type'        => 'text',
-  ] );
-
-  // Hero Section
-  $wp_customize->add_section( 'independent_hero_section', [
-    'title'    => __( 'Seção de Destaque (Hero)', 'independente' ),
-    'priority' => 35,
-  ] );
-
-  $wp_customize->add_setting( 'independent_hero_enabled', [
-    'default'           => 0,
-    'sanitize_callback' => 'absint',
-    'transport'         => 'refresh',
-  ] );
-  $wp_customize->add_control( 'independent_hero_enabled', [
-    'label'   => __( 'Ativar seção de destaque', 'independente' ),
-    'section' => 'independent_hero_section',
-    'type'    => 'checkbox',
-  ] );
-
-  $wp_customize->add_setting( 'independent_hero_title', [
-    'default'           => '',
-    'sanitize_callback' => 'sanitize_text_field',
-    'transport'         => 'refresh',
-  ] );
-  $wp_customize->add_control( 'independent_hero_title', [
-    'label'       => __( 'Título', 'independente' ),
-    'description' => __( 'Título principal da seção de destaque.', 'independente' ),
-    'section'     => 'independent_hero_section',
-    'type'        => 'text',
-  ] );
-
-  $wp_customize->add_setting( 'independent_hero_subtitle', [
-    'default'           => '',
-    'sanitize_callback' => 'sanitize_text_field',
-    'transport'         => 'refresh',
-  ] );
-  $wp_customize->add_control( 'independent_hero_subtitle', [
-    'label'       => __( 'Subtítulo', 'independente' ),
-    'description' => __( 'Texto secundário abaixo do título.', 'independente' ),
-    'section'     => 'independent_hero_section',
-    'type'        => 'text',
-  ] );
-
-  $wp_customize->add_setting( 'independent_hero_button_text', [
-    'default'           => '',
-    'sanitize_callback' => 'sanitize_text_field',
-    'transport'         => 'refresh',
-  ] );
-  $wp_customize->add_control( 'independent_hero_button_text', [
-    'label'       => __( 'Texto do botão', 'independente' ),
-    'description' => __( 'Deixe em branco para não exibir o botão.', 'independente' ),
-    'section'     => 'independent_hero_section',
-    'type'        => 'text',
-  ] );
-
-  $wp_customize->add_setting( 'independent_hero_button_url', [
-    'default'           => '',
-    'sanitize_callback' => 'esc_url_raw',
-    'transport'         => 'refresh',
-  ] );
-  $wp_customize->add_control( 'independent_hero_button_url', [
-    'label'       => __( 'URL do botão', 'independente' ),
-    'section'     => 'independent_hero_section',
-    'type'        => 'url',
   ] );
 
   // Estilo visual

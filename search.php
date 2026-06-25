@@ -19,10 +19,10 @@
           </h2>
           <div class="excerpt">
             <?php the_excerpt(); ?>
-            <a class="read-more" href="<?php echo esc_url( get_permalink() ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Leia mais sobre %s', 'independente' ), get_the_title() ) ); ?>">
-              <?php esc_html_e('Leia mais', 'independente'); ?>
-            </a>
           </div>
+          <a class="read-more" href="<?php echo esc_url( get_permalink() ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Leia mais sobre %s', 'independente' ), get_the_title() ) ); ?>">
+            <?php esc_html_e('Leia mais', 'independente'); ?>
+          </a>
         </article>
       <?php endwhile; ?>
 

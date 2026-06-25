@@ -270,6 +270,96 @@ aside .search-form input[type="submit"]:focus-visible {
   outline-offset: 2px;
 }
 
+/* ============================================================
+   BUSCA EM PÁGINAS DE CONTEÚDO (sem resultados e 404)
+   Reaproveita a mesma solução grid da busca da sidebar, para que
+   o campo e o botão fiquem alinhados na mesma linha (campo cresce,
+   botão com largura intrínseca) em vez de quebrarem para linhas
+   separadas. Centralizado no card via max-width + margin auto.
+   ============================================================ */
+.no-results .search-form,
+.no-posts-search .search-form,
+.error-404 .search-form {
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  grid-template-rows: auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+}
+
+.no-results .search-form label,
+.no-posts-search .search-form label,
+.error-404 .search-form label {
+  display: none !important;
+}
+
+.no-results .search-form .search-field,
+.no-posts-search .search-form .search-field,
+.error-404 .search-form .search-field {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 44px !important;
+  box-sizing: border-box !important;
+  padding: 0 12px !important;
+  border: 1px solid var(--border-color) !important;
+  border-right: none !important;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm) !important;
+  background: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  font-family: var(--font-main) !important;
+  font-size: 1rem !important;
+  margin: 0 !important;
+}
+
+.no-results .search-form .search-field:focus,
+.no-posts-search .search-form .search-field:focus,
+.error-404 .search-form .search-field:focus {
+  border-color: var(--accent-color) !important;
+  outline: var(--focus-ring) !important;
+  outline-offset: 2px;
+}
+
+.no-results .search-form .search-submit,
+.no-posts-search .search-form .search-submit,
+.error-404 .search-form .search-submit {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  width: auto !important;
+  height: 44px !important;
+  box-sizing: border-box !important;
+  padding: 0 16px !important;
+  border: none !important;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
+  background: var(--accent-color) !important;
+  color: var(--on-accent) !important;
+  font-family: var(--font-main) !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.no-results .search-form .search-submit:hover,
+.no-posts-search .search-form .search-submit:hover,
+.error-404 .search-form .search-submit:hover {
+  filter: brightness(1.12) !important;
+}
+
+.no-results .search-form .search-submit:focus-visible,
+.no-posts-search .search-form .search-submit:focus-visible,
+.error-404 .search-form .search-submit:focus-visible {
+  outline: var(--focus-ring) !important;
+  outline-offset: 2px;
+}
+
 /* Gutenberg wp-block-search — cobre todas as variantes */
 .wp-block-search__inside-wrapper,
 .wp-block-search__button-inside .wp-block-search__inside-wrapper {
@@ -412,4 +502,77 @@ aside .search-form input[type="submit"]:focus-visible {
 .widget .pr-player .pr-retry-btn {
   border-color: var(--accent-color, currentColor) !important;
   color: var(--accent-color, currentColor) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MELHORIAS MOBILE — Widgets de imagem e menus de navegação
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Imagens dentro de widgets (cards de apoiadores/parceiros):
+   preenchem a largura do contêiner, eliminando blocos de espaço vazio. */
+.widget img,
+.widget_media_image img,
+.wp-block-image img,
+.footer-widget img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: var(--radius-sm, 8px);
+}
+
+/* Widgets de imagem: reduz o respiro interno excessivo dos cards */
+.widget_media_image,
+.widget_media_image figure {
+  margin-bottom: 0;
+}
+
+/* Menus de navegação em widget: vira lista estilizada e tocável
+   (em vez de bullets básicos), com áreas de toque adequadas. */
+.widget_nav_menu ul,
+.widget_pages ul,
+.widget_categories ul,
+.widget ul.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.widget_nav_menu ul li,
+.widget_pages ul li,
+.widget_categories ul li,
+.widget ul.menu li {
+  margin: 0;
+  border-bottom: 1px solid var(--header-border, rgba(255,255,255,0.12));
+}
+
+.widget_nav_menu ul li:last-child,
+.widget_pages ul li:last-child,
+.widget_categories ul li:last-child,
+.widget ul.menu li:last-child {
+  border-bottom: none;
+}
+
+.widget_nav_menu ul li a,
+.widget_pages ul li a,
+.widget_categories ul li a,
+.widget ul.menu li a {
+  display: block;
+  padding: 0.85rem 0.5rem;          /* alvo de toque ≥ 44px de altura */
+  text-decoration: none;
+  border-radius: var(--radius-sm, 6px);
+  transition: background-color 0.18s ease, padding-left 0.18s ease;
+}
+
+.widget_nav_menu ul li a:hover,
+.widget_nav_menu ul li a:focus-visible,
+.widget_pages ul li a:hover,
+.widget_pages ul li a:focus-visible,
+.widget_categories ul li a:hover,
+.widget_categories ul li a:focus-visible,
+.widget ul.menu li a:hover,
+.widget ul.menu li a:focus-visible {
+  background: color-mix(in srgb, var(--accent-color) 12%, transparent);
+  padding-left: 1rem;
 }

@@ -4,7 +4,7 @@ Tags: blog, two-columns, custom-logo, custom-menu, custom-colors, featured-image
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 6.2
+Stable tag: 6.8
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,21 @@ Vá em Aparência > Personalizar > Estilo Visual e escolha um dos 13 estilos dis
 Sim. O tema tem a tag accessibility-ready e passa por revisão de acessibilidade da equipe do WordPress.org.
 
 == Changelog ==
+
+= 6.5 =
+* Nova área de widget "Destaque" (largura total, abaixo do cabeçalho) — ideal para player de rádio, banner, imagem ou chamada para ação; no celular aparece no topo
+* Removida a antiga seção de destaque de texto fixo do Personalizar, substituída pela área de widget mais flexível
+
+= 6.4 =
+* Nome da pasta do tema alinhado ao slug (independente) — garante leitura correta do aviso de copyright pelo Theme Check
+* Aviso de copyright GPL explícito no style.css
+
+= 6.3 =
+* Estilo "Céu e Fé" aprimorado: halo de luz no cabeçalho, filete dourado nos títulos, versículo e referência bíblica mais elegantes
+* Imagens em widgets agora preenchem a largura do contêiner
+* Menu de navegação em widget com estilo de lista tocável e acessível
+* Rodapé com alinhamento harmonizado no desktop (faixa central centralizada)
+* Classes CSS nativas do WordPress (.wp-caption, .sticky, .gallery-caption, .bypostauthor)
 
 = 6.2 =
 * Conformidade com diretrizes do repositório WordPress.org
