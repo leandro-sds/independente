@@ -994,7 +994,7 @@ article:hover {
 .primary-nav{
   margin-top: 30px; /* respiro maior entre o menu e a linha do header (desktop) — sugestão de revisão da comunidade */
   padding: 5px;
-  margin-bottom: -4px; /* ajusta a base do menu para o item ativo (border-bottom destacado) encaixar com a linha do header */
+  margin-bottom: -2px; /* ajuste fino — encaixe com a linha do header (refinado na revisão) */
 }
 
 .primary-nav .menu{

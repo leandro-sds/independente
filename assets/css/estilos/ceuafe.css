@@ -288,7 +288,8 @@ body.style-ceuafe .primary-nav .menu li.current_page_item > a {
   background: rgba(224,123,57,0.30) !important; /* fundo destacado — estado ativo claro */
   border-radius: 6px 6px 0 0;
   border-bottom: 3px solid #e07b39 !important; /* sublinhado terracota forte */
-  padding-bottom: 8px !important;
+  padding-bottom: 26px !important; /* respiro para a borda não espremer o texto — ajuste fino da revisão */
+  margin-bottom: -10px; /* compensa o padding extra para a borda encaixar na linha do header */
 }
 
 body.style-ceuafe .post-content a,
