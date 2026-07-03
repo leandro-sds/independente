@@ -1,10 +1,11 @@
 /*
 Theme Name: Independente
-Theme URI: https://github.com/leandro-sds/independent-theme
+Theme URI: https://github.com/leandro-sds/independente
 Author: Leandro Souza
-Author URI: https://github.com/leandro-sds
-Description: Tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 13 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao portal esportivo noturno. Totalmente compatível com leitores de tela e navegação por teclado.
-Version: 6.8
+Author URI: https://wordpress.org/support/users/leandrosswp/
+Contributors: leandrosswp, in9ti
+Description: A modern, responsive, and accessibility-ready WordPress classic theme created by a blind developer for blind developers to build websites for sighted users. Offers 7 unique visual styles with exclusive animations, each with its own identity. Fully compatible with screen readers and keyboard navigation. WCAG 2.1 AA validated.
+Version: 1.0.0
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.0
@@ -35,7 +36,7 @@ GNU General Public License for more details.
    COMO ESTE TEMA ESTÁ ORGANIZADO  (documentação para quem for editar)
    ============================================================================
 
-   Este tema tem 13 estilos visuais. Para manter tudo consistente, seguimos
+   Este tema tem 7 estilos visuais. Para manter tudo consistente, seguimos
    uma REGRA DE OURO:
 
      • A ESTRUTURA fica AQUI, no style.css (base), e vale igual para TODOS os
@@ -314,9 +315,9 @@ aside .widget {
 
    Especificidade: body + :is(.widget|.footer-widget) + :is(article) +
    :is(article) = 0,4,1, acima de body.style-X article (0,2,1) de todos
-   os 13 estilos, garantindo vitória sem depender da ordem de carga.
+   os estilos, garantindo vitória sem depender da ordem de carga.
    Os !important nas propriedades cobrem os reforços de estilo que também
-   usam !important. Vale para os 13 estilos sem tocar nos arquivos deles. */
+   usam !important. Vale para os estilos sem tocar nos arquivos deles. */
 body :is(.widget, .footer-widget) :is(article):is(article) {
   background: transparent !important;
   background-color: transparent !important;
@@ -930,7 +931,7 @@ footer[role="contentinfo"] {
 }
 
 /* ── Rodapé: blindagem dos widgets ─────────────────────────────────
-   Todos os 13 estilos têm rodapé escuro. Esta blindagem garante que
+   Todos os estilos têm rodapé escuro. Esta blindagem garante que
    qualquer conteúdo colocado em widgets do rodapé adote o visual do
    rodapé, em vez de carregar visuais pensados para fundo claro:
 
@@ -1504,7 +1505,7 @@ article:last-of-type {
 
 /* Cor de link consistente em TODO o conteúdo e widgets — usa a cor do estilo
    ativo (var(--link-color)) em vez do azul padrão do navegador. Vale para os
-   13 estilos. Cobre o conteúdo do post/página, a área de conteúdo (entry),
+   todos os estilos. Cobre o conteúdo do post/página, a área de conteúdo (entry),
    os widgets da barra lateral/rodapé e a lista de comentários. */
 .entry-content a,
 .post-content a,
@@ -1868,7 +1869,6 @@ input[type="submit"]:hover {
    ========================================================== */
 
 /* Contraste de texto muted em estilos escuros sem redefinição posterior */
-/* vintagecafe e campoepaixao são redefinidos mais abaixo com valores sólidos */
 
 /* ==========================================================
    AJUSTES FINAIS DE ESTILO — v2.3
@@ -1883,15 +1883,12 @@ aside .widget {
   border: 1px solid var(--border-color);
 }
 
-/* ── Campo e Paixão: borda dos cards levemente verde para integrar ── */
 
-/* ── Vintage Café: card-bg deve ser perceptível sobre o bg-light ── */
 
 /* ── Tinta & Papel: aside com fundo creme mais escuro ── */
 
 /* ── Texto do tema padrão no modo light: cor do link correta ── */
 
-/* ── Neon Pop: borda de cards mais nítida ── */
 
 /* ── Remove padding duplo no aside mobile ── */
 @media (max-width: 768px) {
@@ -1977,11 +1974,8 @@ footer .container {
    Correções visuais por estilo — separação de áreas
    ========================================================== */
 
-/* ── Neon Pop: magenta + ciano — energia de rádio jovem ── */
 
-/* ── Vintage Café: versão clara — creme e marrom ── */
 
-/* ── Campo e Paixão: versão clara — verde e branco ── */
 
 /* ── Céu e Fé: distinção suave com borda dourada ── */
 
@@ -1989,9 +1983,7 @@ footer .container {
 
 /* ── Padrão: separação limpa ── */
 
-/* Vintage Café: remove borda da logo que aparece no header */
 
-/* Campo e Paixão: mesma correção */
 
 /* ==========================================================
    ⚡ MODERNO — Vibrante & Contemporâneo
@@ -2116,26 +2108,13 @@ footer .container {
 
 /* wp-block-search no estilo Céu e Fé */
 
-/* ==========================================================
-   Vintage Café — Versão Clara
-   Creme e marrom — atmosfera de livraria e café
-   ========================================================== */
 
-/* ==========================================================
-   Campo e Paixão — Versão Clara
-   Verde e branco — energia de estádio ao ar livre
-   ========================================================== */
 
 /* Todos os elementos dentro do rodapé — seletor universal para cobrir qualquer estrutura de widget */
 
-/* ==========================================================
-   Neon Pop — Magenta + Ciano
-   Energia de rádio jovem, show e festival
-   ========================================================== */
 
 /* Todos os elementos dentro do rodapé — seletor universal para cobrir qualquer estrutura de widget */
 
-/* Muted text Neon Pop e Vintage Café atualizados */
 
 
 /* ==========================================================
@@ -2163,27 +2142,14 @@ footer .container {
 
 /* ── Widgets com linha laranja no topo ── */
 
-/* ==========================================================
-   Campo e Paixão — Refinamentos Visuais v2
-   Força, energia e paixão — sem exageros
-   ========================================================== */
 
 /* ── 1. Header com profundidade de estádio ── */
 
 /* ── 2. Linha vermelha que se expande ao carregar ── */
-@keyframes campoLine {
-  from { width: 0; }
-  to   { width: 100%; }
-}
 
 /* ── 3. Menu hover com energia — fundo dourado subindo ── */
 
 /* ── 4. Títulos com entrada de impacto ── */
-@keyframes campoImpact {
-  0%   { opacity: 0; transform: translateY(16px) scale(0.97); }
-  60%  { transform: translateY(-2px) scale(1.01); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
 
 /* ── 5. Blockquote com estilo esportivo ── */
 
@@ -2299,61 +2265,23 @@ footer .container {
 
 /* ── Botões hover com glow ciano ── */
 
-/* ==========================================================
-   Neon Pop — Refinamentos Visuais v2
-   Energia elétrica, néon e vida — com controle
-   ========================================================== */
 
 /* ── 1. Header com gradiente neon animado ── */
-@keyframes neonPopGradient {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 
 /* ── 2. Linha magenta/ciano pulsante ── */
-@keyframes neonPulse {
-  0%, 100% {
-    opacity: 0.5;
-    box-shadow: 0 0 6px rgba(255,45,120,0.5);
-    background: linear-gradient(90deg, transparent, #ff2d78, transparent);
-  }
-  50% {
-    opacity: 1.0;
-    box-shadow: 0 0 14px rgba(0,207,255,0.7);
-    background: linear-gradient(90deg, transparent, #00cfff, transparent);
-  }
-}
 
 /* ── 3. Menu hover com néon acendendo ── */
 
 /* ── 4. Títulos com entrada de display LED ── */
-@keyframes neonLED {
-  0%   { opacity: 0; transform: translateY(14px);
-         text-shadow: 0 0 30px rgba(255,45,120,0.9); }
-  60%  { text-shadow: 0 0 12px rgba(255,45,120,0.3); }
-  100% { opacity: 1; transform: translateY(0);
-         text-shadow: none; }
-}
 
 /* ── 5. Blockquote com néon ── */
 
 /* ── 6. Widgets com borda magenta/ciano pulsante ── */
-@keyframes neonWidgetGlow {
-  0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.40),
-                         0 0 0 1px rgba(255,45,120,0.20); }
-  50%       { box-shadow: 0 4px 24px rgba(0,0,0,0.50),
-                         0 0 0 1px rgba(0,207,255,0.25); }
-}
 
 /* ── 7. Links com sublinhado ciano rápido ── */
 
 /* ── Botões hover com glow magenta ── */
 
-/* ==========================================================
-   Vintage Café — Refinamentos Visuais v2
-   Retrô, aconchegante e nostálgico — como jazz num café antigo
-   ========================================================== */
 
 /* ── 1. Header com profundidade de madeira escura ── */
 
@@ -2860,21 +2788,15 @@ article:hover .post-thumbnail-img {
   }
 }
 
-/* ==========================================================
-   Campo e Paixão — ajustes v3.9.0
-   ========================================================== */
 
 /* Fundo body menos verde — concentra atenção no conteúdo */
 
 /* Aside — fundo levemente mais neutro, menos verde saturado */
 
 /* Widget — mais espaçamento interno para plugins de tabela */
-/* body.style-campoepaixao .widget padding — usa o padrão do tema */
 
 /* Menu toggle — mais destaque visual */
 
-/* Campo e Paixão — correção contraste botão Buscar v3.9.0
-   Fundo vermelho com texto branco: 5.89:1 ✅ WCAG AA */
 
 /* ==========================================================
    Widget Comentários Recentes do WordPress — v3.9.0
@@ -3083,7 +3005,6 @@ aside .widget ul li a {
    Para portais de futebol, placares ao vivo, campeonatos
    ========================================================== */
 
-/* ── Variáveis extras do Noite de Jogo ── */
 
 /* ── Header: verde noturno com gradiente de estádio ── */
 

@@ -53,7 +53,7 @@ function independent_theme_scripts() {
     );
   }
 
-  // Fontes locais (self-hosted) — todas as famílias usadas pelos 13 estilos.
+  // Fontes locais (self-hosted) — todas as famílias usadas pelos estilos visuais.
   // Carregadas do próprio tema (não do CDN do Google) para respeitar a
   // privacidade do visitante e cumprir as diretrizes do WordPress.org.
   // O navegador só baixa os arquivos .woff2 dos pesos realmente usados na página.

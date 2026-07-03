@@ -1,89 +1,105 @@
 === Independente ===
-Contributors: leandrosds
+Contributors: leandrosswp, in9ti
 Tags: blog, two-columns, custom-logo, custom-menu, custom-colors, featured-images, accessibility-ready, rtl-language-support, translation-ready, footer-widgets
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 6.8
+Stable tag: 1.0
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Tema WordPress moderno, responsivo e acessível com 13 estilos visuais únicos.
+A modern, responsive, and accessibility-ready WordPress classic theme with 7 unique visual styles.
 
 == Description ==
 
-Independente é um tema WordPress moderno, responsivo e acessível, criado por uma pessoa cega para pessoas cegas desenvolverem sites para quem enxerga. Oferece 13 estilos visuais únicos com animações exclusivas, cada um com identidade própria — do clássico institucional ao portal esportivo noturno. Totalmente compatível com leitores de tela e navegação por teclado.
+Independente is a modern, responsive, and accessibility-ready WordPress classic theme created by a blind developer for blind developers to build websites for sighted users.
 
-= Estilos incluídos =
+It offers 7 unique visual styles with exclusive animations, each with its own identity — from clean institutional to vibrant contemporary. Fully compatible with screen readers and keyboard navigation. All color pairs have been validated against WCAG 2.1 AA contrast requirements.
 
-* Padrão — institucional limpo
-* Alvorada — minimalismo orgânico
-* Gospel — luz que rompe
-* Rádio Jovem — Neon Pop
-* Rádio Retrô — Vintage Café
-* Campo e Paixão — site de futebol
-* Céu e Fé — site cristão
-* Tinta & Papel — site para escritores
-* Marinelli — institucional clássico
-* Moderno — vibrante e contemporâneo
-* Colorado — vermelho e branco
-* Rock — preto, vermelho e metal
-* Noite de Jogo — portal esportivo
+Visual style previews:
 
-= Acessibilidade =
+* Default: https://raw.githubusercontent.com/leandro-sds/independente/main/imagens_estilos/padrao.png
+* Gospel: https://raw.githubusercontent.com/leandro-sds/independente/main/imagens_estilos/gospel.png
+* Sky and Faith (Céu e Fé): https://raw.githubusercontent.com/leandro-sds/independente/main/imagens_estilos/ceuefe.png
+* Ink and Paper (Tinta & Papel): https://raw.githubusercontent.com/leandro-sds/independente/main/imagens_estilos/tintaepapel.png
+* Marinelli: https://raw.githubusercontent.com/leandro-sds/independente/main/imagens_estilos/marinelli.png
+* Modern (Moderno): https://raw.githubusercontent.com/leandro-sds/independente/main/imagens_estilos/moderno.png
+* Colorado: https://raw.githubusercontent.com/leandro-sds/independente/main/imagens_estilos/colorado.png
 
-O tema foi desenvolvido com foco total em acessibilidade:
-* Skip-link para pular ao conteúdo principal
-* Navegação por teclado completa
-* Indicadores de foco visíveis (WCAG 2.4.7)
-* Compatível com leitores de tela
-* Contraste WCAG 2.1 AA em todos os estilos
-* Suporte a RTL
+= Included Visual Styles =
+
+Switch between styles instantly via Appearance > Customize > Visual Style:
+
+* Default — clean and versatile, works for any type of website
+* Gospel — dark and vibrant, ideal for gospel music and contemporary Christian ministry
+* Céu e Fé (Sky and Faith) — serene celestial blue with gold accents, ideal for churches and ministries
+* Tinta & Papel (Ink & Paper) — warm literary palette with serifed typography, ideal for writers and blogs
+* Marinelli — classic institutional blue, inspired by the original Drupal Marinelli theme
+* Moderno (Modern) — dark nebula with electric cyan, ideal for radio stations, podcasts and digital agencies
+* Colorado — bold red and white, ideal for sports clubs and associations
+
+= Accessibility =
+
+This theme was built with accessibility as a core principle:
+
+* Skip-link to jump directly to the main content
+* Full keyboard navigation support
+* Visible focus indicators on all interactive elements (WCAG 2.4.7)
+* Compatible with screen readers (tested with NVDA)
+* WCAG 2.1 Level AA contrast ratio validated in all 7 visual styles
+* RTL (right-to-left) language support via the rtl-language-support tag
+* All animations respect the prefers-reduced-motion media query — users who prefer no animations navigate without them
+
+= RTL Support =
+
+The theme includes the rtl-language-support tag and respects WordPress RTL conventions. To enable RTL, set your WordPress installation language to an RTL language (such as Arabic or Hebrew) via Settings > General > Site Language. WordPress will automatically load the RTL stylesheet.
 
 == Installation ==
 
-1. No painel WordPress, vá em Aparência > Temas > Adicionar novo.
-2. Procure por "Independente" ou envie o arquivo .zip.
-3. Ative o tema.
-4. Personalize em Aparência > Personalizar.
+1. In your WordPress dashboard, go to Appearance > Themes > Add New.
+2. Search for "Independente" or upload the .zip file.
+3. Activate the theme.
+4. Go to Appearance > Customize to configure the logo, visual style, header layout, footer credits, and social links.
+
+= Switching Visual Styles =
+
+1. Go to Appearance > Customize.
+2. Click "Visual Style".
+3. Choose one of the 7 available styles.
+4. Click Publish. The change is instant and reversible — no content is lost.
 
 == Frequently Asked Questions ==
 
-= Como trocar o estilo visual? =
+= How do I switch the visual style? =
 
-Vá em Aparência > Personalizar > Estilo Visual e escolha um dos 13 estilos disponíveis.
+Go to Appearance > Customize > Visual Style and choose from the 7 available styles. The change is instant and reversible.
 
-= O tema é acessível? =
+= Is the theme accessible? =
 
-Sim. O tema tem a tag accessibility-ready e passa por revisão de acessibilidade da equipe do WordPress.org.
+Yes. The theme carries the accessibility-ready tag and was built by a blind developer with screen reader and keyboard navigation testing throughout development. All color contrast pairs meet WCAG 2.1 Level AA.
+
+= Does the theme support RTL languages? =
+
+Yes. The theme includes the rtl-language-support tag. RTL layout is activated automatically by WordPress when an RTL language is set in Settings > General > Site Language.
+
+= Are fonts loaded from Google? =
+
+No. All fonts are self-hosted within the theme package (Inter, Montserrat, Poppins, Playfair Display, Plus Jakarta Sans, Raleway, Oswald). No requests are made to Google's servers, protecting visitor privacy and complying with WordPress.org guidelines.
+
+= What template files are included? =
+
+Independente is a classic WordPress theme (not a block/FSE theme). Template files are located in the theme root: index.php, single.php, archive.php, page.php, search.php, 404.php, comments.php, sidebar.php, header.php, and footer.php.
 
 == Changelog ==
 
-= 6.5 =
-* Nova área de widget "Destaque" (largura total, abaixo do cabeçalho) — ideal para player de rádio, banner, imagem ou chamada para ação; no celular aparece no topo
-* Removida a antiga seção de destaque de texto fixo do Personalizar, substituída pela área de widget mais flexível
-
-= 6.4 =
-* Nome da pasta do tema alinhado ao slug (independente) — garante leitura correta do aviso de copyright pelo Theme Check
-* Aviso de copyright GPL explícito no style.css
-
-= 6.3 =
-* Estilo "Céu e Fé" aprimorado: halo de luz no cabeçalho, filete dourado nos títulos, versículo e referência bíblica mais elegantes
-* Imagens em widgets agora preenchem a largura do contêiner
-* Menu de navegação em widget com estilo de lista tocável e acessível
-* Rodapé com alinhamento harmonizado no desktop (faixa central centralizada)
-* Classes CSS nativas do WordPress (.wp-caption, .sticky, .gallery-caption, .bypostauthor)
-
-= 6.2 =
-* Conformidade com diretrizes do repositório WordPress.org
-* Adicionado editor-style.css
-* Adicionado suporte a wp_link_pages
-* Adicionado enfileiramento do script comment-reply
-* Adicionadas classes CSS obrigatórias do WordPress
-
-= 6.1 =
-* Correções de contraste WCAG em todos os 13 estilos
-* Cobertura de elementos nativos do WordPress (figcaption, mark, select)
+= 1.0 =
+* First public release
+* 7 unique visual styles: Default, Gospel, Céu e Fé, Tinta & Papel, Marinelli, Moderno, Colorado
+* All fonts self-hosted (Fontsource, SIL OFL 1.1) — no Google CDN dependency
+* WCAG 2.1 Level AA contrast validated across all styles
+* Full keyboard navigation and screen reader support
+* Animations respect prefers-reduced-motion
+* RTL language support
 
 == Copyright ==
 
@@ -100,12 +116,22 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
-Fontes (self-hosted / incluídas no tema): Inter, Montserrat, Poppins, Playfair Display, Plus Jakarta Sans, Raleway
-Distribuídas via Fontsource (https://fontsource.org) — mesmos arquivos do Google Fonts.
-License: SIL Open Font License, 1.1
-https://opensource.org/licenses/OFL-1.1
-As fontes são carregadas localmente (não do CDN do Google) para respeitar a
-privacidade dos visitantes e cumprir as diretrizes do WordPress.org.
+= Collaborator =
 
-Screenshot image: Generated for demonstration purposes.
+Structural development and visual style refinement by In9ti — Custom website design and development.
+https://wordpress.org/support/users/in9ti/
+
+= Fonts =
+
+Inter, Montserrat, Poppins, Playfair Display, Plus Jakarta Sans, Raleway, Oswald
+Distributed via Fontsource (https://fontsource.org) — same files as Google Fonts.
+License: SIL Open Font License 1.1
+License URI: https://opensource.org/licenses/OFL-1.1
+Fonts are loaded locally from within the theme package. No external requests are made.
+
+= Screenshots =
+
+Style preview images hosted at:
+https://github.com/leandro-sds/independente/tree/main/imagens_estilos/
 License: CC0 1.0 Universal
+License URI: https://creativecommons.org/publicdomain/zero/1.0/
