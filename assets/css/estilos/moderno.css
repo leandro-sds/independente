@@ -4,9 +4,31 @@
  * NÃO editar manualmente sem atualizar style.css
  */
 
+body.style-moderno {
+  /* ── CORES E TIPOGRAFIA DO ESTILO (fonte única — migrado do PHP) ── */
+  --primary-color: #0f0c29;
+  --bg-light: #0a0818;
+  --card-bg: #1a1535;
+  --accent-color: #00f5d4;
+  --on-accent: #0a0818;
+  --link-color: #c77dff;
+  --text-color: #f0eeff;
+  --muted-text: rgba(200,185,255,0.92);
+  --border-color: rgba(199,125,255,0.20);
+  --header-title-color: #ffffff;
+  --header-muted: rgba(0,245,212,0.75);
+  --header-border: rgba(0,245,212,0.20);
+  --focus-ring: 3px solid #00f5d4;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --font-main: 'Inter', system-ui, sans-serif;
+  --font-title: 'Montserrat', 'Inter', sans-serif;
+}
+
 /* ── Regras de desktop ── */
 
-body.style-moderno     { --muted-text: rgba(200,185,255,0.92); }
+
 
 body.style-moderno {
   background: radial-gradient(ellipse at 20% 50%, #1a0a2e 0%, #0a0818 60%);
@@ -45,7 +67,7 @@ body.style-moderno .primary-nav .menu a {
   font-weight: 600 !important;
   font-size: 0.95rem !important;
   letter-spacing: 0.03em !important;
-  border-radius: 10px !important;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important;
   transition: background 0.22s ease, color 0.22s ease,
               box-shadow 0.22s ease !important;
 }
@@ -60,9 +82,16 @@ body.style-moderno .primary-nav .menu li.current-menu-item > a,
 body.style-moderno .primary-nav .menu li.current_page_item > a {
   color: #00f5d4 !important;
   background: rgba(0,245,212,0.10) !important;
-  border-bottom: 2px solid #00f5d4 !important;
-  border-radius: 10px 10px 0 0 !important;
+  border-bottom: 1px solid #00f5d4 !important;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important;
   font-weight: 700 !important;
+}
+@media ( max-width: 768px ){
+  body.style-moderno .primary-nav .menu li.current-menu-item > a,
+  body.style-moderno .primary-nav .menu li.current_page_item > a {
+    border-left: 0 !important;
+    border-radius: 0 !important;
+  }
 }
 
 body.style-moderno .header-search .search-form .search-field {
@@ -130,7 +159,7 @@ body.style-moderno .widget::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  left: -20%;
   width: 60%;
   height: 100%;
   background: linear-gradient(
@@ -262,7 +291,7 @@ body.style-moderno .pagination .page-numbers:hover {
 }
 
 body.style-moderno footer[role="contentinfo"] {
-  background: linear-gradient(135deg, #0f0c29, #0a0818);
+  background: #0f0c29;
   border-top: 1px solid rgba(0,245,212,0.15);
   box-shadow: 0 -4px 30px rgba(0,245,212,0.05);
 }
@@ -299,8 +328,7 @@ body.style-moderno .social-links a:hover {
 body.style-moderno footer p,
 body.style-moderno footer span,
 body.style-moderno footer li {
-  color: #00f5d4 !important;
-  -webkit-text-fill-color: #00f5d4 !important;
+  color: rgba(220,210,255,0.92);
 }
 
 body.style-moderno footer h1,
@@ -539,7 +567,7 @@ body.style-moderno .primary-nav .menu a::before {
   height: 0%;
   background: rgba(0,245,212,0.10);
   transition: height 0.22s ease;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   pointer-events: none;
 }
 
@@ -615,7 +643,7 @@ body.style-moderno .widget,
 body.style-moderno .widget_block {
   animation: modernoWidgetGlow 4s ease-in-out infinite !important;
   position: relative;
-  overflow: visible; /* era hidden — cortava formulário de busca */
+  overflow: hidden; /* era hidden — cortava formulário de busca */
 }
 
 body.style-moderno .widget::before {
@@ -688,7 +716,7 @@ body.style-moderno .header-search .search-form .search-submit:hover {
   body.style-moderno .header-search .search-form .search-submit:hover { transform: none !important; }
 }
 
-body.style-moderno      { --accent-color: #00f5d4; --on-accent: #0a0818; }
+
 /* ── Componentes adicionados na auditoria v5.3 ── */
 
 
@@ -711,6 +739,10 @@ body.style-moderno .excerpt,
 body.style-moderno .excerpt p {
   color: #f0f0f0 !important;
   line-height: 1.7 !important;
+  background: none;
+}
+body.style-moderno .excerpt::after{
+  display: none;
 }
 
 body.style-moderno .comment-list .comment-body {
@@ -761,11 +793,6 @@ body.style-moderno .comment-form .submit {
   transition: all 0.3s ease !important;
   letter-spacing: 0.04em !important;
 }
-body.style-moderno .comment-form .submit:hover {
-  opacity: 0.88 !important;
-  transform: translateY(-1px);
-}
-
 body.style-moderno .wp-block-search__inside-wrapper {
   display: flex !important;
   width: 100% !important;
@@ -841,9 +868,6 @@ body.style-moderno .no-results .search-form .search-submit {
 body.style-moderno .post-thumbnail-img {
   border-radius: 6px !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-body.style-moderno article:hover .post-thumbnail-img {
-  transform: scale(1.02);
 }
 /* ── Conteúdo Extra: widgets seguem o visual do cartão de conteúdo ──
    Restaura o brilho compartilhado com o article (::before de shine é

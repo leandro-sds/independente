@@ -71,7 +71,7 @@ body.style-default .primary-nav .menu a::before {
   height: 0%;
   background: rgba(246,173,85,0.14);
   transition: height 0.25s ease;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   pointer-events: none;
 }
 
@@ -290,26 +290,21 @@ body.style-default .comment-form .submit {
   transition: all 0.3s ease !important;
   letter-spacing: 0.04em !important;
 }
-body.style-default .comment-form .submit:hover {
+body.style-default #submit:hover{
   opacity: 0.88 !important;
-  transform: translateY(-1px);
+  filter: none !important;
 }
-
-body.style-default .wp-block-search__inside-wrapper {
-  display: flex !important;
-  width: 100% !important;
-}
-body.style-default .wp-block-search__input {
+body.style-default .wp-block-search__input  {
   background: #ffffff !important;
   border: 1.5px solid #e5e7eb !important;
   color: #333333 !important;
   border-radius: 6px 0 0 6px !important;
 }
-body.style-default .wp-block-search__input:focus {
+body.style-default .wp-block-search__input:focus  {
   border-color: #F6AD55 !important;
   outline: none !important;
 }
-body.style-default .wp-block-search__button {
+body.style-default .wp-block-search__button  {
   background: #F6AD55 !important;
   color: #1a1a1a !important;
   border: none !important;
@@ -317,14 +312,14 @@ body.style-default .wp-block-search__button {
   font-weight: 700 !important;
   transition: all 0.3s ease !important;
 }
-body.style-default .wp-block-search__button:hover {
+body.style-default .wp-block-search__button:hover  {
   opacity: 0.88 !important;
 }
 
 body.style-default .widget,
 body.style-default .widget_block {
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
 body.style-default footer a {
@@ -402,10 +397,3 @@ body.style-default .no-results .search-form .search-submit {
   }
 }
 
-body.style-default .post-thumbnail-img {
-  border-radius: 6px !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-body.style-default article:hover .post-thumbnail-img {
-  transform: scale(1.02);
-}

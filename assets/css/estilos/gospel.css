@@ -7,40 +7,40 @@
  * ─────────────────────────────────────────────────────────────
  */
 
+body.style-gospel {
+  /* ── CORES E TIPOGRAFIA DO ESTILO (fonte única — migrado do PHP) ── */
+  --primary-color: #07071A;
+  --bg-light: #0D0D2B;
+  --card-bg: #0F0F24;
+  --accent-color: #FFD166;
+  --on-accent: #07071A;
+  --link-color: #A78BFA;
+  --text-color: #F0EFF8;
+  --muted-text: #8B8AA8;
+  --border-color: #1E1E3F;
+  --header-title-color: #F0EFF8;
+  --header-muted: rgba(240,239,248,0.65);
+  --header-border: rgba(255,209,102,0.20);
+  --focus-ring: 2px solid #FFD166;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --secondary-color: #A78BFA;
+  --header-bg: #07071A;
+  --header-fg: #F0EFF8;
+  --header-input-bg: rgba(240,239,248,0.08);
+  --header-input-border: rgba(240,239,248,0.25);
+  --font-main: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Raleway', 'Inter', system-ui, sans-serif;
+  --transition: 0.35s ease;
+  --glow-gold: 0 0 20px rgba(255,209,102,0.18), 0 2px 8px rgba(0,0,0,0.40);
+  --glow-gold-hover: 0 0 32px rgba(255,209,102,0.28), 0 4px 16px rgba(0,0,0,0.50);
+}
+
 /* ══════════════════════════════════════════════════════════════
    VARIÁVEIS
    ══════════════════════════════════════════════════════════════ */
-body.style-gospel {
-  --primary-color:        #07071A;
-  --accent-color:         #FFD166;
-  --on-accent:            #07071A;
-  --secondary-color:      #A78BFA;
-  --bg-light:             #0D0D2B;
-  --card-bg:              #0F0F24;
-  --link-color:           #A78BFA;
-  --text-color:           #F0EFF8;
-  --muted-text:           #8B8AA8;
-  --border-color:         #1E1E3F;
-  --header-bg:            #07071A;
-  --header-fg:            #F0EFF8;
-  --header-muted:         rgba(240,239,248,0.65);
-  --header-input-bg:      rgba(240,239,248,0.08);
-  --header-input-border:  rgba(240,239,248,0.25);
-  --font-main:            'Inter', system-ui, sans-serif;
-  --font-heading:         'Raleway', 'Inter', system-ui, sans-serif;
-  --focus-ring:           2px solid #FFD166;
-  --radius-sm:            8px;
-  --radius-md:            14px;
-  --radius-lg:            20px;
-  --transition:           0.35s ease;
-  --glow-gold:            0 0 20px rgba(255,209,102,0.18), 0 2px 8px rgba(0,0,0,0.40);
-  --glow-gold-hover:      0 0 32px rgba(255,209,102,0.28), 0 4px 16px rgba(0,0,0,0.50);
 
-  background-color: #0B0B1F;
-  font-family: 'Inter', system-ui, sans-serif;
-  color: #F0EFF8;
-  line-height: 1.75;
-}
 
 /* ══════════════════════════════════════════════════════════════
    BODY E LAYOUT
@@ -164,12 +164,9 @@ body.style-gospel .header-search .search-form .search-submit:hover {
    NAVEGAÇÃO
    ══════════════════════════════════════════════════════════════ */
 body.style-gospel .primary-nav {
-  background: rgba(5,5,20,0.96);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(255,209,102,0.12);
 }
-
 body.style-gospel .primary-nav .menu a {
   color: rgba(240,239,248,0.95) !important; /* era 0.82 — contraste no menu escuro */
   font-family: 'Inter', system-ui, sans-serif;
@@ -178,10 +175,19 @@ body.style-gospel .primary-nav .menu a {
   letter-spacing: 0.04em !important;
   text-transform: none !important;
   text-decoration: none !important;
-  padding: 11px 16px !important;
-  border-radius: 6px 6px 0 0;
+  border-radius: 0;
   transition: all var(--transition) !important;
   position: relative;
+}
+
+@media ( min-width: 769px ){
+  body.style-gospel .primary-nav {
+    background: rgba(5,5,20,0.96);
+    border-top: 1px solid rgba(255,209,102,0.12);
+  }
+  body.style-gospel .primary-nav .menu a {
+    border-radius: 6px 6px 0 0;
+  }
 }
 
 /* Underline dourado que cresce no hover */
@@ -201,7 +207,7 @@ body.style-gospel .primary-nav .menu a::after {
 
 body.style-gospel .primary-nav .menu a:hover {
   color: #F0EFF8 !important;
-  background: rgba(255,209,102,0.06) !important;
+  background: rgba(255,209,102,0.08) !important;
 }
 
 body.style-gospel .primary-nav .menu a:hover::after {
@@ -409,11 +415,6 @@ body.style-gospel .post-thumbnail-img {
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
-body.style-gospel article:hover .post-thumbnail-img {
-  transform: scale(1.02);
-  box-shadow: 0 4px 16px rgba(255,209,102,0.15) !important;
-}
-
 /* ══════════════════════════════════════════════════════════════
    BOTÃO LEIA MAIS
    ══════════════════════════════════════════════════════════════ */
@@ -611,8 +612,9 @@ body.style-gospel .comment-form .submit {
 body.style-gospel .comment-form .submit:hover {
   background: #FFE08A !important;
   box-shadow: 0 0 28px rgba(255,209,102,0.45) !important;
-  transform: translateY(-1px);
+  filter: none !important;
 }
+
 
 /* ══════════════════════════════════════════════════════════════
    BUSCA GUTENBERG
@@ -766,6 +768,7 @@ body.style-gospel footer a {
 
 body.style-gospel footer a:hover {
   color: #FFD166;
+  -webkit-text-fill-color: #FFD166;
 }
 
 body.style-gospel footer[role="contentinfo"] p,
@@ -815,10 +818,7 @@ body.style-gospel .logo {
 /* ══════════════════════════════════════════════════════════════
    VARIÁVEIS GLOBAIS DO TEMA
    ══════════════════════════════════════════════════════════════ */
-body.style-gospel {
-  --accent-color: #FFD166;
-  --on-accent: #07071A;
-}
+
 
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVIDADE MOBILE

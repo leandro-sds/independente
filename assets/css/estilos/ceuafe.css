@@ -1,41 +1,79 @@
 /*
- * Independent Theme — Estilo: ceuafe
- * Gerado automaticamente na refatoração v5.2
- * NÃO editar manualmente sem atualizar style.css
+ * Independent Theme — Arquivo de ESTILO: ceuafe
+ * ============================================================
+ * REGRA DE OURO DESTE TEMA:
+ *   - A ESTRUTURA (layout, espaçamento, altura, posição, comportamento)
+ *     fica no style.css (base) e é IGUAL para todos os estilos.
+ *   - Este arquivo contém APENAS as particularidades do estilo "ceuafe":
+ *     cores, fontes, e decorações próprias (bordas, sombras, animações
+ *     específicas). Se for mexer em espaçamento/estrutura, vá no style.css.
+ * ============================================================
  */
 
 /* ── Regras de desktop ── */
 
 body.style-ceuafe {
-  background-color: #eaf2fb;
+  /* ── CORES E TIPOGRAFIA DO ESTILO (fonte única — antes parte vinha do PHP) ──
+     Todas as variáveis de cor/raio deste estilo ficam aqui, num lugar só.
+     Para mudar a identidade do estilo, edite os valores abaixo. */
+  --primary-color: #0B3D8C;   /* azul celestial vívido (o céu) — afastado do Padrão */
+  --bg-light: #F3F0FB;        /* lavanda clarissima (fundo do conteúdo, conforme spec) */
+  --card-bg: #ffffff;         /* branco puro (pureza) */
+  --accent-color: #E8B923;    /* dourado de glória puro — afastado do dourado-laranja do Padrão */
+  --on-accent: #16263D;       /* azul-noite escuro sobre o dourado */
+  --link-color: #15619E;      /* azul celeste (links) */
+  --text-color: #16263D;      /* azul-marinho quase preto (texto) */
+  --muted-text: #4A5E72;      /* azul acinzentado (secundário) */
+  --heading-color: #0B3D8C;   /* títulos no azul celestial */
+  --border-color: rgba(11,61,140,0.14);
+  --header-title-color: #ffffff;
+  --header-muted: rgba(255,255,255,0.75);
+  --header-border: rgba(255,255,255,0.15);
+  --focus-ring: 3px solid #E8B923;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --font-main: 'Inter', 'Roboto', system-ui, sans-serif;
+  --font-title: 'Playfair Display', 'Lora', Georgia, serif;
+
+  background-color: #EEF4FB;
   font-family: 'Inter', 'Roboto', system-ui, sans-serif;
   font-size: 1.02rem; /* ligeiramente maior — mais legível */
   font-weight: 420; /* um toque mais presente sem ser bold */
 }
 
 body.style-ceuafe .site-header {
-  background: linear-gradient(180deg, #103358 0%, #0a2040 55%, #06152b 100%) !important; /* céu profundo: claro no topo → escuro embaixo */
-  border-bottom: 3px solid #07172e !important;
+  background: linear-gradient(180deg, #0F4499 0%, #0A2E66 55%, #06152b 100%) !important; /* céu profundo: claro no topo → escuro embaixo */
+  border-bottom: 3px solid #0A2444 !important;
   box-shadow: 0 3px 16px rgba(0,0,0,0.30) !important;
 }
 
 body.style-ceuafe .site-header::after {
   content: '';
   display: block;
-  height: 2px;
-  background: linear-gradient(90deg, #e07b39, rgba(224,123,57,0.30));
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #E8B923, rgba(232,185,35,0.30));
   margin-top: 2px;
+  animation: defaultLine 1.1s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.style-ceuafe .site-header::after {
+    animation: none !important;
+    width: 100% !important;
+  }
 }
 
 body.style-ceuafe .site-title .site-name a {
-  color: #ffffff;
+  color: #E8B923; /* dourado — impacto imediato e nobreza (conforme spec) */
   font-family: 'Poppins', 'Montserrat', 'Inter', system-ui, sans-serif;
   font-weight: 700;
   text-decoration: none !important;
 }
 
 body.style-ceuafe .site-title .site-description {
-  color: rgba(255,255,255,0.78);
+  color: rgba(232,185,35,0.80); /* dourado suave (conforme spec) */
 }
 
 body.style-ceuafe main {
@@ -52,6 +90,7 @@ body.style-ceuafe .widget,
 body.style-ceuafe .widget_block {
   background-color: #ffffff;
   border: 1px solid rgba(13,43,74,0.08);
+  border-top: 3px solid #2F9E5C; /* linha verde esperança no topo, conforme spec original */
   border-radius: 10px;
   box-shadow: 0 4px 14px rgba(13,43,74,0.07), 0 1px 4px rgba(0,0,0,0.04);
   transition: box-shadow 0.3s ease;
@@ -65,32 +104,16 @@ body.style-ceuafe .widget_block:hover {
 /* Widget do player: faixa terracota no topo para dar mais destaque */
 body.style-ceuafe .widget_pr_widget,
 body.style-ceuafe .widget:has(.pr-player) {
-  border-top: 3px solid #e07b39 !important;
-  box-shadow: 0 4px 18px rgba(224,123,57,0.12), 0 1px 4px rgba(0,0,0,0.04) !important;
+  border-top: 3px solid #E8B923 !important;
+  box-shadow: 0 4px 18px rgba(232,185,35,0.12), 0 1px 4px rgba(0,0,0,0.04) !important;
 }
 
-body.style-ceuafe .wp-block-search__inside-wrapper {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  align-items: stretch !important;
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  gap: 0 !important;
-}
 
-body.style-ceuafe .wp-block-search__input {
-  flex: 1 !important;
-  width: auto !important;
-  min-width: 0 !important;
-  box-sizing: border-box !important;
-}
 
-body.style-ceuafe .wp-block-search__button {
+body.style-ceuafe .wp-block-search__button  {
   flex-shrink: 0 !important;
-  white-space: nowrap !important;
-  background-color: #e07b39 !important;
-  color: #ffffff !important;
+  background-color: #E8B923 !important;
+  color: #16263D !important;
   border: none !important;
 }
 
@@ -98,33 +121,33 @@ body.style-ceuafe h1,
 body.style-ceuafe h2,
 body.style-ceuafe h3,
 body.style-ceuafe .entry-title {
-  color: #0d2b4a;
+  color: #0B3D8C;
   font-family: 'Playfair Display', 'Lora', Georgia, serif; /* serifada clássica: peso e tradição de Bíblia impressa */
   font-weight: 700;
 }
 
 body.style-ceuafe a {
-  color: #0d4f8c; /* era #1a6aaa — mais escuro, contraste WCAG AA mais forte */
+  color: #15619E; /* era #15619E — mais escuro, contraste WCAG AA mais forte */
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 body.style-ceuafe a:hover {
-  color: #e07b39;
+  color: #E8B923;
 }
 
 body.style-ceuafe .post-content p,
 body.style-ceuafe .page-content p,
 body.style-ceuafe .post-content li,
 body.style-ceuafe .page-content li {
-  color: #141e2b; /* era #1a2535 — mais escuro para melhor contraste */
+  color: #141e2b; /* era #16263D — mais escuro para melhor contraste */
   line-height: 1.85;
   font-size: 1.03rem;
 }
 
 body.style-ceuafe .post-content blockquote,
 body.style-ceuafe .page-content blockquote {
-  border-left: 5px solid #e07b39 !important;
+  border-left: 5px solid #3E7CC4 !important; /* azul celeste, conforme spec */
   background: linear-gradient(135deg, #fdf8f0 0%, #f7f0e4 60%, #f2e8d5 100%) !important; /* pergaminho */
   color: #2a1f14 !important;
   border-radius: 0 12px 12px 0 !important;
@@ -134,7 +157,7 @@ body.style-ceuafe .page-content blockquote {
   font-family: 'Playfair Display', Georgia, 'Garamond', serif !important; /* serifada elegante */
   line-height: 1.95 !important; /* mais respiro entre linhas */
   position: relative !important;
-  box-shadow: 0 3px 16px rgba(224,123,57,0.10), inset 0 0 0 1px rgba(224,123,57,0.12) !important;
+  box-shadow: 0 3px 16px rgba(232,185,35,0.10), inset 0 0 0 1px rgba(232,185,35,0.12) !important;
 }
 
 body.style-ceuafe .post-content blockquote::before,
@@ -144,18 +167,18 @@ body.style-ceuafe .page-content blockquote::before {
   top: -18px;
   left: 16px;
   font-size: 6rem; /* era 4rem — aspas maiores e mais ornamentais */
-  color: rgba(184,84,26,0.85); /* era rgba(224,123,57,0.50) — ocre escuro p/ contraste AA sobre o bege */
+  color: rgba(184,84,26,0.85); /* era rgba(232,185,35,0.50) — ocre escuro p/ contraste AA sobre o bege */
   font-family: Georgia, 'Garamond', serif;
   line-height: 1;
   pointer-events: none;
-  text-shadow: 1px 1px 0 rgba(224,123,57,0.15);
+  text-shadow: 1px 1px 0 rgba(232,185,35,0.15);
 }
 
 body.style-ceuafe .widget h3,
 body.style-ceuafe .widget h2,
 body.style-ceuafe .widget h4 {
-  color: #b85a20 !important;
-  border-bottom-color: rgba(224,123,57,0.35) !important;
+  color: #976e1f !important;
+  border-bottom-color: rgba(232,185,35,0.35) !important;
   text-transform: uppercase !important;
   letter-spacing: 1px !important;
   font-size: 0.82rem !important;
@@ -164,19 +187,19 @@ body.style-ceuafe .widget h4 {
 }
 
 body.style-ceuafe .header-search .search-form .search-submit {
-  background-color: #b85a20;
-  color: #ffffff;
+  background-color: #E8B923;
+  color: #16263D; /* texto escuro, conforme spec */
   border: none;
 }
 
 body.style-ceuafe .header-search .search-form .search-submit:hover {
-  background-color: #8f4010;
+  background-color: #D9AC1E;
   filter: none;
 }
 
 body.style-ceuafe footer[role="contentinfo"] {
-  background-color: #0d2b4a;
-  border-top: 2px solid rgba(224,123,57,0.40);
+  background-color: #0B3D8C;
+  border-top: 2px solid rgba(232,185,35,0.40);
 }
 
 body.style-ceuafe .site-info,
@@ -185,13 +208,17 @@ body.style-ceuafe .site-info p {
   border-top-color: rgba(255,255,255,0.15);
 }
 
-body.style-ceuafe footer a { color: rgba(255,255,255,0.82); }
+body.style-ceuafe footer:not(.wp-block-latest-comments__comment-meta) a { color: rgba(255,255,255,0.82); }
 
-body.style-ceuafe footer a:hover { color: #ffffff; }
+body.style-ceuafe footer a:hover {color: #E8B923;-webkit-text-fill-color: #E8B923;}
 
 body.style-ceuafe .social-title { color: #ffffff; }
 
 body.style-ceuafe .social-links a { color: rgba(255,255,255,0.80); }
+
+body.style-ceuafe footer h4{
+  color: #FFFFFF !important;
+}
 
 body.style-ceuafe footer[role="contentinfo"] p,
 body.style-ceuafe footer[role="contentinfo"] span,
@@ -210,19 +237,19 @@ body.style-ceuafe footer .widget {
 }
 
 body.style-ceuafe .pagination .page-numbers {
-  color: #1a6aaa;
+  color: #15619E;
   border-color: rgba(13,43,74,0.20);
 }
 
 body.style-ceuafe .pagination .current,
 body.style-ceuafe .pagination .page-numbers:hover {
-  background: #e07b39;
-  border-color: #e07b39;
-  color: #ffffff;
+  background: #E8B923;
+  border-color: #E8B923;
+  color: #16263D;
 }
 
 body.style-ceuafe .read-more {
-  background: #c86820 !important; /* terracota mais escuro — mais contraste */
+  background: #b45e1d !important; /* terracota mais escuro — mais contraste */
   color: #ffffff !important;
   font-weight: 700 !important;
   font-size: 0.92rem !important;
@@ -235,7 +262,8 @@ body.style-ceuafe .read-more {
 
 body.style-ceuafe .read-more:hover {
   background: #a05518 !important;
-  color: #ffffff !important;
+  color: #FFF !important;
+  -webkit-text-fill-color: #FFF !important;
   box-shadow: 0 4px 14px rgba(200,104,32,0.45) !important;
   transform: translateY(-1px);
   filter: none !important;
@@ -243,7 +271,7 @@ body.style-ceuafe .read-more:hover {
 
 @media (max-width: 768px) {
   body.style-ceuafe #main-menu {
-    background: #0a2040 !important;
+    background: #0C2E55 !important;
     border-top: 1px solid rgba(255,255,255,0.15) !important;
   }
 
@@ -252,10 +280,10 @@ body.style-ceuafe .read-more:hover {
   }
 }
 
-body.style-ceuafe       { --accent-color: #F5C542; --on-accent: #0d1f35; }
+
 
 body.style-ceuafe .widget .wp-block-search__button {
-  background-color: #b85a20 !important;
+  background-color: #976e1f !important;
   color: #ffffff !important;
   border: none !important;
   text-transform: none !important;
@@ -264,59 +292,65 @@ body.style-ceuafe .widget .wp-block-search__button {
 }
 
 body.style-ceuafe .widget .wp-block-search__button:hover {
-  background-color: #8f4010 !important;
+  background-color: #7A5A18 !important;
 }
 /* ── Componentes adicionados na auditoria v5.3 ── */
 
-
-body.style-ceuafe .primary-nav {
-  background: rgba(0,0,0,0.25);
-  border-top: 1px solid rgba(255,255,255,0.10);
+@media ( min-width: 769px ){
+  body.style-ceuafe .primary-nav {
+    background: rgba(0,0,0,0.25);
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
 }
 body.style-ceuafe .primary-nav .menu a {
   color: #ffffff !important;
   transition: all 0.3s ease !important;
 }
 body.style-ceuafe .primary-nav .menu a:hover {
-  color: #e07b39 !important;
+  color: #E8B923 !important;
   background: rgba(255,255,255,0.08) !important;
 }
 body.style-ceuafe .primary-nav .menu li.current-menu-item > a,
 body.style-ceuafe .primary-nav .menu li.current_page_item > a {
   color: #ffffff !important;
   font-weight: 700 !important;
-  background: rgba(224,123,57,0.30) !important; /* fundo destacado — estado ativo claro */
+  background: rgba(232,185,35,0.30) !important; /* fundo destacado — estado ativo claro */
   border-radius: 6px 6px 0 0;
-  border-bottom: 3px solid #e07b39 !important; /* sublinhado terracota forte */
-  padding-bottom: 26px !important; /* respiro para a borda não espremer o texto — ajuste fino da revisão */
-  margin-bottom: -10px; /* compensa o padding extra para a borda encaixar na linha do header */
+  border-bottom: 2px solid #E8B923 !important; /* sublinhado terracota forte */
+}
+@media ( max-width: 768px ){
+  body.style-ceuafe .primary-nav .menu li.current-menu-item > a,
+  body.style-ceuafe .primary-nav .menu li.current_page_item > a {
+    border-left: 0 !important;
+    border-radius: 0 !important;
+  }
 }
 
 body.style-ceuafe .post-content a,
 body.style-ceuafe .page-content a {
-  color: #0d4f8c !important; /* consistente com o link global */
+  color: #15619E !important; /* consistente com o link global */
   text-decoration: underline !important;
   text-underline-offset: 3px !important;
   transition: color 0.3s ease;
 }
 body.style-ceuafe .post-content a:hover,
 body.style-ceuafe .page-content a:hover {
-  color: #e07b39 !important;
+  color: #E8B923 !important;
 }
 
 body.style-ceuafe .post-meta {
-  color: #445566 !important; /* era #5a6a7a — mais escuro, mais legível */
+  color: #445566 !important; /* era #4A5E72 — mais escuro, mais legível */
   font-size: 0.88rem !important;
   background: transparent !important;
-  border-left: 3px solid #e07b39 !important;
+  border-left: 3px solid #E8B923 !important;
   padding-left: 10px !important;
 }
 body.style-ceuafe .post-meta a {
-  color: #0d4f8c !important;
+  color: #15619E !important;
   text-decoration: none !important;
 }
 body.style-ceuafe .post-meta a:hover {
-  color: #e07b39 !important;
+  color: #E8B923 !important;
 }
 
 body.style-ceuafe .excerpt,
@@ -327,7 +361,7 @@ body.style-ceuafe .excerpt p {
 
 body.style-ceuafe article {
   background-color: #ffffff;
-  border: 1px solid #d0dce8 !important;
+  border: 1px solid #D6E2F0 !important;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 body.style-ceuafe article:hover {
@@ -337,17 +371,17 @@ body.style-ceuafe article:hover {
 
 body.style-ceuafe .comment-list .comment-body {
   background: #ffffff !important;
-  border: 1px solid #d0dce8 !important;
+  border: 1px solid #D6E2F0 !important;
   border-radius: 8px !important;
   padding: 1.25rem 1.5rem !important;
 }
 body.style-ceuafe .comment-metadata a {
-  color: #5a6a7a !important;
+  color: #4A5E72 !important;
   font-size: 0.82rem !important;
   text-decoration: none !important;
 }
 body.style-ceuafe .comment-metadata a:hover {
-  color: #e07b39 !important;
+  color: #E8B923 !important;
 }
 body.style-ceuafe .comment-content p {
   color: #1a1a1a !important;
@@ -363,34 +397,29 @@ body.style-ceuafe .comment-form input[type="email"],
 body.style-ceuafe .comment-form input[type="url"],
 body.style-ceuafe .comment-form textarea {
   background: #ffffff !important;
-  border: 1.5px solid #d0dce8 !important;
+  border: 1.5px solid #D6E2F0 !important;
   color: #1a1a1a !important;
   border-radius: 6px !important;
   transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 body.style-ceuafe .comment-form input:focus,
 body.style-ceuafe .comment-form textarea:focus {
-  border-color: #e07b39 !important;
-  box-shadow: 0 0 0 3px #e07b3922 !important;
+  border-color: #E8B923 !important;
+  box-shadow: 0 0 0 3px #E8B92322 !important;
   outline: none !important;
 }
 body.style-ceuafe .comment-form .submit {
-  background: #e07b39 !important;
-  color: #ffffff !important;
+  background: #E8B923 !important;
+  color: #16263D !important;
   border: none !important;
   font-weight: 700 !important;
   border-radius: 6px !important;
   transition: all 0.3s ease !important;
   letter-spacing: 0.04em !important;
 }
-body.style-ceuafe .comment-form .submit:hover {
-  opacity: 0.88 !important;
-  transform: translateY(-1px);
-}
-
 body.style-ceuafe .back-link a {
-  color: #1a6aaa !important;
-  border: 1.5px solid #e07b39 !important;
+  color: #15619E !important;
+  border: 1.5px solid #E8B923 !important;
   border-radius: 6px;
   padding: 7px 16px;
   text-decoration: none !important;
@@ -398,25 +427,25 @@ body.style-ceuafe .back-link a {
   transition: all 0.3s ease;
 }
 body.style-ceuafe .back-link a:hover {
-  background: #e07b39 !important;
-  color: #ffffff !important;
+  background: #E8B923 !important;
+  color: #16263D !important;
 }
 
 body.style-ceuafe .error-404 .page-title,
 body.style-ceuafe .no-results .page-title {
-  color: #e07b39 !important;
+  color: #E8B923 !important;
 }
 body.style-ceuafe .error-404 .search-form .search-field,
 body.style-ceuafe .no-results .search-form .search-field {
   background: #ffffff !important;
-  border: 1.5px solid #d0dce8 !important;
+  border: 1.5px solid #D6E2F0 !important;
   color: #1a1a1a !important;
   border-radius: 6px 0 0 6px !important;
 }
 body.style-ceuafe .error-404 .search-form .search-submit,
 body.style-ceuafe .no-results .search-form .search-submit {
-  background: #e07b39 !important;
-  color: #ffffff !important;
+  background: #E8B923 !important;
+  color: #16263D !important;
   border: none !important;
   border-radius: 0 6px 6px 0 !important;
   font-weight: 700 !important;
@@ -432,14 +461,6 @@ body.style-ceuafe .no-results .search-form .search-submit {
   body.style-ceuafe article {
     border-radius: 8px !important;
   }
-}
-
-body.style-ceuafe .post-thumbnail-img {
-  border-radius: 6px !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-body.style-ceuafe article:hover .post-thumbnail-img {
-  transform: scale(1.02);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -536,7 +557,7 @@ body.style-ceuafe .content-extra .widget_block:hover {
    o amarelo-dourado do acento é ótimo como preenchimento de botão, mas fraco como
    anel fino sobre o bege. Usa o azul-marinho da identidade (contraste 12.7). */
 body.style-ceuafe :focus-visible {
-  outline: 3px solid #0d2b4a !important;
+  outline: 3px solid #0B3D8C !important;
   outline-offset: 2px !important;
 }
 
@@ -563,7 +584,7 @@ body.style-ceuafe .site-header::before {
   height: 240px;
   background: radial-gradient(circle,
               rgba(245,197,66,0.22) 0%,
-              rgba(224,123,57,0.10) 38%,
+              rgba(232,185,35,0.10) 38%,
               transparent 70%);
   pointer-events: none;
   z-index: 0;
@@ -575,14 +596,12 @@ body.style-ceuafe .header-top {
   z-index: 1;
 }
 
-/* 5) Borda inferior do cabeçalho um pouco mais luminosa (dourado vivo)
-   e gradiente de céu com transição mais suave. */
+/* 5) Borda inferior do cabeçalho um pouco mais luminosa, gradiente de céu
+   com transição mais suave (a linha dourada já é definida no início do
+   arquivo, com animação). */
 body.style-ceuafe .site-header {
-  background: linear-gradient(180deg, #0c2f54 0%, #0a2444 50%, #06152b 100%) !important;
-  border-bottom: 3px solid #07172e !important;
-}
-body.style-ceuafe .site-header::after {
-  background: linear-gradient(90deg, #e8a44a, rgba(232,164,74,0.25)) !important;
+  background: linear-gradient(180deg, #0F4499 0%, #0A2E66 50%, #06152b 100%) !important;
+  border-bottom: 3px solid #0A2444 !important;
 }
 
 /* 2) Filete dourado sob os títulos de seção — acabamento editorial.
@@ -603,7 +622,7 @@ body.style-ceuafe .entry-title::after {
   bottom: 0;
   width: 48px;
   height: 2px;
-  background: linear-gradient(90deg, #e8a44a, rgba(232,164,74,0));
+  background: linear-gradient(90deg, #E8BC5A, rgba(232,164,74,0));
   border-radius: 0;
 }
 
@@ -616,7 +635,7 @@ body.style-ceuafe .page-content blockquote::before {
   left: 12px !important;
   font-size: 5rem !important;
   color: rgba(184,84,26,0.55) !important;
-  text-shadow: 1px 2px 2px rgba(224,123,57,0.12) !important;
+  text-shadow: 1px 2px 2px rgba(232,185,35,0.12) !important;
 }
 
 /* 4) Referência bíblica em destaque dourado — separa visualmente a citação
@@ -633,4 +652,13 @@ body.style-ceuafe .page-content blockquote p:last-child:not(:only-child) {
   letter-spacing: 0.5px !important;
   font-style: italic !important;
   font-size: 1.05rem !important;
+}
+
+/* Títulos no azul celestial — peso e identidade do estilo cristão */
+body.style-ceuafe .entry-title,
+body.style-ceuafe .post-title,
+body.style-ceuafe article h1,
+body.style-ceuafe article h2,
+body.style-ceuafe .page-header h1 {
+  color: #0B3D8C !important;
 }

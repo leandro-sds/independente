@@ -100,9 +100,12 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
-Google Fonts — Inter, Montserrat, Poppins, Playfair Display, Plus Jakarta Sans, Raleway
+Fontes (self-hosted / incluídas no tema): Inter, Montserrat, Poppins, Playfair Display, Plus Jakarta Sans, Raleway
+Distribuídas via Fontsource (https://fontsource.org) — mesmos arquivos do Google Fonts.
 License: SIL Open Font License, 1.1
-https://fonts.google.com/
+https://opensource.org/licenses/OFL-1.1
+As fontes são carregadas localmente (não do CDN do Google) para respeitar a
+privacidade dos visitantes e cumprir as diretrizes do WordPress.org.
 
 Screenshot image: Generated for demonstration purposes.
 License: CC0 1.0 Universal

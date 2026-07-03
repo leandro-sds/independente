@@ -4,6 +4,28 @@
  * NÃO editar manualmente sem atualizar style.css
  */
 
+body.style-marinelli {
+  /* ── CORES E TIPOGRAFIA DO ESTILO (fonte única — migrado do PHP) ── */
+  --primary-color: #054b81;
+  --bg-light: #dde1e7;
+  --card-bg: #ffffff;
+  --accent-color: #bd5711; /* escurecido de #F97316 para contraste WCAG AA do texto branco nos botões */
+  --on-accent: #ffffff;
+  --link-color: #14679e; /* ajuste fino para contraste WCAG AA */
+  --text-color: #333333;
+  --muted-text: #666666;
+  --border-color: #e2e2e2;
+  --header-title-color: #ffffff;
+  --header-muted: rgba(255,255,255,0.85);
+  --header-border: rgba(255,255,255,0.15);
+  --focus-ring: 3px solid #f97e05;
+  --font-main: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  --font-title: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  --radius-sm: 3px;
+  --radius-md: 5px;
+  --radius-lg: 5px;
+}
+
 /* ── Regras de desktop ── */
 
 body.style-marinelli {
@@ -14,7 +36,7 @@ body.style-marinelli {
 }
 
 body.style-marinelli .site-content {
-  background-color: #ffffff;
+  background-color: #f7f9fa;
   border: 6px solid #054b81; /* borda levemente mais fina */
   border-top: 0;
   box-shadow: 0 8px 32px rgba(5,27,50,0.45), 0 2px 8px rgba(0,0,0,0.15);
@@ -49,11 +71,6 @@ body.style-marinelli .site-header::after {
   animation: none;
 }
 
-body.style-marinelli .primary-nav {
-  background: #156aa3;
-  padding-bottom: 0 !important;
-}
-
 body.style-marinelli .primary-nav .menu a {
   color: #ffffff !important;
   font-family: 'Inter', "Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -69,7 +86,8 @@ body.style-marinelli .primary-nav .menu a {
 }
 
 body.style-marinelli .primary-nav .menu a:hover {
-  background: rgba(249,126,5,0.85) !important; /* laranja flat no hover */
+   /* laranja flat no hover */
+  background: #f97e05;
   color: #ffffff !important;
 }
 
@@ -98,7 +116,7 @@ body.style-marinelli .header-search .search-form .search-field:focus {
 }
 
 body.style-marinelli .header-search .search-form .search-submit {
-  background-color: #f97e05 !important; /* laranja direto — flat design */
+  background-color: #f97e05; /* laranja direto — flat design */
   border: none !important; /* sem borda branca grossa */
   color: #ffffff !important;
   font-weight: 700 !important;
@@ -111,7 +129,7 @@ body.style-marinelli .header-search .search-form .search-submit {
 
 body.style-marinelli .header-search .search-form .search-submit:hover,
 body.style-marinelli .header-search .search-form .search-submit:focus-visible {
-  background-color: #f97e05 !important;
+  background-color: #ff902f !important;
   border-color: #f97e05 !important;
   filter: none !important;
 }
@@ -212,7 +230,7 @@ body.style-marinelli .page-content blockquote {
 }
 
 body.style-marinelli .read-more {
-  background: #f97e05 !important;
+  background: #f97e05;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   text-decoration: none !important;
@@ -222,7 +240,7 @@ body.style-marinelli .read-more {
 }
 
 body.style-marinelli .read-more:hover {
-  background: #d4680a !important;
+  background: #ff902f !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   filter: none !important;
@@ -281,11 +299,7 @@ body.style-marinelli .pagination .page-numbers:hover {
   color: #ffffff;
 }
 
-body.style-marinelli article:nth-child(even) {
-  background-color: #f5f7fa;
-}
-
-body.style-marinelli article:nth-child(odd) {
+body.style-marinelli article {
   background-color: #ffffff;
 }
 
@@ -300,7 +314,6 @@ body.style-marinelli .wp-block-separator {
 }
 
 body.style-marinelli footer[role="contentinfo"] {
-  background-color: #17293d;
   border-top: 3px solid #054b81;
 }
 
@@ -313,11 +326,14 @@ body.style-marinelli .site-info p {
 body.style-marinelli .social-title { color: #ffffff !important; }
 
 body.style-marinelli footer a {
-  color: rgba(255,255,255,0.85);
   text-decoration: none;
+  color: #FFF;
+}
+body.style-marinelli .wp-block-latest-comments__comment a{
+  color: #156aa3;
 }
 
-body.style-marinelli footer a:hover { color: #ffffff; }
+body.style-marinelli footer a:hover {color: #5b9de4 !important;}
 
 body.style-marinelli footer[role="contentinfo"] p,
 body.style-marinelli footer[role="contentinfo"] span,
@@ -325,7 +341,7 @@ body.style-marinelli footer[role="contentinfo"] li,
 body.style-marinelli footer[role="contentinfo"] td,
 body.style-marinelli footer[role="contentinfo"] div:not([class*="widget"]):not([class*="footer"]) {
   color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  /* -webkit-text-fill-color: #ffffff !important; */
 }
 
 body.style-marinelli footer .widget h1,
@@ -434,10 +450,6 @@ body.style-marinelli .primary-nav .menu a:hover::before {
   height: 100%;
 }
 
-body.style-marinelli .primary-nav .menu a:hover {
-  color: #f97e05 !important;
-}
-
 @media (prefers-reduced-motion: reduce) {
   body.style-marinelli .primary-nav .menu a::before {
     display: none !important;
@@ -496,7 +508,7 @@ body.style-marinelli .page-content blockquote::before {
 body.style-marinelli .widget,
 body.style-marinelli .widget_block {
   position: relative;
-  overflow: visible /* era hidden — cortava o formulário de busca */;
+  overflow: hidden /* era hidden — cortava o formulário de busca */;
 }
 
 body.style-marinelli .widget::before {
@@ -517,7 +529,7 @@ body.style-marinelli .widget h4 {
   padding-bottom: 8px !important;
 }
 
-body.style-marinelli    { --accent-color: #F97316; --on-accent: #ffffff; }
+
 /* ── Componentes adicionados na auditoria v5.3 ── */
 
 
@@ -602,11 +614,6 @@ body.style-marinelli .comment-form .submit {
   transition: all 0.3s ease !important;
   letter-spacing: 0.04em !important;
 }
-body.style-marinelli .comment-form .submit:hover {
-  opacity: 0.88 !important;
-  transform: translateY(-1px);
-}
-
 body.style-marinelli .wp-block-search__inside-wrapper {
   display: flex !important;
   width: 100% !important;
@@ -622,13 +629,17 @@ body.style-marinelli .wp-block-search__input:focus {
   outline: none !important;
 }
 body.style-marinelli .wp-block-search__button {
-  background: #F97316 !important;
+  background: #f97e05;
   color: #ffffff !important;
   border: none !important;
   border-radius: 0 6px 6px 0 !important;
   font-weight: 700 !important;
   transition: all 0.3s ease !important;
 }
+body.style-marinelli .wp-block-search__button:hover{
+  background-color: #ff902f !important;
+}
+
 body.style-marinelli .wp-block-search__button:hover {
   opacity: 0.88 !important;
 }
@@ -661,6 +672,11 @@ body.style-marinelli .no-results .search-form .search-submit {
   font-weight: 700 !important;
 }
 
+body.style-marinelli #submit:hover {
+  color: #FFF !important;
+  filter: none !important;
+}
+
 @media (max-width: 600px) {
   body.style-marinelli .site-title .site-name a {
     font-size: clamp(1rem, 4vw, 1.3rem);
@@ -676,7 +692,4 @@ body.style-marinelli .no-results .search-form .search-submit {
 body.style-marinelli .post-thumbnail-img {
   border-radius: 6px !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-body.style-marinelli article:hover .post-thumbnail-img {
-  transform: scale(1.02);
 }

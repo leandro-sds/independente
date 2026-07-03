@@ -47,6 +47,8 @@
           aria-controls="header-search"
           aria-expanded="false"
           aria-label="<?php esc_attr_e('Abrir campo de busca', 'independente'); ?>"
+          data-label-open="<?php esc_attr_e('Abrir campo de busca', 'independente'); ?>"
+          data-label-close="<?php esc_attr_e('Fechar campo de busca', 'independente'); ?>"
         >
           <span aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
@@ -71,6 +73,8 @@
   aria-controls="main-menu"
   aria-expanded="false"
   aria-label="<?php esc_attr_e('Abrir menu de navegação', 'independente'); ?>"
+  data-label-open="<?php esc_attr_e('Abrir menu de navegação', 'independente'); ?>"
+  data-label-close="<?php esc_attr_e('Fechar menu de navegação', 'independente'); ?>"
 >
           <span class="menu-toggle-icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
@@ -90,6 +94,7 @@
           'container'      => false,
           'fallback_cb'    => 'wp_page_menu',
           'items_wrap'     => '<ul id="main-menu" class="%2$s">%3$s</ul>',
+          'depth'          => '1',
         ]);
       ?>
     </nav>

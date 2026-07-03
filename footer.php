@@ -72,7 +72,6 @@
               <path d="M8.3 7.9c-.2-.4-.4-.4-.6-.4H7c-.2 0-.4.1-.5.3-.2.2-.7.7-.7 1.8 0 1 .7 2 0 2.1.1.1 1.4 2.2 3.5 3 .5.2.9.4 1.2.5.5.2.9.2 1.2.2.4 0 1.3-.5 1.5-1 .2-.5.2-.9.1-1-.1-.1-.2-.2-.4-.3l-1.1-.5c-.2-.1-.4-.1-.6.1l-.4.5c-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.7-1.5-2-.2-.3 0-.4.1-.5l.3-.3c.1-.1.2-.2.2-.3.1-.1.1-.3 0-.4l-.5-1.1Z" fill="currentColor"/>
             </svg>
           </span>
-          <span class="sr-only">WhatsApp</span>
         </a>
         <?php endif; ?>
 
@@ -83,7 +82,6 @@
               <path d="M14 9h2V6h-2c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.1l.9-3H13v-2c0-.6.4-1 1-1Z" fill="currentColor"/>
             </svg>
           </span>
-          <span class="sr-only">Facebook</span>
         </a>
         <?php endif; ?>
 
@@ -96,7 +94,6 @@
               <path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
             </svg>
           </span>
-          <span class="sr-only">Instagram</span>
         </a>
         <?php endif; ?>
 
@@ -108,7 +105,6 @@
               <path d="M10 15.5v-7l6 3.5-6 3.5Z" fill="#000"/>
             </svg>
           </span>
-          <span class="sr-only">YouTube</span>
         </a>
         <?php endif; ?>
 

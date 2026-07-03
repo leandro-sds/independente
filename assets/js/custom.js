@@ -69,9 +69,6 @@ document.addEventListener('DOMContentLoaded', function () {
       else openMenu();
     };
 
-    menuToggle.dataset.labelOpen  = menuToggle.getAttribute('aria-label') || 'Abrir menu de navegação';
-    menuToggle.dataset.labelClose = 'Fechar menu de navegação';
-
     menuToggle.addEventListener('click', toggleMenu);
 
     menuToggle.addEventListener('keydown', function (e) {
@@ -110,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const openSearch = () => {
       searchWrap.classList.add('is-open');
       searchToggle.setAttribute('aria-expanded', 'true');
-      searchToggle.setAttribute('aria-label', 'Fechar campo de busca');
+      searchToggle.setAttribute('aria-label', searchToggle.dataset.labelClose || 'Fechar campo de busca');
       const focusEl = getFirstFocusable();
       if (focusEl) focusEl.focus();
     };
@@ -118,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeSearch = () => {
       searchWrap.classList.remove('is-open');
       searchToggle.setAttribute('aria-expanded', 'false');
-      searchToggle.setAttribute('aria-label', 'Abrir campo de busca');
+      searchToggle.setAttribute('aria-label', searchToggle.dataset.labelOpen || 'Abrir campo de busca');
       searchToggle.focus();
     };
 

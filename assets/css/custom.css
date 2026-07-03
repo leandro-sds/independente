@@ -53,6 +53,7 @@ aside .wp-block-search__button,
   flex-shrink: 0 !important;
   white-space: nowrap !important;
   width: auto !important;
+  line-height: 20px;
 }
 
 /* Garante boa área de toque em todos os controles interativos (WCAG 2.5.5) */
@@ -61,7 +62,6 @@ input[type="submit"],
 input[type="button"],
 .search-submit {
   min-height: 44px;
-  min-width: 44px;
 }
 
 /* Campo de busca: área de toque adequada */
@@ -428,8 +428,15 @@ aside .search-form input[type="submit"]:focus-visible {
   padding: 1rem 0 0.5rem;
   font-size: 0.9rem;
   color: var(--header-muted);
-  border-top: 1px solid var(--header-border);
   margin-top: 1rem;
+}
+.site-info + .site-info{
+  border-top: 1px solid var(--header-border);
+}
+.site-info.site-info--developer a{
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* Impressão: oculta elementos desnecessários */

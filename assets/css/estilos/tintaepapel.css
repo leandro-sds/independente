@@ -4,43 +4,74 @@
  * NÃO editar manualmente sem atualizar style.css
  */
 
+body.style-tintaepapel {
+  /* ── CORES E TIPOGRAFIA DO ESTILO (fonte única) ──
+     Identidade ORIGINAL (conforme estilos-do-tema.md):
+     "Cabeçalho com gradiente marrom-acinzentado. Linha âmbar que se expande
+     como caneta sublinhando. Menu hover com mancha de tinta âmbar subindo.
+     Fonte Georgia serifada — máximo foco na leitura." */
+  --primary-color: #4A3F38;   /* marrom-acinzentado (cabeçalho) */
+  --bg-light: #F7F2E9;        /* papel claro */
+  --card-bg: #FBF7F0;         /* papel um tom mais claro (cartões) */
+  --accent-color: #B8860B;    /* âmbar — linha, hover, botões */
+  --on-accent: #2B2521;       /* texto escuro sobre o âmbar (contraste) */
+  --link-color: #8C6608;      /* âmbar escurecido — legível como link no papel claro */
+  --text-color: #2B2521;      /* quase preto, tom marrom (texto) */
+  --muted-text: #6B6258;      /* marrom acinzentado suave (secundário) */
+  --border-color: #DCD3C2;    /* bege claro (bordas) */
+  --header-title-color: #ffffff;
+  --header-muted: rgba(255,255,255,0.75);
+  --header-border: rgba(255,255,255,0.15);
+  --focus-ring: 3px solid #B8860B;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --font-main: Georgia, 'Times New Roman', serif;   /* fonte serifada — foco na leitura, conforme spec */
+  --font-title: Georgia, 'Times New Roman', serif;  /* títulos também em Georgia (sem isso, caem na fonte da base) */
+
+  /* Reforço: aplica fundo e cor de texto diretamente (além das variáveis),
+     garantindo a identidade mesmo se a cascata de variáveis falhar. */
+  background-color: #F7F2E9;
+  color: #2B2521;
+}
+
 /* ── Regras de desktop ── */
 
 body.style-tintaepapel aside {
-  background-color: #e8e2d5;
-  border-left: 1px solid #c8c0b0;
+  background-color: #E5DDC8;
+  border-left: 1px solid #DCD3C2;
 }
 
 body.style-tintaepapel main {
-  border-right: 1px solid #c8c0b0;
+  border-right: 1px solid #DCD3C2;
 }
 
 body.style-tintaepapel main {
-  background-color: #f2f4f6;
-  border-right: 1px solid #c8c0b0;
+  background-color: #FBF7F0;
+  border-right: 1px solid #DCD3C2;
 }
 
 body.style-tintaepapel aside {
-  background-color: #dde3e8;
+  background-color: #E5DDC8;
   border-left: none;
 }
 
 body.style-tintaepapel .widget {
-  background-color: #f2f4f6;
-  border: 1px solid #c8c0b0;
+  background-color: #FBF7F0;
+  border: 1px solid #DCD3C2;
 }
 
 body.style-tintaepapel {
-  background-color: #e8ecf0;
+  background-color: #F7F2E9;
 }
 
 body.style-tintaepapel .site-header {
   background: linear-gradient(
     180deg,
-    #2C3E50 0%,
-    #1a2530 100%
+    #4A3F38 0%,
+    #3A322C 100%
   ) !important;
-  border-bottom: 3px solid #111a22 !important;
+  border-bottom: 3px solid #3A322C !important;
   box-shadow: 0 3px 16px rgba(0,0,0,0.30) !important;
 }
 
@@ -49,7 +80,7 @@ body.style-tintaepapel .site-header::after {
   display: block;
   height: 4px;
   width: 0;
-  background: linear-gradient(90deg, #8B5E1A, #e0b060, #8B5E1A);
+  background: linear-gradient(90deg, #B8860B, #C99A5A, #B8860B);
   animation: tintaLine 1.2s ease forwards;
   margin-top: 0;
 }
@@ -64,7 +95,7 @@ body.style-tintaepapel .site-header::after {
 body.style-tintaepapel .primary-nav .menu a {
   position: relative !important;
   overflow: hidden !important;
-  color: #e8c478 !important; /* dourado claro — contraste AA (6.6) sobre o cabeçalho #2C3E50; não depender da herança */
+  color: #D9B57A !important; /* dourado claro — contraste AA (6.6) sobre o cabeçalho #4A3F38; não depender da herança */
   transition: color 0.30s ease !important;
 }
 
@@ -75,7 +106,7 @@ body.style-tintaepapel .primary-nav .menu a::before {
   left: 0;
   width: 100%;
   height: 0%;
-  background: rgba(139,94,26,0.14);
+  background: rgba(184,134,11,0.14);
   transition: height 0.30s ease;
   border-radius: var(--radius-sm);
   pointer-events: none;
@@ -86,7 +117,7 @@ body.style-tintaepapel .primary-nav .menu a:hover::before {
 }
 
 body.style-tintaepapel .primary-nav .menu a:hover {
-  color: #c49a3c !important;
+  color: #ffffff !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -118,18 +149,48 @@ body.style-tintaepapel .page-content h3 {
 
 body.style-tintaepapel .post-content blockquote,
 body.style-tintaepapel .page-content blockquote {
-  border-left: 5px solid #8B5E1A !important;
-  background: #e8e0d0 !important;
+  border-left: 5px solid #B8860B !important;
+  background: #E5DDC8 !important;
   border-radius: 0 10px 10px 0 !important;
-  padding: 1.4rem 1.8rem !important;
+  padding: 1.4rem 1.8rem 1.4rem 2.6rem !important;
   font-style: italic !important;
   font-family: Georgia, 'Times New Roman', serif !important;
   font-size: 1.05rem !important;
   line-height: 1.80 !important;
-  color: #2C1810 !important;
+  color: #2B2521 !important;
   position: relative !important;
-  box-shadow: inset 0 0 0 1px rgba(139,94,26,0.12),
+  box-shadow: inset 0 0 0 1px rgba(184,134,11,0.12),
               0 2px 12px rgba(0,0,0,0.08) !important;
+}
+
+/* Aspas decorativas — citação de livro, peso editorial */
+body.style-tintaepapel .post-content blockquote::before,
+body.style-tintaepapel .page-content blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: 0.1rem;
+  left: 0.7rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.6rem;
+  font-style: normal;
+  line-height: 1;
+  color: #B8860B;
+  opacity: 0.55;
+}
+
+/* Letra capitular — abre o texto como um livro impresso clássico.
+   Só no primeiro parágrafo do post, e só em telas largas o suficiente
+   para a letra não atrapalhar a leitura em coluna estreita. */
+@media (min-width: 600px) {
+  body.style-tintaepapel .post-content > p:first-of-type::first-letter {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 3.4em;
+    font-weight: 700;
+    float: left;
+    line-height: 0.85;
+    padding: 0.05em 0.08em 0 0;
+    color: #4A3F38;
+  }
 }
 
 body.style-tintaepapel .post-content blockquote::before,
@@ -149,7 +210,7 @@ body.style-tintaepapel main {
   background-image: repeating-linear-gradient(
     transparent,
     transparent 27px,
-    rgba(139,94,26,0.05) 28px
+    rgba(184,134,11,0.05) 28px
   ) !important;
   background-size: 100% 28px !important;
 }
@@ -158,7 +219,7 @@ body.style-tintaepapel .widget,
 body.style-tintaepapel .widget_block {
   position: relative;
   overflow: visible /* era hidden — cortava o formulário de busca */;
-  border: 1px solid rgba(139,94,26,0.18) !important;
+  border: 1px solid rgba(184,134,11,0.18) !important;
   box-shadow: 0 2px 12px rgba(0,0,0,0.08) !important;
 }
 
@@ -169,24 +230,24 @@ body.style-tintaepapel .widget::before {
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, #8B5E1A, #c49a3c, transparent);
+  background: linear-gradient(90deg, #B8860B, #A6760A, transparent);
   pointer-events: none;
 }
 
 body.style-tintaepapel .widget h3,
 body.style-tintaepapel .widget h2 {
-  border-bottom: 2px solid #8B5E1A !important;
+  border-bottom: 2px solid #B8860B !important;
   padding-bottom: 8px !important;
   font-family: Georgia, serif !important;
-  color: #2C3E50 !important;
-  -webkit-text-fill-color: #2C3E50 !important;
+  color: #4A3F38 !important;
+  -webkit-text-fill-color: #4A3F38 !important;
 }
 
 body.style-tintaepapel .post-content a,
 body.style-tintaepapel .page-content a {
-  color: #7a3e10 !important;
+  color: #8C6608 !important;
   text-decoration: none !important;
-  background-image: linear-gradient(#8B5E1A, #8B5E1A) !important;
+  background-image: linear-gradient(#B8860B, #B8860B) !important;
   background-size: 0% 1px !important;
   background-repeat: no-repeat !important;
   background-position: left bottom !important;
@@ -196,7 +257,7 @@ body.style-tintaepapel .page-content a {
 
 body.style-tintaepapel .post-content a:hover,
 body.style-tintaepapel .page-content a:hover {
-  color: #5a2e08 !important;
+  color: #8C6608 !important;
   background-size: 100% 1px !important;
 }
 
@@ -209,49 +270,62 @@ body.style-tintaepapel .page-content a:hover {
 }
 
 body.style-tintaepapel .header-search .search-form .search-submit:hover {
-  background: #6b3a0f !important;
-  box-shadow: 0 3px 12px rgba(139,94,26,0.30) !important;
+  background: #8C6608 !important;
+  box-shadow: 0 3px 12px rgba(184,134,11,0.30) !important;
   transform: translateY(-1px) !important;
+  color: #FFF;
 }
 
+body.style-tintaepapel .read-more {
+  color: #FFF;
+  -webkit-text-fill-color: #FFF !important;
+}
 body.style-tintaepapel .read-more:hover {
-  background: #6b3a0f !important;
-  box-shadow: 0 3px 12px rgba(139,94,26,0.30) !important;
+  background: #8C6608 !important;
+  box-shadow: 0 3px 12px rgba(184,134,11,0.30) !important;
   transform: translateY(-2px) !important;
+  -webkit-text-fill-color: #FFF !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
   body.style-tintaepapel .header-search .search-form .search-submit:hover { transform: none !important; }
 }
 
-body.style-tintaepapel  { --accent-color: #8B5E1A; --on-accent: #FFF8F0; }
+
 /* ── Componentes adicionados na auditoria v5.3 ── */
 
 
 body.style-tintaepapel .post-meta {
-  color: #666666 !important;
+  color: #6B6258 !important;
   font-size: 0.85rem !important;
   background: transparent !important;
-  border-left: 3px solid #8B5E1A !important;
+  border-left: 3px solid #B8860B !important;
   padding-left: 10px !important;
 }
 body.style-tintaepapel .post-meta a {
-  color: #8B5E1A !important;
+  color: #B8860B !important;
   text-decoration: none !important;
 }
 body.style-tintaepapel .post-meta a:hover {
-  color: #8B5E1A !important;
+  color: #B8860B !important;
 }
 
 body.style-tintaepapel .excerpt,
 body.style-tintaepapel .excerpt p {
-  color: #333333 !important;
+  color: #2B2521 !important;
   line-height: 1.7 !important;
+}
+
+body.style-tintaepapel .excerpt{
+  background: #FFF;
+}
+body.style-tintaepapel .excerpt:after{
+  background: linear-gradient(to bottom, transparent, #FFF);
 }
 
 body.style-tintaepapel article {
   background-color: #ffffff;
-  border: 1px solid #d1c5b0 !important;
+  border: 1px solid #DCD3C2 !important;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 body.style-tintaepapel article:hover {
@@ -261,25 +335,25 @@ body.style-tintaepapel article:hover {
 
 body.style-tintaepapel .comment-list .comment-body {
   background: #ffffff !important;
-  border: 1px solid #d1c5b0 !important;
+  border: 1px solid #DCD3C2 !important;
   border-radius: 8px !important;
   padding: 1.25rem 1.5rem !important;
 }
 body.style-tintaepapel .comment-metadata a {
-  color: #666666 !important;
+  color: #6B6258 !important;
   font-size: 0.82rem !important;
   text-decoration: none !important;
 }
 body.style-tintaepapel .comment-metadata a:hover {
-  color: #8B5E1A !important;
+  color: #B8860B !important;
 }
 body.style-tintaepapel .comment-content p {
-  color: #333333 !important;
+  color: #2B2521 !important;
   line-height: 1.75 !important;
 }
 body.style-tintaepapel .comment-author .fn,
 body.style-tintaepapel .comment-author-name {
-  color: #333333 !important;
+  color: #2B2521 !important;
 }
 
 body.style-tintaepapel .comment-form input[type="text"],
@@ -287,48 +361,47 @@ body.style-tintaepapel .comment-form input[type="email"],
 body.style-tintaepapel .comment-form input[type="url"],
 body.style-tintaepapel .comment-form textarea {
   background: #ffffff !important;
-  border: 1.5px solid #d1c5b0 !important;
-  color: #333333 !important;
+  border: 1.5px solid #DCD3C2 !important;
+  color: #2B2521 !important;
   border-radius: 6px !important;
   transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 body.style-tintaepapel .comment-form input:focus,
 body.style-tintaepapel .comment-form textarea:focus {
-  border-color: #8B5E1A !important;
-  box-shadow: 0 0 0 3px #8B5E1A22 !important;
+  border-color: #B8860B !important;
+  box-shadow: 0 0 0 3px #B8860B22 !important;
   outline: none !important;
 }
 body.style-tintaepapel .comment-form .submit {
-  background: #8B5E1A !important;
-  color: #FFF8F0 !important;
+  background: #B8860B !important;
+  color: #FBF7F0 !important;
   border: none !important;
   font-weight: 700 !important;
   border-radius: 6px !important;
   transition: all 0.3s ease !important;
   letter-spacing: 0.04em !important;
 }
-body.style-tintaepapel .comment-form .submit:hover {
-  opacity: 0.88 !important;
-  transform: translateY(-1px);
+body.style-tintaepapel #submit:hover {
+  color: #FFF !important;
+  filter: none !important;
 }
-
 body.style-tintaepapel .wp-block-search__inside-wrapper {
   display: flex !important;
   width: 100% !important;
 }
 body.style-tintaepapel .wp-block-search__input {
   background: #ffffff !important;
-  border: 1.5px solid #d1c5b0 !important;
-  color: #333333 !important;
+  border: 1.5px solid #DCD3C2 !important;
+  color: #2B2521 !important;
   border-radius: 6px 0 0 6px !important;
 }
 body.style-tintaepapel .wp-block-search__input:focus {
-  border-color: #8B5E1A !important;
+  border-color: #B8860B !important;
   outline: none !important;
 }
 body.style-tintaepapel .wp-block-search__button {
-  background: #8B5E1A !important;
-  color: #FFF8F0 !important;
+  background: #B8860B !important;
+  color: var(--on-accent);
   border: none !important;
   border-radius: 0 6px 6px 0 !important;
   font-weight: 700 !important;
@@ -336,39 +409,40 @@ body.style-tintaepapel .wp-block-search__button {
 }
 body.style-tintaepapel .wp-block-search__button:hover {
   opacity: 0.88 !important;
+  color: #FFF;
 }
 
 body.style-tintaepapel footer a {
   transition: color 0.3s ease;
 }
 body.style-tintaepapel footer a:hover {
-  color: #8B5E1A !important;
+  color: #B8860B !important;
 }
 
 body.style-tintaepapel .social-links a {
   transition: color 0.3s ease, opacity 0.3s ease;
 }
 body.style-tintaepapel .social-links a:hover {
-  color: #8B5E1A !important;
+  color: #B8860B !important;
   opacity: 0.85;
 }
 
 body.style-tintaepapel .pagination .page-numbers {
   border-radius: 6px;
-  border: 1.5px solid #8B5E1A;
-  color: #8B5E1A;
+  border: 1.5px solid #B8860B;
+  color: #B8860B;
   transition: all 0.3s ease;
 }
 body.style-tintaepapel .pagination .current,
 body.style-tintaepapel .pagination .page-numbers:hover {
-  background: #8B5E1A !important;
-  border-color: #8B5E1A !important;
-  color: #FFF8F0 !important;
+  background: #B8860B !important;
+  border-color: #B8860B !important;
+  color: #FBF7F0 !important;
 }
 
 body.style-tintaepapel .back-link a {
-  color: #8B5E1A !important;
-  border: 1.5px solid #8B5E1A !important;
+  color: #B8860B !important;
+  border: 1.5px solid #B8860B !important;
   border-radius: 6px;
   padding: 7px 16px;
   text-decoration: none !important;
@@ -376,25 +450,26 @@ body.style-tintaepapel .back-link a {
   transition: all 0.3s ease;
 }
 body.style-tintaepapel .back-link a:hover {
-  background: #8B5E1A !important;
-  color: #FFF8F0 !important;
+  background: #B8860B !important;
+  color: #FBF7F0 !important;
+  -webkit-text-fill-color: #FBF7F0 !important;
 }
 
 body.style-tintaepapel .error-404 .page-title,
 body.style-tintaepapel .no-results .page-title {
-  color: #8B5E1A !important;
+  color: #B8860B !important;
 }
 body.style-tintaepapel .error-404 .search-form .search-field,
 body.style-tintaepapel .no-results .search-form .search-field {
   background: #ffffff !important;
-  border: 1.5px solid #d1c5b0 !important;
-  color: #333333 !important;
+  border: 1.5px solid #DCD3C2 !important;
+  color: #2B2521 !important;
   border-radius: 6px 0 0 6px !important;
 }
 body.style-tintaepapel .error-404 .search-form .search-submit,
 body.style-tintaepapel .no-results .search-form .search-submit {
-  background: #8B5E1A !important;
-  color: #FFF8F0 !important;
+  background: #B8860B !important;
+  color: #FBF7F0 !important;
   border: none !important;
   border-radius: 0 6px 6px 0 !important;
   font-weight: 700 !important;
@@ -416,11 +491,17 @@ body.style-tintaepapel .post-thumbnail-img {
   border-radius: 6px !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-body.style-tintaepapel article:hover .post-thumbnail-img {
-  transform: scale(1.02);
-}
 /* ── Conteúdo Extra: widgets seguem o visual do cartão de conteúdo ──
-   Fundo branco e borda do article (em vez do cinza #f2f4f6 da sidebar) */
+   Fundo branco e borda do article (em vez do cinza #FBF7F0 da sidebar) */
 body.style-tintaepapel .content-extra .widget {
-  border: 1px solid #d1c5b0 !important;
+  border: 1px solid #DCD3C2 !important;
+}
+
+/* Títulos em marrom-acinzentado — peso editorial, fiel ao estilo original */
+body.style-tintaepapel .entry-title,
+body.style-tintaepapel .post-title,
+body.style-tintaepapel article h1,
+body.style-tintaepapel article h2,
+body.style-tintaepapel .page-header h1 {
+  color: #4A3F38 !important;
 }
